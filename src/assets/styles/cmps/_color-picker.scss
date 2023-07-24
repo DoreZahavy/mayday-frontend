@@ -1,0 +1,43 @@
+.color-picker {
+    z-index: 3;
+    position: absolute;
+    display: none;
+    top: 30px;
+    left: -90px;
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 2px 6px 2px rgba(60,64,67,0.149);
+}
+
+.color-picker .color-list {
+cursor: auto;
+margin-block: 2px;
+}
+
+.color-picker .color-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--btnSml);
+    height: var(--btnSml);
+    border-radius: 50%;
+    margin-inline: 2px;
+    cursor: pointer;
+}
+
+.color-picker .color-list li:hover{
+    border: 2px solid black;
+}
+
+.note-preview .actions .color-icon,
+.note-add-open .actions .color-icon,
+.note-edit .actions .color-icon{
+    position: relative;
+}
+
+.note-preview .actions .color-icon:hover .color-picker,
+.note-add-open .actions .color-icon:hover .color-picker,
+.note-edit .actions .color-icon:hover .color-picker{
+    display: block;
+}

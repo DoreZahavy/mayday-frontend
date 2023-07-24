@@ -1,58 +1,56 @@
-/* Breakpoint mixins */
+/* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-@mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-@mixin for-normal-layout {
-    @media (min-width: calc($narrow-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-@mixin for-wide-layout {
-    @media (min-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-/* Media  Mixins */
-@mixin aspect-ratio($width, $height) {
-    position: relative;
-    overflow: hidden;
-    &::before {
-      display: block;
-      content: "";
-      width: 100%;
-      padding-top: calc(($height / $width) * 100%);
-    }
-    > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  
-    > img {
-      height: 100%;
-      object-fit: cover;
+    @media (max-width: $break-narrow) {
+      @content;
     }
   }
   
-  // Mixin for removing hover efects on iphone screen
-  @mixin hover-supported {    
-    @media not all and (pointer: coarse) {
-        &:hover {
-            @content;
-        }
+  @mixin for-narrow-layout {
+    @media (min-width: $break-narrow) {
+      @content;
     }
+  }
+  
+  @mixin for-normal-layout {
+    @media (min-width: $break-normal) {
+      @content;
+    }
+  }
+  
+  @mixin for-wide-layout {
+    @media (min-width: $break-wide) {
+      @content;
+    }
+  }
+  
+  @mixin layoutGTC($max) {
+    grid-template-columns:
+      minmax($layoutPadding, 1fr)
+      minmax(auto, $max)
+      minmax($layoutPadding, 1fr);
+  }
+
+  // Text
+  @mixin projTitle{
+    font-size: em(24px,14px);
+    line-height: lh(32px , 14px);
+    font-family: poppins;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    color: var(--primary-text-color);
+  }
+  @mixin btnTxt{
+    font-size: 1rem;
+    line-height: lh(24px , 14px);
+    font-family: figtree;
+    font-weight: 400;
+    color: #fff;
+  }
+  @mixin taskTxt{
+    font-size: 1rem;
+    line-height: lh(23px , 14px);
+    font-family: figtree;
+    font-weight: 400;
+    color: var(--primary-text-color);
   }

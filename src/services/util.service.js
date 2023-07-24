@@ -1,11 +1,15 @@
+'use strict'
+
 export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    debounce,
-    randomPastTime,
+    loadFromStorage,
     saveToStorage,
-    loadFromStorage
+    animateCSS,
+    debounce,
+    throttle
+
 }
 
 function makeId(length = 6) {
@@ -35,24 +39,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
-
-function randomPastTime() {
-    const HOUR = 1000 * 60 * 60
-    const DAY = 1000 * 60 * 60 * 24
-    const WEEK = 1000 * 60 * 60 * 24 * 7
-
-    const pastTime = getRandomIntInclusive(HOUR, WEEK)
-    return Date.now() - pastTime
-}
-
-function debounce(func, timeout = 300){
-    let timer
-    return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => { func.apply(this, args) }, timeout)
-    }
-}
-
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
 }
@@ -60,4 +46,52 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+}
+
+
+function animateCSS(el, animation) {
+    const prefix = 'animate__'
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+
+        el.classList.add(`${prefix}animated`, animationName)
+
+        // When the animation ends, we clean the classes and resolve the Promise
+        function handleAnimationEnd(event) {
+            event.stopPropagation()
+            el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
+}
+
+// debounce calls a function when a user has not carried
+// out an event in a specific amount of time
+function debounce(fn, wait) {
+    let timer
+    return function (...args) {
+        if (timer) {
+            clearTimeout(timer) // clear any pre-existing timer
+        }
+        const context = this // get the current context
+        timer = setTimeout(() => {
+            fn.apply(context, args) // call the function if time expires
+        }, wait)
+    }
+}
+
+// throttle() calls a function at intervals of a specified time
+// while the user is carrying out an event
+function throttle(fn, wait){
+    let throttled = false
+    return function(...args){
+        if(!throttled){
+            fn.apply(this,args)
+            throttled = true
+            setTimeout(()=>{
+                throttled = false
+            }, wait)
+        }
+    }
 }
