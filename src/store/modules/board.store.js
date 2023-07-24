@@ -1,12 +1,12 @@
 import { boardService } from "@/services/board.service.js";
 
-export const dataStore = {
+export const boardStore = {
   strict: true,
   state() {
     return {
       board: boardService.getBoard(),
-      cmpOrder: ["side", "tasktTitle", "status", "priority", "members", "date"],
-      labels: [null, "task", "status", "priority", "members", "date"]
+      cmpOrder: [ "status", "priority", "members", "date"],
+      labels: [ "status", "priority", "members", "date"]
     }
   },
 
@@ -80,5 +80,32 @@ export const dataStore = {
   },
 
   actions: {
+    removeTask() {
+
+    },
+    removeGrp() {
+
+    },
+    removeBoard() {
+
+    },
+    addTask() {
+
+    },
+    addGrp() {
+
+    },
+    addBoard() {
+
+    },
+    updateTask() {
+
+    },
+    updateGrp() {
+
+    },
+    updateBoard() {
+
+    },
   },
 }

@@ -1,6 +1,6 @@
 <template>
-    <div class="side-indicator">
-      <p></p>
+    <div class="checkbox">
+      <input type="checkbox" >
     </div>
   </template>
   
@@ -14,7 +14,7 @@
   </script>
   
   <style>
-  .side-indicator {
+  .checkbox {
     width: 1rem;
     height: 1rem;
     transition: 0.2s;

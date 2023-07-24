@@ -18,6 +18,7 @@ export default {
 
 <template>
   <main>
+    <!-- header for dev -->
     <AppHeader />
     <RouterView />
 

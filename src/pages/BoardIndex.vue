@@ -14,12 +14,14 @@ export default {
   created() {
   },
   methods: {
+   
   }
 }
 </script>
 
 <template>
-  <main>
+  <main class="board-index">
+    <header>header stuff with log out</header>
     <h1>BOARD TITLE</h1>
     <Sidebar />
     <nav class="board-nav">
