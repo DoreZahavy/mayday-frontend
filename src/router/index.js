@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import BoardIndex from '@/pages/BoardIndex.vue'
+import LoginSignup from '@/pages/LoginSignup.vue'
 import Table from '@/cmps/Table.vue'
 import Kanban from '@/cmps/Kanban.vue'
 
@@ -11,6 +12,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/loginsignup',
+      name: 'LoginSignup',
+      component: LoginSignup
     },
     {
       path: '/board',

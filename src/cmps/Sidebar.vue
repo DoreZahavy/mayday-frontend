@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <template>
-    <aside>
+    <aside class="sidebar">
 
     </aside>
 </template>

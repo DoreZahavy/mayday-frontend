@@ -4,15 +4,15 @@ export const dataStore = {
   strict: true,
   state() {
     return {
-      groups: boardService.getGroups(),
+      board: boardService.getBoard(),
       cmpOrder: ["side", "tasktTitle", "status", "priority", "members", "date"],
       labels: [null, "task", "status", "priority", "members", "date"]
     }
   },
 
   getters: {
-    groups({ groups }) {
-      return groups;
+    board({ board }) {
+      return board;
     },
     cmpOrder({ cmpOrder }) {
       return cmpOrder;
@@ -24,7 +24,7 @@ export const dataStore = {
 
   mutations: {
     applyDragGrp(state, { dragResult }) {
-      const arr = state.groups
+      const arr = state.board
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -37,7 +37,7 @@ export const dataStore = {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
-      state.groups = result
+      state.board = result
     },
     applyDragHeader(state, { dragResult }) {
       const cmpArr = [...state.cmpOrder];
@@ -62,7 +62,7 @@ export const dataStore = {
       state.labels = labelArr;
     },
     applyDragTask(state, { idx, dragResult }) {
-      const arr = state.groups[idx].tasks
+      const arr = state.board[idx].tasks
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -75,7 +75,7 @@ export const dataStore = {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
-      state.groups[idx].tasks = result
+      state.board[idx].tasks = result
     },
   },
 

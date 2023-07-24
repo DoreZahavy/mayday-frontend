@@ -1,6 +1,6 @@
 import { utilService } from "./util.service"
 
-const groups = [
+const sampleBoard = [
   {
     id: utilService.makeId(),
     color: "red",
@@ -139,9 +139,9 @@ const groups = [
 ]
 
 export const boardService = {
-  getGroups
+  getBoard
 }
 
-function getGroups() {
-  return groups
+function getBoard() {
+  return sampleBoard
 }

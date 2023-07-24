@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <template>
-    <section>
+    <section class="kanban">
         <h1>ITS KANBAN TIME!</h1>
     </section>
 </template>

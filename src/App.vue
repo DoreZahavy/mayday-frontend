@@ -1,6 +1,5 @@
 <script>
 import AppHeader from '@/cmps/AppHeader.vue'
-import Sidebar from '@/cmps/Sidebar.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
 
 
@@ -12,22 +11,18 @@ export default {
   components: {
     AppHeader,
     UserMsg,
-    Sidebar
+
   },
 }
 </script>
 
 <template>
-  <header>
+  <main>
+    <AppHeader />
+    <RouterView />
 
-    <div class="wrapper">
-      <AppHeader />
-      <Sidebar />
-      <RouterView />
-      <UserMsg />
-    </div>
-  </header>
-
+    <UserMsg />
+  </main>
 </template>
 
-<style scoped></style>
+

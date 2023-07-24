@@ -3,6 +3,7 @@
     <nav class="main-nav">
 
       <RouterLink to="/">HOME</RouterLink>
+      <RouterLink to="/loginsignup">login</RouterLink>
       <RouterLink to="/board">BOARD</RouterLink>
     </nav>
     
