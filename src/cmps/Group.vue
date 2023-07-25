@@ -23,12 +23,12 @@
                     <Checkbox />
                     <TaskTitle :info="task.title" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task.components[cmp]"></component>
+                        <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id,$event)"></component>
                     </section>
 
                 </section>
             </Draggable>
-            <p class="progress-bar">ADD TASK</p>
+            <InPlaceEdit v-model="addTaskTxt" class="progress-bar"></InPlaceEdit>
         </Container>
         <!-- render progress by progress array -->
         <!-- <section class="progress-grid">
@@ -92,6 +92,10 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
+        onUpdateTask(taskId,taskData){
+            taskData._id = taskId
+            this.$emit('updateTask',taskData)
+        }
 
 
     },
