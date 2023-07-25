@@ -46,7 +46,7 @@
 import { Container, Draggable } from "vue3-smooth-dnd"
 import TasktTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
-import Members from "@/cmps/dynamicCmps/Members.vue";
+import Person from "@/cmps/dynamicCmps/Person.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
 import Status from "@/cmps/dynamicCmps/Status.vue";
 import Priority from "@/cmps/dynamicCmps/Priority.vue";
@@ -86,7 +86,7 @@ export default {
     components: {
         Checkbox,
         TasktTitle,
-        Members,
+        Person,
         Date,
         Status,
         Priority,

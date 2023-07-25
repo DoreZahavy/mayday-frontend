@@ -1,12 +1,14 @@
-import { boardService } from "@/services/board.service.js";
+// import { boardService } from "@/services/board.service.js";
+import { boardService } from "@/services/board.service.local.js";
 
 export const boardStore = {
   strict: true,
   state() {
     return {
       board: boardService.getBoard(),
-      cmpOrder: [ "status", "priority", "members", "date"],
-      labels: [ "status", "priority", "members", "date"]
+      boards: [],
+      cmpOrder: ["status", "priority", "members", "date"],
+      labels: ["status", "priority", "members", "date"]
     }
   },
 
@@ -77,35 +79,98 @@ export const boardStore = {
       }
       state.board[idx].tasks = result
     },
+    removeBoard(state, { boardId }) {
+      const boardIdx = state.boards.findIndex(b => b._id === boardId)
+      state.boards.splice(boardIdx, 1)
+    },
+    saveBoard(state, { savedBoard }) {
+      if (savedBoard._id) {
+        const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
+        state.boards.splice(boardIdx, 1, savedBoard)
+      } else {
+        state.boards.push(savedBoard)
+      }
+    },
+    setBoards(state, { boards }) {
+      state.boards = boards
+    }
   },
 
   actions: {
-    removeTask() {
-
+    async loadBoards(context) {
+      try {
+        const boards = await boardService.query()
+        return context.commit({ type: "setBoards", boards })
+      } catch {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    removeGrp() {
 
+    async saveBoard({ commit }, { boardToSave }) {
+      try {
+        const savedBoard = await boardService.saveBoard(boardToSave)
+        commit({ type: "saveBoard", savedBoard })
+        return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    removeBoard() {
 
+    async removeBoard({ commit }, { boardId }) {
+      try {
+        await boardService.removeBoard(boardId)
+        commit({ type: "removeBoard", boardId })
+        return Promise.resolve()
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    addTask() {
 
+    async saveGroup({ commit }, { boardId, group }) {
+      try {
+        const savedBoard = await boardService.saveGroup(boardId, group)
+        commit({ type: "saveBoard", savedBoard })
+        return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    addGrp() {
 
+    async removeGroup({ commit }, { boardId, groupId }) {
+      try {
+        const savedBoard = await boardService.removeGroup(boardId, groupId)
+        commit({ type: "saveBoard", savedBoard })
+        return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    addBoard() {
 
+    async saveTask(context, { boardId, groupId, task }) {
+      try {
+        const savedBoard = await boardService.saveTask(boardId, groupId, task)
+        commit({ type: "saveBoard", savedBoard })
+        return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
-    updateTask() {
 
-    },
-    updateGrp() {
-
-    },
-    updateBoard() {
-
+    async removeTask({ commit }, { boardId, groupId, taskId }) {
+      try {
+        const savedBoard = await boardService.removeTask(boardId, groupId, taskId)
+        commit({ type: "saveBoard", savedBoard })
+        return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
     },
   },
 }
