@@ -18,9 +18,9 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="task in group.tasks" :key="task.id">
                 <section class="task">
-                    <button>Trash</button>
+                    <button>🚮</button>
                     <Checkbox />
-                    <TasktTitle :info="task.tasktTitle" />
+                    <TaskTitle :info="task.taskTitle" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]"></component>
                     </section>
@@ -44,7 +44,7 @@
    -->
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd"
-import TasktTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
+import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
 import Person from "@/cmps/dynamicCmps/Person.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
@@ -91,7 +91,7 @@ export default {
     },
     components: {
         Checkbox,
-        TasktTitle,
+        TaskTitle,
         Person,
         Date,
         Status,

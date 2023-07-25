@@ -13,9 +13,5 @@ export default {
 </script>
   
 <style>
-.title {
-  text-align: start;
-  padding-left: 5%;
-  /* background-color: lightblue; */
-}
+
 </style>
