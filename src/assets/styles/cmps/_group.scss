@@ -1,10 +1,8 @@
 .group {
-    
-
 }
 .labels-grid,
 .progress-grid {
-    // width: 100%;
+    width: 100%;
     background: rgba(197, 188, 188, 0.59);
     display: grid;
     // grid-template-columns: 33px 308px repeat(4, 150px);
@@ -16,9 +14,12 @@
 
 .label-line{
     display: grid;
-    grid-template-columns: $row-height $row-height 300px repeat(4, 150px);
+    grid-template-columns: $row-height $row-height 300px repeat(7, 150px);
 
 }
 .group-list {
     margin-top: 2em;
+    border: 1px solid $border-clr;
+    border-radius: 6px 0 0 6px;
+    border-right: 0;
 }
