@@ -134,7 +134,7 @@ function getEmptyTimelineComponent() {
         startDate: null,
         dueDate: null,
         isHourIncluded: false
-    };
+    }
 }
 
 function getEmptyNumbersComponent() {
