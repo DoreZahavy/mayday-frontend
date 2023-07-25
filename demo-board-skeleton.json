@@ -1,88 +1,92 @@
-{
-    "board": {
-        "_id": 301,
-        "cmpConfig": [
-            {
-                "type": "status",
-                "title": "Status"
-            },
-            {
-                "type": "priority",
-                "title": "priority"
-            },
-            {
-                "type": "members",
-                "title": "employees"
-            },
-            {
-                "type": "date",
-                "title": "employees"
-            }
-        ],
-        "Group": [
-            {
-                "_id": 1,
-                "tasks": [
-                    {
-                        "lastUpdated": {
-                            "timestamp": "1627676800",
-                            "userId": 1,
-                            "fullname": "John Doe",
-                            "userProfileUrl": "http://example.com/profile1",
-                            "imgUrl": "http://example.com/image1.jpg"
-                        },
-                        "_id": 202,
-                        "title": "learn css",
-                        "updates": [
-                            {
-                                "updateId": 101,
-                                "updateBy": {
-                                    "userId": 1,
-                                    "fullname": "Bob Smith"
+[
+    {
+        "boards": {
+            "_id": "3jf9u3r2fdsgf01",
+            "cmpConfig": [
+                {
+                    "type": "Status",
+                    "title": "Status"
+                },
+                {
+                    "type": "Person",
+                    "title": "Person"
+                },
+                {
+                    "type": "Date",
+                    "title": "Date"
+                },
+                {
+                    "type": "Timeline",
+                    "title": "Timeline"
+                },
+                {
+                    "type": "Numbers",
+                    "title": "Numbers"
+                },
+                {
+                    "type": "Txt",
+                    "title": "Text"
+                },
+                {
+                    "type": "Files",
+                    "title": "Files"
+                }
+            ],
+            "groups": [
+                {
+                    "_id": "random id",
+                    "tasks": [
+                        {
+                            "_id": "random id",
+                            "title": "task title goes here",
+                            "updates": [],
+                            "compononets": [
+                                {
+                                    "Person": [
+                                        {
+                                            "_id": "random id for user",
+                                            "fullname": "Din Ben-Dor",
+                                            "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        },
+                                        {
+                                            "_id": "random id for user",
+                                            "fullname": "Dore Zahavy",
+                                            "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                                        },
+                                        {
+                                            "_id": "random id for user",
+                                            "fullname": "Yona Stephenson",
+                                            "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        }
+                                    ]
                                 },
-                                "content": "I fixed the sink we can wash our dishes now"
-                            }
-                        ],
-                        "compononets": [
-                            {
-                                "due_date": "2023-08-01"
-                            },
-                            {
-                                "status": "Not Started"
-                            },
-                            {
-                                "priority": "Low"
-                            },
-                            {
-                                "budget": 5000
-                            },
-                            {
-                                "timeline": {
-                                    "start_date": "1627580400",
-                                    "end_date": "1627763200"
+                                {
+                                    "Status": "Stuck"
+                                },
+                                {
+                                    "Date": 1679693445500
+                                },
+                                {
+                                    "Timeline": {
+                                        "startDate": 1623693445500,
+                                        "dueDate": 1679699945590,
+                                        "isHourIncluded": false
+                                    }
+                                },
+                                {
+                                    "Numbers": 5000
+                                },
+                                {
+                                    "Txt": "Here goes a short text about the task"
+                                },
+                                {
+                                    "Files": []
                                 }
-                            }
-                        ],
-                        {
-                            "members": [
-                                "dory",
-                                "din",
-                                "yona"
                             ]
-                        },
-                        {
-                            "files": [
-                                "http://example.com/file1.doc",
-                                "http://example.com/file2.doc"
-                            ]
-                        },
-                        {
-                            "note": "This is a short note."
                         }
                     ]
                 }
             ]
         }
-    ]
-}
-}
+    }
+]
