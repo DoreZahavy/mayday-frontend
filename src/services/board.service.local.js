@@ -11,9 +11,9 @@ fetch("@/data/boards.json")
     _createBoards(data)
 });
 
-// const boards = utilService.readJsonFile('data/boards.json')
+// const boards = utilService.readJsonFile('../../demo-board-v1.2.json')
 
-    _createBoards()
+// _createBoards()
 
 export const boardService = {
     query,
@@ -98,12 +98,12 @@ function getEmptyBoard() {
     }
 }
 
-function _createBoards() {
+function _createBoards(data) {
     const boards = storageService.query(BOARD_KEY)
-  if (!boards || !boards.length) {
-    //   boards = utilService.readJsonFile('data/boards.json')
-      utilService.saveToStorage(BOARD_KEY, boards)
-  }
+    if (!boards || !boards.length) {
+          boards = data
+        utilService.saveToStorage(BOARD_KEY, boards)
+    }
 }
 
 function getEmptyGroup() {
@@ -125,17 +125,17 @@ function getEmptyTask() {
     }
 }
 
-function _createBoard(name, price) {
-    return {
-        _id: utilService.makeId(),
-        name,
-        price,
-        labels: [
-            { title: 'Doll', color: '#6d28d9' },
-            { title: 'Battery Powered', color: '#71717a' },
-            { title: 'Baby', color: '#2563eb' },
-        ],
-        createdAt: Date.now(),
-        inStock: true,
-    }
-}
+// function _createBoard(name, price) {
+//     return {
+//         _id: utilService.makeId(),
+//         name,
+//         price,
+//         labels: [
+//             { title: 'Doll', color: '#6d28d9' },
+//             { title: 'Battery Powered', color: '#71717a' },
+//             { title: 'Baby', color: '#2563eb' },
+//         ],
+//         createdAt: Date.now(),
+//         inStock: true,
+//     }
+// }
