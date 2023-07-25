@@ -1,38 +1,24 @@
 .group {
-    .task {
-        border-left: 1px solid black;
-        // position: relative;
-        background: white;
-        display: grid;
-        grid-template-columns: 33px 308px repeat(4, 150px);
-        height: var(--row-height);
-        align-items: center;
-        grid-auto-flow: row;
-        // grid-template-columns: var(--row-height) 200px;
-        // grid-auto-columns: 150px;
+    
 
-        &:hover {
-            background-color: var(--task-hover);
-        }
-    }
-    .d-cmp,
-    .d-cmp-label {
-        &:nth-child(1) {
-            position: sticky;
-            z-index: 10;
-            width: var(--row-height);
-            left: 0;
-        }
+}
+.labels-grid,
+.progress-grid {
+    // width: 100%;
+    background: rgba(197, 188, 188, 0.59);
+    display: grid;
+    // grid-template-columns: 33px 308px repeat(4, 150px);
+    // grid-template-columns: var(--row-height) 300px repeat(4, 150px);
 
-        &:nth-child(2) {
-            position: sticky;
-            z-index: 10;
-            margin-left: -80px;
-            left: var(--row-height);
-        }
+    /* grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr; */
+    /* justify-content: center; */
+}
 
-        &:nth-child(5) {
-            margin-left: -165px;
-        }
-    }
+.label-line{
+    display: grid;
+    grid-template-columns: $row-height $row-height 300px repeat(4, 150px);
+
+}
+.group-list {
+    margin-top: 2em;
 }

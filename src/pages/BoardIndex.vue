@@ -21,14 +21,17 @@ export default {
 
 <template>
   <main class="board-index">
-    <header>header stuff with log out</header>
-    <h1>BOARD TITLE</h1>
-    <Sidebar />
-    <nav class="board-nav">
-      <RouterLink to="/board/">Table</RouterLink>
-      <RouterLink to="/board/kanban">Kanban</RouterLink>
-    </nav>
-    <RouterView />
+    <Sidebar/>
+    <section class="board-container">
+      <section class="board-nav">
+        <h1>BOARD TITLE</h1>
+        <nav class="board-nav">
+          <RouterLink to="/board/">Table</RouterLink>
+          <RouterLink to="/board/kanban">Kanban</RouterLink>
+        </nav>
+      </section>
+      <RouterView/>
+    </section>
   </main>
 </template>
 

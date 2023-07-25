@@ -38,7 +38,7 @@
     font-family: poppins;
     font-weight: 500;
     letter-spacing: -0.2px;
-    color: var(--primary-text-color);
+    color: var($primary-text-color);
   }
   @mixin btnTxt{
     font-size: 1rem;
@@ -52,5 +52,5 @@
     line-height: lh(23px , 14px);
     font-family: figtree;
     font-weight: 400;
-    color: var(--primary-text-color);
+    color: var($primary-text-color);
   }

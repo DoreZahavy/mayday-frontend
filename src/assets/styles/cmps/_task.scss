@@ -1,0 +1,17 @@
+.task {
+    border-left: 1px solid black;
+    // position: relative;
+    background: white;
+    display: grid;
+    grid-template-columns: $row-height $row-height repeat(5, 180px);
+    height: $row-height;
+    align-items: center;
+    grid-auto-flow: row;
+    // width: 100vw;
+    // grid-template-columns: var(--row-height) 200px;
+    // grid-auto-columns: 150px;
+
+    &:hover {
+        background-color: $task-hover;
+    }
+}

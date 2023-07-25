@@ -1,0 +1,7 @@
+.sidebar{
+    grid-area: sidebar;
+    width: $sidebar-width;
+    height: 100%;
+    border-top-right-radius: rem(6px);
+    background-color: red;
+}

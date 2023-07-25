@@ -4,18 +4,22 @@
     box-sizing: border-box;
 }
 
+
 html {
     font-size: 14px;
     font-family: figtree;
     font-weight: 400;
+    height: 100%;
 }
 
 body {
+    height: 100%;
     margin: 0;
     // background-image: url(src/assets/space.png);
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
+    background-color: $lightmode-app-bg;
 }
 
 h1,
@@ -24,16 +28,14 @@ h3,
 h4,
 h5,
 h6 {
+    margin:0;
 }
 
-h1 {
-}
+h1 {}
 
-h2 {
-}
+h2 {}
 
-h3 {
-}
+h3 {}
 
 img {
     width: 100%;

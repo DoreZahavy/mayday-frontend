@@ -1,3 +1,24 @@
 .board-index{
     // overflow-x: scroll;
+    display: grid;
+    gap: rem(10px);
+    grid-template-areas: 
+    "sidebar board"
+    ;
+    grid-template-columns: $sidebar-width 1fr;
+    // height: 100%;
+    height: $main-viewport-height;
+}
+.board{
+    grid-area: board;
+}
+.board-nav{
+    grid-area: boardNav;
+}
+.board-container{
+    border-top-left-radius: rem(6px);
+    padding-inline-start: rem(41px);
+    padding-block-start: rem(41px);
+    background-color: $lightmode-white;
+    height: 100%;
 }
