@@ -1,14 +1,18 @@
 .task {
-    border-left: 1px solid black;
     // position: relative;
     background: white;
     display: grid;
-    grid-template-columns: $row-height $row-height repeat(7, 150px);
+    grid-template-columns: $row-height $row-height $task-title-width repeat(7, 150px);
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
 
-    height: rem(35px);
+    height: rem(36px);
+    border-block-end: 1px solid $border-clr;
+    
+    button {
+        background-color: transparent;
+    }
 
     &:hover {
         background-color: $task-hover;
@@ -19,16 +23,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    border-inline-end: 1px solid $border-clr;
+    padding: 0;
+    &:first-child{
+        border-inline-start: 1px solid $border-clr;
+    }
 }
 
 .title {
     text-align: start;
-    padding-left: 5%;
 }
 
-.txt{
-    p{
+.txt {
+    p {
         white-space: nowrap;
     }
+
     justify-self: flex-start;
+}
+
+.checkbox {
+    input {
+        margin: 0;
+        padding-inline: 3px;
+    }
 }

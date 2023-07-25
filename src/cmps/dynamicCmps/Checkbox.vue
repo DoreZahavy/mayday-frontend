@@ -1,5 +1,5 @@
 <template>
-    <div class="checkbox">
+    <div class="checkbox d-cmp">
       <input type="checkbox" >
     </div>
   </template>
@@ -13,12 +13,3 @@
   };
   </script>
   
-  <style>
-  .checkbox {
-    width: 1rem;
-    height: 1rem;
-    transition: 0.2s;
-    transition-delay: 0.1ms;
-    /* background-color: lightgray; */
-  }
-  </style>

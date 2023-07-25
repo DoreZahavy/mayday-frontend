@@ -5,10 +5,10 @@
         <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
             orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button >Trash</button>
+                <button class="button-as-link d-cmp ">🚮</button>
                 <Checkbox />
-                <div class="task-title">task</div>
-                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp-label">
+                <div class="task-title d-cmp">task</div>
+                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
             </section>
@@ -18,16 +18,16 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="task in group.tasks" :key="task.id">
                 <section class="task">
-                    <button>🚮</button>
+                    <button class="d-cmp button-as-link">🚮</button>
                     <Checkbox />
-                    <TaskTitle :info="task.taskTitle" />
+                    <TaskTitle :info="task.title" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]"></component>
                     </section>
 
                 </section>
             </Draggable>
-            <p>ADD TASK</p>
+            <p class="progress-bar">ADD TASK</p>
         </Container>
         <!-- render progress by progress array -->
         <!-- <section class="progress-grid">
