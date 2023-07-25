@@ -1,5 +1,7 @@
 <template>
     <section class="group-list">
+        <InPlaceEdit v-model="groupTitle" @change="addGroup"/>
+
         <!-- render group labels by labels array -->
 
         <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -63,7 +65,8 @@ export default {
 
     data() {
         return {
-            addTaskTxt: 'Add Task'
+            addTaskTxt: 'Add Task',
+            groupTitle:this.group.title
         }
     },
     computed: {

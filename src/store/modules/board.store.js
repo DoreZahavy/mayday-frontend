@@ -39,7 +39,7 @@ export const boardStore = {
   },
 
   mutations: {
-    loadBoard(state, { board }) {
+    loadBoard(state, { board }) { //load json
       
       state.board = board[0]
     },

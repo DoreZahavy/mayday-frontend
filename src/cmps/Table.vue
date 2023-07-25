@@ -6,7 +6,7 @@ import { Container, Draggable } from "vue3-smooth-dnd"
 export default {
   data() {
     return {
-      addTaskTxt: ''
+     
     }
   },
   computed: {
@@ -32,7 +32,9 @@ export default {
       this.$store.commit({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
-  
+  // updateTask(data){
+
+  // },
     addGroup() {
       this.$store.dispatch({type:'addGroup'})
     },
@@ -50,7 +52,6 @@ export default {
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <button @click="removeGroup(group._id)">REMOVE GRP</button>
       <Group :group="group" :idx="idx"></Group>
-      <!-- <InPlaceEdit v-model="addTaskTxt" @change="addGroup" /> -->
     </Draggable>
     <!-- <button @click="addGroup">ADD GRP</button> -->
   </Container>
