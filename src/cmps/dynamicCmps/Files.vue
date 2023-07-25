@@ -1,15 +1,15 @@
 <template>
-    <div class="timeline">
-        <p>TL</p>
+    <div class="files">
+        <p>N</p>
     </div>
 </template>
   
 <script>
 export default {
 
-    name: "Timeline",
+    name: "files",
     props: {
-        info: Object,
+        info: Array,
     },
 }
 </script>

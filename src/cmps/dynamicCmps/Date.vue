@@ -1,6 +1,6 @@
 <template>
     <section class="date">
-      <p>{{ info }}</p>
+      <p>{{ date }}</p>
     </section>
   </template>
   
@@ -9,13 +9,13 @@
     name: "date",
   
     props: {
-      info: String,
+      info: Number,
     },
-  };
-  </script>
-  
-  <style>
-  .date {
-    /* background-color: lightcoral; */
+    computed:{
+      date(){
+        const d = new Date(info)
+        return `${d.getDate}/${d.getMonth}`
+      }
+    }
   }
-  </style>
+  </script>

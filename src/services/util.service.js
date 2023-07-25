@@ -1,5 +1,7 @@
 'use strict'
 
+import fs from 'fs'
+
 export const utilService = {
     makeId,
     makeLorem,

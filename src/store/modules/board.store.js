@@ -7,8 +7,8 @@ export const boardStore = {
     return {
       board: boardService.getBoard(),
       boards: [],
-      cmpOrder: ["status", "priority", "members", "date"],
-      labels: ["status", "priority", "members", "date"]
+      // cmpOrder: ["status", "priority", "members", "date"],
+      // labels: ["status", "priority", "members", "date"]
     }
   },
 
@@ -42,26 +42,31 @@ export const boardStore = {
       state.board = result
     },
     applyDragHeader(state, { dragResult }) {
-      const cmpArr = [...state.cmpOrder];
-      const labelArr = [...state.labels];
+      // const cmpArr = [...state.cmpOrder];
+      // const labelArr = [...state.labels];
+      const cmpConfigArr = [...state.board.cmpConfig]
 
       const { removedIndex, addedIndex } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return;
 
+      let itemToAdd = cmpConfigArr[removedIndex]
       let itemToAddCmp = cmpArr[removedIndex];
       let itemToAddLabel = labelArr[removedIndex];
 
       if (removedIndex !== null) {
-        cmpArr.splice(removedIndex, 1);
-        labelArr.splice(removedIndex, 1);
+        cmpConfigArr.splice(removedIndex, 1)
+        // cmpArr.splice(removedIndex, 1);
+        // labelArr.splice(removedIndex, 1);
       }
       if (addedIndex !== null) {
-        cmpArr.splice(addedIndex, 0, itemToAddCmp);
-        labelArr.splice(addedIndex, 0, itemToAddLabel);
+        cmpConfigArr.splice(addedIndex, 0, itemToAddCmp);
+        // cmpArr.splice(addedIndex, 0, itemToAddCmp);
+        // labelArr.splice(addedIndex, 0, itemToAddLabel);
       }
-      state.cmpOrder = cmpArr;
-      state.labels = labelArr;
+      state.boards.cmpConfig = cmpConfigArr
+      // state.cmpOrder = cmpArr;
+      // state.labels = labelArr;
     },
     applyDragTask(state, { idx, dragResult }) {
       const arr = state.board[idx].tasks
