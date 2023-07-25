@@ -2,10 +2,9 @@
     <section class="group-list">
         <!-- render group labels by labels array -->
 
-        <Container  @drop="onDropLabel($event)" class="labels-grid"
-            orientation="horizontal" behaviour="contain">
+        <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button >Trash</button>
+                <button>Trash</button>
                 <Checkbox />
                 <div class="task-title">task</div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp-label">
@@ -27,7 +26,7 @@
 
                 </section>
             </Draggable>
-            <p>ADD TASK</p>
+            <InPlaceEdit v-model="addTaskTxt" />
         </Container>
         <!-- render progress by progress array -->
         <!-- <section class="progress-grid">
@@ -54,15 +53,17 @@ import Txt from "@/cmps/dynamicCmps/Txt.vue";
 import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
 import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
 import Files from "@/cmps/dynamicCmps/Files.vue";
+import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 export default {
 
     props: ['group', 'idx'],
     created() {
-       
+
     },
 
     data() {
         return {
+            addTaskTxt: 'Add Task'
         }
     },
     computed: {
@@ -88,7 +89,8 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-      
+
+
     },
     components: {
         Checkbox,
@@ -101,7 +103,8 @@ export default {
         Numbers,
         Txt,
         Timeline,
-        Container, 
+        InPlaceEdit,
+        Container,
         Draggable
     },
 };
