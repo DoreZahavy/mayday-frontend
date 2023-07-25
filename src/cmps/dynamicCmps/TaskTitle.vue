@@ -1,5 +1,5 @@
 <template>
-  <p class="title">{{ info }}</p>
+  <p class="title d-cmp">{{ info }}</p>
 </template>
   
 <script>

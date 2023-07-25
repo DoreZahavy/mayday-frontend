@@ -89,4 +89,12 @@ $main-header-height: 48px;
 $main-viewport-height: calc(100% - $main-header-height);
 
 /*componenet specific vars*/
+
+//sidebar
 $sidebar-width: 255px;
+
+//groups
+$task-title-width: 300px;
+
+//group progress bar
+$progress-bar-left-margin: calc(($row-height * 2) + $task-title-width);
