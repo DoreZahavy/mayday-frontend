@@ -106,15 +106,6 @@ function _createBoards() {
   }
 }
 
-function getEmptyBoard() {
-    return {
-        name: '',
-        price: 0,
-        labels: [],
-        createdAt: Date.now(),
-        inStock: false,
-    }
-}
 function getEmptyGroup() {
     return {
         name: '',
