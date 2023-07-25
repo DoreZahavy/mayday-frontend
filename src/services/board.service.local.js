@@ -4,12 +4,12 @@ import { storageService } from './async-storage.service.js'
 const BOARD_KEY = 'boardDB'
 
 fetch("@/data/boards.json")
-.then(response => {
-   return response.json();
-})
-.then(data => {
-    _createBoards(data)
-});
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        _createBoards(data)
+    });
 
 // const boards = utilService.readJsonFile('../../demo-board-v1.2.json')
 
@@ -90,11 +90,74 @@ async function removeTask(boardId, groupId, taskId) {
 
 function getEmptyBoard() {
     return {
-        name: '',
-        price: 0,
-        labels: [],
-        createdAt: Date.now(),
-        inStock: false,
+        _id: '',
+        cmpConfig: [],
+        groups: [],
+    }
+}
+
+function getEmptyGroup() {
+    return {
+        _id: '',
+        title: '',
+        tasks: [],
+    }
+}
+
+function getEmptyTask() {
+    return {
+        _id: '',
+        title: '',
+        updates: [],
+        components: [getEmptyComponents()],
+    }
+}
+
+function getEmptyPersonComponent() {
+    return {
+        _id: '',
+        fullname: '',
+        imgUrl: ''
+    }
+}
+
+function getEmptyStatusComponent() {
+    return ''
+}
+
+function getEmptyDateComponent() {
+    return null
+}
+
+function getEmptyTimelineComponent() {
+    return {
+        startDate: null,
+        dueDate: null,
+        isHourIncluded: false
+    };
+}
+
+function getEmptyNumbersComponent() {
+    return 0
+}
+
+function getEmptyTxtComponent() {
+    return ''
+}
+
+function getEmptyFilesComponent() {
+    return []
+}
+
+function getEmptyComponents() {
+    return {
+        Person: [getEmptyPersonComponent()],
+        Status: getEmptyStatusComponent(),
+        Date: getEmptyDateComponent(),
+        Timeline: getEmptyTimelineComponent(),
+        Numbers: getEmptyNumbersComponent(),
+        Txt: getEmptyTxtComponent(),
+        Files: getEmptyFilesComponent()
     }
 }
 
