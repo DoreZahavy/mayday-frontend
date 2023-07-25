@@ -1,6 +1,7 @@
 <template>
     <div class="timeline">
         <p>TL</p>
+        <el-date-picker/>
     </div>
 </template>
   
