@@ -2,7 +2,7 @@
     <section class="group-list">
         <!-- render group labels by labels array -->
 
-        <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
+        <Container  @drop="onDropLabel($event)" class="labels-grid"
             orientation="horizontal" behaviour="contain">
             <section class="label-line">
                 <button >Trash</button>
@@ -18,7 +18,7 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="task in group.tasks" :key="task.id">
                 <section class="task">
-                    <button>Trash</button>
+                    <button >Trash</button>
                     <Checkbox />
                     <TasktTitle :info="task.tasktTitle" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
@@ -82,6 +82,7 @@ export default {
 
         },
         onDropLabel(dropResult) {
+
             this.$store.commit({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {
