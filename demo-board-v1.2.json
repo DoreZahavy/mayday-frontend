@@ -40,77 +40,49 @@
             "_id": "pZHEuw3xee",
             "title": "Feature Enhancement - Notifications",
             "updates": [],
-            "compononets": [
-              {
-                "Person": [
-                  {
-                    "_id": "D91QMRJ3y5",
-                    "fullname": "Din Ben-Dor",
-                    "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  }
-                ]
-              },
-              {
-                "Status": "Done"
-              },
-              {
-                "Date": 1690915200000
-              },
-              {
-                "Timeline": {
-                  "startDate": 1690492800000,
-                  "dueDate": 1690752000000,
-                  "isHourIncluded": false
+            "components": {
+              "Person": [
+                {
+                  "_id": "D91QMRJ3y5",
+                  "fullname": "Din Ben-Dor",
+                  "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
                 }
+              ],
+              "Status": "Done",
+              "Date": 1690915200000,
+              "Timeline": {
+                "startDate": 1690492800000,
+                "dueDate": 1690752000000,
+                "isHourIncluded": false
               },
-              {
-                "Numbers": 250000
-              },
-              {
-                "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app #^"
-              },
-              {
-                "Files": []
-              }
-            ]
+              "Numbers": 250000,
+              "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
+              "Files": []
+            }
           },
           {
             "_id": "gbog6ztQLZ",
             "title": "User Interface (UI) Redesign",
             "updates": [],
-            "compononets": [
-              {
-                "Person": [
-                  {
-                    "_id": "Nn3N3mTxUn",
-                    "fullname": "Yona Stephenson",
-                    "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  }
-                ]
-              },
-              {
-                "Status": "Working on it"
-              },
-              {
-                "Date": 1690915200000
-              },
-              {
-                "Timeline": {
-                  "startDate": 1690147200000,
-                  "dueDate": 1690492800000,
-                  "isHourIncluded": false
+            "components": {
+              "Person": [
+                {
+                  "_id": "Nn3N3mTxUn",
+                  "fullname": "Yona Stephenson",
+                  "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
                 }
+              ],
+              "Status": "Working on it",
+              "Date": 1690915200000,
+              "Timeline": {
+                "startDate": 1690147200000,
+                "dueDate": 1690492800000,
+                "isHourIncluded": false
               },
-              {
-                "Numbers": 9000000
-              },
-              {
-                "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app"
-              },
-              {
-                "Files": []
-              }
-            ]
+              "Numbers": 9000000,
+              "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app",
+              "Files": []
+            }
           }
         ]
       },
@@ -122,92 +94,64 @@
             "_id": "dLD1YaukLD",
             "title": "Cloud Migration",
             "updates": [],
-            "compononets": [
-              {
-                "Person": [
-                  {
-                    "_id": "D91QMRJ3y5",
-                    "fullname": "Din Ben-Dor",
-                    "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  },
-                  {
-                    "_id": "hYlw5GLxf8",
-                    "fullname": "Dore Zahavy",
-                    "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  }
-                ]
-              },
-              {
-                "Status": "Done"
-              },
-              {
-                "Date": 1690387200000
-              },
-              {
-                "Timeline": {
-                  "startDate": 1690051200000,
-                  "dueDate": 1691088000000,
-                  "isHourIncluded": false
+            "components": {
+              "Person": [
+                {
+                  "_id": "D91QMRJ3y5",
+                  "fullname": "Din Ben-Dor",
+                  "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                  "_id": "hYlw5GLxf8",
+                  "fullname": "Dore Zahavy",
+                  "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
                 }
+              ],
+              "Status": "Done",
+              "Date": 1690387200000,
+              "Timeline": {
+                "startDate": 1690051200000,
+                "dueDate": 1691088000000,
+                "isHourIncluded": false
               },
-              {
-                "Numbers": 11000000
-              },
-              {
-                "Txt": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability"
-              },
-              {
-                "Files": []
-              }
-            ]
+              "Numbers": 11000000,
+              "Txt": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
+              "Files": []
+            }
           },
           {
             "_id": "YTZf9CS4d5",
             "title": "Employee Performance Reviews",
             "updates": [],
-            "compononets": [
-              {
-                "Person": [
-                  {
-                    "_id": "Nn3N3mTxUn",
-                    "fullname": "Yona Stephenson",
-                    "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  },
-                  {
-                    "_id": "hYlw5GLxf8",
-                    "fullname": "Dore Zahavy",
-                    "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  },
-                  {
-                    "_id": "D91QMRJ3y5",
-                    "fullname": "Din Ben-Dor",
-                    "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  }
-                ]
-              },
-              {
-                "Status": "Almost there"
-              },
-              {
-                "Date": 1693238400000
-              },
-              {
-                "Timeline": {
-                  "startDate": 1690483200000,
-                  "dueDate": 1692124800000,
-                  "isHourIncluded": false
+            "components": {
+              "Person": [
+                {
+                  "_id": "Nn3N3mTxUn",
+                  "fullname": "Yona Stephenson",
+                  "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                  "_id": "hYlw5GLxf8",
+                  "fullname": "Dore Zahavy",
+                  "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                  "_id": "D91QMRJ3y5",
+                  "fullname": "Din Ben-Dor",
+                  "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
                 }
+              ],
+              "Status": "Almost there",
+              "Date": 1693238400000,
+              "Timeline": {
+                "startDate": 1690483200000,
+                "dueDate": 1692124800000,
+                "isHourIncluded": false
               },
-              {
-                "Numbers": 11000000
-              },
-              {
-                "Txt": "Be gentle  #:)"
-              },
-              {
-                "Files": []
-              }
-            ]
+              "Numbers": 11000000,
+              "Txt": "Be gentle  #:)",
+              "Files": []
+            }
           }
         ]
       }
