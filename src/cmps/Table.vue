@@ -1,10 +1,12 @@
 <script>
 import { boardService } from "@/services/board.service.js";
 import Group from '@/cmps/Group.vue'
+import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
 export default {
   data() {
     return {
+      addTaskTxt: ''
     }
   },
   computed: {
@@ -18,25 +20,26 @@ export default {
   },
   components: {
     Group,
+    InPlaceEdit,
     Container,
     Draggable
   },
   created() {
-    
+
   },
   methods: {
     onDropGrp(dropResult) {
       this.$store.commit({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
-    removeGrp() {
-
+  
+    addGroup() {
+      this.$store.dispatch({type:'addGroup'})
     },
+    removeGroup(groupId) {
+      this.$store.dispatch({type:'removeGroup',groupId})
 
-    addGrp() {
-      const order = this.$store.getters.cmpOrder
-    console.log('orrder:', order)
-    },
+    }
 
   }
 }
@@ -45,10 +48,11 @@ export default {
 <template>
   <Container @drop="onDropGrp" class="groups table" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
-      <button @click="removeGrp(idx, $event)">REMOVE GRP</button>
+      <button @click="removeGroup(group._id)">REMOVE GRP</button>
       <Group :group="group" :idx="idx"></Group>
+      <!-- <InPlaceEdit v-model="addTaskTxt" @change="addGroup" /> -->
     </Draggable>
-    <button @click="addGrp">ADD GRP</button>
+    <!-- <button @click="addGroup">ADD GRP</button> -->
   </Container>
 </template>
 

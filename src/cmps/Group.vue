@@ -2,8 +2,7 @@
     <section class="group-list">
         <!-- render group labels by labels array -->
 
-        <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
-            orientation="horizontal" behaviour="contain">
+        <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
             <section class="label-line">
                 <button class="button-as-link d-cmp ">🚮</button>
                 <Checkbox />
@@ -54,15 +53,17 @@ import Txt from "@/cmps/dynamicCmps/Txt.vue";
 import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
 import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
 import Files from "@/cmps/dynamicCmps/Files.vue";
+import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 export default {
 
     props: ['group', 'idx'],
     created() {
-       
+
     },
 
     data() {
         return {
+            addTaskTxt: 'Add Task'
         }
     },
     computed: {
@@ -82,12 +83,14 @@ export default {
 
         },
         onDropLabel(dropResult) {
+
             this.$store.commit({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-      
+
+
     },
     components: {
         Checkbox,
@@ -100,7 +103,8 @@ export default {
         Numbers,
         Txt,
         Timeline,
-        Container, 
+        InPlaceEdit,
+        Container,
         Draggable
     },
 };
