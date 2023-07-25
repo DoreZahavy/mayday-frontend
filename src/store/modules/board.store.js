@@ -16,17 +16,32 @@ export const boardStore = {
     board({ board }) {
       return board
     },
-    cmpOrder({ cmpOrder }) {
+    groups({ board }) {
+     
+      return board.groups
+    },
+    cmpOrder({ board }) {
+      // const cmpOrder = board.cmpConfig.map(a => a.type)
+      const cmpOrder = board.cmpConfig.reduce((acc, currCmp) => {
+        acc.push(currCmp.type)
+        return acc
+      }, [])
       return cmpOrder
     },
-    labels({ labels }) {
-      return labels
-    }
+    labels({ board }) {
+      // const labelOrder = board.cmpConfig.map(a => a.type)
+      const labelOrder = board.cmpConfig.reduce((acc, currCmp) => {
+        acc.push(currCmp.title)
+        return acc
+      }, [])
+      return labelOrder
+    },
   },
 
   mutations: {
     loadBoard(state, { board }) {
-      state.board = board
+      
+      state.board = board[0]
     },
     applyDragGrp(state, { dragResult }) {
       const arr = state.board

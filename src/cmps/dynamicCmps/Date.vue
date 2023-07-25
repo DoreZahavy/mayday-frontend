@@ -13,8 +13,8 @@
     },
     computed:{
       date(){
-        const d = new Date(info)
-        return `${d.getDate}/${d.getMonth}`
+        const d = new Date(this.info)
+        return `${d.getDate()}/${d.getMonth()}`
       }
     }
   }

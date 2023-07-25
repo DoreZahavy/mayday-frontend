@@ -5,7 +5,7 @@
         <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
             orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button>Trash</button>
+                <button >Trash</button>
                 <Checkbox />
                 <div class="task-title">task</div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp-label">
@@ -22,7 +22,7 @@
                     <Checkbox />
                     <TasktTitle :info="task.tasktTitle" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task[cmp]"></component>
+                        <component :is="cmp" :info="task.components[cmp]"></component>
                     </section>
 
                 </section>
@@ -50,15 +50,20 @@ import Person from "@/cmps/dynamicCmps/Person.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
 import Status from "@/cmps/dynamicCmps/Status.vue";
 import Priority from "@/cmps/dynamicCmps/Priority.vue";
+import Txt from "@/cmps/dynamicCmps/Txt.vue";
+import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
+import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
+import Files from "@/cmps/dynamicCmps/Files.vue";
 export default {
 
     props: ['group', 'idx'],
     created() {
+       
     },
 
     data() {
         return {
-        };
+        }
     },
     computed: {
         labels() {
@@ -81,7 +86,8 @@ export default {
         },
         getTaskChildPayload(index) {
             return this.group.tasks[index]
-        }
+        },
+      
     },
     components: {
         Checkbox,
@@ -90,7 +96,12 @@ export default {
         Date,
         Status,
         Priority,
-        Container, Draggable
+        Files,
+        Numbers,
+        Txt,
+        Timeline,
+        Container, 
+        Draggable
     },
 };
 </script>
