@@ -2,7 +2,7 @@
     <section class="group-list">
         <!-- render group labels by labels array -->
 
-        <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
+        <Container  @drop="onDropLabel($event)" class="labels-grid"
             orientation="horizontal" behaviour="contain">
             <section class="label-line">
                 <button >Trash</button>
@@ -82,6 +82,7 @@ export default {
 
         },
         onDropLabel(dropResult) {
+
             this.$store.commit({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {

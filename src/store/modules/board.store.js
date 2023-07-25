@@ -44,7 +44,7 @@ export const boardStore = {
       state.board = board[0]
     },
     applyDragGrp(state, { dragResult }) {
-      const arr = state.board
+      const arr = state.board.groups
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -57,7 +57,7 @@ export const boardStore = {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
-      state.board = result
+      state.board.groups = result
     },
     applyDragHeader(state, { dragResult }) {
       // const cmpArr = [...state.cmpOrder];
@@ -87,7 +87,8 @@ export const boardStore = {
       // state.labels = labelArr;
     },
     applyDragTask(state, { idx, dragResult }) {
-      const arr = state.board[idx].tasks
+      // const arr = state.board[idx].tasks
+      const arr = state.board.groups[idx].tasks
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -100,7 +101,8 @@ export const boardStore = {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
-      state.board[idx].tasks = result
+      // state.board[idx].tasks = result
+      state.board.groups[idx].tasks = result
     },
     removeBoard(state, { boardId }) {
       const boardIdx = state.boards.findIndex(b => b._id === boardId)
