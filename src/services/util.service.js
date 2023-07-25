@@ -1,6 +1,5 @@
-'use strict'
+// 'use strict'
 
-// import fs from 'fs'
 
 export const utilService = {
     makeId,
@@ -11,7 +10,6 @@ export const utilService = {
     animateCSS,
     debounce,
     throttle,
-    // readJsonFile
 
 }
 
@@ -98,9 +96,3 @@ function throttle(fn, wait){
         }
     }
 }
-
-// function readJsonFile(path) {
-//     const str = fs.readFileSync(path, 'utf8')
-//     const json = JSON.parse(str)
-//     return json
-// }
