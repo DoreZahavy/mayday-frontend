@@ -3,15 +3,32 @@
     // position: relative;
     background: white;
     display: grid;
-    grid-template-columns: $row-height $row-height repeat(5, 180px);
+    grid-template-columns: $row-height $row-height repeat(7, 150px);
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
-    // width: 100vw;
-    // grid-template-columns: var(--row-height) 200px;
-    // grid-auto-columns: 150px;
+
+    height: rem(35px);
 
     &:hover {
         background-color: $task-hover;
     }
+}
+
+.d-cmp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: start;
+    padding-left: 5%;
+}
+
+.txt{
+    p{
+        white-space: nowrap;
+    }
+    justify-self: flex-start;
 }

@@ -5,7 +5,7 @@
         <Container drag-handle-selector=".d-cmp-label" @drop="onDropLabel($event)" class="labels-grid"
             orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button>Trash</button>
+                <button >Trash</button>
                 <Checkbox />
                 <div class="task-title">task</div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp-label">
@@ -18,11 +18,11 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="task in group.tasks" :key="task.id">
                 <section class="task">
-                    <button>Trash</button>
+                    <button>🚮</button>
                     <Checkbox />
-                    <TasktTitle :info="task.tasktTitle" />
+                    <TaskTitle :info="task.taskTitle" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task[cmp]"></component>
+                        <component :is="cmp" :info="task.components[cmp]"></component>
                     </section>
 
                 </section>
@@ -44,21 +44,26 @@
    -->
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd"
-import TasktTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
+import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
 import Person from "@/cmps/dynamicCmps/Person.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
 import Status from "@/cmps/dynamicCmps/Status.vue";
 import Priority from "@/cmps/dynamicCmps/Priority.vue";
+import Txt from "@/cmps/dynamicCmps/Txt.vue";
+import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
+import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
+import Files from "@/cmps/dynamicCmps/Files.vue";
 export default {
 
     props: ['group', 'idx'],
     created() {
+       
     },
 
     data() {
         return {
-        };
+        }
     },
     computed: {
         labels() {
@@ -81,16 +86,22 @@ export default {
         },
         getTaskChildPayload(index) {
             return this.group.tasks[index]
-        }
+        },
+      
     },
     components: {
         Checkbox,
-        TasktTitle,
+        TaskTitle,
         Person,
         Date,
         Status,
         Priority,
-        Container, Draggable
+        Files,
+        Numbers,
+        Txt,
+        Timeline,
+        Container, 
+        Draggable
     },
 };
 </script>

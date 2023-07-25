@@ -1,11 +1,11 @@
 // import { boardService } from "@/services/board.service.js";
-import { boardService } from "@/services/board.service.js";
+import { boardService } from "@/services/board.service.local.js";
 
 export const boardStore = {
   strict: true,
   state() {
     return {
-      board: boardService.getBoard(),
+      board: {},
       boards: [],
       // cmpOrder: ["status", "priority", "members", "date"],
       // labels: ["status", "priority", "members", "date"]
@@ -14,17 +14,35 @@ export const boardStore = {
 
   getters: {
     board({ board }) {
-      return board;
+      return board
     },
-    cmpOrder({ cmpOrder }) {
-      return cmpOrder;
+    groups({ board }) {
+     
+      return board.groups
     },
-    labels({ labels }) {
-      return labels;
-    }
+    cmpOrder({ board }) {
+      // const cmpOrder = board.cmpConfig.map(a => a.type)
+      const cmpOrder = board.cmpConfig.reduce((acc, currCmp) => {
+        acc.push(currCmp.type)
+        return acc
+      }, [])
+      return cmpOrder
+    },
+    labels({ board }) {
+      // const labelOrder = board.cmpConfig.map(a => a.type)
+      const labelOrder = board.cmpConfig.reduce((acc, currCmp) => {
+        acc.push(currCmp.title)
+        return acc
+      }, [])
+      return labelOrder
+    },
   },
 
   mutations: {
+    loadBoard(state, { board }) {
+      
+      state.board = board[0]
+    },
     applyDragGrp(state, { dragResult }) {
       const arr = state.board
       const { removedIndex, addedIndex, payload } = dragResult;
@@ -177,5 +195,10 @@ export const boardStore = {
         return Promise.reject()
       }
     },
+
+    async loadBoard({ commit }) {
+      const board = await boardService.query()
+      commit({ type: 'loadBoard', board })
+    }
   },
 }
