@@ -1,0 +1,108 @@
+[
+    {
+        "Workspace": {
+            "_id": 101,
+            "users": [
+                {
+                    "userId": 2,
+                    "fullname": "Jane Smith",
+                    "isOwner": false
+                },
+                {
+                    "userId": 3,
+                    "fullname": "John Doe",
+                    "isOwner": true
+                }
+            ],
+            "board": {
+                "_id": 301,
+                "cmpConfig": [
+                    {
+                        "type": "status",
+                        "title": "progress report"
+                    },
+                    {
+                        "type": "priority",
+                        "title": "priority"
+                    },
+                    {
+                        "type": "members",
+                        "title": "employees"
+                    },
+                    {
+                        "type": "date",
+                        "title": "employees"
+                    }
+                ],
+                "Group": [
+                    {
+                        "_id": 1,
+                        "tasks": [
+                            {
+                                "lastUpdated": {
+                                    "timestamp": "1627676800",
+                                    "userId": 1,
+                                    "fullname": "John Doe",
+                                    "userProfileUrl": "http://example.com/profile1",
+                                    "imgUrl": "http://example.com/image1.jpg"
+                                },
+                                "_id": 202,
+                                "title": "learn css",
+                                "updates": [
+                                    {
+                                        "updateId": 101,
+                                        "updateBy": {
+                                            "userId": 1,
+                                            "fullname": "Bob Smith"
+                                        },
+                                        "content": "I fixed the sink we can wash our dishes now"
+                                    }
+                                ],
+                                "compononets": [
+                                    {
+                                        "due_date": "2023-08-01"
+                                    },
+                                    {
+                                        "status": "Not Started"
+                                    },
+                                    {
+                                        "priority": "Low"
+                                    },
+                                    {
+                                        "budget": 5000
+                                    },
+                                    {
+                                        "timeline": {
+                                            "start_date": "1627580400",
+                                            "end_date": "1627763200"
+                                        },
+                                        "title": "date range"
+                                    },
+                                    {
+                                        "members": [
+                                            "dory",
+                                            "din",
+                                            "yona"
+                                        ],
+                                        "title": "members"
+                                    },
+                                    {
+                                        "files": [
+                                            "http://example.com/file1.doc",
+                                            "http://example.com/file2.doc"
+                                        ],
+                                        "title": "files"
+                                    },
+                                    {
+                                        "note": "This is a short note.",
+                                        "title": "notes"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]

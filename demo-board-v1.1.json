@@ -1,0 +1,212 @@
+[
+    {
+        "boards": {
+            "_id": "3jf9u3r2fdsgf01",
+            "cmpConfig": [
+                {
+                    "type": "Status",
+                    "title": "Status"
+                },
+                {
+                    "type": "Person",
+                    "title": "Person"
+                },
+                {
+                    "type": "Date",
+                    "title": "Date"
+                },
+                {
+                    "type": "Timeline",
+                    "title": "Timeline"
+                },
+                {
+                    "type": "Numbers",
+                    "title": "Numbers"
+                },
+                {
+                    "type": "Txt",
+                    "title": "Text"
+                },
+                {
+                    "type": "Files",
+                    "title": "Files"
+                }
+            ],
+            "groups": [
+                {
+                    "_id": "randomID1",
+                    "title": "Product Development",
+                    "tasks": [
+                        {
+                            "_id": 1235578264,
+                            "title": "Feature Enhancement - Notifications",
+                            "updates": [],
+                            "compononets": [
+                                {
+                                    "Person": [
+                                        {
+                                            "_id": "randomUserID1",
+                                            "fullname": "Din Ben-Dor",
+                                            "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Status": "Done"
+                                },
+                                {
+                                    "Date": 1690915200000
+                                },
+                                {
+                                    "Timeline": {
+                                        "startDate": 1690492800000,
+                                        "dueDate": 1690752000000,
+                                        "isHourIncluded": false
+                                    }
+                                },
+                                {
+                                    "Numbers": 250
+                                },
+                                {
+                                    "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app #^"
+                                },
+                                {
+                                    "Files": []
+                                }
+                            ]
+                        },
+                        {
+                            "_id": 1235603724,
+                            "title": "User Interface (UI) Redesign",
+                            "updates": [],
+                            "compononets": [
+                                {
+                                    "Person": [
+                                        {
+                                            "_id": "randomUserID3",
+                                            "fullname": "Yona Stephenson",
+                                            "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Status": "Working on it"
+                                },
+                                {
+                                    "Date": 1690915200000
+                                },
+                                {
+                                    "Timeline": {
+                                        "startDate": 1690147200000,
+                                        "dueDate": 1690492800000,
+                                        "isHourIncluded": false
+                                    }
+                                },
+                                {
+                                    "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app"
+                                },
+                                {
+                                    "Files": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_id": "randomID3",
+                    "title": "Marketing and Growth",
+                    "tasks": [
+                        {
+                            "_id": 1235578155,
+                            "title": "Cloud Migration",
+                            "updates": [],
+                            "compononets": [
+                                {
+                                    "Person": [
+                                        {
+                                            "_id": "randomUserID1",
+                                            "fullname": "Din Ben-Dor",
+                                            "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        },
+                                        {
+                                            "_id": "randomUserID2",
+                                            "fullname": "Dore Zahavy",
+                                            "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Status": "Done"
+                                },
+                                {
+                                    "Date": 1690387200000
+                                },
+                                {
+                                    "Timeline": {
+                                        "startDate": 1690051200000,
+                                        "dueDate": 1691088000000,
+                                        "isHourIncluded": false
+                                    }
+                                },
+                                {
+                                    "Numbers": 11000000
+                                },
+                                {
+                                    "Txt": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability"
+                                },
+                                {
+                                    "Files": []
+                                }
+                            ]
+                        },
+                        {
+                            "_id": 1235581584,
+                            "title": "Employee Performance Reviews",
+                            "updates": [],
+                            "compononets": [
+                                {
+                                    "Person": [
+                                        {
+                                            "_id": "randomUserID3",
+                                            "fullname": "Yona Stephenson",
+                                            "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        },
+                                        {
+                                            "_id": "randomUserID2",
+                                            "fullname": "Dore Zahavy",
+                                            "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                                        },
+                                        {
+                                            "_id": "randomUserID1",
+                                            "fullname": "Din Ben-Dor",
+                                            "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Status": "Almost there"
+                                },
+                                {
+                                    "Date": 1693238400000
+                                },
+                                {
+                                    "Timeline": {
+                                        "startDate": 1690483200000,
+                                        "dueDate": 1692124800000,
+                                        "isHourIncluded": false
+                                    }
+                                },
+                                {
+                                    "Txt": "Be gentle  #:)"
+                                },
+                                {
+                                    "Files": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
