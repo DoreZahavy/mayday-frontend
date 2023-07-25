@@ -3,13 +3,13 @@ import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
-// fetch("@/data/boards.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(data => {
-//     _createBoards(data)
-// });
+fetch("@/data/boards.json")
+.then(response => {
+   return response.json();
+})
+.then(data => {
+    _createBoards(data)
+});
 
 // const boards = utilService.readJsonFile('data/boards.json')
 
@@ -101,8 +101,8 @@ function getEmptyBoard() {
 function _createBoards() {
     const boards = storageService.query(BOARD_KEY)
   if (!boards || !boards.length) {
-      boards = utilService.readJsonFile('data/boards.json')
-      utilService.saveToStorage(BOOK_KEY, boards)
+    //   boards = utilService.readJsonFile('data/boards.json')
+      utilService.saveToStorage(BOARD_KEY, boards)
   }
 }
 
