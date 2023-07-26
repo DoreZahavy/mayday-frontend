@@ -20,7 +20,7 @@ export const boardStore = {
       return boards
     },
     groups({ board }) {
-     
+
       return board.groups
     },
     cmpOrder({ board }) {
@@ -42,9 +42,9 @@ export const boardStore = {
   },
 
   mutations: {
-    loadBoard(state, { board }) { //load json
-      
-      state.board = board[0]
+    setBoard(state, { board }) { 
+
+      state.board = board
     },
     applyDragGrp(state, { dragResult }) {
       const arr = state.board.groups
@@ -158,9 +158,9 @@ export const boardStore = {
       }
     },
 
-    async saveGroup(context, { groupId,title }) {
+    async saveGroup(context, { groupId, title }) {
       try {
-        const savedBoard = await boardService.saveGroup(context.state.board._id,groupId, title)
+        const savedBoard = await boardService.saveGroup(context.state.board._id, groupId, title)
         context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
       } catch (err) {
@@ -169,7 +169,7 @@ export const boardStore = {
       }
     },
 
-    async removeGroup(context, {  groupId }) {
+    async removeGroup(context, { groupId }) {
       try {
         const savedBoard = await boardService.removeGroup(context.state.board._id, groupId)
         context.commit({ type: "saveBoard", savedBoard })
@@ -180,7 +180,7 @@ export const boardStore = {
       }
     },
 
-    async saveTask(context, {  groupId, taskData }) {
+    async saveTask(context, { groupId, taskData }) {
       try {
         const savedBoard = await boardService.saveTask(context.state.board._id, groupId, taskData)
         context.commit({ type: "saveBoard", savedBoard })
@@ -203,7 +203,7 @@ export const boardStore = {
 
     async removeTask(context, { groupId, taskId }) {
       try {
-       
+
         const savedBoard = await boardService.removeTask(context.state.board._id, groupId, taskId)
         console.log('savedBoard:', savedBoard)
         context.commit({ type: "saveBoard", savedBoard })
@@ -214,9 +214,12 @@ export const boardStore = {
       }
     },
 
-    async loadBoard({ commit }) {
-      const board = await boardService.query()
-      commit({ type: 'loadBoard', board })
+    async loadJson({ commit }) {
+      const boards = await boardService.loadJson()
+      commit({ type: 'setBoards', boards })
+      commit({ type: 'setBoard', board:boards[0] })
+
+
     }
   },
 }
