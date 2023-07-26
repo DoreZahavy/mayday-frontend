@@ -8,10 +8,7 @@ fetch("../../demo-board-v1.2.json")
         return response.json()
     })
     .then(data => {
-        
-         _createBoards(data)
-        
-       
+        _createBoards(data)
     })
 
 
@@ -20,11 +17,11 @@ export const boardService = {
     getById,
     removeBoard,
     saveBoard,
+    addBoard,
     saveGroup,
     removeGroup,
     saveTask,
     removeTask,
-    // addTask,
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
@@ -67,18 +64,25 @@ async function getById(boardId) {
 async function removeBoard(boardId) {
     return await storageService.remove(BOARD_KEY, boardId)
 }
+async function addBoard() {
+    return await storageService.post(BOARD_KEY, getEmptyBoard())
+}
 
-async function saveBoard(board) {
-    if (board._id) {
-        return storageService.put(BOARD_KEY, board)
+async function saveBoard(board, boardId) {
+    if (typeof board === 'string') {
+        const boardToEdit = await getById(boardId)
+        boardToEdit.title = board
     } else {
-        return storageService.post(BOARD_KEY, board)
+
+        return await storageService.put(BOARD_KEY, board)
     }
+    // if (board._id) {
+    // } else {
+    // }
 }
 
 async function saveGroup(boardId, groupId, title) {
     const board = await getById(boardId)
-    console.log('board.groups[0].title:', board.groups[0].title)
     if (title) { // if received new title
 
         const groupIdx = board.groups.findIndex(g => g._id === groupId)
@@ -98,6 +102,8 @@ async function removeGroup(boardId, groupId) {
 }
 
 async function saveTask(boardId, groupId, taskData) {
+    console.log('taskData:', taskData)
+
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
 
@@ -110,18 +116,12 @@ async function saveTask(boardId, groupId, taskData) {
         } else {
             group.tasks[taskIdx].components[taskData.cmpType] = taskData.data
         }
-        return await saveBoard(board)
 
     }
+    return await saveBoard(board)
 }
 
-// async function addTask(boardId, groupId, task) {
-//     const board = await getById(boardId)
-//     const group = board.groups.find(grp => grp._id === groupId)
-//     group.tasks.push(task)
-//     return await saveBoard(board)
 
-// }
 
 async function removeTask(boardId, groupId, taskId) {
     const board = await getById(boardId)
@@ -132,9 +132,10 @@ async function removeTask(boardId, groupId, taskId) {
     return await saveBoard(board)
 }
 
-function getEmptyBoard() {
+function getEmptyBoard(title = 'New Board') {
     return {
-        _id: '',
+        _id: utilService.makeId(),
+        title,
         cmpConfig: [
             {
                 type: "Status",

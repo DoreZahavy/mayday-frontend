@@ -16,12 +16,21 @@ export const boardStore = {
     board({ board }) {
       return board
     },
-    boards({boards}){
+    boardTitle({ board }) {
+      return board.title
+    },
+    boards({ boards }) {
       return boards
     },
     groups({ board }) {
 
       return board.groups
+    },
+    boardList({ boards }) {
+
+      return boards.map(board => {
+        return { title: board.title, _id: board._id }
+      })
     },
     cmpOrder({ board }) {
       // const cmpOrder = board.cmpConfig.map(a => a.type)
@@ -42,7 +51,11 @@ export const boardStore = {
   },
 
   mutations: {
-    setBoard(state, { board }) { 
+    setBoardById(state, { boardId }) {
+      const board = state.boards.find(board => board._id === boardId)
+      state.board = board
+    },
+    setBoard(state, { board }) {
 
       state.board = board
     },
@@ -115,18 +128,20 @@ export const boardStore = {
       state.boards.splice(boardIdx, 1)
     },
     saveBoard(state, { savedBoard }) {
-      console.log('savedBoard.groups[0].title:', savedBoard.groups[0].title)
 
-      if (savedBoard._id) {
-        const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
-        state.boards.splice(boardIdx, 1, savedBoard)
-        state.board = savedBoard
-        console.log('state.board.groups[0].title:', state.board.groups[0].title)
-      } else {
-        state.boards.push(savedBoard)
-      }
+      // if (savedBoard._id) {
+      const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
+      state.boards.splice(boardIdx, 1, savedBoard)
+      state.board = savedBoard
+      // }
+      //  else {
+      //   state.boards.push(savedBoard)
+      // }
     },
-   
+    addBoard(state, { newBoard }) {
+      state.boards.push(newBoard)
+    }
+
   },
 
   actions: {
@@ -140,11 +155,23 @@ export const boardStore = {
       }
     },
 
-    async saveBoard({ commit }, { boardToSave }) {
+
+
+    async saveBoard(context, { data }) {
       try {
-        const savedBoard = await boardService.saveBoard(boardToSave)
-        commit({ type: "saveBoard", savedBoard })
+        const savedBoard = await boardService.saveBoard(data, context.state.board._id)
+        context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
+    },
+    async addBoard({ commit }) {
+      try {
+        const newBoard = await boardService.addBoard()
+        commit({ type: "addBoard", newBoard })
+        return newBoard
       } catch (err) {
         console.log(err)
         return Promise.reject()
@@ -165,7 +192,6 @@ export const boardStore = {
     async saveGroup(context, { groupId, title }) {
       try {
         const savedBoard = await boardService.saveGroup(context.state.board._id, groupId, title)
-        console.log('savedBoard.groups[0].title:', savedBoard.groups[0].title)
 
         context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
@@ -223,7 +249,7 @@ export const boardStore = {
     async loadBoard({ commit }) {
       const boards = await boardService.query()
       commit({ type: 'setBoards', boards })
-      commit({ type: 'setBoard', board:boards[0] })
+      commit({ type: 'setBoard', board: boards[0] })
 
 
     }
