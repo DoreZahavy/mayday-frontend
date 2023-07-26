@@ -9,12 +9,12 @@
         <article class="group-accent-color first"></article>
         <section class="label-line">
             <div class="task-column">
-                <button class="button-as-link d-cmp ">🚮</button>
+                <button class="button-as-link d-cmp">🚮</button>
                 <Checkbox />
                 <div class="task-title d-cmp">task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
-                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
+                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp header">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
             </Container>

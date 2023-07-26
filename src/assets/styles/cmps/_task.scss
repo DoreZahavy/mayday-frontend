@@ -14,21 +14,26 @@
     &:hover {
         background-color: $task-hover;
     }
-    .in-place-edit{
+
+    .in-place-edit {
         padding-inline-start: 1rem;
     }
-    &.new-task{
+
+    &.new-task {
         transition: 150ms;
-        grid-template-columns:  $row-height $row-height 1fr;
+        grid-template-columns: $row-height $row-height 1fr;
         opacity: .8;
         transition-timing-function: ease-in-out;
-        &:hover{
+
+        &:hover {
             opacity: 1;
         }
-        &:focus{
+
+        &:focus {
             opacity: 1;
         }
-        &:active{
+
+        &:active {
             opacity: 1;
         }
     }
@@ -45,12 +50,20 @@
     &:first-child {
         // border-inline-start: 1px solid $border-clr;
     }
+
+    &.header {
+        div {
+
+            width: 149px;
+        }
+    }
 }
 
 .task-column {
     display: grid;
     grid-template-columns: 0px $row-height $row-height $task-title-width;
     height: 100%;
+
     article {
         grid-column-start: 1;
     }
