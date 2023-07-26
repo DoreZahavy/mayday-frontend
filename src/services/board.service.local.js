@@ -5,11 +5,11 @@ const BOARD_KEY = 'boardDB'
 
 fetch("../../demo-board-v1.2.json")
     .then(response => {
-        return response.json();
+        return response.json()
     })
     .then(data => {
         _createBoards(data)
-    });
+    })
 
 // const boards = utilService.readJsonFile('../../demo-board-v1.2.json')
 
@@ -164,7 +164,7 @@ function getEmptyComponents() {
 function _createBoards(data) {
     let boards = storageService.query(BOARD_KEY)
     if (!boards || !boards.length) {
-          boards = data
+        boards = data
         utilService.saveToStorage(BOARD_KEY, boards)
     }
 }
