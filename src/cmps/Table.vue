@@ -70,7 +70,7 @@ export default {
         @saveTask="saveTask(group._id, $event)" 
         @removeTask="removeTask(group._id, $event)"></Group>
     </Draggable>
-    <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div>
+    <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
 
     <button @click="saveGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
