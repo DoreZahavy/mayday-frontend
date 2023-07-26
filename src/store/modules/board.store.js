@@ -16,12 +16,21 @@ export const boardStore = {
     board({ board }) {
       return board
     },
-    boards({boards}){
+    boardTitle({ board }) {
+      return board.title
+    },
+    boards({ boards }) {
       return boards
     },
     groups({ board }) {
 
       return board.groups
+    },
+    boardList({ boards }) {
+
+      return boards.map(board => {
+        return { title: board.title, _id: board._id }
+      })
     },
     cmpOrder({ board }) {
       // const cmpOrder = board.cmpConfig.map(a => a.type)
@@ -42,90 +51,117 @@ export const boardStore = {
   },
 
   mutations: {
-    setBoard(state, { board }) { 
+    setBoardById(state, { boardId }) {
+      const board = state.boards.find(board => board._id === boardId)
+      state.board = board
+    },
+    setBoard(state, { board }) {
 
       state.board = board
     },
-    applyDragGrp(state, { dragResult }) {
-      const arr = state.board.groups
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-      state.board.groups = result
+    setBoards(state, { boards }) {
+      state.boards = boards
     },
-    applyDragHeader(state, { dragResult }) {
-      // const cmpArr = [...state.cmpOrder];
-      // const labelArr = [...state.labels];
-      const cmpConfigArr = [...state.board.cmpConfig]
 
-      const { removedIndex, addedIndex } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return;
-
-      let itemToAdd = cmpConfigArr[removedIndex]
-      let itemToAddCmp = cmpArr[removedIndex];
-      let itemToAddLabel = labelArr[removedIndex];
-
-      if (removedIndex !== null) {
-        cmpConfigArr.splice(removedIndex, 1)
-        // cmpArr.splice(removedIndex, 1);
-        // labelArr.splice(removedIndex, 1);
-      }
-      if (addedIndex !== null) {
-        cmpConfigArr.splice(addedIndex, 0, itemToAddCmp);
-        // cmpArr.splice(addedIndex, 0, itemToAddCmp);
-        // labelArr.splice(addedIndex, 0, itemToAddLabel);
-      }
-      state.boards.cmpConfig = cmpConfigArr
-      // state.cmpOrder = cmpArr;
-      // state.labels = labelArr;
-    },
-    applyDragTask(state, { idx, dragResult }) {
-      // const arr = state.board[idx].tasks
-      const arr = state.board.groups[idx].tasks
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-      // state.board[idx].tasks = result
-      state.board.groups[idx].tasks = result
-    },
     removeBoard(state, { boardId }) {
       const boardIdx = state.boards.findIndex(b => b._id === boardId)
       state.boards.splice(boardIdx, 1)
     },
     saveBoard(state, { savedBoard }) {
-      if (savedBoard._id) {
-        const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
-        state.boards.splice(boardIdx, 1, savedBoard)
-        state.board = savedBoard
-      } else {
-        state.boards.push(savedBoard)
-      }
+
+      // if (savedBoard._id) {
+      const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
+      state.boards.splice(boardIdx, 1, savedBoard)
+      state.board = savedBoard
+      // }
+      //  else {
+      //   state.boards.push(savedBoard)
+      // }
     },
-    setBoards(state, { boards }) {
-      state.boards = boards
+    addBoard(state, { newBoard }) {
+      state.boards.push(newBoard)
+    },
+    setGroupsOrder(state, { result }) {
+      state.board.groups = result
+    },
+    setTaskOrder(state, { result, idx }) {
+      state.board.groups[idx].tasks = result
+    },
+    setCmpConfig(state, { result }) {
+      state.board.cmpConfig = result
     }
+
   },
 
   actions: {
+    async applyDragGrp(context, { dragResult }) {
+      const arr = context.state.board.groups
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let itemToAdd = payload;
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      context.commit({ type: 'setGroupsOrder', result })
+      try {
+        await boardService.saveBoard(context.state.board)
+      } catch {
+        console.log(err)
+        return Promise.reject()
+      }
+    },
+    async applyDragHeader(context, { dragResult }) {
+      const arr = context.state.board.cmpConfig
+      const { removedIndex, addedIndex, payload } = dragResult
+      let itemToAdd = payload;
+
+      if (removedIndex === null && addedIndex === null) return;
+      const result = [...arr]
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      console.log('result:', result)
+      context.commit({ type: 'setCmpConfig', result })
+      try {
+        await boardService.saveBoard(context.state.board)
+      } catch {
+        console.log(err)
+        return Promise.reject()
+      }
+    },
+    async applyDragTask(context, { idx, dragResult }) {
+      const arr = context.state.board.groups[idx].tasks
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let itemToAdd = payload;
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      context.commit({ type: 'setTaskOrder', result, idx })
+      try {
+        await boardService.saveBoard(context.state.board)
+      } catch {
+        console.log(err)
+        return Promise.reject()
+      }
+    },
+
     async loadBoards(context) {
       try {
         const boards = await boardService.query()
@@ -136,11 +172,22 @@ export const boardStore = {
       }
     },
 
-    async saveBoard({ commit }, { boardToSave }) {
+    async saveBoard(context, { data }) {
       try {
-        const savedBoard = await boardService.saveBoard(boardToSave)
-        commit({ type: "saveBoard", savedBoard })
+        const savedBoard = await boardService.saveBoard(data, context.state.board._id)
+        context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
+      } catch (err) {
+        console.log(err)
+        return Promise.reject()
+      }
+    },
+
+    async addBoard({ commit }) {
+      try {
+        const newBoard = await boardService.addBoard()
+        commit({ type: "addBoard", newBoard })
+        return newBoard
       } catch (err) {
         console.log(err)
         return Promise.reject()
@@ -161,6 +208,7 @@ export const boardStore = {
     async saveGroup(context, { groupId, title }) {
       try {
         const savedBoard = await boardService.saveGroup(context.state.board._id, groupId, title)
+
         context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
       } catch (err) {
@@ -190,16 +238,6 @@ export const boardStore = {
         return Promise.reject()
       }
     },
-    // async addTask({commit}, {  groupId, task }) {
-    //   try {
-    //     const savedBoard = await boardService.addTask(this.board._id, groupId, task)
-    //     commit({ type: "saveBoard", savedBoard })
-    //     return savedBoard
-    //   } catch (err) {
-    //     console.log(err)
-    //     return Promise.reject()
-    //   }
-    // },
 
     async removeTask(context, { groupId, taskId }) {
       try {
@@ -214,10 +252,10 @@ export const boardStore = {
       }
     },
 
-    async loadJson({ commit }) {
-      const boards = await boardService.loadJson()
+    async loadBoard({ commit }) {
+      const boards = await boardService.query()
       commit({ type: 'setBoards', boards })
-      commit({ type: 'setBoard', board:boards[0] })
+      commit({ type: 'setBoard', board: boards[0] })
 
 
     }

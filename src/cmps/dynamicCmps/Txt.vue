@@ -45,9 +45,8 @@ export default {
 </script>
 
 <style scoped>
-span.editable-text {
+/* span.editable-text {
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     max-height: 100%;
     width: 100%;
@@ -55,5 +54,5 @@ span.editable-text {
 
 .editable {
     cursor: text;
-}
+} */
 </style>

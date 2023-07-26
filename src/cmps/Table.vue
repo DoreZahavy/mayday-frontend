@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     onDropGrp(dropResult) {
-      this.$store.commit({ type: 'applyDragGrp', dragResult: dropResult })
+      this.$store.dispatch({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
     saveTask(groupId, taskData) {
@@ -58,8 +58,8 @@ export default {
   <Container @drop="onDropGrp" class="groups table" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <button @click="removeGroup(group._id)">REMOVE GRP</button>
-      <Group :group="group" :idx="idx" @saveGroup="saveGroup(group._id, $event)" @saveTask="saveTask(group._id, $event)"
-        @removeTask="removeTask(group._id, $event)"></Group>
+      <Group :group="group" :idx="idx" class="group" @saveGroup="saveGroup(group._id, $event)"
+        @saveTask="saveTask(group._id, $event)" @removeTask="removeTask(group._id, $event)"></Group>
     </Draggable>
     <button @click="saveGroup">ADD NEW GROUP</button>
   </Container>

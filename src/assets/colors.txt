@@ -1,0 +1,34 @@
+Grass Green #037f4c
+Bright Green #9cd326
+Saladish #cab641
+Egg Yolk #ffcb00
+Dark Orange #ff642e
+Peach #ffadad
+Sunset #ff7575
+Dark Red #bb3354
+Sofia Pink #ff158a
+Lipstick #ff5ac4
+Bubble #faa1f1
+Dark Purple #784bd1
+Berry #7e3b8a
+Indigo #5559df
+Navy #225091
+Bright Blue #579bfc
+Dark Blue #0086c0
+Aquamarine #4eccc6
+Chili Blue #66ccff
+River #68a1bd
+Winter #9aadbd
+American Gray #808080
+Blackish #333333
+Brown #7f5347
+Orchid #d974b0
+Tan #ad967a
+Sky #a1e3f6
+Coffee #bd816e
+Royal #2b76e5
+Teal #175a63
+Lavender #bda8f9
+Steel #a9bee8
+Liliac #9d99b9
+Pecan #563e3e

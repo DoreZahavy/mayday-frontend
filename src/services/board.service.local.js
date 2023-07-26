@@ -3,6 +3,13 @@ import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
+fetch("../../demo-board-v1.2.json")
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        _createBoards(data)
+    })
 
 
 export const boardService = {
@@ -10,28 +17,39 @@ export const boardService = {
     getById,
     removeBoard,
     saveBoard,
+    addBoard,
     saveGroup,
     removeGroup,
     saveTask,
     removeTask,
-    // addTask,
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
     loadJson
 }
-async function loadJson(){
+async function loadJson() {
 
+    // _createBoards(data)
     return fetch("../../demo-board-v1.2.json")
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        _createBoards(data)
-        const boards = query()
-        console.log('boards:', boards)
-        return boards
-    })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            let boards = query()
+            if (!boards || !boards.length) {
+                boards = data
+                utilService.saveToStorage(BOARD_KEY, boards)
+            }
+            return boards
+        })
+}
+
+function _createBoards(data) {
+    let boards = storageService.query(BOARD_KEY)
+    if (!boards || !boards.length) {
+        boards = data
+        utilService.saveToStorage(BOARD_KEY, boards)
+    }
 }
 
 
@@ -46,13 +64,21 @@ async function getById(boardId) {
 async function removeBoard(boardId) {
     return await storageService.remove(BOARD_KEY, boardId)
 }
+async function addBoard() {
+    return await storageService.post(BOARD_KEY, getEmptyBoard())
+}
 
-async function saveBoard(board) {
-    if (board._id) {
-        return storageService.put(BOARD_KEY, board)
+async function saveBoard(board, boardId) {
+    if (typeof board === 'string') {
+        const boardToEdit = await getById(boardId)
+        boardToEdit.title = board
     } else {
-        return storageService.post(BOARD_KEY, board)
+
+        return await storageService.put(BOARD_KEY, board)
     }
+    // if (board._id) {
+    // } else {
+    // }
 }
 
 async function saveGroup(boardId, groupId, title) {
@@ -76,6 +102,8 @@ async function removeGroup(boardId, groupId) {
 }
 
 async function saveTask(boardId, groupId, taskData) {
+    console.log('taskData:', taskData)
+
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
 
@@ -88,19 +116,12 @@ async function saveTask(boardId, groupId, taskData) {
         } else {
             group.tasks[taskIdx].components[taskData.cmpType] = taskData.data
         }
-        console.log('board:', board)
-        return await saveBoard(board)
 
     }
+    return await saveBoard(board)
 }
 
-// async function addTask(boardId, groupId, task) {
-//     const board = await getById(boardId)
-//     const group = board.groups.find(grp => grp._id === groupId)
-//     group.tasks.push(task)
-//     return await saveBoard(board)
 
-// }
 
 async function removeTask(boardId, groupId, taskId) {
     const board = await getById(boardId)
@@ -111,9 +132,10 @@ async function removeTask(boardId, groupId, taskId) {
     return await saveBoard(board)
 }
 
-function getEmptyBoard() {
+function getEmptyBoard(title = 'New Board') {
     return {
-        _id: '',
+        _id: utilService.makeId(),
+        title,
         cmpConfig: [
             {
                 type: "Status",
@@ -213,10 +235,4 @@ function _getEmptyComponents() {
     }
 }
 
-function _createBoards(data) {
-    let boards = storageService.query(BOARD_KEY)
-    if (!boards || !boards.length) {
-        boards = data
-        utilService.saveToStorage(BOARD_KEY, boards)
-    }
-}
+

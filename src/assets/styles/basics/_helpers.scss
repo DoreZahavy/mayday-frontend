@@ -1,13 +1,36 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+    font-size: rem(12px);
+}
+.fs14 {
+    font-size: rem(14px);
+}
+.fs18 {
+    font-size: rem(18px);
+}
+.fs20 {
+    font-size: rem(20px);
+}
+.fs24 {
+    font-size: rem(24px);
+}
+.fs28 {
+    font-size: rem(28px);
+}
+.fs30 {
+    font-size: rem(30px);
+}
 
-// Flex 
+// sticky
+.sticky {
+    position: sticky;
+    left: 0;
+}
+.abs {
+    position: absolute;
+}
+
+// Flex
 .flex {
     display: flex;
     &.space-between {
@@ -34,27 +57,566 @@
     align-self: center;
 }
 
-
-// List 
+// List
 .clean-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-// Text 
+// Text
 .vertical-text {
     writing-mode: tb-rl;
-    transform: rotate(-180deg);  
+    transform: rotate(-180deg);
 }
 
 //Inputs
-.button-as-link{
-    border:0;
+.button-as-link {
+    border: 0;
     background-color: transparent;
-    
 }
 
-.sticky{
+.sticky {
     position: static;
+}
+
+// Label colors
+
+// Status labels
+
+// Done Green
+.done-green {
+    background-color: #00c875;
+}
+
+.done-green.lighter {
+    background-color: lighten(#00c875, 10%);
+}
+
+.done-green.darker {
+    background-color: darken(#00c875, 10%);
+}
+
+// Working Orange
+.working-orange {
+    background-color: #fdab3d;
+}
+
+.working-orange.lighter {
+    background-color: lighten(#fdab3d, 10%);
+}
+
+.working-orange.darker {
+    background-color: darken(#fdab3d, 10%);
+}
+
+// Stuck Red
+.stuck-red {
+    background-color: #e2445c;
+}
+
+.stuck-red.lighter {
+    background-color: lighten(#e2445c, 10%);
+}
+
+.stuck-red.darker {
+    background-color: darken(#e2445c, 10%);
+}
+
+// Default Gray
+.default-gray {
+    background-color: #c4c4c4;
+}
+
+.default-gray.lighter {
+    background-color: lighten(#c4c4c4, 10%);
+}
+
+.default-gray.darker {
+    background-color: darken(#c4c4c4, 10%);
+}
+
+// Priority labels
+
+// Low Blue
+.low-blue {
+    background-color: #579bfc;
+}
+
+.low-blue.lighter {
+    background-color: lighten(#579bfc, 10%);
+}
+
+.low-blue.darker {
+    background-color: darken(#579bfc, 10%);
+}
+
+// Medium Purple
+.mudium-purple {
+    background-color: #5559df;
+}
+
+.mudium-purple.lighter {
+    background-color: lighten(#5559df, 10%);
+}
+
+.mudium-purple.darker {
+    background-color: darken(#5559df, 10%);
+}
+
+// Critical Dark Gray
+.critical-dark-gray {
+    background-color: #333333;
+}
+
+.critical-dark-gray.lighter {
+    background-color: lighten(#333333, 10%);
+}
+
+.critical-dark-gray.darker {
+    background-color: darken(#333333, 10%);
+}
+
+// Custom labels
+
+// Grass Green
+.grass-green {
+    background-color: #037f4c;
+}
+
+.grass-green.lighter {
+    background-color: lighten(#037f4c, 10%);
+}
+
+.grass-green.darker {
+    background-color: darken(#037f4c, 10%);
+}
+
+// Bright Green
+.bright-green {
+    background-color: #9cd326;
+}
+
+.bright-green.lighter {
+    background-color: lighten(#9cd326, 10%);
+}
+
+.bright-green.darker {
+    background-color: darken(#9cd326, 10%);
+}
+
+// Saladish
+.saladish {
+    background-color: #cab641;
+}
+
+.saladish.lighter {
+    background-color: lighten(#cab641, 10%);
+}
+
+.saladish.darker {
+    background-color: darken(#cab641, 10%);
+}
+
+// Egg Yolk
+.egg-yolk {
+    background-color: #ffcb00;
+}
+
+.egg-yolk.lighter {
+    background-color: lighten(#ffcb00, 10%);
+}
+
+.egg-yolk.darker {
+    background-color: darken(#ffcb00, 10%);
+}
+
+// Dark Orange
+.dark-orange {
+    background-color: #ff642e;
+}
+
+.dark-orange.lighter {
+    background-color: lighten(#ff642e, 10%);
+}
+
+.dark-orange.darker {
+    background-color: darken(#ff642e, 10%);
+}
+
+// Peach
+.peach {
+    background-color: #ffadad;
+}
+
+.peach.lighter {
+    background-color: lighten(#ffadad, 10%);
+}
+
+.peach.darker {
+    background-color: darken(#ffadad, 10%);
+}
+
+// Sunset
+.sunset {
+    background-color: #ff7575;
+}
+
+.sunset.lighter {
+    background-color: lighten(#ff7575, 10%);
+}
+
+.sunset.darker {
+    background-color: darken(#ff7575, 10%);
+}
+
+// Dark Red
+.dark-red {
+    background-color: #bb3354;
+}
+
+.dark-red.lighter {
+    background-color: lighten(#bb3354, 10%);
+}
+
+.dark-red.darker {
+    background-color: darken(#bb3354, 10%);
+}
+
+// Sofia Pink
+.sofia-pink {
+    background-color: #ff158a;
+}
+
+.sofia-pink.lighter {
+    background-color: lighten(#ff158a, 10%);
+}
+
+.sofia-pink.darker {
+    background-color: darken(#ff158a, 10%);
+}
+
+// Lipstick
+.lipstick {
+    background-color: #ff5ac4;
+}
+
+.lipstick.lighter {
+    background-color: lighten(#ff5ac4, 10%);
+}
+
+.lipstick.darker {
+    background-color: darken(#ff5ac4, 10%);
+}
+
+// Bubble
+.bubble {
+    background-color: #faa1f1;
+}
+
+.bubble.lighter {
+    background-color: lighten(#faa1f1, 10%);
+}
+
+.bubble.darker {
+    background-color: darken(#faa1f1, 10%);
+}
+
+// Dark Purple
+.dark-purple {
+    background-color: #784bd1;
+}
+
+.dark-purple.lighter {
+    background-color: lighten(#784bd1, 10%);
+}
+
+.dark-purple.darker {
+    background-color: darken(#784bd1, 10%);
+}
+
+// Berry
+.berry {
+    background-color: #7e3b8a;
+}
+
+.berry.lighter {
+    background-color: lighten(#7e3b8a, 10%);
+}
+
+.berry.darker {
+    background-color: darken(#7e3b8a, 10%);
+}
+
+// Indigo
+.indigo {
+    background-color: #5559df;
+}
+
+.indigo.lighter {
+    background-color: lighten(#5559df, 10%);
+}
+
+.indigo.darker {
+    background-color: darken(#5559df, 10%);
+}
+
+// Navy
+.navy {
+    background-color: #225091;
+}
+
+.navy.lighter {
+    background-color: lighten(#225091, 10%);
+}
+
+.navy.darker {
+    background-color: darken(#225091, 10%);
+}
+
+// Bright Blue
+.bright-blue {
+    background-color: #579bfc;
+}
+
+.bright-blue.lighter {
+    background-color: lighten(#579bfc, 10%);
+}
+
+.bright-blue.darker {
+    background-color: darken(#579bfc, 10%);
+}
+
+// Dark Blue
+.dark-blue {
+    background-color: #0086c0;
+}
+
+.dark-blue.lighter {
+    background-color: lighten(#0086c0, 10%);
+}
+
+.dark-blue.darker {
+    background-color: darken(#0086c0, 10%);
+}
+
+// Aquamarine
+.aquamarine {
+    background-color: #4eccc6;
+}
+
+.aquamarine.lighter {
+    background-color: lighten(#4eccc6, 10%);
+}
+
+.aquamarine.darker {
+    background-color: darken(#4eccc6, 10%);
+}
+
+// Chili Blue
+.chili-blue {
+    background-color: #66ccff;
+}
+
+.chili-blue.lighter {
+    background-color: lighten(#66ccff, 10%);
+}
+
+.chili-blue.darker {
+    background-color: darken(#66ccff, 10%);
+}
+
+// River
+.river {
+    background-color: #68a1bd;
+}
+
+.river.lighter {
+    background-color: lighten(#68a1bd, 10%);
+}
+
+.river.darker {
+    background-color: darken(#68a1bd, 10%);
+}
+
+// Winter
+.winter {
+    background-color: #9aadbd;
+}
+
+.winter.lighter {
+    background-color: lighten(#9aadbd, 10%);
+}
+
+.winter.darker {
+    background-color: darken(#9aadbd, 10%);
+}
+
+// American Gray
+.american-gray {
+    background-color: #808080;
+}
+
+.american-gray.lighter {
+    background-color: lighten(#808080, 10%);
+}
+
+.american-gray.darker {
+    background-color: darken(#808080, 10%);
+}
+
+// Blackish
+.blackish {
+    background-color: #333333;
+}
+
+.blackish.lighter {
+    background-color: lighten(#333333, 10%);
+}
+
+.blackish.darker {
+    background-color: darken(#333333, 10%);
+}
+
+// Brown
+.brown {
+    background-color: #7f5347;
+}
+
+.brown.lighter {
+    background-color: lighten(#7f5347, 10%);
+}
+
+.brown.darker {
+    background-color: darken(#7f5347, 10%);
+}
+
+// Orchid
+.orchid {
+    background-color: #d974b0;
+}
+
+.orchid.lighter {
+    background-color: lighten(#d974b0, 10%);
+}
+
+.orchid.darker {
+    background-color: darken(#d974b0, 10%);
+}
+
+// Tan
+.tan {
+    background-color: #ad967a;
+}
+
+.tan.lighter {
+    background-color: lighten(#ad967a, 10%);
+}
+
+.tan.darker {
+    background-color: darken(#ad967a, 10%);
+}
+
+// Sky
+.sky {
+    background-color: #a1e3f6;
+}
+
+.sky.lighter {
+    background-color: lighten(#a1e3f6, 10%);
+}
+
+.sky.darker {
+    background-color: darken(#a1e3f6, 10%);
+}
+
+// Coffee
+.coffee {
+    background-color: #bd816e;
+}
+
+.coffee.lighter {
+    background-color: lighten(#bd816e, 10%);
+}
+
+.coffee.darker {
+    background-color: darken(#bd816e, 10%);
+}
+
+// Royal
+.royal {
+    background-color: #2b76e5;
+}
+
+.royal.lighter {
+    background-color: lighten(#2b76e5, 10%);
+}
+
+.royal.darker {
+    background-color: darken(#2b76e5, 10%);
+}
+
+// Teal
+.teal {
+    background-color: #175a63;
+}
+
+.teal.lighter {
+    background-color: lighten(#175a63, 10%);
+}
+
+.teal.darker {
+    background-color: darken(#175a63, 10%);
+}
+
+// Lavender
+.lavender {
+    background-color: #bda8f9;
+}
+
+.lavender.lighter {
+    background-color: lighten(#bda8f9, 10%);
+}
+
+.lavender.darker {
+    background-color: darken(#bda8f9, 10%);
+}
+
+// Steel
+.steel {
+    background-color: #a9bee8;
+}
+
+.steel.lighter {
+    background-color: lighten(#a9bee8, 10%);
+}
+
+.steel.darker {
+    background-color: darken(#a9bee8, 10%);
+}
+
+// Liliac
+.liliac {
+    background-color: #9d99b9;
+}
+
+.liliac.lighter {
+    background-color: lighten(#9d99b9, 10%);
+}
+
+.liliac.darker {
+    background-color: darken(#9d99b9, 10%);
+}
+
+// Pecan
+.pecan {
+    background-color: #563e3e;
+}
+
+.pecan.lighter {
+    background-color: lighten(#563e3e, 10%);
+}
+
+.pecan.darker {
+    background-color: darken(#563e3e, 10%);
 }
