@@ -37,7 +37,7 @@ export default {
         },
         stopEditing() {
             this.txt = this.$refs.editor.innerText
-            this.$emit("onUpdate", { cmpType: 'Txt', data: this.txt })
+            this.$emit("update", { cmpType: 'Txt', data: this.txt })
             this.editing = false
         },
     },

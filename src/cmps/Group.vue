@@ -1,6 +1,6 @@
 <template>
     <section class="group-list">
-        <InPlaceEdit v-model="groupTitle" @change="addGroup"/>
+        <InPlaceEdit v-model="groupTitle" @change="addGroup" />
 
         <!-- render group labels by labels array -->
 
@@ -23,7 +23,8 @@
                     <Checkbox />
                     <TaskTitle :info="task.title" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id,$event)"></component>
+                        <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id, $event)">
+                        </component>
                     </section>
 
                 </section>
@@ -66,7 +67,7 @@ export default {
     data() {
         return {
             addTaskTxt: 'Add Task',
-            groupTitle:this.group.title
+            groupTitle: this.group.title
         }
     },
     computed: {
@@ -92,9 +93,9 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-        onUpdateTask(taskId,taskData){
+        onUpdateTask(taskId, taskData) {
             taskData._id = taskId
-            this.$emit('updateTask',taskData)
+            this.$emit('updateTask', taskData)
         }
 
 

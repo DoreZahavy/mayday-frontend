@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     onSetPriority() {
-      this.$emit({ cmpType: 'priority', data: this.priority })
+      this.$emit("update", { cmpType: 'priority', data: this.priority })
     }
   }
 }

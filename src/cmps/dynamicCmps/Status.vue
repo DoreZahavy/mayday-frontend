@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     onSetStatus() {
-      this.$emit({ cmpType: 'status', data: this.status })
+      this.$emit("update", { cmpType: 'status', data: this.status })
     }
   }
 }
