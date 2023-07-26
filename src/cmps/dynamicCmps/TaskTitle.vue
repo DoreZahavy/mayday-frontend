@@ -31,7 +31,8 @@ export default {
     },
     stopEditing() {
       this.taskTitle = this.$refs.editor.innerText
-      this.$emit("update", { cmpType: 'TaskTitle', data: this.taskTitle })
+      console.log(this.taskTitle)
+      this.$emit('update', { cmpType: 'TaskTitle', data: this.taskTitle })
       this.editing = false
     },
   }

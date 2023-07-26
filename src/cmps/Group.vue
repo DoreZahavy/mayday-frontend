@@ -24,7 +24,7 @@
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link">🚮</button>
                         <Checkbox />
-                        <TaskTitle :info="task.title" />
+                        <TaskTitle @update="onUpdateTask(task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id, $event)">
@@ -99,7 +99,8 @@ export default {
         },
         onUpdateTask(taskId, taskData) {
             taskData._id = taskId
-            this.$emit('updateTask', taskData)
+            console.log(taskData)
+            this.$emit('saveTask', taskData)
         },
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
