@@ -9,7 +9,7 @@ export default {
 
   created() {
     
-    this.$store.dispatch({type:'loadBoard'})
+    this.$store.dispatch({type:'loadJson'})
   },
   components: {
     AppHeader,
