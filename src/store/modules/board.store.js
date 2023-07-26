@@ -46,6 +46,9 @@ export const boardStore = {
 
       state.board = board
     },
+    setBoards(state, { boards }) {
+      state.boards = boards
+    },
     applyDragGrp(state, { dragResult }) {
       const arr = state.board.groups
       const { removedIndex, addedIndex, payload } = dragResult;
@@ -112,17 +115,18 @@ export const boardStore = {
       state.boards.splice(boardIdx, 1)
     },
     saveBoard(state, { savedBoard }) {
+      console.log('savedBoard.groups[0].title:', savedBoard.groups[0].title)
+
       if (savedBoard._id) {
         const boardIdx = state.boards.findIndex(b => b._id === savedBoard._id)
         state.boards.splice(boardIdx, 1, savedBoard)
         state.board = savedBoard
+        console.log('state.board.groups[0].title:', state.board.groups[0].title)
       } else {
         state.boards.push(savedBoard)
       }
     },
-    setBoards(state, { boards }) {
-      state.boards = boards
-    }
+   
   },
 
   actions: {
@@ -161,6 +165,8 @@ export const boardStore = {
     async saveGroup(context, { groupId, title }) {
       try {
         const savedBoard = await boardService.saveGroup(context.state.board._id, groupId, title)
+        console.log('savedBoard.groups[0].title:', savedBoard.groups[0].title)
+
         context.commit({ type: "saveBoard", savedBoard })
         return savedBoard
       } catch (err) {
@@ -214,8 +220,8 @@ export const boardStore = {
       }
     },
 
-    async loadJson({ commit }) {
-      const boards = await boardService.loadJson()
+    async loadBoard({ commit }) {
+      const boards = await boardService.query()
       commit({ type: 'setBoards', boards })
       commit({ type: 'setBoard', board:boards[0] })
 

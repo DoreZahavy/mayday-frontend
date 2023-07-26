@@ -3,6 +3,16 @@ import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
+fetch("../../demo-board-v1.2.json")
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        
+         _createBoards(data)
+        
+       
+    })
 
 
 export const boardService = {
@@ -20,18 +30,29 @@ export const boardService = {
     getEmptyTask,
     loadJson
 }
-async function loadJson(){
+async function loadJson() {
 
+    // _createBoards(data)
     return fetch("../../demo-board-v1.2.json")
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        _createBoards(data)
-        const boards = query()
-        console.log('boards:', boards)
-        return boards
-    })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            let boards = query()
+            if (!boards || !boards.length) {
+                boards = data
+                utilService.saveToStorage(BOARD_KEY, boards)
+            }
+            return boards
+        })
+}
+
+function _createBoards(data) {
+    let boards = storageService.query(BOARD_KEY)
+    if (!boards || !boards.length) {
+        boards = data
+        utilService.saveToStorage(BOARD_KEY, boards)
+    }
 }
 
 
@@ -57,6 +78,7 @@ async function saveBoard(board) {
 
 async function saveGroup(boardId, groupId, title) {
     const board = await getById(boardId)
+    console.log('board.groups[0].title:', board.groups[0].title)
     if (title) { // if received new title
 
         const groupIdx = board.groups.findIndex(g => g._id === groupId)
@@ -88,7 +110,6 @@ async function saveTask(boardId, groupId, taskData) {
         } else {
             group.tasks[taskIdx].components[taskData.cmpType] = taskData.data
         }
-        console.log('board:', board)
         return await saveBoard(board)
 
     }
@@ -213,10 +234,4 @@ function _getEmptyComponents() {
     }
 }
 
-function _createBoards(data) {
-    let boards = storageService.query(BOARD_KEY)
-    if (!boards || !boards.length) {
-        boards = data
-        utilService.saveToStorage(BOARD_KEY, boards)
-    }
-}
+
