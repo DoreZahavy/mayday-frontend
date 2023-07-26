@@ -97,4 +97,4 @@ $sidebar-width: 255px;
 $task-title-width: 300px;
 
 //group progress bar
-$progress-bar-left-margin: calc(($row-height * 2) + $task-title-width);
+$progress-bar-left-margin: calc(($row-height * 2) + $task-title-width - 1px);
