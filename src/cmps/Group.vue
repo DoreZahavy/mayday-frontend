@@ -7,10 +7,10 @@
         <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
             <article class="group-accent-color first"></article>
             <section class="label-line">
-                <div class="task-column">
-                    <button class="button-as-link d-cmp ">🚮</button>
-                    <Checkbox />
-                    <div class="task-title d-cmp">task</div>
+                <div class="task-column sticky">
+                    <button class="button-as-link d-cmp sticky">🚮</button>
+                    <Checkbox class="sticky" />
+                    <div class="task-title d-cmp sticky">task</div>
                 </div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
                     <div class="d-cmp-label">{{ label }}</div>
@@ -22,9 +22,9 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article>
-                    <article class="group-accent-color" v-else></article>
-                    <div class="task-column">
+                    <article class="group-accent-color last sticky" v-if="idx >= group.tasks.length - 1"></article>
+                    <article class="group-accent-color sticky" v-else></article>
+                    <div class="task-column sticky">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox />
                         <TaskTitle @update="onUpdateTask(task._id, $event)" :info="task.title" />

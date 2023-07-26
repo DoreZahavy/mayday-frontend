@@ -2,6 +2,20 @@
     {
         "_id": "JMJ1NMJAVl",
         "title": "you make me board",
+        "labelConfig": [
+            {
+                "title": "Done",
+                "class": "done-green"
+            },
+            {
+                "title": "Working on it",
+                "class": "working-orange"
+            },
+            {
+                "title": "Stuck",
+                "class": "stuck-red"
+            }
+        ],
         "cmpConfig": [
             {
                 "type": "Status",

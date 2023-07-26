@@ -1,44 +1,44 @@
 <template>
-  <el-tooltip placement="bottom" title="Title" :width="200" trigger="click"
-    content="<span>The content can be <strong>HTML</strong></span>" raw-content>
-    <div v-if="status" class="status status-content" @click="onSetStatus">{{ status }}</div>
+  <el-tooltip placement="bottom" trigger="click" effect="light">
+    <template #content>
+      <div v-for="status in statusOptions" :key="status" :class="status.class" class="status-option"
+        @click.stop="onSetStatus(status)">
+        {{ status.txt }}
+      </div>
+    </template>
+    <div v-if="status" class="status status-content">{{ status.txt }}</div>
   </el-tooltip>
 </template>
 
 <script>
 export default {
-  name: "status",
+  name: "Status",
   props: {
     info: String,
   },
   data() {
     return {
       status: this.info,
-      popoverVisible: false
+      statusOptions: [{ txt: "Done", class: "green" }, { txt: "Done", class: "green" }, { txt: "Done", class: "green" }]
     }
   },
   methods: {
-    onSetStatus() {
-      this.$emit("update", { cmpType: 'status', data: this.status })
-    },
-    setStatus(newStatus) {
-      this.status = newStatus;
-      this.popoverVisible = false;
-      this.onSetStatus();
+    onSetStatus(newStatus) {
+      this.status = newStatus
+      this.$emit('update', { cmpType: 'status', data: this.status })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$status-done: #00c875;
-$status-done-hover: #48d59b;
-
 .status {
-  background-color: $status-done;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   position: relative;
-  text-align: center;
-  vertical-align: middle;
   cursor: pointer;
   transition: 0.3s ease;
 
@@ -53,9 +53,10 @@ $status-done-hover: #48d59b;
     right: 0;
     border-right: 10px solid white;
     border-bottom: 10px solid darken($status-done, 10%);
-    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
     z-index: 2;
-    transition: opacity 0.3s ease;
+    transition: transform 0.9s ease;
   }
 
   &:hover:before {
@@ -69,23 +70,7 @@ $status-done-hover: #48d59b;
 }
 
 .status-option {
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
-}
-
-.status-option.done {
-  background-color: green;
-}
-
-.status-option.working {
-  background-color: yellow;
-}
-
-.status-option.stuck {
-  background-color: red;
-}
-
-.status-option.almost {
-  background-color: orange;
 }
 </style>

@@ -1,4 +1,10 @@
-.group {}
+.group {
+}
+
+.sticky {
+    position: sticky;
+    left: 0;
+}
 
 .labels-grid,
 .progress-grid {
@@ -12,7 +18,6 @@
     grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
-
     &:first-child {
         border: 0;
     }
@@ -23,6 +28,7 @@
     grid-template-columns: $row-height $row-height $task-title-width;
     height: 100%;
     position: sticky;
+    left: 0;
 }
 
 .group-list {
