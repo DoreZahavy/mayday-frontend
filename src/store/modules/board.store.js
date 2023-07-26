@@ -165,9 +165,9 @@ export const boardStore = {
       }
     },
 
-    async removeGroup({ commit }, { boardId, groupId }) {
+    async removeGroup({ commit }, {  groupId }) {
       try {
-        const savedBoard = await boardService.removeGroup(boardId, groupId)
+        const savedBoard = await boardService.removeGroup(this.board._id, groupId)
         commit({ type: "saveBoard", savedBoard })
         return savedBoard
       } catch (err) {
@@ -176,9 +176,9 @@ export const boardStore = {
       }
     },
 
-    async saveTask(context, { boardId, groupId, task }) {
+    async saveTask({commit}, {  groupId, taskData }) {
       try {
-        const savedBoard = await boardService.saveTask(boardId, groupId, task)
+        const savedBoard = await boardService.saveTask(this.board._id, groupId, taskData)
         commit({ type: "saveBoard", savedBoard })
         return savedBoard
       } catch (err) {

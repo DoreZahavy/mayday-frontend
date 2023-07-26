@@ -1,6 +1,6 @@
 <template>
-    <section v-if="newTxt">
-        <span :contenteditable="editing" :class="{ editable: editing }" @blur="onSaveTxt" ref="val" @click="editing = true"
+    <section class="txt" v-if="newTxt">
+        <span :contenteditable="editing" :class="{ editable: editing }" @blur="onSaveTxt" ref="val" @click="onClick"
             class="editable-text">
             {{ newTxt }}
         </span>
@@ -20,6 +20,24 @@ export default {
         }
     },
     methods: {
+        onClick() {
+            if (!this.editing) {
+                this.editing = true
+                this.$nextTick(() => {
+                    this.placeCaretAtEnd()
+                })
+            } else {
+                this.placeCaretAtEnd()
+            }
+        },
+        placeCaretAtEnd() {
+            const range = document.createRange()
+            range.selectNodeContents(this.$refs.val)
+            range.collapse(false)
+            const sel = window.getSelection()
+            sel.removeAllRanges()
+            sel.addRange(range)
+        },
         onSaveTxt() {
             this.newTxt = this.$refs.val.innerText
             this.$emit("save", this.newTxt)
@@ -30,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.editable-text {
+span.editable-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
