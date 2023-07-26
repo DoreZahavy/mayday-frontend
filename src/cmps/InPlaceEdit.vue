@@ -20,12 +20,12 @@ export default {
 
 <template>
     <section class="in-place-edit">
-        <span :contenteditable="isEditMode" :class="{ editable: isEditMode }" @blur="onBlur" ref="val">
+        <span @click="isEditMode = true" :contenteditable="isEditMode" :class="{ editable: isEditMode }" @blur="onBlur" ref="val">
             {{ modelValue }}
         </span>
-        <button v-show="!isEditMode" @click="isEditMode = true">
+        <!-- <button v-show="!isEditMode" @click="isEditMode = true">
             ✎
-        </button>
+        </button> -->
     </section>
 </template>
 
