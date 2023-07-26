@@ -1,12 +1,11 @@
 <template>
   <el-tooltip placement="bottom" trigger="click" effect="light">
     <template #content>
-      <div v-for="status in statusOptions" :key="status" :class="status.class" class="status-option"
-        @click.stop="onSetStatus(status)">
-        {{ status.txt }}
+      <div v-for="label in statusLabelConfig" :key="label.title" :class="label.class" @click.stop="onSetStatus(status)">
+        {{ label.title }}
       </div>
     </template>
-    <div v-if="status" class="status status-content">{{ status.txt }}</div>
+    <div v-if="status" class="status status-content" :class="status.class">{{ status.title }}</div>
   </el-tooltip>
 </template>
 
@@ -19,7 +18,7 @@ export default {
   data() {
     return {
       status: this.info,
-      statusOptions: this.$store.getters.statusOptions
+      statusLabelConfig: this.$store.getters.statusLabelConfig
     }
   },
   methods: {
@@ -30,42 +29,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-right: 10px solid white;
-    width: 0.1px;
-    height: 0.1px;
-    z-index: 2;
-    transition: transform 0.9s ease;
-  }
-
-  &:hover:before {
-    opacity: 1;
-  }
-}
-
-.status-content {
-  position: relative;
-  z-index: 1;
-}
-
-.status-option {
-  padding: 5px;
-  cursor: pointer;
-}
-</style>

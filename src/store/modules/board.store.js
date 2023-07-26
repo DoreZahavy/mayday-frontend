@@ -32,6 +32,12 @@ export const boardStore = {
         return { title: board.title, _id: board._id }
       })
     },
+    statusLabelConfig({ board }) {
+      return board.statusLabelConfig
+    },
+    priorityLabelConfig({ board }) {
+      return board.priorityLabelConfig
+    },
     cmpOrder({ board }) {
       // const cmpOrder = board.cmpConfig.map(a => a.type)
       const cmpOrder = board.cmpConfig.reduce((acc, currCmp) => {
