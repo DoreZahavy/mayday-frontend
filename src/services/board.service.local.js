@@ -3,13 +3,6 @@ import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
-fetch("../../demo-board-v1.2.json")
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        _createBoards(data)
-    })
 
 
 export const boardService = {
@@ -25,7 +18,22 @@ export const boardService = {
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
+    loadJson
 }
+async function loadJson(){
+
+    return fetch("../../demo-board-v1.2.json")
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        _createBoards(data)
+        const boards = query()
+        console.log('boards:', boards)
+        return boards
+    })
+}
+
 
 async function query() {
     return await storageService.query(BOARD_KEY)
