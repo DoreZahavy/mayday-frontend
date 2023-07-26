@@ -9,14 +9,16 @@
 
 .label-line {
     display: grid;
-    grid-template-columns:calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
+    grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
-    &:first-child{
-        border:0;
+
+    &:first-child {
+        border: 0;
     }
 }
-.task-column{
+
+.task-column {
     display: grid;
     grid-template-columns: $row-height $row-height $task-title-width;
     height: 100%;
@@ -28,23 +30,27 @@
     // border: 1px solid $border-clr;
     border-right: 0;
 }
-.progress-bar{
-    margin-left:$progress-bar-left-margin;
+
+.progress-bar {
+    margin-left: $progress-bar-left-margin;
     border: 1px $border-clr solid;
     border-radius: 0 0 0 6px;
     border-block-start: 0;
 }
-.group-accent-color{
+
+.group-accent-color {
     width: 6px;
     height: 20px;
     height: $row-height;
     background-color: red;
     position: absolute;
     border: 0;
-    &.first{
+
+    &.first {
         border-radius: 6px 0 0 0;
     }
-    &.last{
+
+    &.last {
         border-radius: 0 0 0 6px;
     }
 }
