@@ -1,6 +1,6 @@
 <template>
     <section class="group-list">
-        <InPlaceEdit v-model="groupTitle" @change="addGroup"/>
+        <InPlaceEdit v-model="groupTitle" />
 
         <!-- render group labels by labels array -->
 
@@ -16,14 +16,17 @@
         </Container>
 
         <!-- render tasks by cmp order -->
-        <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
-            <Draggable v-for="task in group.tasks" :key="task.id">
+        <Container :get-child-payload="getTaskChildPayload" group-name="1" 
+            @drop="onDropTask(idx, $event)">
+            <Draggable v-for="task in group.tasks" :key="task._id">
                 <section class="task">
-                    <button class="d-cmp button-as-link">🚮</button>
+                    <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link">🚮</button>
                     <Checkbox />
                     <TaskTitle :info="task.title" />
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id,$event)"></component>
+                        <component :is="cmp" :info="task.components[cmp]" 
+                        @update="onUpdateTask(task._id, $event)">
+                        </component>
                     </section>
 
                 </section>
@@ -66,7 +69,7 @@ export default {
     data() {
         return {
             addTaskTxt: 'Add Task',
-            groupTitle:this.group.title
+            groupTitle: this.group.title
         }
     },
     computed: {
@@ -92,12 +95,14 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-        onUpdateTask(taskId,taskData){
+        onUpdateTask(taskId, taskData) {
             taskData._id = taskId
-            this.$emit('updateTask',taskData)
+            this.$emit('updateTask', taskData)
+        },
+        onRemoveTask(taskId) {
+            this.$emit('removeTask', taskId)
+
         }
-
-
     },
     components: {
         Checkbox,
@@ -114,6 +119,16 @@ export default {
         Container,
         Draggable
     },
+    watch: {
+        groupTitle() {
+            this.$emit('saveGroup', this.groupTitle)
+
+        },
+        addTaskTxt() {
+            this.$emit('saveTask', this.addTaskTxt)
+
+        }
+    }
 };
 </script>
 
