@@ -114,7 +114,6 @@ export default {
         },
         onUpdateTask(taskId, taskData) {
             taskData._id = taskId
-            console.log(taskData)
             this.$emit('saveTask', taskData)
         },
         onRemoveTask(taskId) {

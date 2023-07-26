@@ -2,6 +2,34 @@
     {
         "_id": "JMJ1NMJAVl",
         "title": "you make me board",
+        "statusLabelConfig": [
+            {
+                "title": "Done",
+                "class": "done-green"
+            },
+            {
+                "title": "Working on it",
+                "class": "working-orange"
+            },
+            {
+                "title": "Stuck",
+                "class": "stuck-red"
+            }
+        ],
+        "priorityLabelConfig": [
+            {
+                "title": "Low",
+                "class": "low-blue"
+            },
+            {
+                "title": "Medium",
+                "class": "medium-purple"
+            },
+            {
+                "title": "Critical ⚠",
+                "class": "critical-dark-gray"
+            }
+        ],
         "cmpConfig": [
             {
                 "type": "Status",
