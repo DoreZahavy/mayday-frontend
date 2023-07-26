@@ -1,0 +1,15 @@
+.txt {
+    padding: rem(3px);
+    overflow: hidden;
+    p {
+        white-space: nowrap;
+    }
+    text-overflow: ellipsis;
+    justify-self: flex-start;
+}
+span.editable-text {
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 100%;
+    width: 100%;
+}

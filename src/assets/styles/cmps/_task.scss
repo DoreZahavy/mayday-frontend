@@ -10,11 +10,6 @@
     height: rem(36px);
     border-block-end: 1px solid $border-clr;
     // outline: 1px solid $border-clr;
-    div:first-child{
-        display: grid;
-        grid-template-columns: $row-height $row-height $task-title-width;
-        height: 100%;
-    }
 
     &:hover {
         background-color: $task-hover;
@@ -50,18 +45,13 @@
     .checkbox{
         grid-column-start: 3;
     }
+
 }
 .title {
     text-align: start;
 }
 
-.txt {
-    p {
-        white-space: nowrap;
-    }
 
-    justify-self: flex-start;
-}
 
 .checkbox {
     input {
