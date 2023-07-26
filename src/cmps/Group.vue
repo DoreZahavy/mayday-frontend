@@ -22,9 +22,11 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="task in group.tasks" :key="task._id">
                 <section class="task">
-                    <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link">🚮</button>
-                    <Checkbox />
-                    <TaskTitle :info="task.title" />
+                    <div class="task-column">
+                        <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link">🚮</button>
+                        <Checkbox />
+                        <TaskTitle :info="task.title" />
+                    </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]" 
                         @update="onUpdateTask(task._id, $event)">
