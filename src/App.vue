@@ -8,8 +8,8 @@ import { boardService } from "@/services/board.service.local.js";
 export default {
 
   created() {
-    
-    this.$store.dispatch({type:'loadBoard'})
+
+    this.$store.dispatch({ type: 'loadBoard' })
   },
   components: {
     AppHeader,

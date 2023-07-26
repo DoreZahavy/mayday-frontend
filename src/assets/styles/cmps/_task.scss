@@ -14,6 +14,24 @@
     &:hover {
         background-color: $task-hover;
     }
+    .in-place-edit{
+        padding-inline-start: 1rem;
+    }
+    &.new-task{
+        transition: 150ms;
+        grid-template-columns:  $row-height $row-height 1fr;
+        opacity: .8;
+        transition-timing-function: ease-in-out;
+        &:hover{
+            opacity: 1;
+        }
+        &:focus{
+            opacity: 1;
+        }
+        &:active{
+            opacity: 1;
+        }
+    }
 }
 
 .d-cmp {
@@ -33,8 +51,6 @@
     display: grid;
     grid-template-columns: 0px $row-height $row-height $task-title-width;
     height: 100%;
-    position: sticky;
-
     article {
         grid-column-start: 1;
     }

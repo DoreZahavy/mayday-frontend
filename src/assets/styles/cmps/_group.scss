@@ -35,20 +35,22 @@
         border-right: 0;
     }
 
-    .progress-bar {
-        margin-left: $progress-bar-left-margin;
-        border: 1px $border-clr solid;
-        border-radius: 0 0 0 6px;
-        border-block-start: 0;
-    }
+.progress-bar {
+    margin-left: $progress-bar-left-margin;
+    border: 1px $border-clr solid;
+    border-radius: 0 0 0 6px;
+    border-block-start: 0;
+    height: $row-height;
+    display: flex;
+    align-items: center;
+}
 
-    .group-accent-color {
-        width: 6px;
-        height: 20px;
-        height: $row-height;
-        background-color: red;
-        position: absolute;
-        border: 0;
+.group-accent-color {
+    width: 6px;
+    height: $row-height;
+    background-color: red;
+    position: absolute;
+    border: 0;
 
         &.first {
             border-radius: 6px 0 0 0;

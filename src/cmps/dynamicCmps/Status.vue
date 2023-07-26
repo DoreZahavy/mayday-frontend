@@ -1,9 +1,10 @@
 <template>
-  <td v-if="status" class="status" @click="onSetStatus">
-    <div class="status-content">{{ status }}</div>
-  </td>
+  <el-tooltip placement="bottom" title="Title" :width="200" trigger="click"
+    content="<span>The content can be <strong>HTML</strong></span>" raw-content>
+    <div v-if="status" class="status status-content" @click="onSetStatus">{{ status }}</div>
+  </el-tooltip>
 </template>
-  
+
 <script>
 export default {
   name: "status",
@@ -12,12 +13,18 @@ export default {
   },
   data() {
     return {
-      status: this.info
+      status: this.info,
+      popoverVisible: false
     }
   },
   methods: {
     onSetStatus() {
       this.$emit("update", { cmpType: 'status', data: this.status })
+    },
+    setStatus(newStatus) {
+      this.status = newStatus;
+      this.popoverVisible = false;
+      this.onSetStatus();
     }
   }
 }
@@ -59,5 +66,26 @@ $status-done-hover: #48d59b;
 .status-content {
   position: relative;
   z-index: 1;
+}
+
+.status-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.status-option.done {
+  background-color: green;
+}
+
+.status-option.working {
+  background-color: yellow;
+}
+
+.status-option.stuck {
+  background-color: red;
+}
+
+.status-option.almost {
+  background-color: orange;
 }
 </style>
