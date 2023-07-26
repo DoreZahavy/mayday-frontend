@@ -1,7 +1,7 @@
 <template>
-    <div class="files">
+    <article class="files">
         <p>N</p>
-    </div>
+    </article>
 </template>
   
 <script>

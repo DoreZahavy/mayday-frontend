@@ -16,6 +16,9 @@ export const boardStore = {
     board({ board }) {
       return board
     },
+    boards({boards}){
+      return boards
+    },
     groups({ board }) {
 
       return board.groups

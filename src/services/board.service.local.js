@@ -82,12 +82,16 @@ async function saveTask(boardId, groupId, taskData) {
     if (typeof taskData === 'string') { // add new task with received title
         group.tasks.push(getEmptyTask(taskData))
     } else { // update change
-        const taskIdx = group.tasks.findIndex(t => t._id === taskData.taskId)
-        group.tasks[taskIdx].components[cmpType] = taskData.data
-    }
-console.log('board:', board)
-    return await saveBoard(board)
+        const taskIdx = group.tasks.findIndex(t => t._id === taskData._id)
+        if (taskData.cmpType === 'TaskTitle') {
+            group.tasks[taskIdx].title = taskData.data
+        } else {
+            group.tasks[taskIdx].components[taskData.cmpType] = taskData.data
+        }
+        console.log('board:', board)
+        return await saveBoard(board)
 
+    }
 }
 
 // async function addTask(boardId, groupId, task) {

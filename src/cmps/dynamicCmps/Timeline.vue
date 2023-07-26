@@ -1,7 +1,7 @@
 <template>
-    <div class="timeline">
+    <article class="timeline">
         <p>TL</p>
-    </div>
+    </article>
 </template>
   
 <script>
