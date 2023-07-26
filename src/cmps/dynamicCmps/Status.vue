@@ -1,5 +1,7 @@
 <template>
-  <p v-if="status" class="status">{{ status }}</p>
+  <td v-if="status" class="status" @click="onSetStatus">
+    <div class="status-content">{{ status }}</div>
+  </td>
 </template>
   
 <script>
@@ -20,10 +22,42 @@ export default {
   }
 }
 </script>
-  
-<style>
+
+<style lang="scss" scoped>
+$status-done: #00c875;
+$status-done-hover: #48d59b;
+
 .status {
-  /* background-color: lightpink; */
-  height: 100%;
+  background-color: $status-done;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: $status-done-hover;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-right: 10px solid white;
+    border-bottom: 10px solid darken($status-done, 10%);
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover:before {
+    opacity: 1;
+  }
+}
+
+.status-content {
+  position: relative;
+  z-index: 1;
 }
 </style>
