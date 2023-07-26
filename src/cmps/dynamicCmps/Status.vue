@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       status: this.info,
-      statusOptions: [{ txt: "Done", class: "green" }, { txt: "Done", class: "green" }, { txt: "Done", class: "green" }]
+      statusOptions: this.$store.getters.statusOptions
     }
   },
   methods: {
@@ -42,17 +42,12 @@ export default {
   cursor: pointer;
   transition: 0.3s ease;
 
-  &:hover {
-    background-color: $status-done-hover;
-  }
-
   &:before {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     border-right: 10px solid white;
-    border-bottom: 10px solid darken($status-done, 10%);
     width: 0.1px;
     height: 0.1px;
     z-index: 2;

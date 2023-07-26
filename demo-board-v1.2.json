@@ -2,7 +2,7 @@
     {
         "_id": "JMJ1NMJAVl",
         "title": "you make me board",
-        "labelConfig": [
+        "statusLabelConfig": [
             {
                 "title": "Done",
                 "class": "done-green"
@@ -14,6 +14,20 @@
             {
                 "title": "Stuck",
                 "class": "stuck-red"
+            }
+        ],
+        "priorityLabelConfig": [
+            {
+                "title": "Low",
+                "class": "low-blue"
+            },
+            {
+                "title": "Medium",
+                "class": "medium-purple"
+            },
+            {
+                "title": "Critical ⚠",
+                "class": "critical-dark-gray"
             }
         ],
         "cmpConfig": [
