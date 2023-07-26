@@ -112,20 +112,27 @@ export const boardStore = {
       context.commit({ type: 'setGroupsOrder', result })
     },
     applyDragHeader(context, { dragResult }) {
+      // console.log('dragResult',dragResult)
       const arr = context.state.board.cmpConfig
-      console.log('arr:', arr)
-      const { removedIndex, addedIndex } = dragResult;
+      // console.log('arr:', arr)
+      const { removedIndex, addedIndex,payload } = dragResult
+      // console.log('removedIndex:', removedIndex)
+      let itemToAdd = payload;
 
       if (removedIndex === null && addedIndex === null) return;
-      const result = [...arr];
+      const result = [...arr]//JSON.parse(JSON.stringify(arr))
+      // console.log('result:', result)
 
       if (removedIndex !== null) {
         // cmpConfigArr.splice(removedIndex, 1)
         itemToAdd = result.splice(removedIndex, 1)[0];
+        // console.log('result after splice:', result)
+        // console.log('item:', item)
       }
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
+      console.log('result:', result)
       context.commit({ type: 'setCmpConfig', result })
 
       // state.boards.cmpConfig = cmpConfigArr

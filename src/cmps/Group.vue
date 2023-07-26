@@ -6,30 +6,31 @@
 
         <!-- render group labels by labels array -->
 
-        <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
-            <article class="group-accent-color first"></article>
-            <section class="label-line">
-                <div class="task-column">
-                    <button class="button-as-link d-cmp ">🚮</button>
-                    <Checkbox />
-                    <div class="task-title d-cmp">task</div>
-                </div>
+        <article class="group-accent-color first"></article>
+        <section class="label-line">
+            <div class="task-column">
+                <button class="button-as-link d-cmp ">🚮</button>
+                <Checkbox />
+                <div class="task-title d-cmp">task</div>
+            </div>
+            <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
-            </section>
-        </Container>
-        
+            </Container>
+        </section>
+
 
         <!-- render tasks by cmp order -->
-        <Container class="tasks-container" :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
+        <Container class="tasks-container" :get-child-payload="getTaskChildPayload" group-name="1"
+            @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
                     <!-- <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article> -->
                     <article class="group-accent-color"></article>
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
-                        <Checkbox class=""/>
+                        <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask(task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
@@ -105,7 +106,7 @@ export default {
 
         },
         onDropLabel(dropResult) {
-            console.log('res',dropResult)
+            console.log('res', dropResult)
             this.$store.dispatch({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {
