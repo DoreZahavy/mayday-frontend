@@ -2,16 +2,17 @@
     // position: relative;
     background: white;
     display: grid;
-    grid-template-columns: $row-height $row-height $task-title-width repeat(7, 150px);
+    grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
 
     height: rem(36px);
     border-block-end: 1px solid $border-clr;
-
-    button {
-        background-color: transparent;
+    div:first-child{
+        display: grid;
+        grid-template-columns: $row-height $row-height $task-title-width;
+        height: 100%;
     }
 
     &:hover {

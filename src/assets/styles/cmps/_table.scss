@@ -1,4 +1,11 @@
-.table{
-    // width: 100vw;
+.table {
+    width: 80%;
     overflow-x: scroll;
+    // display: inline-block;
+    // border: 1px solid red; for debugging purposes
+
+    >* {
+        max-width: none;
+        width: max-content;
+    }
 }
