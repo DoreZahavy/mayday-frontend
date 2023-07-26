@@ -22,8 +22,8 @@
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article>
-                    <article class="group-accent-color" v-else></article>
+                    <!-- <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article> -->
+                    <article class="group-accent-color"></article>
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox />
@@ -36,7 +36,15 @@
 
                 </section>
             </Draggable>
-            <InPlaceEdit v-model="addTaskTxt" class="progress-bar"></InPlaceEdit>
+            <article class="group-accent-color last"></article>
+            <section class="task new-task">
+                <button class="d-cmp button-as-link task-trash">🚮</button>
+                <Checkbox />
+                <InPlaceEdit v-model="addTaskTxt"></InPlaceEdit>
+            </section>
+            <section class="progress-bar">
+
+            </section>
         </Container>
         <!-- render progress by progress array -->
         <!-- <section class="progress-grid">
