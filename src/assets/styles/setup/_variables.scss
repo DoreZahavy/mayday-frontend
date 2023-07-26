@@ -95,6 +95,9 @@ $sidebar-width: 255px;
 
 //groups
 $task-title-width: 300px;
+$group-accent-width:6px;
+
+//task
 
 //group progress bar
-$progress-bar-left-margin: calc(($row-height * 2) + $task-title-width - 1px);
+$progress-bar-left-margin: calc($group-accent-width + ($row-height * 2) + $task-title-width - 1px);

@@ -7,7 +7,7 @@
     align-items: center;
     grid-auto-flow: row;
 
-    height: rem(36px);
+    // height: rem(36px);
     border-block-end: 1px solid $border-clr;
     // outline: 1px solid $border-clr;
 
@@ -23,30 +23,36 @@
     height: 100%;
     border-inline-end: 1px solid $border-clr;
     padding: 0;
+
     &:first-child {
         // border-inline-start: 1px solid $border-clr;
     }
 }
 
-.task-column{
+.task-column {
     display: grid;
-    grid-template-columns:6px $row-height $row-height $task-title-width;
+    grid-template-columns: 0px $row-height $row-height $task-title-width;
     height: 100%;
     position: sticky;
-    article{
+
+    article {
         grid-column-start: 1;
     }
-    button{
+
+    button {
         grid-column-start: 2;
     }
-    p{
+
+    p {
         grid-column-start: 4;
     }
-    .checkbox{
+
+    .checkbox {
         grid-column-start: 3;
     }
 
 }
+
 .title {
     text-align: start;
 }
