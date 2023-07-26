@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     onDropGrp(dropResult) {
-      this.$store.commit({ type: 'applyDragGrp', dragResult: dropResult })
+      this.$store.dispatch({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
     saveTask(groupId, taskData) {

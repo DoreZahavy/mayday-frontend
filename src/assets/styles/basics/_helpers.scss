@@ -7,6 +7,15 @@
 .fs28 { font-size: rem(28px); }
 .fs30 { font-size: rem(30px); }
 
+// sticky
+.sticky{
+    position: sticky;
+    left: 0;
+}
+.abs{
+    position: absolute;
+}
+
 // Flex 
 .flex {
     display: flex;
