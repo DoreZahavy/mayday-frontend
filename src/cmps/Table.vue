@@ -32,14 +32,21 @@ export default {
       this.$store.commit({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
-    updateTask(groupId, taskData) {
-      this.$store.dispatch({ type: 'updateTask', groupId, taskData })
+    saveTask(groupId, taskData) {
+      this.$store.dispatch({ type: 'saveTask', groupId, taskData })
     },
-    addGroup() {
-      this.$store.dispatch({ type: 'addGroup' })
+    saveGroup(groupId, title) {
+      // console.log('title:', title)
+      this.$store.dispatch({ type: 'saveGroup', groupId, title })
     },
     removeGroup(groupId) {
       this.$store.dispatch({ type: 'removeGroup', groupId })
+
+    },
+    removeTask(groupId, taskId) {
+      console.log('groupId:', groupId)
+      console.log('taskId:', taskId)
+      this.$store.dispatch({ type: 'removeTask', groupId, taskId })
 
     }
 
@@ -51,9 +58,12 @@ export default {
   <Container @drop="onDropGrp" class="groups table" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <button @click="removeGroup(group._id)">REMOVE GRP</button>
-      <Group :group="group" :idx="idx" @updateTask="updateTask(group._id, $event)"></Group>
+      <Group :group="group" :idx="idx"  
+        @saveGroup="saveGroup(group._id, $event)"
+        @saveTask="saveTask(group._id, $event)" 
+        @removeTask="removeTask(group._id, $event)"></Group>
     </Draggable>
-    <button @click="addGroup">ADD NEW GROUP</button>
+    <button @click="saveGroup">ADD NEW GROUP</button>
   </Container>
 </template>
 

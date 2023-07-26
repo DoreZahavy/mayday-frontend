@@ -1,14 +1,16 @@
 <template>
     <section class="group-list">
-        <InPlaceEdit v-model="groupTitle" @change="addGroup" />
+        <InPlaceEdit v-model="groupTitle" />
 
         <!-- render group labels by labels array -->
 
         <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button class="button-as-link d-cmp ">🚮</button>
-                <Checkbox />
-                <div class="task-title d-cmp">task</div>
+                <div class="task-column">
+                    <button class="button-as-link d-cmp ">🚮</button>
+                    <Checkbox />
+                    <div class="task-title d-cmp">task</div>
+                </div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
@@ -17,11 +19,13 @@
 
         <!-- render tasks by cmp order -->
         <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
-            <Draggable v-for="task in group.tasks" :key="task.id">
+            <Draggable v-for="task in group.tasks" :key="task._id">
                 <section class="task">
-                    <button class="d-cmp button-as-link">🚮</button>
-                    <Checkbox />
-                    <TaskTitle :info="task.title" />
+                    <div class="task-column">
+                        <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link">🚮</button>
+                        <Checkbox />
+                        <TaskTitle :info="task.title" />
+                    </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id, $event)">
                         </component>
@@ -96,9 +100,11 @@ export default {
         onUpdateTask(taskId, taskData) {
             taskData._id = taskId
             this.$emit('updateTask', taskData)
+        },
+        onRemoveTask(taskId) {
+            this.$emit('removeTask', taskId)
+
         }
-
-
     },
     components: {
         Checkbox,
@@ -115,6 +121,16 @@ export default {
         Container,
         Draggable
     },
+    watch: {
+        groupTitle() {
+            this.$emit('saveGroup', this.groupTitle)
+
+        },
+        addTaskTxt() {
+            this.$emit('saveTask', this.addTaskTxt)
+
+        }
+    }
 };
 </script>
 

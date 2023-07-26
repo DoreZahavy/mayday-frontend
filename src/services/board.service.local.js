@@ -11,9 +11,6 @@ fetch("../../demo-board-v1.2.json")
         _createBoards(data)
     })
 
-// const boards = utilService.readJsonFile('../../demo-board-v1.2.json')
-
-// _createBoards()
 
 export const boardService = {
     query,
@@ -24,24 +21,25 @@ export const boardService = {
     removeGroup,
     saveTask,
     removeTask,
+    // addTask,
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
 }
 
-function query() {
-    return storageService.query(BOARD_KEY)
+async function query() {
+    return await storageService.query(BOARD_KEY)
 }
 
-function getById(boardId) {
-    return storageService.get(BOARD_KEY, boardId)
+async function getById(boardId) {
+    return await storageService.get(BOARD_KEY, boardId)
 }
 
-function removeBoard(boardId) {
-    return storageService.remove(BOARD_KEY, boardId)
+async function removeBoard(boardId) {
+    return await storageService.remove(BOARD_KEY, boardId)
 }
 
-function saveBoard(board) {
+async function saveBoard(board) {
     if (board._id) {
         return storageService.put(BOARD_KEY, board)
     } else {
@@ -49,39 +47,52 @@ function saveBoard(board) {
     }
 }
 
-async function saveGroup(boardId, group) {
-    const board = getById(boardId)
-    if (group._id) {
-        const groupIdx = board.groups.findIndex(g => g._id === group._id)
-        board.groups.splice(groupIdx, 1, group)
+async function saveGroup(boardId, groupId, title) {
+    const board = await getById(boardId)
+    if (title) { // if received new title
+
+        const groupIdx = board.groups.findIndex(g => g._id === groupId)
+        board.groups[groupIdx].title = title
         return await saveBoard(board)
-    } else {
-        board.groups.push(group)
+    } else { // add new group
+        board.groups.push(getEmptyGroup())
         return await saveBoard(board)
     }
 }
+
 async function removeGroup(boardId, groupId) {
-    const board = getById(boardId)
+    const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(g => g._id === groupId)
     board.groups.splice(groupIdx, 1)
     return await saveBoard(board)
 }
 
-async function saveTask(boardId, groupId, task) {
-    const board = getById(boardId)
+async function saveTask(boardId, groupId, taskData) {
+    const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
-    if (task._id) {
-        const taskIdx = group.tasks.findIndex(t => t._id === task._id)
-        group.tasks.splice(taskIdx, 1, task)
-        return await saveBoard(board)
-    } else {
-        group.tasks.push(task)
-        return await saveBoard(board)
+
+    if (typeof taskData === 'string') { // add new task with received title
+        group.tasks.push(getEmptyTask(taskData))
+    } else { // update change
+        const taskIdx = group.tasks.findIndex(t => t._id === taskData.taskId)
+        group.tasks[taskIdx].components[cmpType] = taskData.data
     }
+console.log('board:', board)
+    return await saveBoard(board)
+
 }
 
+// async function addTask(boardId, groupId, task) {
+//     const board = await getById(boardId)
+//     const group = board.groups.find(grp => grp._id === groupId)
+//     group.tasks.push(task)
+//     return await saveBoard(board)
+
+// }
+
 async function removeTask(boardId, groupId, taskId) {
-    const board = getById(boardId)
+    const board = await getById(boardId)
+    console.log('board:', board)
     const group = board.groups.find(grp => grp._id === groupId)
     const taskIdx = group.tasks.findIndex(t => t._id === taskId)
     group.tasks.splice(taskIdx, 1)
@@ -91,29 +102,58 @@ async function removeTask(boardId, groupId, taskId) {
 function getEmptyBoard() {
     return {
         _id: '',
-        cmpConfig: [],
-        groups: [],
+        cmpConfig: [
+            {
+                type: "Status",
+                title: "Status"
+            },
+            {
+                type: "Person",
+                title: "Person"
+            },
+            {
+                type: "Date",
+                title: "Date"
+            },
+            {
+                type: "Timeline",
+                title: "Timeline"
+            },
+            {
+                type: "Numbers",
+                title: "Numbers"
+            },
+            {
+                type: "Txt",
+                title: "Text"
+            },
+            {
+                type: "Files",
+                title: "Files"
+            }
+        ],
+        groups: [getEmptyGroup()],
     }
 }
 
 function getEmptyGroup() {
     return {
-        _id: '',
-        title: '',
+        _id: utilService.makeId(),
+        title: 'New Group',
         tasks: [],
     }
 }
 
-function getEmptyTask() {
+function getEmptyTask(title) {
     return {
-        _id: '',
-        title: '',
+        _id: utilService.makeId(),
+        title,
         updates: [],
-        components: [getEmptyComponents()],
+        components: [_getEmptyComponents()],
     }
 }
 
-function getEmptyPersonComponent() {
+function _getEmptyPersonComponent() {
     return {
         _id: '',
         fullname: '',
@@ -121,15 +161,15 @@ function getEmptyPersonComponent() {
     }
 }
 
-function getEmptyStatusComponent() {
+function _getEmptyStatusComponent() {
     return ''
 }
 
-function getEmptyDateComponent() {
+function _getEmptyDateComponent() {
     return null
 }
 
-function getEmptyTimelineComponent() {
+function _getEmptyTimelineComponent() {
     return {
         startDate: null,
         dueDate: null,
@@ -137,27 +177,27 @@ function getEmptyTimelineComponent() {
     }
 }
 
-function getEmptyNumbersComponent() {
+function _getEmptyNumbersComponent() {
     return 0
 }
 
-function getEmptyTxtComponent() {
+function _getEmptyTxtComponent() {
     return ''
 }
 
-function getEmptyFilesComponent() {
+function _getEmptyFilesComponent() {
     return []
 }
 
-function getEmptyComponents() {
+function _getEmptyComponents() {
     return {
-        Person: [getEmptyPersonComponent()],
-        Status: getEmptyStatusComponent(),
-        Date: getEmptyDateComponent(),
-        Timeline: getEmptyTimelineComponent(),
-        Numbers: getEmptyNumbersComponent(),
-        Txt: getEmptyTxtComponent(),
-        Files: getEmptyFilesComponent()
+        Person: [_getEmptyPersonComponent()],
+        Status: _getEmptyStatusComponent(),
+        Date: _getEmptyDateComponent(),
+        Timeline: _getEmptyTimelineComponent(),
+        Numbers: _getEmptyNumbersComponent(),
+        Txt: _getEmptyTxtComponent(),
+        Files: _getEmptyFilesComponent()
     }
 }
 
