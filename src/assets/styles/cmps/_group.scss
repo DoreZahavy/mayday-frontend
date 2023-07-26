@@ -1,62 +1,68 @@
 .group {
-}
-
-.sticky {
-    position: sticky;
-    left: 0;
-}
-
-.labels-grid,
-.progress-grid {
-    width: 100%;
-    background: $lightmode-white;
-    display: grid;
-}
-
-.label-line {
-    display: grid;
-    grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
-    border-block: 1px solid $border-clr;
-    height: $row-height;
-    &:first-child {
-        border: 0;
+    .tasks-container{
+        overflow-x: visible;
     }
 }
+    .labels-grid,
+    .progress-grid {
+        width: 100%;
+        background: $lightmode-white;
+        display: grid;
+    }
 
-.task-column {
-    display: grid;
-    grid-template-columns: $row-height $row-height $task-title-width;
-    height: 100%;
-    position: sticky;
-    left: 0;
-}
+    .label-line {
+        display: grid;
+        grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
+        border-block: 1px solid $border-clr;
+        height: $row-height;
 
-.group-list {
-    margin-top: 2em;
-    // border: 1px solid $border-clr;
-    border-right: 0;
-}
+        &:first-child {
+            border: 0;
+        }
+    }
+
+    .task-column {
+        display: grid;
+        grid-template-columns: $row-height $row-height $task-title-width;
+        height: 100%;
+        position: sticky;
+        // left: 50px;
+    }
+
+    .group-list {
+        margin-top: 2em;
+        // border: 1px solid $border-clr;
+        border-right: 0;
+    }
 
 .progress-bar {
     margin-left: $progress-bar-left-margin;
     border: 1px $border-clr solid;
     border-radius: 0 0 0 6px;
     border-block-start: 0;
+    height: $row-height;
+    display: flex;
+    align-items: center;
 }
 
 .group-accent-color {
     width: 6px;
-    height: 20px;
     height: $row-height;
     background-color: red;
     position: absolute;
     border: 0;
 
-    &.first {
-        border-radius: 6px 0 0 0;
-    }
+        &.first {
+            border-radius: 6px 0 0 0;
+        }
 
     &.last {
         border-radius: 0 0 0 6px;
     }
 }
+
+        &.last {
+            border-radius: 0 0 0 6px;
+        }
+    }
+

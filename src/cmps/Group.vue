@@ -1,33 +1,37 @@
 <template>
     <section class="group-list">
         <InPlaceEdit v-model="groupTitle" />
+        <!-- <div v-icon="trash"></div> -->
+        <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
         <!-- render group labels by labels array -->
 
-        <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
-            <article class="group-accent-color first"></article>
-            <section class="label-line">
-                <div class="task-column sticky">
-                    <button class="button-as-link d-cmp sticky">🚮</button>
-                    <Checkbox class="sticky" />
-                    <div class="task-title d-cmp sticky">task</div>
-                </div>
-                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
+        <article class="group-accent-color first"></article>
+        <section class="label-line">
+            <div class="task-column">
+                <button class="button-as-link d-cmp">🚮</button>
+                <Checkbox />
+                <div class="task-title d-cmp">task</div>
+            </div>
+            <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
+                <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp header">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
-            </section>
-        </Container>
+            </Container>
+        </section>
+
 
         <!-- render tasks by cmp order -->
-        <Container :get-child-payload="getTaskChildPayload" group-name="1" @drop="onDropTask(idx, $event)">
+        <Container class="tasks-container" :get-child-payload="getTaskChildPayload" group-name="1"
+            @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <article class="group-accent-color last sticky" v-if="idx >= group.tasks.length - 1"></article>
-                    <article class="group-accent-color sticky" v-else></article>
-                    <div class="task-column sticky">
+                    <!-- <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article> -->
+                    <article class="group-accent-color"></article>
+                    <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
-                        <Checkbox />
-                        <TaskTitle @update="onUpdateTask(task._id, $event)" :info="task.title" />
+                        <Checkbox class="" />
+                        <TaskTitle class="" @update="onUpdateTask(task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id, $event)">
@@ -36,7 +40,15 @@
 
                 </section>
             </Draggable>
-            <InPlaceEdit v-model="addTaskTxt" class="progress-bar"></InPlaceEdit>
+            <article class="group-accent-color last"></article>
+            <section class="task new-task">
+                <button class="d-cmp button-as-link task-trash">🚮</button>
+                <Checkbox />
+                <InPlaceEdit v-model="addTaskTxt"></InPlaceEdit>
+            </section>
+            <section class="progress-bar">
+
+            </section>
         </Container>
         <!-- render progress by progress array -->
         <!-- <section class="progress-grid">
@@ -87,15 +99,15 @@ export default {
     },
     methods: {
         onDropTask(idx, dropResult) {
-            this.$store.commit({ type: 'applyDragTask', idx, dragResult: dropResult })
+            this.$store.dispatch({ type: 'applyDragTask', idx, dragResult: dropResult })
         },
         onDropCmp(dropResult) {
-            this.$store.commit({ type: 'applyDragCmp', dragResult: dropResult })
+            this.$store.dispatch({ type: 'applyDragCmp', dragResult: dropResult })
 
         },
         onDropLabel(dropResult) {
-
-            this.$store.commit({ type: 'applyDragHeader', dragResult: dropResult })
+            console.log('res', dropResult)
+            this.$store.dispatch({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {
             return this.group.tasks[index]
