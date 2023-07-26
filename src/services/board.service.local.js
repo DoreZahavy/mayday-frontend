@@ -5,7 +5,7 @@ const BOARD_KEY = 'boardDB'
 
 fetch("../../demo-board-v1.2.json")
     .then(response => {
-        return response.json();
+        return response.json()
     })
     .then(data => {
         _createBoards(data)

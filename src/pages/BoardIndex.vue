@@ -14,7 +14,7 @@ export default {
   created() {
   },
   methods: {
-   
+
   }
 }
 </script>
@@ -30,7 +30,7 @@ export default {
           <RouterLink to="/board/kanban">Kanban</RouterLink>
         </nav>
       </section>
-      <RouterView/>
+      <RouterView />
     </section>
   </main>
 </template>

@@ -6,9 +6,11 @@
 
         <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
             <section class="label-line">
-                <button class="button-as-link d-cmp ">🚮</button>
-                <Checkbox />
-                <div class="task-title d-cmp">task</div>
+                <div class="task-column">
+                    <button class="button-as-link d-cmp ">🚮</button>
+                    <Checkbox />
+                    <div class="task-title d-cmp">task</div>
+                </div>
                 <Draggable v-for="(label, idx) in labels" :key="idx" class="d-cmp">
                     <div class="d-cmp-label">{{ label }}</div>
                 </Draggable>
@@ -97,7 +99,7 @@ export default {
         },
         onUpdateTask(taskId, taskData) {
             taskData._id = taskId
-            this.$emit('updateTask', taskData)
+            this.$emit('updateTask',  taskData)
         },
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
