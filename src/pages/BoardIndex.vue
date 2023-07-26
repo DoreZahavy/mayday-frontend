@@ -41,7 +41,7 @@ export default {
       <section class="board-nav">
         <!-- <InPlaceEdit v-model="boardTitle" /> -->
 
-        <h1>{{ boardTitle }}</h1>
+        <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
           <RouterLink to="/board/">Table</RouterLink>

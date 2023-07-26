@@ -4,4 +4,18 @@
     height: 100%;
     border-top-right-radius: rem(6px);
     background-color: $lightmode-white;
+    .add-board-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: .25em;
+        background-color: $primary-btn-color;
+        width: $btnSml;
+        height: $btnSml;
+        &:hover{
+
+        background-color: $primary-btn-hover-color;
+        } 
+    }
 }

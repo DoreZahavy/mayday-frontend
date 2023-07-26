@@ -1,4 +1,5 @@
 <script>
+import { svgService } from '../services/svg.service'
 export default {
     data() {
         return {
@@ -13,19 +14,23 @@ export default {
         loadBoard(boardId) {
             this.$store.commit({ type: 'setBoardById', boardId })
         },
-        onRemoveBoard(boardId){
+        onRemoveBoard(boardId) {
             this.$store.dispatch({ type: 'removeBoard', boardId })
 
         },
-        onAddBoard(){
+        onAddBoard() {
             this.$store.dispatch({ type: 'addBoard' })
 
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
         }
     },
     computed: {
         boardList() {
             return this.$store.getters.boardList
-        }
+        },
+
     }
 }
 </script>
@@ -40,11 +45,14 @@ export default {
             </ul>
         </div>
         <hr>
-        <button @click="onAddBoard">ADD NEW BOARD</button>
+        <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
+
+        <!-- <button  @click="onAddBoard">ADD NEW BOARD</button> -->
         <ul class="clean-list">
-            <li v-for="board in boardList">
-                <h2 @click="loadBoard(board._id)">{{ board.title }}</h2>
-                <button @click="onRemoveBoard(board._id)">REMOVE BOARD</button>
+            <li class="flex" v-for="board in boardList">
+                <div v-html="getSvg('boardType')"></div>
+                <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p>
+                <div @click="onRemoveBoard(board._id)"  v-html="getSvg('trash')"></div>
             </li>
         </ul>
     </aside>

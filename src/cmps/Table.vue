@@ -3,6 +3,8 @@ import { boardService } from "@/services/board.service.js";
 import Group from '@/cmps/Group.vue'
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
+import { svgService } from '../services/svg.service'
+
 export default {
   data() {
     return {
@@ -48,7 +50,10 @@ export default {
       console.log('taskId:', taskId)
       this.$store.dispatch({ type: 'removeTask', groupId, taskId })
 
-    }
+    },
+    getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        }
 
   }
 }
@@ -58,11 +63,14 @@ export default {
   <Container @drop="onDropGrp" class="groups table" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <button @click="removeGroup(group._id)">REMOVE GRP</button>
+
       <Group :group="group" :idx="idx"  class="group"
         @saveGroup="saveGroup(group._id, $event)"
         @saveTask="saveTask(group._id, $event)" 
         @removeTask="removeTask(group._id, $event)"></Group>
     </Draggable>
+    <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div>
+
     <button @click="saveGroup">ADD NEW GROUP</button>
   </Container>
 </template>

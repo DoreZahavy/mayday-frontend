@@ -8,6 +8,9 @@
     grid-template-columns: $sidebar-width 1fr;
     // height: 100%;
     height: $main-viewport-height;
+    .board-title{
+        @include boardTitle
+    }
 }
 .board{
     grid-area: board;
