@@ -19,7 +19,7 @@ const router = createRouter({
       component: LoginSignup
     },
     {
-      path: '/board',
+      path: '/board/:boardId?',
       name: 'BoardIndex',
       component: BoardIndex,
       children: [

@@ -1,12 +1,12 @@
 <script>
 export default {
-    data(){
-        return{
-            boards:[]
+    data() {
+        return {
+            boards: [this.$store.getters.board]
         }
     },
-    created(){
-        this.boards.push(this.$store.getters.board)
+    created() {
+        this.boards[0] = this.$store.getters.board
         console.log("🚀 ~ file: Sidebar.vue:10 ~ created ~ this.boards:", this.boards)
     }
 }
@@ -21,9 +21,9 @@ export default {
             </ul>
         </div>
         <hr>
-        <ul>
+        <ul class="clean-list">
             <li v-for="board in boards">
-                {{ board._id }}
+                <RouterLink :to="'/board/' + board._id">{{ board.title }}</RouterLink>
             </li>
         </ul>
     </aside>
