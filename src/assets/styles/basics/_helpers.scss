@@ -92,11 +92,11 @@
 
 .task:hover .done-green,
 .done-green:hover {
-    background-color: lighten(#00c875, 10%);
+    background-color: #4ad69c;
 }
 
 .done-green::before {
-    border-bottom: 10px solid darken(#00c875, 5%);
+    border-bottom: 10px solid #56bb80;
 }
 
 // Working Orange
@@ -107,11 +107,11 @@
 
 .task:hover .working-orange,
 .working-orange:hover {
-    background-color: lighten(#fdab3d, 10%);
+    background-color: #fbc175;
 }
 
 .working-orange::before {
-    border-bottom: 10px solid darken(#fdab3d, 5%);
+    border-bottom: 10px solid #d7a96c;
 }
 
 // Stuck Red
@@ -122,11 +122,11 @@
 
 .task:hover .stuck-red,
 .stuck-red:hover {
-    background-color: lighten(#e2445c, 10%);
+    background-color: #e8798b;
 }
 
 .stuck-red::before {
-    border-bottom: 10px solid darken(#e2445c, 5%);
+    border-bottom: 10px solid #c86f7e;
 }
 
 // Default Gray
@@ -137,11 +137,11 @@
 
 .task:hover .default-gray,
 .default-gray:hover {
-    background-color: lighten(#c4c4c4, 10%);
+    background-color: #d2d2d3;
 }
 
 .default-gray::before {
-    border-bottom: 10px solid darken(#c4c4c4, 5%);
+    border-bottom: 10px solid #b7b8b8;
 }
 
 // Low Blue
@@ -182,11 +182,11 @@
 
 .task:hover .critical-dark-gray,
 .critical-dark-gray:hover {
-    background-color: lighten(#333333, 10%);
+    background-color: #6d6d6e;
 }
 
 .critical-dark-gray::before {
-    border-bottom: 10px solid darken(#333333, 5%);
+    border-bottom: 10px solid #666667;
 }
 
 // Custom labels
@@ -632,5 +632,31 @@
 }
 
 .pecan.darker {
+    background-color: darken(#563e3e, 10%);
+}
+
+// Purple
+.pecan {
+    background-color: #563e3e;
+}
+
+.pecan.lighter {
+    background-color: lighten(#563e3e, 10%);
+}
+
+.pecan.darker {
+    background-color: darken(#563e3e, 10%);
+}
+
+// Dark Indigo
+.dark-indigo {
+    background-color: #563e3e;
+}
+
+.dark-indigo.lighter {
+    background-color: lighten(#563e3e, 10%);
+}
+
+.dark-indigo.darker {
     background-color: darken(#563e3e, 10%);
 }
