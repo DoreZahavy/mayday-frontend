@@ -6,9 +6,7 @@
         <el-date-picker v-model="pickedDateTimeRange" type="datetimerange" @change="onDateTimeChange" ref="datePicker">
         </el-date-picker>
     </article>
-</template>
-
-<script>
+</template><script>
 export default {
     name: "Timeline",
     props: {

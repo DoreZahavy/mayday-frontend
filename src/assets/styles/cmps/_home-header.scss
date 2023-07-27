@@ -1,8 +1,10 @@
 .home-header{
+    // padding: 0 $btnSml;
     img{
         height: em(26px,14px);
         width: em(26px,14px);
         transform: translate(0px, 5px);
+        margin-inline-end: .25em;
     }
     .home-logo{
         font-family: poppins-bold;
@@ -19,5 +21,34 @@
             color: $tertiary-btn-hover-color;
             background-color: #F0F3FF;
         }
+    }
+    .get-started{
+        display: flex;
+        align-items: center;
+        background-color: #6161ff;
+        color: #fff;
+        font-size: em(13px,14px);
+        font-family: poppins;
+        font-weight: 300;
+        line-height: lh(17px,13px);
+        border-radius: 3em;
+        min-width: 130px;
+        height: 40px;
+        margin-inline-start: 1em;
+        padding: 8px 14px 8px 16px;
+        transition: 0.1s ease background-color;
+        &:hover{
+            background-color: #5151d5;
+            .start-arrow{
+                transform:translate(6px,2px);
+            }
+        }
+        .start-arrow{
+            padding-left: 10px;
+            color: #fff;
+            transform:translate(0,2px);
+            transition:  0.3s ease-in-out transform;
+        }
+       
     }
 }
