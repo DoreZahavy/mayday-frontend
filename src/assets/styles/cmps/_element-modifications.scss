@@ -1,3 +1,6 @@
 .el-date-editor{
     --el-date-editor-width: 100%;
+    .el-icon svg{
+        height: 0;
+    }
 }
