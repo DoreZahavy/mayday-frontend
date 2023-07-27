@@ -18,14 +18,14 @@ export default {
   },
   data() {
     return {
-      status: { ...this.info },
+      status: this.info,
       statusLabelConfig: this.$store.getters.statusLabelConfig
     }
   },
   methods: {
     onUpdateStatus(newStatus) {
-      this.status = JSON.parse(JSON.stringify(newStatus))
-      this.$emit('update', { cmpType: 'Status', data: this.status = JSON.parse(JSON.stringify(this.status)) })
+      this.status = newStatus
+      this.$emit('update', JSON.parse(JSON.stringify(this.status)))
     }
   }
 }

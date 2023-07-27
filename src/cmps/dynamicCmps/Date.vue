@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "date",
+  name: "Date",
 
   props: ['info'],
   data() {
@@ -25,7 +25,7 @@ export default {
     onDateChange(date) {
       console.log(date)
       console.log(this.info)
-      this.$emit('update', { cmpType: 'date', data: date.valueOf() })
+      this.$emit('update', date.valueOf())
     }
   }
 }

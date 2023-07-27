@@ -13,14 +13,7 @@ export default {
         startEditing() {
             this.editing = true
             this.$nextTick(() => {
-                const editor = this.$refs.editor
-                const range = document.createRange()
-                range.selectNodeContents(editor)
-                range.collapse(false)
-                const selection = window.getSelection()
-                selection.removeAllRanges()
-                selection.addRange(range)
-                editor.focus()
+                this.moveCaretToInputEnd()
             })
         },
         stopEditing() {
@@ -31,6 +24,16 @@ export default {
             if (event.keyCode === 13) {
                 this.stopEditing()
             }
+        },
+        moveCaretToInputEnd() {
+            const editor = this.$refs.editor
+            const range = document.createRange()
+            range.selectNodeContents(editor)
+            range.collapse(false)
+            const selection = window.getSelection()
+            selection.removeAllRanges()
+            selection.addRange(range)
+            editor.focus()
         }
     }
 }
