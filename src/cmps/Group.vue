@@ -31,10 +31,10 @@
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
-                        <TaskTitle class="" @update="onUpdateTask(task._id, $event)" :info="task.title" />
+                        <TaskTitle class="" @update="onUpdateTask('title',task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task.components[cmp]" @update="onUpdateTask(task._id, $event)">
+                        <component :is="cmp" :info="task[cmp]" @update="onUpdateTask(cmp,task._id,$event)">
                         </component>
                     </section>
 
@@ -112,14 +112,20 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-        onUpdateTask(taskId, taskData) {
-            taskData._id = taskId
-            this.$emit('saveTask', taskData)
+        onUpdateTask(prop,taskId,toUpdate) {
+            // console.log('prop:', prop)
+            // console.log('taskId:', taskId)
+            // console.log('toUpdate:', toUpdate)
+            // console.log('taskId:', taskId)
+            // taskData._id = taskId
+            // const update = {taskId,prop,toUpdate}
+            this.$emit('update',{taskId,prop,toUpdate})
         },
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
 
         }
+        
     },
     components: {
         Checkbox,
@@ -138,7 +144,9 @@ export default {
     },
     watch: {
         groupTitle() {
-            this.$emit('saveGroup', this.groupTitle)
+            const prop = 'title'
+            const toUpdate = this.groupTitle
+            this.$emit('update', {prop,toUpdate})
 
         },
         addTaskTxt() {

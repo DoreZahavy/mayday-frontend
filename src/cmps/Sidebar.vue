@@ -15,8 +15,16 @@ export default {
         loadBoard(boardId) {
             this.$store.commit({ type: 'setBoardById', boardId })
         },
-        onRemoveBoard(boardId) {
-            this.$store.dispatch({ type: 'removeBoard', boardId })
+        async onRemoveBoard(boardId) {
+            try{
+
+                await this.$store.dispatch({ type: 'removeBoard', boardId })
+                showSuccessMsg('Board deleted')
+
+            }catch(err){
+                showErrorMsg('Failed deleting board')
+
+            }
 
         },
         async onAddBoard() {
@@ -24,7 +32,7 @@ export default {
                 const board = await this.$store.dispatch({ type: 'addBoard' })
                 console.log('board._id:', board._id)
                 this.$router.push('/board/' + board._id)
-                showSuccessMsg('Added board successfully')
+                showSuccessMsg('board Added')
             } catch(err){
                 console.log(err);
                 showErrorMsg('Failed adding new board')

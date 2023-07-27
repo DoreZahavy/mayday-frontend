@@ -1,5 +1,7 @@
 <script>
 import { boardService } from "@/services/board.service.js";
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 import Group from '@/cmps/Group.vue'
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
@@ -34,26 +36,59 @@ export default {
       this.$store.dispatch({ type: 'applyDragGrp', dragResult: dropResult })
     },
 
-    saveTask(groupId, taskData) {
-      this.$store.dispatch({ type: 'saveTask', groupId, taskData })
+    async updateBoard(groupId, { taskId, prop, toUpdate }) {
+      try {
+
+        await this.$store.dispatch({ type: 'updateBoard', groupId, taskId, prop, toUpdate })
+        showSuccessMsg('Board updated')
+
+      } catch (err) {
+        showErrorMsg('Failed to update board')
+
+      }
+      // console.log('groupId,taskId,prop,toUpdate:', groupId,taskId,prop,toUpdate)
+      // update.groupId = groupId
+      // this.$store.dispatch({ type: 'updateBoard', groupId, taskId, prop, toUpdate })
     },
-    addTask(groupId, title) {
-      this.$store.dispatch({ type: 'addTask', groupId, title })
+    async addTask(groupId, title) {
+      try {
+        await this.$store.dispatch({ type: 'addTask', groupId, title })
+        showSuccessMsg('Task added')
+
+      } catch (err) {
+        showErrorMsg('Failed to add task')
+
+      }
     },
-    saveGroup(groupId, title) {
-      this.$store.dispatch({ type: 'saveGroup', groupId, title })
-    },
-    removeGroup(groupId) {
-      this.$store.dispatch({ type: 'removeGroup', groupId })
+    // saveGroup(groupId, title) {
+    //   this.$store.dispatch({ type: 'saveGroup', groupId, title })
+    // },
+    async removeGroup(groupId) {
+      try {
+        await this.$store.dispatch({ type: 'removeGroup', groupId })
+        showSuccessMsg('Task deleted')
+      } catch (err) {
+        showErrorMsg('Failed to delete task')
+      }
 
     },
-    addGroup(){
-      this.$store.dispatch({ type: 'addGroup' })
+    async addGroup() {
+      try {
+        await this.$store.dispatch({ type: 'addGroup' })
+        showSuccessMsg('Group added')
+      } catch (err) {
+        showErrorMsg('Failed to add group')
+      }
+      
 
     },
-    removeTask(groupId, taskId) {
-      this.$store.dispatch({ type: 'removeTask', groupId, taskId })
-
+    async removeTask(groupId, taskId) {
+      try {
+        await this.$store.dispatch({ type: 'removeTask', groupId, taskId })
+        showSuccessMsg('Task deleted')
+      } catch (err) {
+        showErrorMsg('Failed to add task')
+      }
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
@@ -70,7 +105,9 @@ export default {
 
 
       <Group :group="group" :idx="idx" class="group" @saveGroup="saveGroup(group._id, $event)"
-        @saveTask="saveTask(group._id, $event)" @removeTask="removeTask(group._id, $event)"></Group>
+        @updateTask="updateTask(group._id, $event)" @addTask="addTask(group._id, $event)"
+        @removeTask="removeTask(group._id, $event)" @update="updateBoard(group._id, $event)">
+      </Group>
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
 

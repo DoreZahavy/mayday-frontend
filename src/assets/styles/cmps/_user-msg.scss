@@ -1,16 +1,22 @@
 
-
-.alert {
-    background-color: lightgray;
+.user-msg {
     position: fixed;
-    top: 0;
-    right: 0.5em;
-    padding: 1em;
-    &.alert-success {
-        background-color: lightgreen;
+    bottom: 100px;
+    right: 20px;
+    width: calc(fit-content + 1rem);
+    text-transform: capitalize;
+    background-color: white;
+    padding: 0.6rem;
+    padding-inline: 1.5rem;
+    border-radius: 99999vh;
+    font-size: 1.2rem;
+    z-index: 20;
+
+    &.success {
+        border: 2px solid green;
     }
-    &.alert-error {
-        background-color: lightcoral;
+    &.error {
+        border: 2px solid red;
     }
 }
 

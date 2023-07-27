@@ -17,37 +17,37 @@ export default {
     },
     data() {
         return {
-            pickedDateTimeRange: [this.info.startDate, this.info.dueDate],
-            isDatePickerVisible: false
+            // pickedDateTimeRange: [this.info.startDate, this.info.dueDate],
+            // isDatePickerVisible: false
         }
     },
-    computed: {
-        formattedStartDate() {
-            const d = new Date(this.pickedDateTimeRange[0])
-            return `${d.getDate()}/${d.getMonth() + 1}`
-            //  ${d.getHours()}:00`
-        },
-        formattedDueDate() {
-            const d = new Date(this.pickedDateTimeRange[1])
-            return `${d.getDate()}/${d.getMonth() + 1}`
-            //  ${d.getHours()}:00
-        }
-    },
-    methods: {
-        onDateTimeChange(date) {
-            this.$emit('update', {
-                cmpType: 'Timeline',
-                data: {
-                    startDate: date[0].valueOf(),
-                    dueDate: date[1].valueOf(),
-                    isHourIncluded: true
-                }
-            })
-            this.isDatePickerVisible = false
-        },
-        openDatePicker() {
-            this.isDatePickerVisible = true
-        }
-    }
+    // computed: {
+    //     formattedStartDate() {
+    //         const d = new Date(this.pickedDateTimeRange[0])
+    //         return `${d.getDate()}/${d.getMonth() + 1}`
+    //         //  ${d.getHours()}:00`
+    //     },
+    //     formattedDueDate() {
+    //         const d = new Date(this.pickedDateTimeRange[1])
+    //         return `${d.getDate()}/${d.getMonth() + 1}`
+    //         //  ${d.getHours()}:00
+    //     }
+    // },
+    // methods: {
+    //     onDateTimeChange(date) {
+    //         this.$emit('update', {
+    //             cmpType: 'Timeline',
+    //             data: {
+    //                 startDate: date[0].valueOf(),
+    //                 dueDate: date[1].valueOf(),
+    //                 isHourIncluded: true
+    //             }
+    //         })
+    //         this.isDatePickerVisible = false
+    //     },
+    //     openDatePicker() {
+    //         this.isDatePickerVisible = true
+    //     }
+    // }
 }
 </script>
