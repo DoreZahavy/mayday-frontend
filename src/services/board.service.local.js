@@ -143,6 +143,10 @@ function getEmptyBoard(title = 'New Board') {
                 title: "Status"
             },
             {
+                type: "Priority",
+                title: "Priority"
+            },
+            {
                 type: "Person",
                 title: "Person"
             },
@@ -197,7 +201,11 @@ function _getEmptyPersonComponent() {
 }
 
 function _getEmptyStatusComponent() {
-    return ''
+    return { title: "", class: "default-gray" }
+}
+
+function _getEmptyPriorityComponent() {
+    return { title: "", class: "default-gray" }
 }
 
 function _getEmptyDateComponent() {
@@ -228,6 +236,7 @@ function _getEmptyComponents() {
     return {
         Person: [_getEmptyPersonComponent()],
         Status: _getEmptyStatusComponent(),
+        Priority: _getEmptyPriorityComponent(),
         Date: _getEmptyDateComponent(),
         Timeline: _getEmptyTimelineComponent(),
         Numbers: _getEmptyNumbersComponent(),
