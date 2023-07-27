@@ -1,7 +1,7 @@
 <template>
     <section class="group-list">
         <button @click="onRemoveGroup" class="button-as-link d-cmp">🚮</button>
-        <InPlaceEdit v-model="groupTitle" class="group-header"/>
+        <InPlaceEdit v-model="groupTitle" class="group-header" />
         <!-- <div v-icon="trash"></div> -->
         <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
@@ -31,10 +31,10 @@
                         <section class="group-accent-color" :style="color"></section>
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
-                        <TaskTitle class="" @update="onUpdateTask('title',task._id, $event)" :info="task.title" />
+                        <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task[cmp]" @update="onUpdateTask(cmp,task._id,$event)">
+                        <component :is="cmp" :info="task[cmp]" @update="onUpdateTask(cmp, task._id, $event)">
                         </component>
                     </section>
 
@@ -98,9 +98,9 @@ export default {
         cmpOrder() {
             return this.$store.getters.cmpOrder
         },
-        color(){
+        color() {
             console.log(this.group.color)
-            return {background:  this.group.color}
+            return { background: this.group.color }
         }
     },
     methods: {
@@ -117,18 +117,18 @@ export default {
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
-        onUpdateTask(prop,taskId,toUpdate) {
-         
-            this.$emit('update',{taskId,prop,toUpdate})
+        onUpdateTask(prop, taskId, toUpdate) {
+
+            this.$emit('update', { taskId, prop, toUpdate })
         },
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
 
         },
-        onRemoveGroup(){
+        onRemoveGroup() {
             this.$emit('removeGroup')
         }
-        
+
     },
     components: {
         Checkbox,
@@ -149,7 +149,7 @@ export default {
         groupTitle() {
             const prop = 'title'
             const toUpdate = this.groupTitle
-            this.$emit('update', {prop,toUpdate})
+            this.$emit('update', { prop, toUpdate })
 
         },
         addTaskTxt() {
