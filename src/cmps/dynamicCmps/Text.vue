@@ -1,8 +1,8 @@
 <template>
-    <section class="txt" v-if="txt">
+    <section class="txt" v-if="text">
         <span ref="editor" :class="{ editable: editing }" :contenteditable="editing" @click="startEditing"
             @blur="stopEditing" @keydown="checkEnter" class="editable-text">
-            {{ txt }}
+            {{ text }}
         </span>
     </section>
 </template>
@@ -16,7 +16,7 @@ export default {
     data() {
         return {
             editing: false,
-            txt: this.info
+            text: this.info
         }
     },
     mounted() {
@@ -25,25 +25,28 @@ export default {
         startEditing() {
             this.editing = true
             this.$nextTick(() => {
-                const editor = this.$refs.editor
-                const range = document.createRange()
-                range.selectNodeContents(editor)
-                range.collapse(false)
-                const selection = window.getSelection()
-                selection.removeAllRanges()
-                selection.addRange(range)
-                editor.focus()
+                this.moveCaretToInputEnd()
             })
         },
         stopEditing() {
             this.txt = this.$refs.editor.innerText
-            this.$emit('update', { cmpType: 'Txt', data: this.txt })
+            this.$emit('update', this.text)
             this.editing = false
         },
         checkEnter(event) {
             if (event.keyCode === 13) {
                 this.stopEditing()
             }
+        },
+        moveCaretToInputEnd() {
+            const editor = this.$refs.editor
+            const range = document.createRange()
+            range.selectNodeContents(editor)
+            range.collapse(false)
+            const selection = window.getSelection()
+            selection.removeAllRanges()
+            selection.addRange(range)
+            editor.focus()
         }
     },
 }
