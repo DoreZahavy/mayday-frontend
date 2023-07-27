@@ -9,11 +9,14 @@ export default {
     }
   },
   computed: {
-    board() {
-      return this.$store.getters.board
-    },
+    // board() {
+    //   return this.$store.getters.board
+    // },
     boardTitle() {
       return this.$store.getters.boardTitle
+    },
+    boardId() {
+      return this.$route.params.boardId
     },
   },
   components: {
@@ -44,8 +47,8 @@ export default {
         <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
-          <RouterLink to="/board/" class="nav-item">Table</RouterLink>
-          <RouterLink to="/board/kanban" class="nav-item">Kanban</RouterLink>
+          <RouterLink :to="'/board/' + boardId">Table</RouterLink>
+          <RouterLink :to="'/board/' + boardId + '/kanban'">Kanban</RouterLink>
         </nav>
       </section>
       <RouterView />
