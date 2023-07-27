@@ -10,26 +10,27 @@
 @import "basics/layout";
 
 // PAGES
-@import 'pages/board-index';
-@import 'pages/home-page';
-@import 'pages/login-signup';
+@import "pages/board-index";
+@import "pages/home-page";
+@import "pages/login-signup";
 
 // COMPONENTS
-@import 'cmps/color-picker';
-@import 'cmps/header';
-@import 'cmps/sidebar';
-@import 'cmps/user-msg';
-@import 'cmps/kanban';
-@import 'cmps/table';
-@import 'cmps/group';
-@import 'cmps/task';
-@import 'cmps/element-modifications';
-@import 'cmps/dnd-modifications';
-@import 'cmps/login-header';
-@import 'cmps/home-header';
-@import 'cmps/main-header';
+@import "cmps/color-picker";
+@import "cmps/header";
+@import "cmps/sidebar";
+@import "cmps/user-msg";
+@import "cmps/kanban";
+@import "cmps/table";
+@import "cmps/group";
+@import "cmps/task";
+@import "cmps/element-modifications";
+@import "cmps/dnd-modifications";
+@import "cmps/login-header";
+@import "cmps/home-header";
+@import "cmps/main-header";
 
 //DYNAMIC COMPONENTS
 @import "cmps/dynamicCmps/status";
 @import "cmps/dynamicCmps/text";
 @import "cmps/dynamicCmps/members";
+@import "cmps/dynamicCmps/attachments";
