@@ -193,7 +193,7 @@ export const boardStore = {
       try {
         const newBoard = await boardService.addBoard()
         commit({ type: "addBoard", newBoard })
-        return newBoard
+        return newBoard._id
       } catch (err) {
         console.log(err)
         return Promise.reject()

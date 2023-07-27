@@ -27,28 +27,3 @@ export function showErrorMsg(txt) {
 }
 
 
-// setTimeout(() => {
-//     eventBusService.emit('show-msg', { txt: 'Happy Day', type: 'success' })
-// }, 5000)
-
-
-// Cmp A, created:
-// const unsubscribeFunc = eventBusService.on('puk', (data)=>{
-//     console.log('Puk happened:', data)
-// })
-
-// // Cmp A1, created:
-// eventBusService.on('puk', (data)=>{
-//     console.log('Mee too:', data)
-// })
-
-// // Cmp B: emitting
-// eventBusService.emit('puk', 7)
-// setInterval(()=>{
-//     eventBusService.emit('puk', 12)
-// }, 1500)
-
-
-// setTimeout(()=>{
-//     unsubscribeFunc()
-// }, 5000)
