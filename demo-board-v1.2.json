@@ -40,6 +40,10 @@
                 "title": "Status"
             },
             {
+                "type": "Priority",
+                "title": "Priority"
+            },
+            {
                 "type": "Person",
                 "title": "Person"
             },
@@ -85,6 +89,10 @@
                                 "title": "Done",
                                 "class": "done-green"
                             },
+                            "Priority": {
+                                "title": "Critical ⚠",
+                                "class": "critical-dark-gray"
+                            },
                             "Date": 1690915200000,
                             "Timeline": {
                                 "startDate": 1690492800000,
@@ -111,6 +119,10 @@
                             "Status": {
                                 "title": "Working on it",
                                 "class": "working-orange"
+                            },
+                            "Priority": {
+                                "title": "Critical ⚠",
+                                "class": "critical-dark-gray"
                             },
                             "Date": 1690915200000,
                             "Timeline": {
@@ -150,6 +162,10 @@
                                 "title": "Stuck",
                                 "class": "stuck-red"
                             },
+                            "Priority": {
+                                "title": "Critical ⚠",
+                                "class": "critical-dark-gray"
+                            },
                             "Date": 1690387200000,
                             "Timeline": {
                                 "startDate": 1690051200000,
@@ -186,6 +202,10 @@
                             "Status": {
                                 "title": "Almost there",
                                 "class": "dark-blue"
+                            },
+                            "Priority": {
+                                "title": "Critical ⚠",
+                                "class": "critical-dark-gray"
                             },
                             "Date": 1693238400000,
                             "Timeline": {
