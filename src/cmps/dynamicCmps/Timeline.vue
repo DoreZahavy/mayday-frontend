@@ -3,9 +3,9 @@
         <p @click="openDatePicker">
             {{ formattedStartDate }} - {{ formattedDueDate }}
         </p>
-        <!-- <el-date-picker v-model="pickedDateTimeRange" type="datetimerange" unlink-panels range-separator="to"
+        <el-date-picker v-model="pickedDateTimeRange" type="datetimerange" unlink-panels range-separator="to"
             start-placeholder="Start Date" end-placeholder="Due Date" @change="onDateTimeChange" ref="datePicker"
-            v-if="isDatePickerVisible" @hide="isDatePickerVisible = false" /> -->
+            v-if="isDatePickerVisible" @hide="isDatePickerVisible = false" />
     </article>
 </template>
 

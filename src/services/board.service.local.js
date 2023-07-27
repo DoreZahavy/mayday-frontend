@@ -103,7 +103,7 @@ function getEmptyBoard(title = 'New Board') {
                 title: "Priority"
             },
             {
-                type: "Person",
+                type: "Members",
                 title: "Person"
             },
             {
@@ -115,15 +115,15 @@ function getEmptyBoard(title = 'New Board') {
                 title: "Timeline"
             },
             {
-                type: "Numbers",
+                type: "Number",
                 title: "Numbers"
             },
             {
-                type: "Txt",
+                type: "Text",
                 title: "Text"
             },
             {
-                type: "Files",
+                type: "Attachments",
                 title: "Files"
             }
         ],
@@ -148,7 +148,7 @@ function getEmptyTask(title) {
     }
 }
 
-function _getEmptyPersonComponent() {
+function _getEmptyMembersComponent() {
     return {
         _id: '',
         fullname: '',
@@ -176,28 +176,28 @@ function _getEmptyTimelineComponent() {
     }
 }
 
-function _getEmptyNumbersComponent() {
+function _getEmptyNumberComponent() {
     return 0
 }
 
-function _getEmptyTxtComponent() {
+function _getEmptyTextComponent() {
     return ''
 }
 
-function _getEmptyFilesComponent() {
+function _getEmptyAttachmentsComponent() {
     return []
 }
 
 function _getEmptyComponents() {
     return {
-        Person: [_getEmptyPersonComponent()],
+        Members: [_getEmptyMembersComponent()],
         Status: _getEmptyStatusComponent(),
         Priority: _getEmptyPriorityComponent(),
         Date: _getEmptyDateComponent(),
         Timeline: _getEmptyTimelineComponent(),
-        Numbers: _getEmptyNumbersComponent(),
-        Txt: _getEmptyTxtComponent(),
-        Files: _getEmptyFilesComponent()
+        Number: _getEmptyNumberComponent(),
+        Text: _getEmptyTextComponent(),
+        Attachments: _getEmptyAttachmentsComponent()
     }
 }
 

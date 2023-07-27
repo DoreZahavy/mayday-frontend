@@ -1,12 +1,11 @@
 <template>
     <section class="group-list">
-        <InPlaceEdit v-model="groupTitle" />
+        <InPlaceEdit v-model="groupTitle" class="group-header"/>
         <!-- <div v-icon="trash"></div> -->
         <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
         <!-- render group labels by labels array -->
 
-        <article class="group-accent-color first"></article>
         <section class="label-line">
             <div class="task-column">
                 <button class="button-as-link d-cmp">🚮</button>
@@ -26,8 +25,6 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <!-- <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article> -->
-                    <article class="group-accent-color"></article>
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
@@ -40,7 +37,6 @@
 
                 </section>
             </Draggable>
-            <article class="group-accent-color last"></article>
             <section class="task new-task">
                 <button class="d-cmp button-as-link task-trash">🚮</button>
                 <Checkbox />
@@ -67,14 +63,14 @@
 import { Container, Draggable } from "vue3-smooth-dnd"
 import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
-import Person from "@/cmps/dynamicCmps/Person.vue";
+import Members from "@/cmps/dynamicCmps/Members.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
 import Status from "@/cmps/dynamicCmps/Status.vue";
 import Priority from "@/cmps/dynamicCmps/Priority.vue";
-import Txt from "@/cmps/dynamicCmps/Txt.vue";
+import Text from "@/cmps/dynamicCmps/Text.vue";
 import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
-import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
-import Files from "@/cmps/dynamicCmps/Files.vue";
+import Number from "@/cmps/dynamicCmps/Number.vue";
+import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 export default {
 
@@ -130,13 +126,13 @@ export default {
     components: {
         Checkbox,
         TaskTitle,
-        Person,
+        Members,
         Date,
         Status,
         Priority,
-        Files,
-        Numbers,
-        Txt,
+        Attachments,
+        Number,
+        Text,
         Timeline,
         InPlaceEdit,
         Container,

@@ -1,11 +1,11 @@
 .board-index {
     // overflow-x: scroll;
-    display: grid;
-    gap: rem(10px);
-    grid-template-areas: "sidebar board";
-    grid-template-columns: $sidebar-width 1fr;
+    // display: grid;
+    // gap: rem(10px);
+    // grid-template-areas: "sidebar board";
+    // grid-template-columns: $sidebar-width 1fr;
     // height: 100%;
-    height: $main-viewport-height;
+    // height: $main-viewport-height;
     .board-title {
         @include boardTitle;
     }
@@ -14,15 +14,21 @@
     grid-area: board;
 }
 .board-nav {
-    grid-area: boardNav;
+    // grid-area: boardNav;
+    position: sticky;
+    top:0px;
+    z-index: 21;
+    background-color: #fff;
 }
 .nav-item {
     margin-right: 10px;
 }
 .board-container {
+    grid-area:board;
     border-top-left-radius: rem(6px);
-    padding-inline-start: rem(41px);
-    padding-block-start: rem(41px);
+    // padding-inline-start: rem(41px);
+    // padding-block-start: rem(41px);
     background-color: $lightmode-white;
-    height: 100%;
+    overflow: scroll;
+    // height: 100%;
 }
