@@ -152,11 +152,11 @@
 
 .task:hover .low-blue,
 .low-blue:hover {
-    background-color: lighten(#579bfc, 10%);
+    background-color: #86b6fb;
 }
 
 .low-blue::before {
-    border-bottom: 10px solid darken(#579bfc, 5%);
+    border-bottom: 10px solid #7aa0d8;
 }
 
 // Medium Purple
@@ -167,11 +167,26 @@
 
 .task:hover .medium-purple,
 .medium-purple:hover {
-    background-color: lighten(#5559df, 10%);
+    background-color: #8588e6;
 }
 
 .medium-purple::before {
-    border-bottom: 10px solid darken(#5559df, 5%);
+    border-bottom: 10px solid #797bc7;
+}
+
+// High Dark Purple
+.high-dark-purple {
+    background-color: #401694;
+    transition: 0.5s ease;
+}
+
+.task:hover .high-dark-purple,
+.high-dark-purple:hover {
+    background-color: #7659b2;
+}
+
+.high-dark-purple::before {
+    border-bottom: 10px solid #6d569d;
 }
 
 // Critical Dark Gray
@@ -197,11 +212,11 @@
 }
 
 .grass-green:hover {
-    background-color: lighten(#037f4c, 10%);
+    background-color: #4ba27f;
 }
 
 .grass-green.darker {
-    background-color: darken(#037f4c, 10%);
+    background-color: #4a9175;
 }
 
 // Bright Green
@@ -210,11 +225,11 @@
 }
 
 .bright-green:hover {
-    background-color: lighten(#9cd326, 10%);
+    background-color: #b7dd65;
 }
 
 .bright-green.darker {
-    background-color: darken(#9cd326, 10%);
+    background-color: #a1c05f;
 }
 
 // Saladish
@@ -223,11 +238,11 @@
 }
 
 .saladish:hover {
-    background-color: lighten(#cab641, 10%);
+    background-color: #d7c978;
 }
 
 .saladish.darker {
-    background-color: darken(#cab641, 10%);
+    background-color: #bbb06e;
 }
 
 // Egg Yolk
@@ -236,11 +251,11 @@
 }
 
 .egg-yolk:hover {
-    background-color: lighten(#ffcb00, 10%);
+    background-color: #fcd84a;
 }
 
 .egg-yolk.darker {
-    background-color: darken(#ffcb00, 10%);
+    background-color: #d8bb4a;
 }
 
 // Dark Orange
@@ -249,11 +264,11 @@
 }
 
 .dark-orange:hover {
-    background-color: lighten(#ff642e, 10%);
+    background-color: #fc906a;
 }
 
 .dark-orange.darker {
-    background-color: darken(#ff642e, 10%);
+    background-color: #d88164;
 }
 
 // Peach
@@ -275,11 +290,11 @@
 }
 
 .sunset:hover {
-    background-color: lighten(#ff7575, 10%);
+    background-color: #fc9b9c;
 }
 
 .sunset.darker {
-    background-color: darken(#ff7575, 10%);
+    background-color: #d88b8c;
 }
 
 // Dark Red
@@ -288,11 +303,11 @@
 }
 
 .dark-red:hover {
-    background-color: lighten(#bb3354, 10%);
+    background-color: #cc6d85;
 }
 
 .dark-red.darker {
-    background-color: darken(#bb3354, 10%);
+    background-color: #b26679;
 }
 
 // Sofia Pink
@@ -301,11 +316,11 @@
 }
 
 .sofia-pink.lighter {
-    background-color: lighten(#ff158a, 10%);
+    background-color: #fc58ab;
 }
 
 .sofia-pink.darker {
-    background-color: darken(#ff158a, 10%);
+    background-color: #d85597;
 }
 
 // Lipstick
@@ -314,11 +329,11 @@
 }
 
 .lipstick.lighter {
-    background-color: lighten(#ff5ac4, 10%);
+    background-color: #fc89d3;
 }
 
 .lipstick.darker {
-    background-color: darken(#ff5ac4, 10%);
+    background-color: #d87cb8;
 }
 
 // Bubble
@@ -327,11 +342,11 @@
 }
 
 .bubble.lighter {
-    background-color: #F9BBF4;
+    background-color: #f9bbf4;
 }
 
 .bubble.darker {
-    background-color: #D6A4D2;
+    background-color: #d6a4d2;
 }
 
 // Dark Purple
@@ -340,11 +355,11 @@
 }
 
 .dark-purple.lighter {
-    background-color: lighten(#784bd1, 10%);
+    background-color: #9d7edd;
 }
 
 .dark-purple.darker {
-    background-color: darken(#784bd1, 10%);
+    background-color: #8c73bf;
 }
 
 // Berry
@@ -392,11 +407,11 @@
 }
 
 .bright-blue.lighter {
-    background-color: lighten(#579bfc, 10%);
+    background-color: #86b6fb;
 }
 
 .bright-blue.darker {
-    background-color: darken(#579bfc, 10%);
+    background-color: #7aa0d8;
 }
 
 // Dark Blue
@@ -407,11 +422,11 @@
 
 .task:hover .dark-blue,
 .dark-blue:hover {
-    background-color: lighten(#0086c0, 10%);
+    background-color: #49a7d1;
 }
 
 .dark-blue::before {
-    border-bottom: 10px solid darken(#0086c0, 5%);
+    border-bottom: 10px solid #4994b6;
 }
 
 // Aquamarine
@@ -433,11 +448,11 @@
 }
 
 .chili-blue.lighter {
-    background-color: lighten(#66ccff, 10%);
+    background-color: #91d9fd;
 }
 
 .chili-blue.darker {
-    background-color: darken(#66ccff, 10%);
+    background-color: #83bcd9;
 }
 
 // River
@@ -472,11 +487,11 @@
 }
 
 .american-gray.lighter {
-    background-color: lighten(#808080, 10%);
+    background-color: #a3a3a4;
 }
 
 .american-gray.darker {
-    background-color: darken(#808080, 10%);
+    background-color: #919192;
 }
 
 // Blackish
@@ -485,11 +500,11 @@
 }
 
 .blackish.lighter {
-    background-color: lighten(#333333, 10%);
+    background-color: #6d6d6e;
 }
 
 .blackish.darker {
-    background-color: darken(#333333, 10%);
+    background-color: #666667;
 }
 
 // Brown
@@ -498,11 +513,11 @@
 }
 
 .brown.lighter {
-    background-color: lighten(#7f5347, 10%);
+    background-color: #a3847c;
 }
 
 .brown.darker {
-    background-color: darken(#7f5347, 10%);
+    background-color: #917872;
 }
 
 // Orchid
