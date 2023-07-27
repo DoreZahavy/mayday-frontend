@@ -2,6 +2,7 @@
   {
     "_id": "JMJ1NMJAVl",
     "title": "You Make Me Board",
+    "desc": "best board ever that's true",
     "statusLabelConfig": [
       {
         "title": "Done",
@@ -44,7 +45,7 @@
         "title": "Priority"
       },
       {
-        "type": "Person",
+        "type": "Members",
         "title": "Person"
       },
       {
@@ -56,15 +57,15 @@
         "title": "Timeline"
       },
       {
-        "type": "Numbers",
+        "type": "Number",
         "title": "Numbers"
       },
       {
-        "type": "Txt",
+        "type": "Text",
         "title": "Text"
       },
       {
-        "type": "Files",
+        "type": "Attachments",
         "title": "Files"
       }
     ],
@@ -77,38 +78,36 @@
             "_id": "pZHEuw3xee",
             "title": "Feature Enhancement - Notifications",
             "updates": [],
-            "components": {
-              "Person": [
-                {
-                  "_id": "D91QMRJ3y5",
-                  "fullname": "Din Ben-Dor",
-                  "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                }
-              ],
-              "Status": {
-                "title": "Done",
-                "class": "done-green"
-              },
-              "Priority": {
-                "title": "Critical ⚠",
-                "class": "critical-dark-gray"
-              },
-              "Date": 1690915200000,
-              "Timeline": {
-                "startDate": 1690492800000,
-                "dueDate": 1690752000000,
-                "isHourIncluded": false
-              },
-              "Numbers": 250000,
-              "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
-              "Files": []
-            }
+            "Members": [
+              {
+                "_id": "D91QMRJ3y5",
+                "fullname": "Din Ben-Dor",
+                "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              }
+            ],
+            "Status": {
+              "title": "Done",
+              "class": "done-green"
+            },
+            "Priority": {
+              "title": "Critical ⚠",
+              "class": "critical-dark-gray"
+            },
+            "Date": 1690915200000,
+            "Timeline": {
+              "startDate": 1690492800000,
+              "dueDate": 1690752000000,
+              "isHourIncluded": false
+            },
+            "Number": 250000,
+            "Text": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
+            "Attachments": []
           },
           {
             "_id": "gbog6ztQLZ",
             "title": "User Interface (UI) Redesign",
             "updates": [],
-            "Person": [
+            "Members": [
               {
                 "_id": "Nn3N3mTxUn",
                 "fullname": "Yona Stephenson",
@@ -129,9 +128,9 @@
               "dueDate": 1690492800000,
               "isHourIncluded": false
             },
-            "Numbers": 9000000,
-            "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app",
-            "Files": []
+            "Number": 9000000,
+            "Text": "Analyze user feedback and design a more intuitive and modern UI for the app",
+            "Attachments": []
           }
         ]
       },
@@ -143,43 +142,41 @@
             "_id": "dLD1YaukLD",
             "title": "Cloud Migration",
             "updates": [],
-            "components": {
-              "Person": [
-                {
-                  "_id": "D91QMRJ3y5",
-                  "fullname": "Din Ben-Dor",
-                  "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                },
-                {
-                  "_id": "hYlw5GLxf8",
-                  "fullname": "Dore Zahavy",
-                  "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                }
-              ],
-              "Status": {
-                "title": "Stuck",
-                "class": "stuck-red"
+            "Members": [
+              {
+                "_id": "D91QMRJ3y5",
+                "fullname": "Din Ben-Dor",
+                "imgUrl": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
               },
-              "Priority": {
-                "title": "Critical ⚠",
-                "class": "critical-dark-gray"
-              },
-              "Date": 1690387200000,
-              "Timeline": {
-                "startDate": 1690051200000,
-                "dueDate": 1691088000000,
-                "isHourIncluded": false
-              },
-              "Numbers": 11000000,
-              "Txt": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
-              "Files": []
-            }
+              {
+                "_id": "hYlw5GLxf8",
+                "fullname": "Dore Zahavy",
+                "imgUrl": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              }
+            ],
+            "Status": {
+              "title": "Stuck",
+              "class": "stuck-red"
+            },
+            "Priority": {
+              "title": "Critical ⚠",
+              "class": "critical-dark-gray"
+            },
+            "Date": 1690387200000,
+            "Timeline": {
+              "startDate": 1690051200000,
+              "dueDate": 1691088000000,
+              "isHourIncluded": false
+            },
+            "Number": 11000000,
+            "Text": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
+            "Attachments": []
           },
           {
             "_id": "YTZf9CS4d5",
             "title": "Employee Performance Reviews",
             "updates": [],
-            "Person": [
+            "Members": [
               {
                 "_id": "Nn3N3mTxUn",
                 "fullname": "Yona Stephenson",
@@ -210,9 +207,9 @@
               "dueDate": 1692124800000,
               "isHourIncluded": false
             },
-            "Numbers": 11000000,
-            "Txt": "Be gentle  #:)",
-            "Files": []
+            "Number": 11000000,
+            "Text": "Be gentle  #:)",
+            "Attachments": []
           }
         ]
       }

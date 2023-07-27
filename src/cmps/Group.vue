@@ -102,19 +102,13 @@ export default {
 
         },
         onDropLabel(dropResult) {
-            console.log('res', dropResult)
             this.$store.dispatch({ type: 'applyDragHeader', dragResult: dropResult })
         },
         getTaskChildPayload(index) {
             return this.group.tasks[index]
         },
         onUpdateTask(prop,taskId,toUpdate) {
-            // console.log('prop:', prop)
-            // console.log('taskId:', taskId)
-            // console.log('toUpdate:', toUpdate)
-            // console.log('taskId:', taskId)
-            // taskData._id = taskId
-            // const update = {taskId,prop,toUpdate}
+         
             this.$emit('update',{taskId,prop,toUpdate})
         },
         onRemoveTask(taskId) {
