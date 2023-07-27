@@ -8,6 +8,7 @@
 
         <section class="label-line">
             <div class="task-column">
+                <section class="group-accent-color first"></section>
                 <button class="button-as-link d-cmp">🚮</button>
                 <Checkbox />
                 <div class="task-title d-cmp">Task</div>
@@ -26,6 +27,7 @@
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
                     <div class="task-column">
+                        <section class="group-accent-color"></section>
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask('title',task._id, $event)" :info="task.title" />
@@ -38,9 +40,12 @@
                 </section>
             </Draggable>
             <section class="task new-task">
-                <button class="d-cmp button-as-link task-trash">🚮</button>
-                <Checkbox />
-                <InPlaceEdit v-model="addTaskTxt"></InPlaceEdit>
+                <div class="task-column">
+                    <section class="group-accent-color last"></section>
+                    <button class="d-cmp button-as-link task-trash">🚮</button>
+                    <Checkbox />
+                    <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
+                </div>
             </section>
             <section class="progress-bar">
 
