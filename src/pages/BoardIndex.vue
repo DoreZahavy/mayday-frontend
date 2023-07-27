@@ -5,7 +5,7 @@ export default {
 
   data() {
     return {
-      title:''
+      title: ''
     }
   },
   computed: {
@@ -44,8 +44,8 @@ export default {
         <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
-          <RouterLink to="/board/">Table</RouterLink>
-          <RouterLink to="/board/kanban">Kanban</RouterLink>
+          <RouterLink to="/board/" class="nav-item">Table</RouterLink>
+          <RouterLink to="/board/kanban" class="nav-item">Kanban</RouterLink>
         </nav>
       </section>
       <RouterView />
