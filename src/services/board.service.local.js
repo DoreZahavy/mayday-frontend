@@ -67,6 +67,7 @@ async function addGroup(boardId) {
 }
 
 async function removeGroup(boardId, groupId) {
+    console.log('boardId,groupId:', boardId,groupId)
     const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(g => g._id === groupId)
     board.groups.splice(groupIdx, 1)
