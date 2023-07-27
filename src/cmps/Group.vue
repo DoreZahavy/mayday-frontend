@@ -8,7 +8,7 @@
 
         <section class="label-line">
             <div class="task-column">
-                <section class="group-accent-color first"></section>
+                <section class="group-accent-color first" :style="color"></section>
                 <button class="button-as-link d-cmp">🚮</button>
                 <Checkbox />
                 <div class="task-title d-cmp">Task</div>
@@ -27,7 +27,7 @@
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
                     <div class="task-column">
-                        <section class="group-accent-color"></section>
+                        <section class="group-accent-color" :style="color"></section>
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask('title',task._id, $event)" :info="task.title" />
@@ -41,7 +41,7 @@
             </Draggable>
             <section class="task new-task">
                 <div class="task-column">
-                    <section class="group-accent-color last"></section>
+                    <section class="group-accent-color last" :style="color"></section>
                     <button class="d-cmp button-as-link task-trash">🚮</button>
                     <Checkbox />
                     <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
@@ -96,6 +96,10 @@ export default {
         },
         cmpOrder() {
             return this.$store.getters.cmpOrder
+        },
+        color(){
+            console.log(this.group.color)
+            return {background:  this.group.color}
         }
     },
     methods: {
@@ -151,71 +155,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-// .task {
-//     border-left: 1px solid black;
-//     // position: relative;
-//     background: white;
-//     display: grid;
-//     grid-template-columns: $row-height $row-height 300px repeat(4, 150px);
-//     height: $row-height;
-//     align-items: center;
-
-//     // grid-template-columns: 6.6% 200px 1fr 1fr 1fr 1fr;
-
-//     /* justify-content: center; */
-//     &:hover {
-//         background-color: $task-hover;
-//     }
-// }
-
-// .d-cmp,
-// .d-cmp-label {
-
-//     // border: 1px solid black;
-
-//     // &:nth-child(1) {
-//     //     position: sticky;
-//     //     z-index: 10;
-//     //     width: var(--row-height);
-//     //     left: 0;
-//     // }
-
-//     // &:nth-child(2) {
-//     //     position: sticky;
-//     //     z-index: 10;
-//     //     margin-left: -80px;
-//     //     left: var(--row-height);
-//     // }
-
-//     // &:nth-child(5) {
-//     //     margin-left: -165px;
-//     // }
-// }
-
-
-// .labels-grid,
-// .progress-grid {
-//     // width: 100%;
-//     background: rgba(197, 188, 188, 0.59);
-//     display: grid;
-//     // grid-template-columns: 33px 308px repeat(4, 150px);
-//     // grid-template-columns: var(--row-height) 300px repeat(4, 150px);
-
-//     /* grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr; */
-//     /* justify-content: center; */
-// }
-
-// .label-line{
-//     display: grid;
-//     grid-template-columns: $row-height $row-height 300px repeat(4, 150px);
-
-// }
-// .group-list {
-//     margin-top: 2em;
-
-
-
-// }
-</style>
