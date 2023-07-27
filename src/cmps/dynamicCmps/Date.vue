@@ -3,7 +3,7 @@
     <div class="flex justify-center align-center" style="height:100%">
       <span class="date">{{ date }}</span>
     </div>
-    <el-date-picker v-model="pickedDate" type="date" format="dd/MM" @change="onDateChange" ref="datePicker">
+    <el-date-picker v-model="pickedDate" type="date" @change="onDateChange" ref="datePicker">
     </el-date-picker>
   </section>
 </template>
