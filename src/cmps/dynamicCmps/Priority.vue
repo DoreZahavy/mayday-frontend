@@ -1,29 +1,32 @@
 <template>
-  <p v-if="priority" class="priority">{{ priority }}</p>
+  <el-tooltip placement="bottom" trigger="click" effect="light">
+    <template #content>
+      <div v-for="label in priorityLabelConfig" :key="label.title" :class="label.class" class="status-option"
+        @click.stop="onUpdatePriority(label)">
+        {{ label.title }}
+      </div>
+    </template>
+    <div v-if="priority" class="status status-content" :class="priority.class">{{ priority.title }}</div>
+  </el-tooltip>
 </template>
-  
+
 <script>
 export default {
-  name: "priority",
+  name: "Priority",
   props: {
-    info: String,
+    info: Object,
   },
   data() {
     return {
-      priority: this.info
+      priority: { ...this.info },
+      priorityLabelConfig: this.$store.getters.priorityLabelConfig
     }
   },
   methods: {
-    onSetPriority() {
-      this.$emit("update", { cmpType: 'priority', data: this.priority })
+    onUpdatePriority(newPriority) {
+      this.priority = JSON.parse(JSON.stringify(newPriority))
+      this.$emit('update', { cmpType: 'Priority', data: this.priority = JSON.parse(JSON.stringify(this.priority)) })
     }
   }
 }
 </script>
-  
-<style>
-.priority {
-  /* background-color: lightskyblue; */
-  height: 100%;
-}
-</style>

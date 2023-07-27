@@ -6,17 +6,30 @@ export default {
 
     data() {
         return {
-            isEditMode: false
+            editing: false
         }
     },
     methods: {
-        onBlur() {
-            this.isEditMode = false
-            this.$emit('update:modelValue', this.$refs.val.innerText)
+        startEditing() {
+            this.editing = true
+            this.$nextTick(() => {
+                const editor = this.$refs.editor
+                const range = document.createRange()
+                range.selectNodeContents(editor)
+                range.collapse(false)
+                const selection = window.getSelection()
+                selection.removeAllRanges()
+                selection.addRange(range)
+                editor.focus()
+            })
         },
-        checkEnter(event){
-            if(event.keyCode===13){
-                this.onBlur()
+        stopEditing() {
+            this.editing = false
+            this.$emit('update:modelValue', this.$refs.editor.innerText)
+        },
+        checkEnter(event) {
+            if (event.keyCode === 13) {
+                this.stopEditing()
             }
         }
     }
@@ -25,12 +38,10 @@ export default {
 
 <template>
     <section class="in-place-edit">
-        <span @click="isEditMode = true" :contenteditable="isEditMode" :class="{ editable: isEditMode }" @keydown="checkEnter" @blur="onBlur" ref="val">
+        <span :contenteditable="editing" :class="{ editable: editing }" @click="startEditing" @keydown="checkEnter"
+            @blur="stopEditing" ref="editor">
             {{ modelValue }}
         </span>
-        <!-- <button v-show="!isEditMode" @click="isEditMode = true">
-            ✎
-        </button> -->
     </section>
 </template>
 

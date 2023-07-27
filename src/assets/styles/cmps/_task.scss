@@ -22,7 +22,7 @@
     &.new-task {
         transition: 150ms;
         grid-template-columns: $row-height $row-height 1fr;
-        opacity: .8;
+        opacity: 0.8;
         transition-timing-function: ease-in-out;
 
         &:hover {
@@ -53,7 +53,6 @@
 
     &.header {
         div {
-
             width: 149px;
         }
     }
@@ -79,14 +78,11 @@
     .checkbox {
         grid-column-start: 3;
     }
-
 }
 
 .title {
     text-align: start;
 }
-
-
 
 .checkbox {
     input {

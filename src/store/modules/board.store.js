@@ -33,10 +33,10 @@ export const boardStore = {
       })
     },
     statusLabelConfig({ board }) {
-      return board.statusLabelConfig
+      return JSON.parse(JSON.stringify(board.statusLabelConfig))
     },
     priorityLabelConfig({ board }) {
-      return board.priorityLabelConfig
+      return JSON.parse(JSON.stringify(board.priorityLabelConfig))
     },
     cmpOrder({ board }) {
       // const cmpOrder = board.cmpConfig.map(a => a.type)

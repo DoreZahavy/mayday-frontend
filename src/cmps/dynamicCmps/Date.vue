@@ -1,20 +1,31 @@
 <template>
   <section class="date">
-    <p>{{ date }}</p>
+    <el-date-picker v-model="pickedDate" type="date" format="dd/MM" @change="onDateChange" ref="datePicker">
+    </el-date-picker>
   </section>
 </template>
-  
+
 <script>
 export default {
   name: "date",
 
-  props: {
-    info: Number,
+  props: ['info'],
+  data() {
+    return {
+      pickedDate: this.info
+    }
   },
   computed: {
     date() {
-      const d = new Date(this.info)
-      return `${d.getDate()}/${d.getMonth()}`
+      const d = new Date(this.pickedDate)
+      return `${d.getDate()}/${d.getMonth() + 1}`
+    }
+  },
+  methods: {
+    onDateChange(date) {
+      console.log(date)
+      console.log(this.info)
+      this.$emit('update', { cmpType: 'date', data: date.valueOf() })
     }
   }
 }

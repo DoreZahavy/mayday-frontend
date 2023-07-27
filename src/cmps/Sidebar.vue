@@ -48,18 +48,20 @@ export default {
 <template>
     <aside class="sidebar">
 
-        <div>
-            <ul class="clean-list">
+        <div class="divider-div">
+            <ul class="clean-list sidebar-list nav-list">
                 <li>
-                    <RouterLink to="/">Home</RouterLink>
+                    <div>    
+                        <span v-html="getSvg('home')"></span>
+                        <RouterLink to="/">Home</RouterLink>
+                    </div>
                 </li>
             </ul>
         </div>
-        <hr>
         <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
 
         <!-- <button  @click="onAddBoard">ADD NEW BOARD</button> -->
-        <ul class="clean-list" v-if="boardList">
+        <ul class="clean-list sidebar-list">
             <li class="flex" v-for="board in boardList">
                 <div v-html="getSvg('boardType')"></div>
                 <RouterLink class="board-link" :to="'/board/'+board._id">{{ board.title }}</RouterLink>

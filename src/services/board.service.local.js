@@ -102,6 +102,7 @@ async function removeGroup(boardId, groupId) {
 }
 
 async function saveTask(boardId, groupId, taskData) {
+    console.log("🚀 ~ file: board.service.local.js:105 ~ saveTask ~ taskData:", taskData)
     console.log('taskData:', taskData)
 
     const board = await getById(boardId)

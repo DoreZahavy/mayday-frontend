@@ -87,94 +87,106 @@
 // Done Green
 .done-green {
     background-color: #00c875;
+    transition: 0.5s ease;
 }
 
-.done-green.lighter {
+.task:hover .done-green,
+.done-green:hover {
     background-color: lighten(#00c875, 10%);
 }
 
-.done-green.darker {
-    background-color: darken(#00c875, 10%);
+.done-green::before {
+    border-bottom: 10px solid darken(#00c875, 5%);
 }
 
 // Working Orange
 .working-orange {
     background-color: #fdab3d;
+    transition: 0.5s ease;
 }
 
-.working-orange.lighter {
+.task:hover .working-orange,
+.working-orange:hover {
     background-color: lighten(#fdab3d, 10%);
 }
 
-.working-orange.darker {
-    background-color: darken(#fdab3d, 10%);
+.working-orange::before {
+    border-bottom: 10px solid darken(#fdab3d, 5%);
 }
 
 // Stuck Red
 .stuck-red {
     background-color: #e2445c;
+    transition: 0.5s ease;
 }
 
-.stuck-red.lighter {
+.task:hover .stuck-red,
+.stuck-red:hover {
     background-color: lighten(#e2445c, 10%);
 }
 
-.stuck-red.darker {
-    background-color: darken(#e2445c, 10%);
+.stuck-red::before {
+    border-bottom: 10px solid darken(#e2445c, 5%);
 }
 
 // Default Gray
 .default-gray {
     background-color: #c4c4c4;
+    transition: 0.5s ease;
 }
 
-.default-gray.lighter {
+.task:hover .default-gray,
+.default-gray:hover {
     background-color: lighten(#c4c4c4, 10%);
 }
 
-.default-gray.darker {
-    background-color: darken(#c4c4c4, 10%);
+.default-gray::before {
+    border-bottom: 10px solid darken(#c4c4c4, 5%);
 }
-
-// Priority labels
 
 // Low Blue
 .low-blue {
     background-color: #579bfc;
+    transition: 0.5s ease;
 }
 
-.low-blue.lighter {
+.task:hover .low-blue,
+.low-blue:hover {
     background-color: lighten(#579bfc, 10%);
 }
 
-.low-blue.darker {
-    background-color: darken(#579bfc, 10%);
+.low-blue::before {
+    border-bottom: 10px solid darken(#579bfc, 5%);
 }
 
 // Medium Purple
-.mudium-purple {
+.medium-purple {
     background-color: #5559df;
+    transition: 0.5s ease;
 }
 
-.mudium-purple.lighter {
+.task:hover .medium-purple,
+.medium-purple:hover {
     background-color: lighten(#5559df, 10%);
 }
 
-.mudium-purple.darker {
-    background-color: darken(#5559df, 10%);
+.medium-purple::before {
+    border-bottom: 10px solid darken(#5559df, 5%);
 }
 
 // Critical Dark Gray
 .critical-dark-gray {
     background-color: #333333;
+    transition: 0.5s ease;
 }
 
-.critical-dark-gray.lighter {
+.task:hover .critical-dark-gray,
+.critical-dark-gray:hover {
     background-color: lighten(#333333, 10%);
 }
 
-.critical-dark-gray.darker {
-    background-color: darken(#333333, 10%);
+.critical-dark-gray::before {
+    border-bottom: 10px solid darken(#333333, 5%);
 }
 
 // Custom labels
@@ -184,7 +196,7 @@
     background-color: #037f4c;
 }
 
-.grass-green.lighter {
+.grass-green:hover {
     background-color: lighten(#037f4c, 10%);
 }
 
@@ -197,7 +209,7 @@
     background-color: #9cd326;
 }
 
-.bright-green.lighter {
+.bright-green:hover {
     background-color: lighten(#9cd326, 10%);
 }
 
@@ -210,7 +222,7 @@
     background-color: #cab641;
 }
 
-.saladish.lighter {
+.saladish:hover {
     background-color: lighten(#cab641, 10%);
 }
 
@@ -223,7 +235,7 @@
     background-color: #ffcb00;
 }
 
-.egg-yolk.lighter {
+.egg-yolk:hover {
     background-color: lighten(#ffcb00, 10%);
 }
 
@@ -236,7 +248,7 @@
     background-color: #ff642e;
 }
 
-.dark-orange.lighter {
+.dark-orange:hover {
     background-color: lighten(#ff642e, 10%);
 }
 
@@ -249,7 +261,7 @@
     background-color: #ffadad;
 }
 
-.peach.lighter {
+.peach:hover {
     background-color: lighten(#ffadad, 10%);
 }
 
@@ -262,7 +274,7 @@
     background-color: #ff7575;
 }
 
-.sunset.lighter {
+.sunset:hover {
     background-color: lighten(#ff7575, 10%);
 }
 
@@ -275,7 +287,7 @@
     background-color: #bb3354;
 }
 
-.dark-red.lighter {
+.dark-red:hover {
     background-color: lighten(#bb3354, 10%);
 }
 
@@ -390,14 +402,16 @@
 // Dark Blue
 .dark-blue {
     background-color: #0086c0;
+    transition: 0.5s ease;
 }
 
-.dark-blue.lighter {
+.task:hover .dark-blue,
+.dark-blue:hover {
     background-color: lighten(#0086c0, 10%);
 }
 
-.dark-blue.darker {
-    background-color: darken(#0086c0, 10%);
+.dark-blue::before {
+    border-bottom: 10px solid darken(#0086c0, 5%);
 }
 
 // Aquamarine

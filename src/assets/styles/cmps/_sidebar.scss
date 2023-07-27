@@ -1,10 +1,10 @@
-.sidebar{
+.sidebar {
     grid-area: sidebar;
     width: $sidebar-width;
     height: 100%;
     border-top-right-radius: rem(6px);
     background-color: $lightmode-white;
-    .add-board-btn{
+    .add-board-btn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -13,9 +13,44 @@
         background-color: $primary-btn-color;
         width: $btnSml;
         height: $btnSml;
-        &:hover{
+        // position: relative;
+        margin-inline-start: 207px;
+        margin-block:13px;
+        right: 1rem;
+        &:hover {
 
-        background-color: $primary-btn-hover-color;
-        } 
+            background-color: $primary-btn-hover-color;
+        }
+    }
+    .divider-div{
+        border-block-end: 1px solid $border-clr;
+    }
+    .sidebar-list {
+        li {
+            &:hover {
+                background-color: $secondary-btn-hover-color;
+            }
+            margin-inline: 10px 1rem;
+            margin-block-end: 1rem;
+            border-radius: rem(6px);
+            height: calc($row-height - 2px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            div:last-child{
+                margin-inline-end: rem(14px);
+            }
+            div:first-child{
+                display: flex;
+                align-items: center;
+                span{
+                    margin-inline: 11px;
+                }
+            }
+        }
+        &.nav-list{
+            margin-block-start: 1rem;
+        }
+
     }
 }

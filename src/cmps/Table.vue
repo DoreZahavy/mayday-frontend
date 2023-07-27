@@ -65,10 +65,8 @@ export default {
       <button @click="removeGroup(group._id)">REMOVE GRP</button>
 
 
-      <Group :group="group" :idx="idx"  class="group"
-        @saveGroup="saveGroup(group._id, $event)"
-        @saveTask="saveTask(group._id, $event)" 
-        @removeTask="removeTask(group._id, $event)"></Group>
+      <Group :group="group" :idx="idx" class="group" @saveGroup="saveGroup(group._id, $event)"
+        @saveTask="saveTask(group._id, $event)" @removeTask="removeTask(group._id, $event)"></Group>
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
 
