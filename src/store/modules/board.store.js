@@ -73,7 +73,7 @@ export const boardStore = {
 
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
-      // state.board = board
+      state.board = board
 
     },
 
@@ -212,9 +212,11 @@ export const boardStore = {
     },
 
     async addGroup(context) {
+      console.log('adding')
       try {
         const boardId = context.state.board._id
         const board = await boardService.addGroup(boardId)
+        console.log('board:', board)
         context.commit({ type: "saveBoard", board })
         return board
       } catch (err) {
