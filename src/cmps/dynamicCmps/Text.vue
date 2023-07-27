@@ -16,7 +16,8 @@ export default {
     data() {
         return {
             editing: false,
-            text: this.info
+            text: this.info,
+            caretMoved: false
         }
     },
     mounted() {
@@ -30,6 +31,7 @@ export default {
         },
         stopEditing() {
             this.txt = this.$refs.editor.innerText
+            this.caretMoved = false
             this.$emit('update', this.text)
             this.editing = false
         },
@@ -39,6 +41,7 @@ export default {
             }
         },
         moveCaretToInputEnd() {
+            if (this.caretMoved) return
             const editor = this.$refs.editor
             const range = document.createRange()
             range.selectNodeContents(editor)
@@ -47,6 +50,7 @@ export default {
             selection.removeAllRanges()
             selection.addRange(range)
             editor.focus()
+            this.caretMoved = true
         }
     },
 }
