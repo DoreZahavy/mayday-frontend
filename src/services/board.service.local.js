@@ -1,5 +1,5 @@
 import { utilService } from './util.service.js'
-import jsonBoards from './../../demo-board-v1.2.json'
+import jsonBoards from '@/data/demo-board-v1.2.json'
 import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'

@@ -14,6 +14,7 @@ export default {
     data() {
         return {
             editing: false,
+            caretMoved: false
         }
     },
     methods: {
@@ -29,6 +30,7 @@ export default {
         },
         stopEditing() {
             console.log(this.$refs.editor.innerText)
+            this.caretMoved = false
             this.editing = false
             this.$emit('update', Number(this.$refs.editor.innerText))
         },
@@ -38,6 +40,7 @@ export default {
             }
         },
         moveCaretToInputEnd() {
+            if (this.caretMoved) return
             const editor = this.$refs.editor
             const range = document.createRange()
             range.selectNodeContents(editor)
@@ -46,6 +49,7 @@ export default {
             selection.removeAllRanges()
             selection.addRange(range)
             editor.focus()
+            this.caretMoved = true
         }
     }
 }

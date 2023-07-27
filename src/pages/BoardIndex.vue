@@ -1,6 +1,10 @@
 <script>
 import Sidebar from '@/cmps/Sidebar.vue'
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
+import BoardHeader from '@/cmps/BoardHeader.vue'
+
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 export default {
 
   data() {
@@ -9,9 +13,9 @@ export default {
     }
   },
   computed: {
-    // board() {
-    //   return this.$store.getters.board
-    // },
+    miniBoard() {
+      return this.$store.getters.miniBoard
+    },
     boardTitle() {
       return this.$store.getters.boardTitle
     },
@@ -21,12 +25,21 @@ export default {
   },
   components: {
     Sidebar,
-    InPlaceEdit
+    InPlaceEdit,
+    BoardHeader
   },
   mounted() {
   },
   methods: {
+    async updateBoard({ prop, toUpdate }) {
+      try {
+        await this.$store.dispatch({ type: 'updateBoard', prop, toUpdate })
+        showSuccessMsg('board Updated')
 
+      } catch (err) {
+        showErrorMsg('Failed to update Board')
+      }
+    }
   },
   watch: {
     // boardTitle() {
@@ -38,20 +51,17 @@ export default {
 </script>
 
 <template>
-    <Sidebar />
-    <main class="board-container">
-      <section class="board-nav">
-        <!-- <InPlaceEdit v-model="boardTitle" /> -->
-
-        <h1 class="board-title">{{ boardTitle }}</h1>
-
-        <nav class="board-nav">
-          <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
-          <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
-        </nav>
-      </section>
-      <RouterView />
-    </main>
+  <Sidebar />
+  <main class="board-container">
+    <section class="board-nav">
+      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
+      <nav class="board-nav">
+        <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
+        <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
+      </nav>
+    </section>
+    <RouterView />
+  </main>
 </template>
 
 
