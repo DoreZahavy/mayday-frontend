@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <main>
+  <main class="main-layout">
     <!-- header for dev -->
     <AppHeader />
     <RouterView />

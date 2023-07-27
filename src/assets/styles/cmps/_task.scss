@@ -68,7 +68,8 @@
     display: grid;
     grid-template-columns: 0px $row-height $row-height $task-title-width;
     height: 100%;
-
+    position: sticky;
+    left: 0px;
     article {
         grid-column-start: 1;
     }

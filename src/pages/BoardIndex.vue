@@ -38,9 +38,8 @@ export default {
 </script>
 
 <template>
-  <main class="board-index">
     <Sidebar />
-    <section class="board-container">
+    <main class="board-container">
       <section class="board-nav">
         <!-- <InPlaceEdit v-model="boardTitle" /> -->
 
@@ -52,8 +51,7 @@ export default {
         </nav>
       </section>
       <RouterView />
-    </section>
-  </main>
+    </main>
 </template>
 
 

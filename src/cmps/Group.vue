@@ -1,12 +1,11 @@
 <template>
     <section class="group-list">
-        <InPlaceEdit v-model="groupTitle" />
+        <InPlaceEdit v-model="groupTitle" class="group-header"/>
         <!-- <div v-icon="trash"></div> -->
         <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
         <!-- render group labels by labels array -->
 
-        <article class="group-accent-color first"></article>
         <section class="label-line">
             <div class="task-column">
                 <button class="button-as-link d-cmp">🚮</button>
@@ -26,8 +25,6 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <!-- <article class="group-accent-color last" v-if="idx >= group.tasks.length-1"></article> -->
-                    <article class="group-accent-color"></article>
                     <div class="task-column">
                         <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
@@ -40,7 +37,6 @@
 
                 </section>
             </Draggable>
-            <article class="group-accent-color last"></article>
             <section class="task new-task">
                 <button class="d-cmp button-as-link task-trash">🚮</button>
                 <Checkbox />
