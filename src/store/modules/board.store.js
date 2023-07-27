@@ -19,6 +19,9 @@ export const boardStore = {
     boardTitle({ board }) {
       return board?.title
     },
+    miniBoard({board}){
+      return {title:board?.title,desc:board?.desc,_id:board?._id}
+    },
     boards({ boards }) {
       return boards
     },
