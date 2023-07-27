@@ -17,7 +17,7 @@ export const boardStore = {
       return board
     },
     boardTitle({ board }) {
-      return board.title
+      return board?.title
     },
     boards({ boards }) {
       return boards

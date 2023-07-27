@@ -9,12 +9,15 @@ export default {
     }
   },
   computed: {
-    board() {
-      return this.$store.getters.board
-    },
+    // board() {
+    //   return this.$store.getters.board
+    // },
     boardTitle() {
       return this.$store.getters.boardTitle
     },
+    boardId() {
+            return this.$route.params.boardId
+        },
   },
   components: {
     Sidebar,
@@ -38,14 +41,14 @@ export default {
   <main class="board-index">
     <Sidebar />
     <section class="board-container">
-      <section class="board-nav">
+      <section class="board-nav" >
         <!-- <InPlaceEdit v-model="boardTitle" /> -->
 
         <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
-          <RouterLink to="/board/">Table</RouterLink>
-          <RouterLink to="/board/kanban">Kanban</RouterLink>
+          <RouterLink :to="'/board/'+boardId">Table</RouterLink>
+          <RouterLink :to="'/board/'+boardId+'/kanban'">Kanban</RouterLink>
         </nav>
       </section>
       <RouterView />

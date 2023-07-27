@@ -30,8 +30,19 @@ export default {
         boardList() {
             return this.$store.getters.boardList
         },
-
-    }
+        boardId() {
+            return this.$route.params.boardId
+        },
+    },
+    watch: {
+    boardId: {
+      handler() {
+        if(!this.boardId)this.$router.push('/board/'+this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
+        this.loadBoard(this.boardId)
+      },
+      immediate: true,
+    },
+  },
 }
 </script>
 <template>
@@ -48,11 +59,12 @@ export default {
         <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
 
         <!-- <button  @click="onAddBoard">ADD NEW BOARD</button> -->
-        <ul class="clean-list">
+        <ul class="clean-list" v-if="boardList">
             <li class="flex" v-for="board in boardList">
                 <div v-html="getSvg('boardType')"></div>
-                <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p>
-                <div @click="onRemoveBoard(board._id)"  v-html="getSvg('trash')"></div>
+                <RouterLink class="board-link" :to="'/board/'+board._id">{{ board.title }}</RouterLink>
+                <!-- <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p> -->
+                <div @click="onRemoveBoard(board._id)" v-html="getSvg('trash')"></div>
             </li>
         </ul>
     </aside>
