@@ -1,25 +1,26 @@
 // SETUP
-@import 'setup/typography';
-@import 'setup/variables';
-@import 'setup/mixins';
-@import 'setup/functions';
+@import "setup/typography";
+@import "setup/variables";
+@import "setup/mixins";
+@import "setup/functions";
 
 // BASICS
-@import 'basics/helpers';
-@import 'basics/base';
-@import 'basics/layout';
+@import "basics/helpers";
+@import "basics/base";
+@import "basics/layout";
 
 // COMPONENTS
-@import 'cmps/color-picker';
-@import 'cmps/header';
-@import 'cmps/sidebar';
-@import 'cmps/user-msg';
-@import 'cmps/board-index';
-@import 'cmps/kanban';
-@import 'cmps/table';
-@import 'cmps/group';
-@import 'cmps/task';
+@import "cmps/color-picker";
+@import "cmps/header";
+@import "cmps/sidebar";
+@import "cmps/user-msg";
+@import "cmps/board-index";
+@import "cmps/kanban";
+@import "cmps/table";
+@import "cmps/group";
+@import "cmps/task";
 
 //DYNAMIC COMPONENTS
-@import 'cmps/dynamicCmps/status';
-@import 'cmps/dynamicCmps/txt';
+@import "cmps/dynamicCmps/status";
+@import "cmps/dynamicCmps/txt";
+@import "cmps/dynamicCmps/person";

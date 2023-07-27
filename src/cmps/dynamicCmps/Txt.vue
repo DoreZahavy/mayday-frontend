@@ -1,7 +1,7 @@
 <template>
     <section class="txt" v-if="txt">
         <span ref="editor" :class="{ editable: editing }" :contenteditable="editing" @click="startEditing"
-            @blur="stopEditing" class="editable-text">
+            @blur="stopEditing" @keydown="checkEnter" class="editable-text">
             {{ txt }}
         </span>
     </section>
@@ -40,6 +40,11 @@ export default {
             this.$emit('update', { cmpType: 'Txt', data: this.txt })
             this.editing = false
         },
+        checkEnter(event) {
+            if (event.keyCode === 13) {
+                this.stopEditing()
+            }
+        }
     },
 }
 </script>
