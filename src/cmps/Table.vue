@@ -38,16 +38,17 @@ export default {
       this.$store.dispatch({ type: 'saveTask', groupId, taskData })
     },
     saveGroup(groupId, title) {
-      // console.log('title:', title)
       this.$store.dispatch({ type: 'saveGroup', groupId, title })
     },
     removeGroup(groupId) {
       this.$store.dispatch({ type: 'removeGroup', groupId })
 
     },
+    addGroup(){
+      this.$store.dispatch({ type: 'addGroup' })
+
+    },
     removeTask(groupId, taskId) {
-      console.log('groupId:', groupId)
-      console.log('taskId:', taskId)
       this.$store.dispatch({ type: 'removeTask', groupId, taskId })
 
     },
@@ -70,7 +71,7 @@ export default {
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
 
-    <button @click="saveGroup" class="add-group-btn">
+    <button @click="addGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
       <span>Add new group</span>
     </button>

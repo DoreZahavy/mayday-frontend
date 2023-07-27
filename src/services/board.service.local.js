@@ -1,15 +1,16 @@
 import { utilService } from './util.service.js'
+import jsonBoards from '../../demo-board-v1.2.json'
 import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
-fetch("../../demo-board-v1.2.json")
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        _createBoards(data)
-    })
+// fetch("../../demo-board-v1.2.json")
+//     .then(response => {
+//         return response.json()
+//     })
+//     .then(data => {
+//         _createBoards(data)
+//     })
 
 
 export const boardService = {
@@ -25,36 +26,49 @@ export const boardService = {
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
-    loadJson
+    // loadJson
 }
-async function loadJson() {
+// async function loadJson() {
 
     // _createBoards(data)
-    return fetch("../../demo-board-v1.2.json")
-        .then(response => {
-            return response.json()
-        })
-        .then(data => {
-            let boards = query()
-            if (!boards || !boards.length) {
-                boards = data
-                utilService.saveToStorage(BOARD_KEY, boards)
-            }
-            return boards
-        })
-}
+//     try {
 
-function _createBoards(data) {
-    let boards = storageService.query(BOARD_KEY)
-    if (!boards || !boards.length) {
-        boards = data
-        utilService.saveToStorage(BOARD_KEY, boards)
-    }
-}
+//         let res = await fetch("../../demo-board-v1.2.json")
+//         boards = res.json()
+//     } catch {
+//         console.log('failed loading boards')
+//     }
+//     return fetch("../../demo-board-v1.2.json")
+//         .then(response => {
+//             return response.json()
+//         })
+//         .then(data => {
+//             let boards = query()
+//             if (!boards || !boards.length) {
+//                 boards = data
+//                 utilService.saveToStorage(BOARD_KEY, boards)
+//             }
+//             return boards
+//         })
+// }
+
+// function _createBoards(data) {
+//     let boards = storageService.query(BOARD_KEY)
+//     if (!boards || !boards.length) {
+//         boards = data
+//         utilService.saveToStorage(BOARD_KEY, boards)
+//     }
+// }
 
 
 async function query() {
-    return await storageService.query(BOARD_KEY)
+    let boards = await storageService.query(BOARD_KEY)
+    if (!boards || !boards.length) {
+        boards = jsonBoards
+        utilService.saveToStorage(BOARD_KEY, boards)
+    }
+    return boards
+    // return await storageService.query(BOARD_KEY)
 }
 
 async function getById(boardId) {

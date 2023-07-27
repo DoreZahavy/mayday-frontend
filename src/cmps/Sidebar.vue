@@ -21,10 +21,12 @@ export default {
         },
         async onAddBoard() {
             try{
-                const boardId = await this.$store.dispatch({ type: 'addBoard' })
-                this.$router.push('/board/' + boardId)
+                const board = await this.$store.dispatch({ type: 'addBoard' })
+                console.log('board._id:', board._id)
+                this.$router.push('/board/' + board._id)
                 showSuccessMsg('Added board successfully')
-            } catch{
+            } catch(err){
+                console.log(err);
                 showErrorMsg('Failed adding new board')
             }
         },
