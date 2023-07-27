@@ -73,6 +73,7 @@
       {
         "_id": "zIBuXJXfMu",
         "title": "Product Development",
+        "color":"#007f00",
         "tasks": [
           {
             "_id": "pZHEuw3xee",
@@ -137,6 +138,7 @@
       {
         "_id": "gMaUZyQxoV",
         "title": "Operations and Infrsctructure",
+        "color":"#800080",
         "tasks": [
           {
             "_id": "dLD1YaukLD",

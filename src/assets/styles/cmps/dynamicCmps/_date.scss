@@ -3,8 +3,9 @@ section .date-container {
     height: 100%;
     width: 100%;
 
+
     .date {
-        div:first-of-type {
+        div:nth-of-type(2) {
             opacity: 0;
         }
 
@@ -18,7 +19,8 @@ section .date-container {
             vertical-align: middle;
         }
     }
-    span{
+
+    span {
         margin-block-start: 18px;
     }
 }
