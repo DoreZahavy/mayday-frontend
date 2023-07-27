@@ -44,7 +44,7 @@
                 "title": "Priority"
             },
             {
-                "type": "Person",
+                "type": "Members",
                 "title": "Person"
             },
             {
@@ -56,15 +56,15 @@
                 "title": "Timeline"
             },
             {
-                "type": "Numbers",
+                "type": "Number",
                 "title": "Numbers"
             },
             {
-                "type": "Txt",
+                "type": "Text",
                 "title": "Text"
             },
             {
-                "type": "Files",
+                "type": "Attachments",
                 "title": "Files"
             }
         ],
@@ -78,7 +78,7 @@
                         "title": "Feature Enhancement - Notifications",
                         "updates": [],
                         "components": {
-                            "Person": [
+                            "Members": [
                                 {
                                     "_id": "D91QMRJ3y5",
                                     "fullname": "Din Ben-Dor",
@@ -99,9 +99,9 @@
                                 "dueDate": 1690752000000,
                                 "isHourIncluded": false
                             },
-                            "Numbers": 250000,
-                            "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
-                            "Files": []
+                            "Number": 250000,
+                            "Text": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
+                            "Attachments": []
                         }
                     },
                     {
@@ -109,7 +109,7 @@
                         "title": "User Interface (UI) Redesign",
                         "updates": [],
                         "components": {
-                            "Person": [
+                            "Members": [
                                 {
                                     "_id": "Nn3N3mTxUn",
                                     "fullname": "Yona Stephenson",
@@ -130,9 +130,9 @@
                                 "dueDate": 1690492800000,
                                 "isHourIncluded": false
                             },
-                            "Numbers": 9000000,
-                            "Txt": "Analyze user feedback and design a more intuitive and modern UI for the app",
-                            "Files": []
+                            "Number": 9000000,
+                            "Text": "Analyze user feedback and design a more intuitive and modern UI for the app",
+                            "Attachments": []
                         }
                     }
                 ]
@@ -146,7 +146,7 @@
                         "title": "Cloud Migration",
                         "updates": [],
                         "components": {
-                            "Person": [
+                            "Members": [
                                 {
                                     "_id": "D91QMRJ3y5",
                                     "fullname": "Din Ben-Dor",
@@ -172,9 +172,9 @@
                                 "dueDate": 1691088000000,
                                 "isHourIncluded": false
                             },
-                            "Numbers": 11000000,
-                            "Txt": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
-                            "Files": []
+                            "Number": 11000000,
+                            "Text": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
+                            "Attachments": []
                         }
                     },
                     {
@@ -182,7 +182,7 @@
                         "title": "Employee Performance Reviews",
                         "updates": [],
                         "components": {
-                            "Person": [
+                            "Members": [
                                 {
                                     "_id": "Nn3N3mTxUn",
                                     "fullname": "Yona Stephenson",
@@ -213,9 +213,9 @@
                                 "dueDate": 1692124800000,
                                 "isHourIncluded": false
                             },
-                            "Numbers": 11000000,
-                            "Txt": "Be gentle  #:)",
-                            "Files": []
+                            "Number": 11000000,
+                            "Text": "Be gentle  #:)",
+                            "Attachments": []
                         }
                     }
                 ]
