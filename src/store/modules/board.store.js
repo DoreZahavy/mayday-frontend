@@ -42,7 +42,7 @@ export const boardStore = {
       return board.cmpConfig.map(a => a.type)
     },
     labels({ board }) {
-      return board.cmpConfig.map(a => a.type)
+      return board.cmpConfig.map(a => a.title)
     },
   },
 
@@ -157,7 +157,7 @@ export const boardStore = {
       try {
         const boards = await boardService.query()
         context.commit({ type: "setBoards", boards })
-        context.commit({ type: "setBoard", board:boards[0] })
+        context.commit({ type: "setBoard", board: boards[0] })
       } catch (err) {
         console.log(err)
         throw err
@@ -244,10 +244,10 @@ export const boardStore = {
         throw err
       }
     },
-    async addTask(context, { groupId , title}) {
+    async addTask(context, { groupId, title }) {
       try {
         const boardId = context.state.board._id
-        const board = await boardService.addTask(boardId, groupId,title)
+        const board = await boardService.addTask(boardId, groupId, title)
         context.commit({ type: "saveBoard", board })
         return board
       } catch (err) {

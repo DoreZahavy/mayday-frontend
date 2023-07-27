@@ -63,14 +63,14 @@
 import { Container, Draggable } from "vue3-smooth-dnd"
 import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
-import Person from "@/cmps/dynamicCmps/Person.vue";
+import Members from "@/cmps/dynamicCmps/Members.vue";
 import Date from "@/cmps/dynamicCmps/Date.vue";
 import Status from "@/cmps/dynamicCmps/Status.vue";
 import Priority from "@/cmps/dynamicCmps/Priority.vue";
-import Txt from "@/cmps/dynamicCmps/Txt.vue";
+import Text from "@/cmps/dynamicCmps/Text.vue";
 import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
-import Numbers from "@/cmps/dynamicCmps/Numbers.vue";
-import Files from "@/cmps/dynamicCmps/Files.vue";
+import Number from "@/cmps/dynamicCmps/Number.vue";
+import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 export default {
 
@@ -120,13 +120,13 @@ export default {
     components: {
         Checkbox,
         TaskTitle,
-        Person,
+        Members,
         Date,
         Status,
         Priority,
-        Files,
-        Numbers,
-        Txt,
+        Attachments,
+        Number,
+        Text,
         Timeline,
         InPlaceEdit,
         Container,

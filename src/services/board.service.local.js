@@ -22,7 +22,7 @@ export const boardService = {
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
-    
+
 }
 
 
@@ -56,15 +56,15 @@ async function saveBoard(board, boardId) {
 
         return await storageService.put(BOARD_KEY, board)
     }
-   
+
 }
 
 async function saveGroup(boardId, groupId, title) {
     const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(g => g._id === groupId)
-    const group =  board.groups[groupIdx]
+    const group = board.groups[groupIdx]
     group.title = title
-     return await saveBoard(board)
+    return await saveBoard(board)
     // if (title) { // if received new title
 
     // } else { // add new group
@@ -75,9 +75,9 @@ async function saveGroup(boardId, groupId, title) {
 async function addGroup(boardId) {
     const board = await getById(boardId)
 
-        board.groups.push(getEmptyGroup())
-        return await saveBoard(board)
-    
+    board.groups.push(getEmptyGroup())
+    return await saveBoard(board)
+
 }
 
 
@@ -110,7 +110,7 @@ async function saveTask(boardId, groupId, taskData) {
     return await saveBoard(board)
 }
 
-async function addTask(boardId,groupId,title){
+async function addTask(boardId, groupId, title) {
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
     group.tasks.push(getEmptyTask(title))
@@ -140,7 +140,7 @@ function getEmptyBoard(title = 'New Board') {
                 title: "Priority"
             },
             {
-                type: "Person",
+                type: "Members",
                 title: "Person"
             },
             {
@@ -152,15 +152,15 @@ function getEmptyBoard(title = 'New Board') {
                 title: "Timeline"
             },
             {
-                type: "Numbers",
+                type: "Number",
                 title: "Numbers"
             },
             {
-                type: "Txt",
+                type: "Text",
                 title: "Text"
             },
             {
-                type: "Files",
+                type: "Attachments",
                 title: "Files"
             }
         ],
@@ -185,7 +185,7 @@ function getEmptyTask(title) {
     }
 }
 
-function _getEmptyPersonComponent() {
+function _getEmptyMembersComponent() {
     return {
         _id: '',
         fullname: '',
@@ -213,28 +213,28 @@ function _getEmptyTimelineComponent() {
     }
 }
 
-function _getEmptyNumbersComponent() {
+function _getEmptyNumberComponent() {
     return 0
 }
 
-function _getEmptyTxtComponent() {
+function _getEmptyTextComponent() {
     return ''
 }
 
-function _getEmptyFilesComponent() {
+function _getEmptyAttachmentsComponent() {
     return []
 }
 
 function _getEmptyComponents() {
     return {
-        Person: [_getEmptyPersonComponent()],
+        Members: [_getEmptyMembersComponent()],
         Status: _getEmptyStatusComponent(),
         Priority: _getEmptyPriorityComponent(),
         Date: _getEmptyDateComponent(),
         Timeline: _getEmptyTimelineComponent(),
-        Numbers: _getEmptyNumbersComponent(),
-        Txt: _getEmptyTxtComponent(),
-        Files: _getEmptyFilesComponent()
+        Number: _getEmptyNumberComponent(),
+        Text: _getEmptyTextComponent(),
+        Attachments: _getEmptyAttachmentsComponent()
     }
 }
 
