@@ -5,15 +5,18 @@ export default {
 
   data() {
     return {
-      title:''
+      title: ''
     }
   },
   computed: {
-    board() {
-      return this.$store.getters.board
-    },
+    // board() {
+    //   return this.$store.getters.board
+    // },
     boardTitle() {
       return this.$store.getters.boardTitle
+    },
+    boardId() {
+      return this.$route.params.boardId
     },
   },
   components: {
@@ -44,8 +47,8 @@ export default {
         <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
-          <RouterLink to="/board/">Table</RouterLink>
-          <RouterLink to="/board/kanban">Kanban</RouterLink>
+          <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
+          <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
         </nav>
       </section>
       <RouterView />

@@ -3,21 +3,21 @@
     // overflow-x: scroll;
     width: 80%;
     overflow-x: scroll;
-    .grp-scroll{
-
+    .grp-scroll {
     }
-    .task{
-        
-        
+    .task {
     }
-        // display: inline-block;
-        // border: 1px solid red; for debugging purposes
+    // display: inline-block;
+    // border: 1px solid red; for debugging purposes
 
-    >* {
+    > * {
         max-width: none;
         width: max-content;
     }
-    .add-group-btn{
-        
+    .add-group-btn {
     }
+}
+
+.groups {
+    margin-top: 20px;
 }

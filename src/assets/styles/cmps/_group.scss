@@ -3,6 +3,8 @@
         overflow-x: visible;
     }
     .add-group-btn{
+        display: flex;
+        align-items: center;
         width: 142px;
         height: $btnSml;
     }

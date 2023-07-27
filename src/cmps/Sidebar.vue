@@ -1,5 +1,6 @@
 <script>
 import { svgService } from '../services/svg.service'
+import {showSuccessMsg, showErrorMsg} from '../services/event-bus.service.js'
 export default {
     data() {
         return {
@@ -18,9 +19,14 @@ export default {
             this.$store.dispatch({ type: 'removeBoard', boardId })
 
         },
-        onAddBoard() {
-            this.$store.dispatch({ type: 'addBoard' })
-
+        async onAddBoard() {
+            try{
+                const boardId = await this.$store.dispatch({ type: 'addBoard' })
+                this.$router.push('/board/' + boardId)
+                showSuccessMsg('Added board successfully')
+            } catch{
+                showErrorMsg('Failed adding new board')
+            }
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
@@ -30,8 +36,19 @@ export default {
         boardList() {
             return this.$store.getters.boardList
         },
-
-    }
+        boardId() {
+            return this.$route.params.boardId
+        },
+    },
+    watch: {
+        boardId: {
+            handler() {
+                if (!this.boardId) this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
+                else this.loadBoard(this.boardId)
+            },
+            immediate: true,
+        },
+    },
 }
 </script>
 <template>
@@ -40,7 +57,7 @@ export default {
         <div class="divider-div">
             <ul class="clean-list sidebar-list nav-list">
                 <li>
-                    <div>    
+                    <div>
                         <span v-html="getSvg('home')"></span>
                         <RouterLink to="/">Home</RouterLink>
                     </div>
@@ -52,11 +69,10 @@ export default {
         <!-- <button  @click="onAddBoard">ADD NEW BOARD</button> -->
         <ul class="clean-list sidebar-list">
             <li class="flex" v-for="board in boardList">
-                <div>    
-                    <span v-html="getSvg('boardType')"></span>
-                    <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p>
-                </div>
-                <div @click="onRemoveBoard(board._id)"  v-html="getSvg('trash')"></div>
+                <div v-html="getSvg('boardType')"></div>
+                <RouterLink class="board-link" :to="'/board/' + board._id">{{ board.title }}</RouterLink>
+                <!-- <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p> -->
+                <div @click="onRemoveBoard(board._id)" v-html="getSvg('trash')"></div>
             </li>
         </ul>
     </aside>

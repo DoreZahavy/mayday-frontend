@@ -17,7 +17,7 @@ export const boardStore = {
       return board
     },
     boardTitle({ board }) {
-      return board.title
+      return board?.title
     },
     boards({ boards }) {
       return boards
@@ -193,7 +193,7 @@ export const boardStore = {
       try {
         const newBoard = await boardService.addBoard()
         commit({ type: "addBoard", newBoard })
-        return newBoard
+        return newBoard._id
       } catch (err) {
         console.log(err)
         return Promise.reject()
