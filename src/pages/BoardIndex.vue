@@ -47,8 +47,8 @@ export default {
         <h1 class="board-title">{{ boardTitle }}</h1>
 
         <nav class="board-nav">
-          <RouterLink :to="'/board/' + boardId">Table</RouterLink>
-          <RouterLink :to="'/board/' + boardId + '/kanban'">Kanban</RouterLink>
+          <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
+          <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
         </nav>
       </section>
       <RouterView />
