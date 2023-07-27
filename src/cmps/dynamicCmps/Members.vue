@@ -7,7 +7,7 @@
 <script>
 import MemberPreview from "@/cmps/MemberPreview.vue";
 export default {
-  name: "members",
+  name: "Members",
   emits: ["update"],
   props: {
     info: Array,
@@ -16,7 +16,7 @@ export default {
   components: {
     MemberPreview,
   },
-};
+}
 </script>
   
 <style >
