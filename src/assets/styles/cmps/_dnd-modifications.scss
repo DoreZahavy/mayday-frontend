@@ -1,3 +1,12 @@
-.smooth-dnd-container.vertical > .smooth-dnd-draggable-wrapper{
+.smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
     overflow: visible !important;
+}
+
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
+    opacity: 0;
+    position: absolute;
+    width: 141px;
+    translate: -85px -9px;
+    height: $row-height;
 }
