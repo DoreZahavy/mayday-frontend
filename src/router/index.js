@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/pages/HomeView.vue'
 import BoardIndex from '@/pages/BoardIndex.vue'
 import LoginSignup from '@/pages/LoginSignup.vue'
-import Table from '@/cmps/Table.vue'
+import BoardDetails from '@/cmps/BoardDetails.vue'
 import Kanban from '@/cmps/Kanban.vue'
 
 const router = createRouter({
@@ -25,8 +25,8 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'Table',
-          component: Table,
+          name: 'BoardDetails',
+          component: BoardDetails,
         },
         {
           path: 'kanban',
