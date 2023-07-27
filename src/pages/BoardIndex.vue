@@ -2,6 +2,7 @@
 import Sidebar from '@/cmps/Sidebar.vue'
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import BoardHeader from '@/cmps/BoardHeader.vue'
+import MainHeader from '@/cmps/MainHeader.vue'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
@@ -26,7 +27,8 @@ export default {
   components: {
     Sidebar,
     InPlaceEdit,
-    BoardHeader
+    BoardHeader,
+    MainHeader
   },
   mounted() {
   },
@@ -51,17 +53,20 @@ export default {
 </script>
 
 <template>
-  <Sidebar />
-  <main class="board-container">
-    <section class="board-nav">
-      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
+  <main class="main-layout">
+    <MainHeader/>
+    <Sidebar />
+    <section class="board-container">
+      <section class="board-nav">
+        <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
       <nav class="board-nav">
         <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
         <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
     </section>
     <RouterView />
-  </main>
+  </section>
+</main>
 </template>
 
 

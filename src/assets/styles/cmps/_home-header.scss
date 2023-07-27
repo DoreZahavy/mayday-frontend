@@ -1,0 +1,23 @@
+.home-header{
+    img{
+        height: em(26px,14px);
+        width: em(26px,14px);
+        transform: translate(0px, 5px);
+    }
+    .home-logo{
+        font-family: poppins-bold;
+        font-size: em(26px,14px);
+        font-weight: 400;
+        color: $primary-text-color;
+    }
+    .login-link{
+        color: #535768;
+        font-weight: 300;
+        padding: em(8px,14px) em(10px,14px);
+        border-radius:0.571428em ;
+        &:hover{
+            color: $tertiary-btn-hover-color;
+            background-color: #F0F3FF;
+        }
+    }
+}

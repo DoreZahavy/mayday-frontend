@@ -1,10 +1,15 @@
 <template>
-  <div class="home">
-    <header>header logo login get-started</header>
+  <div class="home-page">
+    <HomeHeader/>
     <h1>HOME</h1>
   </div>
 </template>
 
-<style>
-
-</style>
+<script>
+import HomeHeader from '@/cmps/HomeHeader.vue'
+export default{
+  components: {
+    HomeHeader
+  }
+}
+</script>

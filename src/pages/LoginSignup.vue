@@ -1,4 +1,5 @@
 <script>
+import LoginHeader from '@/cmps/LoginHeader.vue'
 export default {
     name: 'LoginSignup',
 
@@ -38,12 +39,16 @@ export default {
                 showErrorMsg(`Cannot signup`)
             }
         },
+    },
+    components:{
+        LoginHeader
     }
 }
 </script>
 
 <template>
     <section class="login-signup">
+        <LoginHeader/>
         <form v-if="isSignup" @submit.prevent="signup">
             <h2>Signup</h2>
             <input type="text" v-model="signupInfo.fullname" placeholder="Full name" />

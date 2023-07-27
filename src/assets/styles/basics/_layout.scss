@@ -5,6 +5,7 @@
     "header header"
     "sidebar board";
     grid-template-columns: $sidebar-width 1fr;
+    grid-template-rows: 48px auto;
     height: 100vh;
     overflow: hidden;
 }

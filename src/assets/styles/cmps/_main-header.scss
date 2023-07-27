@@ -1,0 +1,20 @@
+.main-header{
+    margin-inline-start: 12px;
+    grid-area: header;
+    height: 48px;
+    color: $primary-text-color;
+    .board-logo{
+        line-height: lh(52px,14px);
+        letter-spacing: -0.2px;
+        font-family: poppins;
+        font-size: em(16px,14px);
+        margin-left: 4;
+        span:nth-child(1){
+            font-weight: 700;
+            padding-inline: 0.2857em;
+        }
+        span:nth-child(2){
+            font-weight: 300;
+        }
+    }
+}

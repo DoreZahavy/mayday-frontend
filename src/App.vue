@@ -20,9 +20,10 @@ export default {
 </script>
 
 <template>
-  <main class="main-layout">
+  <main >
+    <!-- //class="main-layout" -->
     <!-- header for dev -->
-    <AppHeader />
+    <!-- <AppHeader /> -->
     <RouterView />
 
     <UserMsg />

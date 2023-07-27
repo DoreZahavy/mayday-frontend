@@ -1,5 +1,5 @@
 .app-header {
-    grid-area: header;
+    // grid-area: header;
     .main-nav {
         display: flex;
         gap: 20px;
@@ -11,4 +11,5 @@
         padding: 0;
     }
     
+    height: 40px;
 }
