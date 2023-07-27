@@ -1,6 +1,18 @@
 .el-date-editor{
     --el-date-editor-width: 100%;
+    
+}
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
     .el-icon svg{
         height: 0;
     }
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
 }

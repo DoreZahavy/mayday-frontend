@@ -1,5 +1,24 @@
-.date{
-    div:first-of-type{
-        opacity: 0;
+section .date-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    .date {
+        div:first-of-type {
+            opacity: 0;
+        }
+
+        pointer-events:none;
+
+        span {
+            width: 100%;
+            display: inline-block;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+    span{
+        margin-block-start: 18px;
     }
 }
