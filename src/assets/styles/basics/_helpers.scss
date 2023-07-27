@@ -262,11 +262,11 @@
 }
 
 .peach:hover {
-    background-color: lighten(#ffadad, 10%);
+    background-color: #FCC3C4;
 }
 
 .peach.darker {
-    background-color: darken(#ffadad, 10%);
+    background-color: #D9ABAC;
 }
 
 // Sunset
@@ -353,11 +353,11 @@
 }
 
 .berry.lighter {
-    background-color: lighten(#7e3b8a, 10%);
+    background-color: #a273ac;
 }
 
 .berry.darker {
-    background-color: darken(#7e3b8a, 10%);
+    background-color: #916B98;
 }
 
 // Indigo
@@ -366,11 +366,11 @@
 }
 
 .indigo.lighter {
-    background-color: lighten(#5559df, 10%);
+    background-color: #8588E7;
 }
 
 .indigo.darker {
-    background-color: darken(#5559df, 10%);
+    background-color: #7A7CC8;
 }
 
 // Navy
@@ -379,11 +379,11 @@
 }
 
 .navy.lighter {
-    background-color: lighten(#225091, 10%);
+    background-color: #6282B0;
 }
 
 .navy.darker {
-    background-color: darken(#225091, 10%);
+    background-color: #5D779C;
 }
 
 // Bright Blue
@@ -420,11 +420,11 @@
 }
 
 .aquamarine.lighter {
-    background-color: lighten(#4eccc6, 10%);
+    background-color: #81D9D6;
 }
 
 .aquamarine.darker {
-    background-color: darken(#4eccc6, 10%);
+    background-color: #75BCBA;
 }
 
 // Chili Blue
@@ -446,11 +446,11 @@
 }
 
 .river.lighter {
-    background-color: lighten(#68a1bd, 10%);
+    background-color: #93BBCF;
 }
 
 .river.darker {
-    background-color: darken(#68a1bd, 10%);
+    background-color: #84A4B5;
 }
 
 // Winter
@@ -459,11 +459,11 @@
 }
 
 .winter.lighter {
-    background-color: lighten(#9aadbd, 10%);
+    background-color: #B6C3CF;
 }
 
 .winter.darker {
-    background-color: darken(#9aadbd, 10%);
+    background-color: #A0ABB5;
 }
 
 // American Gray
@@ -511,11 +511,11 @@
 }
 
 .orchid.lighter {
-    background-color: lighten(#d974b0, 10%);
+    background-color: #E29BC6;
 }
 
 .orchid.darker {
-    background-color: darken(#d974b0, 10%);
+    background-color: #C48BAE;
 }
 
 // Tan
@@ -524,11 +524,11 @@
 }
 
 .tan.lighter {
-    background-color: lighten(#ad967a, 10%);
+    background-color: #C3B3A0;
 }
 
 .tan.darker {
-    background-color: darken(#ad967a, 10%);
+    background-color: #AB9E90;
 }
 
 // Sky
@@ -537,11 +537,11 @@
 }
 
 .sky.lighter {
-    background-color: lighten(#a1e3f6, 10%);
+    background-color: #BBE9F7;
 }
 
 .sky.darker {
-    background-color: darken(#a1e3f6, 10%);
+    background-color: #A4C9D5;
 }
 
 // Coffee
@@ -550,11 +550,11 @@
 }
 
 .coffee.lighter {
-    background-color: lighten(#bd816e, 10%);
+    background-color: #CEA498;
 }
 
 .coffee.darker {
-    background-color: darken(#bd816e, 10%);
+    background-color: #B49289;
 }
 
 // Royal
@@ -563,11 +563,11 @@
 }
 
 .royal.lighter {
-    background-color: lighten(#2b76e5, 10%);
+    background-color: #689DEB;
 }
 
 .royal.darker {
-    background-color: darken(#2b76e5, 10%);
+    background-color: #628CCB;
 }
 
 // Teal
@@ -576,11 +576,11 @@
 }
 
 .teal.lighter {
-    background-color: lighten(#175a63, 10%);
+    background-color: #5A8990;
 }
 
 .teal.darker {
-    background-color: darken(#175a63, 10%);
+    background-color: #577C82;
 }
 
 // Lavender
@@ -589,11 +589,11 @@
 }
 
 .lavender.lighter {
-    background-color: lighten(#bda8f9, 10%);
+    background-color: #CEC0F9;
 }
 
 .lavender.darker {
-    background-color: darken(#bda8f9, 10%);
+    background-color: #B4A8D6;
 }
 
 // Steel
@@ -602,11 +602,11 @@
 }
 
 .steel.lighter {
-    background-color: lighten(#a9bee8, 10%);
+    background-color: #C0CFED;
 }
 
 .steel.darker {
-    background-color: darken(#a9bee8, 10%);
+    background-color: #A8B4CD;
 }
 
 // Liliac
@@ -615,11 +615,11 @@
 }
 
 .liliac.lighter {
-    background-color: lighten(#9d99b9, 10%);
+    background-color: #B8B5CC;
 }
 
 .liliac.darker {
-    background-color: darken(#9d99b9, 10%);
+    background-color: #A29FB3;
 }
 
 // Pecan
@@ -628,9 +628,35 @@
 }
 
 .pecan.lighter {
-    background-color: lighten(#563e3e, 10%);
+    background-color: #867576;
 }
 
 .pecan.darker {
-    background-color: darken(#563e3e, 10%);
+    background-color: #7A6D6E;
+}
+
+// Purple
+.purple {
+    background-color: #A25DDC;
+}
+
+.purple.lighter {
+    background-color: #BB8BE5;
+}
+
+.purple.darker {
+    background-color: #A57EC6;
+}
+
+// Dark Indigo
+.dark-indigo {
+    background-color: #401694;
+}
+
+.dark-indigo.lighter {
+    background-color: #7759B3;
+}
+
+.dark-indigo.darker {
+    background-color: #6E579E;
 }
