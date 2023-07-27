@@ -1,3 +1,18 @@
-.login-header{
-    background-color: #f7f7f7;
+.login-header {
+
+    border-bottom: 1px solid #e0e0e0;
+    height: 65px;
+    background: #f7f7f7;
+    .login-logo {
+        font-family: poppins-bold;
+        font-size: em(34px,14px);
+        font-weight: 400;
+        color: $primary-text-color;
+    }
+    img {
+        margin-inline-start: 20px;
+        margin-inline-end: .25em;
+        width: 35px;
+        height: 35px;
+    }
 }

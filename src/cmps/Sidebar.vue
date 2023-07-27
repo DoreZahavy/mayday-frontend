@@ -1,10 +1,11 @@
 <script>
 import { svgService } from '../services/svg.service'
-import {showSuccessMsg, showErrorMsg} from '../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import SidebarFilter from '@/cmps/SidebarFilter.vue'
 export default {
     data() {
         return {
-            // boards: [this.$store.getters.board]
+            filterBy: ''
         }
     },
     created() {
@@ -16,35 +17,40 @@ export default {
             this.$store.commit({ type: 'setBoardById', boardId })
         },
         async onRemoveBoard(boardId) {
-            try{
+            try {
 
                 await this.$store.dispatch({ type: 'removeBoard', boardId })
                 showSuccessMsg('Board deleted')
 
-            }catch(err){
+            } catch (err) {
                 showErrorMsg('Failed deleting board')
 
             }
 
         },
         async onAddBoard() {
-            try{
+            try {
                 const board = await this.$store.dispatch({ type: 'addBoard' })
                 console.log('board._id:', board._id)
                 this.$router.push('/board/' + board._id)
                 showSuccessMsg('board Added')
-            } catch(err){
+            } catch (err) {
                 console.log(err);
                 showErrorMsg('Failed adding new board')
             }
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
+        },
+        setFilter(filterBy) {
+            this.filterBy = filterBy
         }
     },
     computed: {
         boardList() {
-            return this.$store.getters.boardList
+            let boardsToDisplay = this.$store.getters.boardList
+            const regex = new RegExp(this.filterBy, 'i')
+            return boardsToDisplay.filter(board => regex.test(board.title))
         },
         boardId() {
             return this.$route.params.boardId
@@ -59,6 +65,9 @@ export default {
             immediate: true,
         },
     },
+    components: {
+        SidebarFilter
+    }
 }
 </script>
 <template>
@@ -74,6 +83,7 @@ export default {
                 </li>
             </ul>
         </div>
+        <SidebarFilter @filter="setFilter" />
         <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
 
         <!-- <button  @click="onAddBoard">ADD NEW BOARD</button> -->
