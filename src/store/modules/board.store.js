@@ -244,6 +244,17 @@ export const boardStore = {
         throw err
       }
     },
+    async addTask(context, { groupId , title}) {
+      try {
+        const boardId = context.state.board._id
+        const board = await boardService.addTask(boardId, groupId,title)
+        context.commit({ type: "saveBoard", board })
+        return board
+      } catch (err) {
+        console.log(err)
+        throw err
+      }
+    },
 
     async removeTask(context, { groupId, taskId }) {
       try {

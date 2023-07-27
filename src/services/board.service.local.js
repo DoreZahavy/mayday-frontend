@@ -4,13 +4,7 @@ import { storageService } from './async-storage.service.js'
 
 const BOARD_KEY = 'boardDB'
 
-// fetch("../../demo-board-v1.2.json")
-//     .then(response => {
-//         return response.json()
-//     })
-//     .then(data => {
-//         _createBoards(data)
-//     })
+
 
 
 export const boardService = {
@@ -20,45 +14,17 @@ export const boardService = {
     saveBoard,
     addBoard,
     saveGroup,
+    addGroup,
     removeGroup,
     saveTask,
+    addTask,
     removeTask,
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
-    // loadJson
+    
 }
-// async function loadJson() {
 
-    // _createBoards(data)
-//     try {
-
-//         let res = await fetch("../../demo-board-v1.2.json")
-//         boards = res.json()
-//     } catch {
-//         console.log('failed loading boards')
-//     }
-//     return fetch("../../demo-board-v1.2.json")
-//         .then(response => {
-//             return response.json()
-//         })
-//         .then(data => {
-//             let boards = query()
-//             if (!boards || !boards.length) {
-//                 boards = data
-//                 utilService.saveToStorage(BOARD_KEY, boards)
-//             }
-//             return boards
-//         })
-// }
-
-// function _createBoards(data) {
-//     let boards = storageService.query(BOARD_KEY)
-//     if (!boards || !boards.length) {
-//         boards = data
-//         utilService.saveToStorage(BOARD_KEY, boards)
-//     }
-// }
 
 
 async function query() {
@@ -90,23 +56,31 @@ async function saveBoard(board, boardId) {
 
         return await storageService.put(BOARD_KEY, board)
     }
-    // if (board._id) {
-    // } else {
-    // }
+   
 }
 
 async function saveGroup(boardId, groupId, title) {
     const board = await getById(boardId)
-    if (title) { // if received new title
+    const groupIdx = board.groups.findIndex(g => g._id === groupId)
+    const group =  board.groups[groupIdx]
+    group.title = title
+     return await saveBoard(board)
+    // if (title) { // if received new title
 
-        const groupIdx = board.groups.findIndex(g => g._id === groupId)
-        board.groups[groupIdx].title = title
-        return await saveBoard(board)
-    } else { // add new group
+    // } else { // add new group
+    //     board.groups.push(getEmptyGroup())
+    //     return await saveBoard(board)
+    // }
+}
+async function addGroup(boardId) {
+    const board = await getById(boardId)
+
         board.groups.push(getEmptyGroup())
         return await saveBoard(board)
-    }
+    
 }
+
+
 
 async function removeGroup(boardId, groupId) {
     const board = await getById(boardId)
@@ -136,7 +110,12 @@ async function saveTask(boardId, groupId, taskData) {
     return await saveBoard(board)
 }
 
-
+async function addTask(boardId,groupId,title){
+    const board = await getById(boardId)
+    const group = board.groups.find(grp => grp._id === groupId)
+    group.tasks.push(getEmptyTask(title))
+    return await saveBoard(board)
+}
 
 async function removeTask(boardId, groupId, taskId) {
     const board = await getById(boardId)

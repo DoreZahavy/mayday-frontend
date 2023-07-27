@@ -142,7 +142,7 @@ export default {
 
         },
         addTaskTxt() {
-            this.$emit('saveTask', this.addTaskTxt)
+            this.$emit('addTask', this.addTaskTxt)
 
         }
     }

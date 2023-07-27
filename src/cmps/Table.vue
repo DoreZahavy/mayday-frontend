@@ -37,6 +37,9 @@ export default {
     saveTask(groupId, taskData) {
       this.$store.dispatch({ type: 'saveTask', groupId, taskData })
     },
+    addTask(groupId, title) {
+      this.$store.dispatch({ type: 'addTask', groupId, title })
+    },
     saveGroup(groupId, title) {
       this.$store.dispatch({ type: 'saveGroup', groupId, title })
     },
