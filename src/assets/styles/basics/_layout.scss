@@ -1,6 +1,6 @@
 .main-layout {
     display: grid;
-    gap: rem(10px);
+    column-gap: rem(10px);
     grid-template-areas:
         "header header"
         "sidebar board";
