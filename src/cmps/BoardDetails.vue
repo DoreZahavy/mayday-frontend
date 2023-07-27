@@ -101,13 +101,13 @@ export default {
 <template>
   <Container @drop="onDropGrp" class="groups table" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
-      <button @click="removeGroup(group._id)">REMOVE GRP</button>
 
 
       <Group :group="group" :idx="idx" class="group"
         @addTask="addTask(group._id, $event)"
         @removeTask="removeTask(group._id, $event)" 
-        @update="updateBoard(group._id, $event)">
+        @update="updateBoard(group._id, $event)"
+        @removeGroup="removeGroup(group._id)">
       </Group>
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->

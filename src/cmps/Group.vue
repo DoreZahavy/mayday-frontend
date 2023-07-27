@@ -1,5 +1,6 @@
 <template>
     <section class="group-list">
+        <button @click="onRemoveGroup" class="button-as-link d-cmp">🚮</button>
         <InPlaceEdit v-model="groupTitle" class="group-header"/>
         <!-- <div v-icon="trash"></div> -->
         <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
@@ -123,6 +124,9 @@ export default {
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
 
+        },
+        onRemoveGroup(){
+            this.$emit('removeGroup')
         }
         
     },
