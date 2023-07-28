@@ -1,10 +1,9 @@
 <template>
   <el-tooltip placement="bottom" trigger="click" effect="light">
     <template #content>
-      <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option" 
+      <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
         @click.stop="onUpdateStatus(label)">
         {{ label.title }}
-        <pre>{{ this.info }}</pre>
       </div>
     </template>
     <div v-if="status" class="status status-content" :class="status.color">{{ status.title }}</div>
@@ -19,7 +18,7 @@ export default {
   },
   data() {
     return {
-      status:{ ...this.info }, 
+      status: { ...this.info },
       statusLabelConfig: this.$store.getters.statusLabelConfig
     }
   },

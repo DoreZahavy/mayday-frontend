@@ -19,6 +19,10 @@
       {
         "title": "Almost there",
         "color": "dark-blue"
+      },
+      {
+        "title": "",
+        "color": "default-gray"
       }
     ],
     "priorityLabelConfig": [
@@ -33,6 +37,10 @@
       {
         "title": "Critical ⚠",
         "color": "critical-dark-gray"
+      },
+      {
+        "title": "",
+        "color": "default-gray"
       }
     ],
     "cmpConfig": [

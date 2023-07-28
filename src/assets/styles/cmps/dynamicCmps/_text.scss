@@ -1,21 +1,19 @@
-.txt {
-    display: inline-block;
-    // height: 100%;
-    // padding-inline: rem(3px);
-    overflow: hidden;
-    p {
-        white-space: nowrap;
-    }
-    text-overflow: ellipsis;
-    justify-self: flex-start;
-}
-span.editable-text {
-    display: table-cell;
-    overflow: hidden;
-    white-space: nowrap;
-    // max-height: 100%;
-    max-width: 150px;
-    height: $row-height;
-    text-align: center;
-    vertical-align: middle;
-}
+// .txt {
+//     display: inline-block;
+//     overflow: hidden;
+// }
+
+// span.editable-text {
+//     display: table-cell;
+//     overflow: hidden;
+//     white-space: nowrap;
+//     max-width: 150px;
+//     text-align: center;
+//     vertical-align: middle;
+//     padding-inline: 10px;
+//     text-overflow: ellipsis;
+// }
+
+// span.editable-text.editable {
+//     position: relative;
+// }

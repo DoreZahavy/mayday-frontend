@@ -1,12 +1,18 @@
 <template>
     <section class="number-cmp">
-        <span v-if="info" :contenteditable="editing" :class="{ editable: editing }" @click="startEditing"
-            @keydown="checkEnter" @blur="stopEditing" ref="editor">
-            {{ editing ? info : formatCurrency(info) }}
-        </span>
-        <div v-else>
-            <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
-            <span class="icon nums-icon" v-html="getSvg('nums')"></span>
+        <div class="text-container">
+            <span v-if="editing || number" :contenteditable="editing" :class="{ editable: editing }" @keydown="checkEnter"
+                @blur="stopEditing" ref="editor" @click="startEditing">
+                {{ editing ? number : formatCurrency(number) }}
+            </span>
+            <div v-else @click="startEditing">
+                <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
+                <span class="icon nums-icon" v-html="getSvg('nums')"></span>
+            </div>
+        </div>
+        <div v-if="showButton" class="reset-text" @click="clearNumber">
+            <span class="x-icon" v-html="getSvg('xButton')">
+            </span>
         </div>
     </section>
 </template>
@@ -20,7 +26,13 @@ export default {
     data() {
         return {
             editing: false,
-            caretMoved: false
+            caretMoved: false,
+            number: this.info
+        }
+    },
+    computed: {
+        showButton() {
+            return !this.editing && this.number
         }
     },
     methods: {
@@ -28,17 +40,22 @@ export default {
             return new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, currency: 'USD' }).format(value)
         },
         startEditing() {
-            console.log(this.info)
+            this.number = 0
             this.editing = true
             this.$nextTick(() => {
                 this.moveCaretToInputEnd()
             })
         },
         stopEditing() {
-            console.log(this.$refs.editor.innerText)
+            this.number = this.$refs.editor.innerText
             this.caretMoved = false
             this.editing = false
-            this.$emit('update', Number(this.$refs.editor.innerText))
+            this.$emit('update', Number(this.number))
+        },
+        clearNumber() {
+            this.number = null
+            this.showButton = false
+            this.$emit('update', null)
         },
         checkEnter(event) {
             if (event.keyCode === 13) {

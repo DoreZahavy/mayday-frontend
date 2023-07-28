@@ -14,7 +14,7 @@
     &:hover {
         background-color: $task-hover;
     }
-    &:hover .task-actions-container{
+    &:hover .task-actions-container {
         opacity: 1;
     }
     .in-place-edit {
@@ -54,7 +54,7 @@
         left: -33px;
         top: -8px;
         z-index: 38;
-        .task-trash{
+        .task-trash {
         }
     }
 }
@@ -104,7 +104,7 @@
         grid-column-start: 1;
     }
 
-    .group-gap{
+    .group-gap {
         width: 40px;
         height: $row-height;
         background-color: red;
@@ -117,7 +117,6 @@
     p {
         grid-column-start: 3;
     }
-
 }
 
 .title {
