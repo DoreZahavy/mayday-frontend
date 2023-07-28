@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             currDateSettings: this.info,
-            pickedDateTimeRange: [this.info.startDate, this.info.dueDate],
+            pickedDateTimeRange: [this.info?.startDate, this.info?.dueDate], //TODO:give default value for new tasks
         }
     },
     computed: {

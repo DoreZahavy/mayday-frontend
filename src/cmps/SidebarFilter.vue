@@ -23,5 +23,5 @@ export default {
 </script>
 <template>
     <!-- <div v-html=""></div> -->
-    <input type="search" v-model="filterBy">
+    <input type="search" v-model="filterBy" placeholder="Search">
 </template>

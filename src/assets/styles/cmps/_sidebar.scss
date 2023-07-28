@@ -14,8 +14,8 @@
         width: $btnSml;
         height: $btnSml;
         // position: relative;
-        margin-inline-start: 207px;
-        margin-block:13px;
+        // margin-inline-start: 207px;
+        // margin-block:13px;
         right: 1rem;
         &:hover {
 
@@ -31,26 +31,38 @@
                 background-color: $secondary-btn-hover-color;
             }
             margin-inline: 10px 1rem;
-            margin-block-end: 1rem;
+            padding-inline-start: 11px;
             border-radius: rem(6px);
             height: calc($row-height - 2px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             div:last-child{
                 margin-inline-end: rem(14px);
             }
-            div:first-child{
-                display: flex;
-                align-items: center;
-                span{
-                    margin-inline: 11px;
-                }
-            }
+        }
+        a{
+            padding-inline-start: 10px;
+            padding-inline-end: auto;
+        }
+        .selected{
+            background: $selected-blue;
         }
         &.nav-list{
             margin-block-start: 1rem;
         }
+        div:last-of-type{
+            align-self: flex-end;
+        }
 
+    }
+    .sidebar-board-utils{
+        margin-block-start: .5rem;
+        padding-inline-start: 14px;
+        padding-inline-end: 1rem;
+        margin-block-end: 13px;
+        input{
+            width: $input-width;
+            height: $input-height;
+            border-radius: 3px;
+            border: $border-clr 1px solid;
+        }
     }
 }
