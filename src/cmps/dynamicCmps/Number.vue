@@ -1,13 +1,19 @@
 <template>
-    <section class="in-place-edit">
-        <span :contenteditable="editing" :class="{ editable: editing }" @click="startEditing" @keydown="checkEnter"
-            @blur="stopEditing" ref="editor">
+    <section class="number-cmp">
+        <span v-if="info" :contenteditable="editing" :class="{ editable: editing }" @click="startEditing"
+            @keydown="checkEnter" @blur="stopEditing" ref="editor">
             {{ editing ? info : formatCurrency(info) }}
         </span>
+        <div v-else>
+            <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
+            <span class="icon nums-icon" v-html="getSvg('nums')"></span>
+        </div>
     </section>
 </template>
 
 <script>
+import { svgService } from '../../services/svg.service'
+
 export default {
     name: "Number",
     props: ['info'],
@@ -50,6 +56,9 @@ export default {
             selection.addRange(range)
             editor.focus()
             this.caretMoved = true
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
         }
     }
 }

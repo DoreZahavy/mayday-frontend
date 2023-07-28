@@ -241,6 +241,7 @@ export const boardStore = {
       try {
         const boardId = context.state.board._id
         const board = await boardService.addTask(boardId, groupId, title)
+        console.log(board)
         context.commit({ type: "saveBoard", board })
         console.log('board:', board)
         return board

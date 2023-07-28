@@ -41,6 +41,7 @@ async function query() {
         boards = jsonBoards
         utilService.saveToStorage(BOARD_KEY, boards)
     }
+    console.log('boards:', boards)
     return boards
 }
 
@@ -77,9 +78,8 @@ async function removeGroup(boardId, groupId) {
 async function addTask(boardId, groupId, title) {
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
-    const emptyTask = getEmptyTask(title)
-    console.log("🚀 ~ file: board.service.local.js:81 ~ addTask ~ emptyTask:", emptyTask)
-    group.tasks.push(emptyTask)
+    group.tasks.push(getEmptyTask(title))
+    console.log(getEmptyTask(title))
     return await saveBoard(board)
 }
 
@@ -148,7 +148,15 @@ function getEmptyTask(title) {
         _id: utilService.makeId(),
         title,
         updates: [],
-        components: [_getEmptyComponents()],
+        Members: [_getEmptyMembersComponent()],
+        Status: _getEmptyStatusComponent(),
+        Priority: _getEmptyPriorityComponent(),
+        Date: _getEmptyDateComponent(),
+        Timeline: _getEmptyTimelineComponent(),
+        Number: _getEmptyNumberComponent(),
+        Text: _getEmptyTextComponent(),
+        Attachments: _getEmptyAttachmentsComponent()
+        // components: [_getEmptyComponents()],
     }
 }
 
@@ -181,7 +189,7 @@ function _getEmptyTimelineComponent() {
 }
 
 function _getEmptyNumberComponent() {
-    return 0
+    return null
 }
 
 function _getEmptyTextComponent() {
