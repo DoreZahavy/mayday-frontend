@@ -66,7 +66,7 @@ export default {
     watch: {
         boardId: {
             handler() {
-                this.active = this.boardId
+                // this.active = this.boardId
                 if (!this.boardId) this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
                 else this.loadBoard(this.boardId)
             },
