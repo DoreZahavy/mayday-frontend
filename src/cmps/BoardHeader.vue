@@ -34,7 +34,7 @@ export default {
     <header v-if="miniBoard" class="board-header">
         <InPlaceEdit class="board-title" v-model="boardTitle" />
         <!-- <h1 class="board-title">{{ miniBoard.title }}</h1> -->
-        <h4>{{ miniBoard.desc }}</h4>
+        <p class="board-desc">{{ miniBoard.desc }}</p>
         <!-- <h4 class="board-title">{{ this.boardTitle }}hhhhhh</h4> -->
     </header>
 

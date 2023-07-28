@@ -4,6 +4,7 @@ import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import BoardHeader from '@/cmps/BoardHeader.vue'
 import MainHeader from '@/cmps/MainHeader.vue'
 
+import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export default {
@@ -41,7 +42,10 @@ export default {
       } catch (err) {
         showErrorMsg('Failed to update Board')
       }
-    }
+    },
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },
   },
   watch: {
     // boardTitle() {
@@ -58,12 +62,16 @@ export default {
     <Sidebar />
     <section class="board-container">
       <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
-      
-        <nav class="board-nav">
-          <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
-          <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
-        </nav>
-      
+
+      <nav class="board-nav">
+
+        <RouterLink :to="'/board/' + boardId" class="nav-item">
+          <span v-html="getSvg('homeSml')"></span>
+          Table
+        </RouterLink>
+        <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
+      </nav>
+
       <RouterView />
     </section>
   </main>

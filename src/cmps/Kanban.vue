@@ -5,6 +5,6 @@ export default {
 </script>
 <template>
     <section class="kanban">
-        <h1>ITS KANBAN TIME!</h1>
+        <h1>Kanban view is under production!</h1>
     </section>
 </template>

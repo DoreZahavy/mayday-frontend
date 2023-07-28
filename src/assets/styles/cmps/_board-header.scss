@@ -2,4 +2,16 @@
     padding-left: 38px;
     padding-right: 30px;
     padding-top: 16px;
+    .board-title {
+        // @include boardTitle;
+        font-size: em(24px,14px);
+        line-height: lh(32px , 14px);
+        font-family: poppins;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        color: $primary-text-color;
+    }
+    .board-desc{
+        color: $secondary-text-color;
+    }
 }
