@@ -67,7 +67,7 @@ async function addGroup(boardId) {
 }
 
 async function removeGroup(boardId, groupId) {
-    console.log('boardId,groupId:', boardId,groupId)
+    console.log('boardId,groupId:', boardId, groupId)
     const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(g => g._id === groupId)
     board.groups.splice(groupIdx, 1)
@@ -96,36 +96,36 @@ function getEmptyBoard(title = 'New Board') {
         title,
         cmpConfig: [
             {
-                type: "Status",
-                title: "Status"
+                type: 'Status',
+                title: 'Status'
             },
             {
-                type: "Priority",
-                title: "Priority"
+                type: 'Priority',
+                title: 'Priority'
             },
             {
-                type: "Members",
-                title: "Person"
+                type: 'Members',
+                title: 'Person'
             },
             {
-                type: "Date",
-                title: "Date"
+                type: 'Date',
+                title: 'Date'
             },
             {
-                type: "Timeline",
-                title: "Timeline"
+                type: 'Timeline',
+                title: 'Timeline'
             },
             {
-                type: "Number",
-                title: "Numbers"
+                type: 'Number',
+                title: 'Numbers'
             },
             {
-                type: "Text",
-                title: "Text"
+                type: 'Text',
+                title: 'Text'
             },
             {
-                type: "Attachments",
-                title: "Files"
+                type: 'Attachments',
+                title: 'Files'
             }
         ],
         groups: [getEmptyGroup()],
@@ -136,7 +136,7 @@ function getEmptyGroup() {
     return {
         _id: utilService.makeId(),
         title: 'New Group',
-        color:'#007f00',
+        color: '#007f00',
         tasks: [],
     }
 }
@@ -159,11 +159,11 @@ function _getEmptyMembersComponent() {
 }
 
 function _getEmptyStatusComponent() {
-    return { title: "", class: "default-gray" }
+    return { title: '', color: 'default-gray' }
 }
 
 function _getEmptyPriorityComponent() {
-    return { title: "", class: "default-gray" }
+    return { title: '', color: 'default-gray' }
 }
 
 function _getEmptyDateComponent() {

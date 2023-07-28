@@ -14,7 +14,7 @@ export default {
     return {
       title: '',
       active: 'table',
-      showModal: false
+      showModal: true
     }
   },
   computed: {
@@ -70,7 +70,7 @@ export default {
     <MainHeader />
     <Sidebar />
     <section class="board-container">
-      <BoardInfoModal @closeModal="closeModal" v-if="this.showModal" />
+      <BoardInfoModal @closeModal="closeModal" v-if="this.showModal" :miniBoard="miniBoard"/>
       <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
 
       <nav class="board-nav">

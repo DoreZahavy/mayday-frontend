@@ -88,7 +88,6 @@
 // Done Green
 .done-green {
     background-color: #00c875;
-    transition: 0.5s ease;
 }
 
 .task:hover .done-green,
@@ -103,7 +102,6 @@
 // Working Orange
 .working-orange {
     background-color: #fdab3d;
-    transition: 0.5s ease;
 }
 
 .task:hover .working-orange,
@@ -118,7 +116,6 @@
 // Stuck Red
 .stuck-red {
     background-color: #e2445c;
-    transition: 0.5s ease;
 }
 
 .task:hover .stuck-red,
@@ -133,7 +130,6 @@
 // Default Gray
 .default-gray {
     background-color: #c4c4c4;
-    transition: 0.5s ease;
 }
 
 .task:hover .default-gray,
@@ -148,7 +144,6 @@
 // Low Blue
 .low-blue {
     background-color: #579bfc;
-    transition: 0.5s ease;
 }
 
 .task:hover .low-blue,
@@ -163,7 +158,6 @@
 // Medium Purple
 .medium-purple {
     background-color: #5559df;
-    transition: 0.5s ease;
 }
 
 .task:hover .medium-purple,
@@ -178,7 +172,6 @@
 // High Dark Purple
 .high-dark-purple {
     background-color: #401694;
-    transition: 0.5s ease;
 }
 
 .task:hover .high-dark-purple,
@@ -193,7 +186,6 @@
 // Critical Dark Gray
 .critical-dark-gray {
     background-color: $priority-critical;
-    transition: 0.5s ease;
 }
 
 .task:hover .critical-dark-gray,
@@ -210,7 +202,6 @@
 // Grass Green
 .grass-green {
     background-color: #037f4c;
-    transition: 0.5s ease;
 }
 
 .task:hover .green-grass,
@@ -225,7 +216,6 @@
 // Bright Green
 .bright-green {
     background-color: #9cd326;
-    transition: 0.5s ease;
 }
 
 .task:hover .bright-green,
@@ -240,7 +230,6 @@
 // Saladish
 .saladish {
     background-color: #cab641;
-    transition: 0.5s ease;
 }
 
 .task:hover .saladish,
@@ -255,7 +244,6 @@
 // Egg Yolk
 .egg-yolk {
     background-color: #ffcb00;
-    transition: 0.5s ease;
 }
 
 .task:hover .egg-yolk,
@@ -270,7 +258,6 @@
 // Dark Orange
 .dark-orange {
     background-color: #ff642e;
-    transition: 0.5s ease;
 }
 
 .task:hover .dark-orange,
@@ -285,7 +272,6 @@
 // Peach
 .peach {
     background-color: #ffadad;
-    transition: 0.5s ease;
 }
 
 .task:hover .peach,
@@ -300,7 +286,6 @@
 // Sunset
 .sunset {
     background-color: #ff7575;
-    transition: 0.5s ease;
 }
 
 .task:hover .sunset,
@@ -315,7 +300,6 @@
 // Dark Red
 .dark-red {
     background-color: #bb3354;
-    transition: 0.5s ease;
 }
 
 .task:hover .dark-red,
@@ -330,7 +314,6 @@
 // Sofia Pink
 .sofia-pink {
     background-color: #ff158a;
-    transition: 0.5s ease;
 }
 
 .task:hover .sofia-pink,
@@ -345,7 +328,6 @@
 // Lipstick
 .lipstick {
     background-color: #ff5ac4;
-    transition: 0.5s ease;
 }
 
 .task:hover .lipstick,
@@ -360,7 +342,6 @@
 // Bubble
 .bubble {
     background-color: #faa1f1;
-    transition: 0.5s ease;
 }
 
 .task:hover .bubble,
@@ -375,7 +356,6 @@
 // Dark Purple
 .dark-purple {
     background-color: #784bd1;
-    transition: 0.5s ease;
 }
 
 .task:hover .dark-purple,
@@ -390,7 +370,6 @@
 // Berry
 .berry {
     background-color: #7e3b8a;
-    transition: 0.5s ease;
 }
 
 .task:hover .berry,
@@ -405,7 +384,6 @@
 // Indigo
 .indigo {
     background-color: #5559df;
-    transition: 0.5s ease;
 }
 
 .task:hover .indigo,
@@ -420,7 +398,6 @@
 // Navy
 .navy {
     background-color: #225091;
-    transition: 0.5s ease;
 }
 
 .task:hover .navy,
@@ -435,7 +412,6 @@
 // Bright Blue
 .bright-blue {
     background-color: #579bfc;
-    transition: 0.5s ease;
 }
 
 .task:hover .bright-blue,
@@ -450,7 +426,6 @@
 // Dark Blue
 .dark-blue {
     background-color: #0086c0;
-    transition: 0.5s ease;
 }
 
 .task:hover .dark-blue,
@@ -465,7 +440,6 @@
 // Aquamarine
 .aquamarine {
     background-color: #4eccc6;
-    transition: 0.5s ease;
 }
 
 .task:hover .aquamarine,
@@ -480,7 +454,6 @@
 // Chili Blue
 .chili-blue {
     background-color: #66ccff;
-    transition: 0.5s ease;
 }
 
 .task:hover .chili-blue,
@@ -495,7 +468,6 @@
 // River
 .river {
     background-color: #68a1bd;
-    transition: 0.5s ease;
 }
 
 .task:hover .river,
@@ -510,7 +482,6 @@
 // Winter
 .winter {
     background-color: #9aadbd;
-    transition: 0.5s ease;
 }
 
 .task:hover .winter,
@@ -525,7 +496,6 @@
 // American Gray
 .american-gray {
     background-color: #808080;
-    transition: 0.5s ease;
 }
 
 .task:hover .american-gray,
@@ -540,7 +510,6 @@
 // Blackish
 .blackish {
     background-color: $priority-critical;
-    transition: 0.5s ease;
 }
 
 .task:hover .blackish,
@@ -555,7 +524,6 @@
 // Brown
 .brown {
     background-color: #7f5347;
-    transition: 0.5s ease;
 }
 
 .task:hover .brown,
@@ -570,7 +538,6 @@
 // Orchid
 .orchid {
     background-color: #d974b0;
-    transition: 0.5s ease;
 }
 
 .task:hover .orchid,
@@ -585,7 +552,6 @@
 // Tan
 .tan {
     background-color: #ad967a;
-    transition: 0.5s ease;
 }
 
 .task:hover .tan,
@@ -600,7 +566,6 @@
 // Sky
 .sky {
     background-color: #a1e3f6;
-    transition: 0.5s ease;
 }
 
 .task:hover .sky,
@@ -615,7 +580,6 @@
 // Coffee
 .coffee {
     background-color: #bd816e;
-    transition: 0.5s ease;
 }
 
 .task:hover .coffee,
@@ -630,7 +594,6 @@
 // Royal
 .royal {
     background-color: #2b76e5;
-    transition: 0.5s ease;
 }
 
 .task:hover .royal,
@@ -645,7 +608,6 @@
 // Teal
 .teal {
     background-color: #175a63;
-    transition: 0.5s ease;
 }
 
 .task:hover .teal,
@@ -660,7 +622,6 @@
 // Lavender
 .lavender {
     background-color: #bda8f9;
-    transition: 0.5s ease;
 }
 
 .task:hover .lavender,
@@ -675,7 +636,6 @@
 // Steel
 .steel {
     background-color: #a9bee8;
-    transition: 0.5s ease;
 }
 
 .task:hover .steel,
@@ -690,7 +650,6 @@
 // Liliac
 .liliac {
     background-color: #9d99b9;
-    transition: 0.5s ease;
 }
 
 .task:hover .liliac,
@@ -705,7 +664,6 @@
 // Pecan
 .pecan {
     background-color: #563e3e;
-    transition: 0.5s ease;
 }
 
 .task:hover .pecan,
@@ -720,7 +678,6 @@
 // Purple
 .purple {
     background-color: #a25ddc;
-    transition: 0.5s ease;
 }
 
 .task:hover .purple,
@@ -735,7 +692,6 @@
 // Dark Indigo
 .dark-indigo {
     background-color: #401694;
-    transition: 0.5s ease;
 }
 
 .task:hover .dark-indigo,

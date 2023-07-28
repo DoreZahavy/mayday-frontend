@@ -3,8 +3,8 @@
     </div>
     <section class="board-info">
         <article class="board-info-inputs">
-            title <br>
-            description
+            <InPlaceEdit v-model="miniBoard.title"/>
+            <InPlaceEdit v-model="miniBoard.desc"/>
         </article>
         <article class="board-info-details">
 
@@ -12,12 +12,17 @@
     </section>
 </template>
 <script>
+import InPlaceEdit from './InPlaceEdit.vue';
+
 export default {
     props:
     {
-        board: Object
+        miniBoard: Object
     },
     created(){
+    },
+    components:{
+        InPlaceEdit
     }
 }
 </script>
