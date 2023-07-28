@@ -51,6 +51,9 @@
     &.inline-flex {
         display: inline-flex;
     }
+    &.flex-direction-column{
+        flex-direction: column;
+    }
 }
 
 .align-self-center {
@@ -74,6 +77,7 @@
 .button-as-link {
     border: 0 !important;
     background-color: transparent;
+    z-index: 41;
 }
 
 .sticky {

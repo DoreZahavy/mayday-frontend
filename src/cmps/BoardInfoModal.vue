@@ -3,11 +3,23 @@
     </div>
     <section class="board-info">
         <article class="board-info-inputs">
-            <InPlaceEdit v-model="miniBoard.title"/>
-            <InPlaceEdit v-model="miniBoard.desc"/>
+            <InPlaceEdit v-model="title" />
+            <InPlaceEdit v-model="desc" /> <!-- TODO: change to textarea and add bounceback -->
         </article>
-        <article class="board-info-details">
-
+        <article class="board-info-details flex flex-direction-column">
+            <h3>Board info</h3>
+            <article>
+                <span> Workspace</span>
+            </article>
+            <article>
+                <span> Created by</span>
+            </article>
+            <article>
+                <span> Owners</span>
+            </article>
+            <article>
+                <span> Board type</span>
+            </article>
         </article>
     </section>
 </template>
@@ -19,9 +31,25 @@ export default {
     {
         miniBoard: Object
     },
-    created(){
+    data() {
+        return {
+            title: this.miniBoard.title,
+            desc: this.miniBoard.desc
+        }
     },
-    components:{
+    watch:{
+        title:{
+            handler(){
+                this.$emit('update',{prop:'title',toUpdate:this.title})
+            }
+        },
+        desc:{
+            handler(){
+                this.$emit('update',{prop:'desc',toUpdate:this.desc})
+            }
+        }
+    },
+    components: {
         InPlaceEdit
     }
 }

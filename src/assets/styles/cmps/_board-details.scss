@@ -1,11 +1,28 @@
+.left-gap{
+    // grid-area: empty;
+    // height: 100%;
+    width: 48px;
+    position: sticky;
+    left: 0;
+    z-index: 38;
+    background-color: #fff;
+}
 .board-details {
+    // display: grid;
+    // grid-template-areas: 
+    // "empty grps"
+    // "add add";
+    // grid-template-columns: 48px auto;
+    
     // margin-inline-start: 48px;
     // width: 80%;
     // overflow-x: scroll;
-    margin-top: 20px;
+    // align-self: start;
+    // margin-top: 20px;
     width: 80%;
     // overflow-x: scroll;
     .grp-scroll {
+        // grid-area: grps;
     }
     .task {
     }
@@ -17,6 +34,7 @@
         width: max-content;
     }
     .add-group-btn {
+        // grid-area: add;
         display: flex;
         align-items: center;
         height: $btn-height;
@@ -31,6 +49,11 @@
     }
 }
 
-// .groups {
-//     margin-top: 20px;
-// }
+.group-gap {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 41;
+    height: 36px;
+    background-color: #fff;
+}

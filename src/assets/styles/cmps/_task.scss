@@ -53,6 +53,8 @@
         position: absolute;
         left: -33px;
         top: -8px;
+        .task-trash{
+        }
     }
 }
 
@@ -92,7 +94,8 @@
     grid-template-columns: 0px $row-height $task-title-width;
     height: 100%;
     position: sticky;
-    left: 48px;
+    // left: 48px;
+    left: 54px;
     z-index: 30;
     background-color: #fff;
 
@@ -100,9 +103,11 @@
         grid-column-start: 1;
     }
 
-    // button {
-    //     grid-column-start: 2;
-    // }
+    .group-gap{
+        width: 40px;
+        height: $row-height;
+        background-color: red;
+    }
 
     .checkbox {
         grid-column-start: 2;

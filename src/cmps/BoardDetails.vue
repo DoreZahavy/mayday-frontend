@@ -98,11 +98,13 @@ export default {
 }
 </script>
 
-<template>
+<template class="flex">
+  
   <Container @drop="onDropGrp" class="board-details" v-if="board">
+    
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
 
-
+      <!-- <div class="group-gap"></div> -->
       <Group :group="group" :idx="idx" class="group"
         @addTask="addTask(group._id, $event)"
         @removeTask="removeTask(group._id, $event)" 
