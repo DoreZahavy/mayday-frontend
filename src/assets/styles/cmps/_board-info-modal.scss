@@ -10,6 +10,7 @@
     left: 0;
 }
 .board-info {
+    display: grid;
     z-index: 41;
     top: calc(50vh - ($board-info-modal-height / 2));
     left: calc(50vw - ($board-info-modal-width /2));
@@ -18,8 +19,9 @@
     width: $board-info-modal-width;
     height: $board-info-modal-height;
     opacity: 1;
+    grid-template-columns: auto 38%;
     .board-info-details{
-        width: 38%;
-        background-color: lightgreen;
+        width: 100%;
+        background-color: $task-hover;
     }
 }
