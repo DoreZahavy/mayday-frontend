@@ -76,6 +76,7 @@ export default {
 
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"
           class="nav-item">
+          <!-- <span>&#61996</span> -->
           <span v-html="getSvg('homeSml')"></span>Main Table
         </RouterLink>
 

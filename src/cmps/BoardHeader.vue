@@ -1,5 +1,6 @@
 <script>
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
+import { svgService } from '../services/svg.service'
 
 export default {
     props:['miniBoard'],
@@ -8,21 +9,28 @@ export default {
             boardTitle:this.miniBoard.title
         }
     },
+    methods:{
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        },
+        updateBoard(title){
+            this.$emit('update',{prop:'title',toUpdate:title})
+
+        }
+    },
     components:{
         InPlaceEdit
     },
     watch: {
         miniBoard: {
             handler() {
-                // console.log('this.miniBoard:', this.miniBoard)
                 this.boardTitle = this.miniBoard.title
             },
             // immediate: true,
         },
         boardTitle: {
             handler() {
-                // console.log('this.miniBoard:', this.miniBoard)
-                this.$emit('update',{prop:'title',toUpdate:this.boardTitle})
+                // this.$emit('update',{prop:'title',toUpdate:this.boardTitle})
             },
             // immediate: true,
         },
@@ -32,10 +40,12 @@ export default {
 </script>
 <template>
     <header v-if="miniBoard" class="board-header">
-        <InPlaceEdit class="board-title " v-model="boardTitle" />
-        <!-- <h1 class="board-title">{{ miniBoard.title }}</h1> -->
+        <div class="flex align-center">
+            <!-- v-model="boardTitle" -->
+            <InPlaceEdit class="board-title " :modelValue="boardTitle" @update:modelValue="updateBoard" />
+            <span class="info-icon" @click="this.$emit('toggleModal')" v-html="getSvg('infoBig')"></span>
+        </div>
         <p class="board-desc" @click="this.$emit('toggleModal')">{{ miniBoard.desc }} <span>See More</span></p> 
-        <!-- <h4 class="board-title">{{ this.boardTitle }}hhhhhh</h4> -->
     </header>
 
 </template>

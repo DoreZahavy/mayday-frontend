@@ -170,7 +170,7 @@ export const boardStore = {
         const boards = await boardService.query()
         context.commit({ type: "setBoards", boards })
         context.commit({ type: "setBoard", board: boards[0] })
-        context.commit({ type: "setBoard", board: boards[0] })
+        // context.commit({ type: "setBoard", board: boards[0] })
       } catch (err) {
         console.log(err)
         throw err

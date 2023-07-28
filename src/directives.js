@@ -1,6 +1,6 @@
-import { svgService } from './services/svg.service.js'
-
 export { clickOutside, icon, focusDirective }
+import { svgService } from '@/services/svg.service.js'
+
 
 const focusDirective = {
     // When the bound element is inserted into the DOM...
