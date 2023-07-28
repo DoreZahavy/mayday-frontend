@@ -108,8 +108,8 @@
             },
             "Date": 1690915200000,
             "Timeline": {
-              "startDate": 1690492800000,
-              "dueDate": 1690752000000,
+              "startDate": null,
+              "dueDate": null,
               "isHourIncluded": false
             },
             "Number": 250000,
@@ -182,7 +182,7 @@
               "dueDate": 1691088000000,
               "isHourIncluded": false
             },
-            "Number": 11000000,
+            "Number": null,
             "Text": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
             "Attachments": []
           },
@@ -208,21 +208,21 @@
               }
             ],
             "Status": {
-              "title": "Almost there",
-              "color": "dark-blue"
+              "title": "",
+              "color": "default-gray"
             },
             "Priority": {
               "title": "Low",
               "color": "low-blue"
             },
-            "Date": 1693238400000,
+            "Date": null,
             "Timeline": {
               "startDate": 1690483200000,
               "dueDate": 1692124800000,
               "isHourIncluded": false
             },
             "Number": 11000000,
-            "Text": "Be gentle  #:)",
+            "Text": "",
             "Attachments": []
           }
         ]
