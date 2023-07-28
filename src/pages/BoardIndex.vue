@@ -54,19 +54,19 @@ export default {
 
 <template>
   <main class="main-layout">
-    <MainHeader/>
+    <MainHeader />
     <Sidebar />
     <section class="board-container">
-      <section class="board-nav">
-        <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
-      <nav class="board-nav">
-        <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
-        <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
-      </nav>
+      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
+      
+        <nav class="board-nav">
+          <RouterLink :to="'/board/' + boardId" class="nav-item">Table</RouterLink>
+          <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
+        </nav>
+      
+      <RouterView />
     </section>
-    <RouterView />
-  </section>
-</main>
+  </main>
 </template>
 
 

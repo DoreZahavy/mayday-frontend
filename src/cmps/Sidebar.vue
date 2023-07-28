@@ -35,10 +35,12 @@ import SidebarFilter from '@/cmps/SidebarFilter.vue'
 export default {
     data() {
         return {
-            filterBy: ''
+            filterBy: '',
+            active: this.boardId
         }
     },
     created() {
+        // this.active = this.$route.boardId
         // this.boards[0] = this.$store.getters.board
         // console.log("🚀 ~ file: Sidebar.vue:10 ~ created ~ this.boards:", this.boards)
 
@@ -90,6 +92,7 @@ export default {
     watch: {
         boardId: {
             handler() {
+                this.active = this.boardId
                 if (!this.boardId) this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
                 else this.loadBoard(this.boardId)
             },
@@ -101,3 +104,35 @@ export default {
     }
 }
 </script>
+<template>
+    <aside class="sidebar">
+
+        <div class="divider-div">
+            <ul class="clean-list nav-list">
+                <li>
+                    <div class="flex align-center">
+                        <span v-html="getSvg('home')"></span>
+                        <RouterLink to="/">Home</RouterLink>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="board-control">
+
+            <SidebarFilter @filter="setFilter" />
+            <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
+        </div>
+
+        <ul class="clean-list sidebar-list">
+            <li class="flex" v-for="board in boardList" :class="{active: active===board._id}">
+                <div class="flex align-center">
+                    <div v-html="getSvg('boardType')"></div>
+                    <RouterLink class="board-link" :to="'/board/' + board._id">{{ board.title }}</RouterLink>
+                </div>
+                <!-- <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p> -->
+                <div class="trash-board" @click="onRemoveBoard(board._id)" v-html="getSvg('trash')"></div>
+            </li>
+        </ul>
+        <div class="collapse-arrow" v-html="getSvg('arrowLeft')"></div>
+    </aside>
+</template>

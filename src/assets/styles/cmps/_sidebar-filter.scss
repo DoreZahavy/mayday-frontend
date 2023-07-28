@@ -1,0 +1,22 @@
+.sidebar-filter {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    // padding-block: 1rem;
+    width: 181px;
+    height: $btnSml;
+    // margin-block-end: 1.8em;
+    padding-left: 6px;
+    padding-right: 3px;
+    border: 1px solid #d0d4e4;
+    border-radius: 0.2857em;
+    &:hover{
+        border-color: $primary-text-color;
+    }
+    input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        margin-inline-start: 3px;
+    }
+}
