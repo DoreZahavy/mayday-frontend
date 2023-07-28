@@ -1,18 +1,18 @@
 .sidebar {
-    transition: width .1s cubic-bezier(0, 0, 0.35, 1);
-    &.collapsed{
+    transition: width 0.1s cubic-bezier(0, 0, 0.35, 1);
+    &.collapsed {
         width: 30px;
-        >*:not(.collapse-arrow){
+        > *:not(.collapse-arrow) {
             // display: none;
             visibility: hidden;
         }
-        .collapse-arrow{
+        .collapse-arrow {
             scale: -1;
         }
     }
-    &:hover{
+    &:hover {
         width: $sidebar-width;
-        >*:not(.collapse-arrow){
+        > *:not(.collapse-arrow) {
             visibility: visible;
         }
     }
@@ -61,7 +61,7 @@
         margin-block: 0.85714em;
         margin-inline-start: 12px;
         margin-inline-end: 40px;
-        li{
+        li {
             height: $btn-height;
             display: flex;
             align-items: center;
@@ -71,25 +71,24 @@
             &:hover {
                 background-color: $secondary-btn-hover-color;
             }
-            a{
+            a {
                 margin-inline-start: 8px;
             }
         }
-    
     }
     .sidebar-list {
         li {
-            
+            color: $primary-text-color;
             .trash-board {
                 opacity: 0;
             }
             &:hover {
                 background-color: $secondary-btn-hover-color;
-                .trash-board{
+                .trash-board {
                     opacity: 1;
                 }
             }
-            &.active{
+            &.active {
                 background-color: #cce5ff;
             }
             margin-inline: 12px 1rem;
@@ -100,12 +99,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            a{
+            a {
                 margin-inline-start: 6px;
             }
         }
     }
-    .collapse-arrow{
+    .collapse-arrow {
         position: absolute;
         top: 0;
         right: 0;
@@ -115,7 +114,7 @@
         border-bottom-left-radius: 0.571428em;
         background-color: #f6f7fb;
         cursor: pointer;
-        &:hover{
+        &:hover {
             background-color: $secondary-btn-hover-color;
         }
     }
