@@ -41,6 +41,7 @@ async function query() {
         boards = jsonBoards
         utilService.saveToStorage(BOARD_KEY, boards)
     }
+    console.log('boards:', boards)
     return boards
 }
 
@@ -146,7 +147,15 @@ function getEmptyTask(title) {
         _id: utilService.makeId(),
         title,
         updates: [],
-        components: [_getEmptyComponents()],
+        Members: [_getEmptyMembersComponent()],
+        Status: _getEmptyStatusComponent(),
+        Priority: _getEmptyPriorityComponent(),
+        Date: _getEmptyDateComponent(),
+        Timeline: _getEmptyTimelineComponent(),
+        Number: _getEmptyNumberComponent(),
+        Text: _getEmptyTextComponent(),
+        Attachments: _getEmptyAttachmentsComponent()
+        // components: [_getEmptyComponents()],
     }
 }
 
@@ -179,7 +188,7 @@ function _getEmptyTimelineComponent() {
 }
 
 function _getEmptyNumberComponent() {
-    return 0
+    return null
 }
 
 function _getEmptyTextComponent() {
