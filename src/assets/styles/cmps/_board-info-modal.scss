@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
 }
+
 .board-info {
     display: grid;
     z-index: 41;
@@ -20,8 +21,67 @@
     height: $board-info-modal-height;
     opacity: 1;
     grid-template-columns: auto 38%;
-    .board-info-details{
+
+    .board-info-details {
         width: 100%;
         background-color: $task-hover;
+        padding: rem(32px);
+        h3{
+            font-weight: 500;
+        }
+        h3,article{
+            margin-block-end: rem(32px);
+        }
+        span{
+            color:$secondary-text-color;
+        }
+    }
+
+    .in-place-edit {
+        padding-inline: rem(35px);
+
+        &:first-of-type {
+            padding-block: rem(38px) rem(32px);
+            font-size: rem(24px);
+            font-weight: 500;
+            font-family: poppins;
+            span{
+                display: block;
+                width: 100%;
+                outline:none;
+                &:hover{
+                    border:1px solid $border-clr;
+                    border-radius: 3px;
+                }
+                &:active{
+                    border:1px solid $border-clr;
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        &:last-of-type {
+            width: 100%;
+            height: rem(100px);
+            display: block;
+
+            span {
+                display: block;
+                width: 100%;
+                height: rem(100px);
+                padding-block-start: 7px;
+                padding-inline: 2px 5px;
+                &:focus{
+                    border:1px solid $border-clr;
+                }
+                &:active{
+                    outline: none;
+                }
+                &:not(:focus):hover {
+                    height: rem(390px);
+                    border:1px dotted $border-clr;
+                }
+            }
+        }
     }
 }

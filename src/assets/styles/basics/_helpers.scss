@@ -51,6 +51,9 @@
     &.inline-flex {
         display: inline-flex;
     }
+    &.flex-direction-column{
+        flex-direction: column;
+    }
 }
 
 .align-self-center {

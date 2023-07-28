@@ -32,9 +32,9 @@ export default {
 </script>
 <template>
     <header v-if="miniBoard" class="board-header">
-        <InPlaceEdit class="board-title" v-model="boardTitle" />
+        <InPlaceEdit class="board-title " v-model="boardTitle" />
         <!-- <h1 class="board-title">{{ miniBoard.title }}</h1> -->
-        <p class="board-desc">{{ miniBoard.desc }}</p>
+        <p class="board-desc" @click="this.$emit('toggleModal')">{{ miniBoard.desc }} <span>See More</span></p> 
         <!-- <h4 class="board-title">{{ this.boardTitle }}hhhhhh</h4> -->
     </header>
 

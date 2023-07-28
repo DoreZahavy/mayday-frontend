@@ -1,11 +1,12 @@
 .board-header {
     position: sticky;
     top: 0;
-    z-index: 2000;
+    z-index: 38;
     background-color: #fff;
     padding-left: 38px;
     padding-right: 30px;
     padding-top: 16px;
+    width: 100%;
     .board-title {
         // @include boardTitle;
         font-size: em(24px,14px);
@@ -17,5 +18,12 @@
     }
     .board-desc{
         color: $secondary-text-color;
+        cursor: pointer;
+        span{
+            color:#1F76C2;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 }
