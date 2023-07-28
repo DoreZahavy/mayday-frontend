@@ -1,5 +1,8 @@
 .group {
-    margin-inline-start: rem(41px);
+    padding-inline-start: 48px;
+    background-color: #fff;
+    // overflow-x: hidden;
+    // margin-inline-start: rem(41px);
 
     .tasks-container {
         overflow-x: visible;
@@ -13,13 +16,14 @@
     }
 
     .group-title-container {
-        margin-block-end: 7px;
+        padding-block-end: 7px;
 
+        position: sticky;
+        left: 48px;
+        top: 186px;
+        background-color: #fff;
+        z-index: 31;
         .group-header {
-            position: sticky;
-            top: 42px;
-            background-color: #fff;
-            z-index: 31;
             width: fit-content;
             border: 1px solid transparent;
             border-radius: 4px;
@@ -79,8 +83,10 @@
 }
 
 .label-line {
-    
-    position: relative;
+    position: sticky;
+    top: 222px;
+    z-index: 31;
+    // position: relative;
     display: grid;
     grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
@@ -92,7 +98,8 @@
 }
 
 .group-list {
-    margin-top: 2em;
+    padding-top: 2em;
+    background-color: #fff;
     // border: 1px solid $border-clr;
     border-right: 0;
     position: relative;

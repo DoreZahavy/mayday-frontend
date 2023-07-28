@@ -3,7 +3,7 @@
 
         <div class="group-title-container flex align-center">
             <div class="group-actions-container">
-                <button @click="onRemoveGroup" class="button-as-link d-cmp group-actions">🚮</button>
+                <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
             </div>
             <InPlaceEdit v-model="groupTitle" class="group-header" :style="textColor" />
             <span class="task-count">{{ taskCount }} Tasks</span>
@@ -27,7 +27,7 @@
             </Container>
         </section>
 
-
+        <!-- 🚮 -->
         <!-- render tasks by cmp order -->
         <Container class="tasks-container" :get-child-payload="getTaskChildPayload" group-name="1"
             @drop="onDropTask(idx, $event)">
@@ -36,7 +36,7 @@
                     <div style="position: absolute;">
                         <div class="task-actions-container">
                             <div class="task-actions">
-                                <button @click="onRemoveTask(task._id)" class="button-as-link task-trash">🚮</button>
+                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')" class="button-as-link task-trash"></button> 
                             </div>
                         </div>
                     </div>
@@ -78,6 +78,8 @@
   </Container>
    -->
 <script>
+import { svgService } from '../services/svg.service'
+
 import { Container, Draggable } from "vue3-smooth-dnd"
 import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
 import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
@@ -144,7 +146,10 @@ export default {
         },
         onRemoveGroup() {
             this.$emit('removeGroup')
-        }
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        },
 
     },
     components: {

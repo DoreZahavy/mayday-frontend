@@ -136,6 +136,7 @@ function getEmptyGroup() {
     return {
         _id: utilService.makeId(),
         title: 'New Group',
+        color:'#007f00',
         tasks: [],
     }
 }
