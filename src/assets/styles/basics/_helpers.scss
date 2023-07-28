@@ -191,7 +191,7 @@
 
 // Critical Dark Gray
 .critical-dark-gray {
-    background-color: #333333;
+    background-color: $priority-critical;
     transition: 0.5s ease;
 }
 
@@ -538,7 +538,7 @@
 
 // Blackish
 .blackish {
-    background-color: #333333;
+    background-color: $priority-critical;
     transition: 0.5s ease;
 }
 

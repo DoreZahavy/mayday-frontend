@@ -101,7 +101,9 @@ $selected-blue:#CCE5FF;
 $task-title-width: 300px;
 $group-accent-width: 6px;
 
-//task
+//BoardInfoModal
+$board-info-modal-height:550px;
+$board-info-modal-width:850px;
 
 //group progress bar
 $progress-bar-left-margin: calc(($row-height * 2) + $task-title-width - 1px);
