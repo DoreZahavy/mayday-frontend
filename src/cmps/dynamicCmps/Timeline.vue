@@ -3,9 +3,9 @@
         <div class="flex justify-center align-center" style="height:100%; position:relative;">
             <span style="position:absolute; z-index:1; width:100%; text-align:center; color: black; font-weight: 400;">{{
                 formattedStartDate }} - {{ formattedDueDate }}</span>
-            <!-- <progress max="100" :value="progress" style="position:absolute; z-index:0; width:70%; height:125%;"></progress> -->
+            <progress max="100" :value="progress" style="position:absolute; z-index:0; width:70%; height:125%;"></progress>
         </div>
-        <el-date-picker style="position: absolute; left:0; top: 0; width: 100% height: 100%; z-index: 25;"
+        <el-date-picker style="position: absolute; left:0; top: 0; width: 70%; height: 125%; z-index: 25;"
             v-model="pickedDateTimeRange" type="datetimerange" @change="onDateTimeChange" ref="datePicker">
         </el-date-picker>
     </article>

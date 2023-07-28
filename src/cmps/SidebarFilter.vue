@@ -1,14 +1,19 @@
 <script>
+import { svgService } from '@/services/svg.service'
+
 export default {
     data() {
         return {
-            filterBy:''
+            filterBy: ''
         }
     },
-    methods:{
-        filter(){
+    methods: {
+        filter() {
 
             this.$emit('filter', this.filterBy)
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
         },
     },
     watch: {
@@ -22,6 +27,8 @@ export default {
 }
 </script>
 <template>
-    <!-- <div v-html=""></div> -->
-    <input type="search" v-model="filterBy">
+    <section class="sidebar-filter">
+        <span v-html="getSvg('search')"></span>
+        <input type="search" v-model="filterBy" placeholder="Search">
+    </section>
 </template>
