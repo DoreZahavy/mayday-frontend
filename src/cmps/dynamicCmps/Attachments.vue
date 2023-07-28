@@ -6,7 +6,7 @@
 </template>
   
 <script>
-import { svgService } from '../../services/svg.service';
+import { svgService } from '../../services/svg.service'
 
 export default {
 

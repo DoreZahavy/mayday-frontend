@@ -1,21 +1,38 @@
 <template>
   <section class="members-list">
-    <MemberPreview v-for="(member, idx) in info" :key="idx" :member="member" />
+    <template v-if="hasMembers">
+      <MemberPreview v-for="(member, idx) in members" :key="idx" :member="member" />
+    </template>
+    <span v-else v-html="getSvg('person')"></span>
   </section>
 </template>
   
 <script>
-import MemberPreview from "@/cmps/MemberPreview.vue";
+import MemberPreview from "@/cmps/MemberPreview.vue"
+import { svgService } from '../../services/svg.service.js'
+
 export default {
   name: "Members",
   emits: ["update"],
-  props: {
-    info: Array,
+  props: ['info'],
+  data() {
+    return {
+      members: this.info,
+    }
   },
-
   components: {
     MemberPreview,
   },
+  computed: {
+    hasMembers() {
+      return (this.info)
+    },
+  },
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    }
+  }
 }
 </script>
   

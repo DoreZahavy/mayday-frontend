@@ -1,6 +1,26 @@
-.member-preview {
-    border-radius: 50%;
-    width: 2em;
-    height: 2em;
-    align-self: center;
+.members-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .member-preview {
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        align-self: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+    }
 }

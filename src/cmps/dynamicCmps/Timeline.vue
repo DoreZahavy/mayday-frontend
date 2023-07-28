@@ -63,10 +63,14 @@ export default {
         },
         color() {
             return { background: this.group.color }
-        }
+        },
+        isDateNull() {
+            return this.info?.startDate === null || this.info?.dueDate === null;
+        },
     },
     methods: {
         onDateTimeChange(date) {
+            console.log(this.isDateNull)
             this.currDateSettings = {
                 startDate: date[0].valueOf(),
                 dueDate: date[1].valueOf(),

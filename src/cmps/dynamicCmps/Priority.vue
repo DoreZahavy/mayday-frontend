@@ -1,12 +1,12 @@
 <template>
   <el-tooltip placement="bottom" trigger="click" effect="light">
     <template #content>
-      <div v-for="label in priorityLabelConfig" :key="label.title" :class="label.class" class="status-option"
+      <div v-for="label in priorityLabelConfig" :key="label.title" :class="label.color" class="status-option"
         @click.stop="onUpdatePriority(label)">
         {{ label.title }}
       </div>
     </template>
-    <div v-if="priority" class="status status-content" :class="priority.class">{{ priority.title }}</div>
+    <div v-if="priority" class="status status-content" :class="priority.color">{{ priority.title }}</div>
   </el-tooltip>
 </template>
 
