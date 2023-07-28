@@ -14,7 +14,7 @@ import { svgService } from '../../services/svg.service.js'
 export default {
   name: "Members",
   emits: ["update"],
-  props: ['info'],
+  props: { info: Array },
   data() {
     return {
       members: this.info,
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     hasMembers() {
-      return (this.info)
+      return (this.info[0]._id)
     },
   },
   methods: {

@@ -52,7 +52,8 @@ export default {
     },
     async addTask(groupId, title) {
       try {
-        await this.$store.dispatch({ type: 'addTask', groupId, title })
+        const board = await this.$store.dispatch({ type: 'addTask', groupId, title })
+        console.log('board:', board)
         showSuccessMsg('Task added')
 
       } catch (err) {
@@ -79,7 +80,7 @@ export default {
       } catch (err) {
         showErrorMsg('Failed to add group')
       }
-      
+
 
     },
     async removeTask(groupId, taskId) {
@@ -99,16 +100,13 @@ export default {
 </script>
 
 <template class="flex">
-  
   <Container @drop="onDropGrp" class="board-details" v-if="board">
-    
+
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
 
       <!-- <div class="group-gap"></div> -->
-      <Group :group="group" :idx="idx" class="group"
-        @addTask="addTask(group._id, $event)"
-        @removeTask="removeTask(group._id, $event)" 
-        @update="updateBoard(group._id, $event)"
+      <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
+        @removeTask="removeTask(group._id, $event)" @update="updateBoard(group._id, $event)"
         @removeGroup="removeGroup(group._id)">
       </Group>
     </Draggable>
