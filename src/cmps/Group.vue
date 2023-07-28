@@ -36,7 +36,8 @@
                     <div style="position: absolute;">
                         <div class="task-actions-container">
                             <div class="task-actions">
-                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')" class="button-as-link task-trash"></button> 
+                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
+                                    class="button-as-link task-trash"></button>
                             </div>
                         </div>
                     </div>
@@ -46,7 +47,8 @@
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
-                        <component :is="cmp" :info="task[cmp]" @update="onUpdateTask(cmp, task._id, $event)">
+                        <component :is="cmp" :info="task[cmp]" :groupColor="group.color"
+                            @update="onUpdateTask(cmp, task._id, $event)">
                         </component>
                     </section>
 

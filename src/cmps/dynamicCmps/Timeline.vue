@@ -1,11 +1,13 @@
 <template>
     <article style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container">
-        <div class="flex justify-center align-center" style="height:100%; position:relative;">
-            <span style="position:absolute; z-index:1; width:100%; text-align:center; color: black; font-weight: 400;">{{
+        <div class="flex justify-center align-center" style="height:100%; width: 100%;">
+            <span style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
                 formattedStartDate }} - {{ formattedDueDate }}</span>
-            <progress max="100" :value="progress" style="position:absolute; z-index:0; width:70%; height:125%;"></progress>
+            <div class="progress-bar">
+                <div class="progress-fill" :style="{ width: progress + '%', backgroundColor: groupColor }"></div>
+            </div>
         </div>
-        <el-date-picker style="position: absolute; left:0; top: 0; width: 70%; height: 125%; z-index: 25;"
+        <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
             v-model="pickedDateTimeRange" type="datetimerange" @change="onDateTimeChange" ref="datePicker">
         </el-date-picker>
     </article>
@@ -15,7 +17,8 @@
 export default {
     name: "Timeline",
     props: {
-        info: Object
+        info: Object,
+        groupColor: String
     },
     data() {
         return {
@@ -81,3 +84,21 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.progress-bar {
+    position: absolute;
+    right: 1.52em;
+    z-index: 0;
+    width: 70%;
+    height: 1.6em;
+    background-color: #333;
+    border: none;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+}
+</style>

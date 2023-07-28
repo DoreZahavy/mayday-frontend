@@ -3,13 +3,12 @@ section .date-container {
     height: 100%;
     width: 100%;
 
-
     .date {
         div:nth-of-type(2) {
             opacity: 0;
         }
 
-        pointer-events:none;
+        pointer-events: none;
 
         span {
             width: 100%;
