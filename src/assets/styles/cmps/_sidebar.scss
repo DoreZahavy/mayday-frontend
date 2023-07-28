@@ -1,6 +1,20 @@
 .sidebar {
+    transition: width .1s cubic-bezier(0, 0, 0.35, 1);
+    &.collapsed{
+        width: 30px;
+        >*:not(.collapse-arrow){
+            // display: none;
+            visibility: hidden;
+        }
+        .collapse-arrow{
+            scale: -1;
+        }
+    }
     &:hover{
         width: $sidebar-width;
+        >*:not(.collapse-arrow){
+            visibility: visible;
+        }
     }
     position: relative;
     grid-area: sidebar;

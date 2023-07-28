@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             filterBy: '',
-            active: this.boardId
+            active: this.boardId,
+            isCollapsed : false
         }
     },
     created() {
@@ -74,7 +75,7 @@ export default {
 }
 </script>
 <template>
-    <aside class="sidebar">
+    <aside class="sidebar" :class="{collapsed:isCollapsed}">
 
         <div class="divider-div">
             <ul class="clean-list nav-list">
@@ -102,6 +103,7 @@ export default {
                 <div class="trash-board" @click="onRemoveBoard(board._id)" v-html="getSvg('trash')"></div>
             </li>
         </ul>
-        <div class="collapse-arrow" v-html="getSvg('arrowLeft')"></div>
+        <div  class="collapse-arrow" v-html="getSvg('arrowLeft')" @click="isCollapsed = !isCollapsed"></div>
+        <!-- <div v-else class="collapse-arrow" v-html="getSvg('arrowRight')" @click="isCollapsed = !isCollapsed"></div> v-if="!isCollapsed" -->
     </aside>
 </template>
