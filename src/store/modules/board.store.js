@@ -19,8 +19,8 @@ export const boardStore = {
     boardTitle({ board }) {
       return board?.title
     },
-    miniBoard({board}){
-      return {title:board?.title,desc:board?.desc,_id:board?._id}
+    miniBoard({ board }) {
+      return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
     boards({ boards }) {
       return boards
@@ -177,9 +177,9 @@ export const boardStore = {
       }
     },
 
-    async updateBoard(context, {boardId, groupId, taskId, prop, toUpdate }) {
+    async updateBoard(context, { boardId, groupId, taskId, prop, toUpdate }) {
       try {
-        if(!boardId) boardId = context.state.board._id
+        if (!boardId) boardId = context.state.board._id
         const board = await boardService.updateBoard(boardId, groupId, taskId, prop, toUpdate)
         context.commit({ type: "saveBoard", board })
         return board
@@ -188,7 +188,7 @@ export const boardStore = {
         throw err
       }
     },
- 
+
     async addBoard({ commit }) {
       try {
         const board = await boardService.addBoard()
