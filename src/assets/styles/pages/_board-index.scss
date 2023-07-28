@@ -14,12 +14,15 @@
     // height: 100%;
     .board-nav {
         padding-block-start: 34px;
+        // margin-block-end: 36px;
+
         margin-inline-start: 38px;
         display: flex;
         align-items: center;
         position: sticky;
         top:68px;
-        z-index: 32;
+        left: 38px;
+        z-index: 45;
         background-color: #fff;
         border-block-end: 1px solid $border-clr;
         .nav-item:not(:last-child)::after{

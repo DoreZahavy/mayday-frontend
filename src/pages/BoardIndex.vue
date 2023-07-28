@@ -50,10 +50,10 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
-    closeModal(){
+    closeModal() {
       this.showModal = false
       console.log("🚀 ~ file: BoardIndex.vue:55 ~ closeModal ~ showModal:", this.showModal)
-      
+
     }
   },
   watch: {
@@ -70,7 +70,7 @@ export default {
     <MainHeader />
     <Sidebar />
     <section class="board-container">
-      <BoardInfoModal @closeModal="closeModal" v-if="this.showModal"/>
+      <BoardInfoModal @closeModal="closeModal" v-if="this.showModal" />
       <BoardHeader :miniBoard="miniBoard" @update="updateBoard" />
 
       <nav class="board-nav">
@@ -83,8 +83,10 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-
-      <RouterView />
+      <section class="flex">
+        <div class="left-gap"></div>
+        <RouterView />
+      </section>
     </section>
   </main>
 </template>
