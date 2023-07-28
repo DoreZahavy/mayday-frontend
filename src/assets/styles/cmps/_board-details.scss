@@ -1,0 +1,34 @@
+.board-details {
+    // width: 80%;
+    // overflow-x: scroll;
+    width: 80%;
+    // overflow-x: scroll;
+    .grp-scroll {
+    }
+    .task {
+    }
+    // display: inline-block;
+    // border: 1px solid red; for debugging purposes
+
+    > * {
+        max-width: none;
+        width: max-content;
+    }
+    .add-group-btn {
+        display: flex;
+        align-items: center;
+        height: $btn-height;
+        background-color: transparent;
+        border: 1px solid #c3c6d4;
+        border-radius: 0.2857143em;
+        padding-inline: 8px;
+        color: $primary-text-color;
+        &:hover{
+            background-color: $secondary-btn-hover-color;
+        }
+    }
+}
+
+.groups {
+    margin-top: 20px;
+}

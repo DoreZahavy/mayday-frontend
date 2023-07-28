@@ -33,16 +33,41 @@
         .nav-item {
             display: flex;
             align-items: center;
+            position: relative;
             height: $btn-height;
             border-radius: 0.2857143em;
             // margin-right: 10px;
             padding-inline: 0.57142857em;
+            margin-block-end: 0.2857143em;
             svg{
                 margin-inline-end: 0.42857em;
             }
             &:hover{
                 background-color: $secondary-btn-hover-color;
             }
+            &.router-link-exact-active::before{
+                content: '';
+                position: absolute;
+                bottom: -0.2857143em;
+                background-color:$primary-btn-color;
+                width:100% ;
+                height: 2px;
+                left: 0;
+                
+            }
+            // &.router-link-exact-active:first-child::before{
+            //     // left: -0.57142857em;
+            //     left: 0;
+            // }
+            // &.active::after{
+            //     content: '';
+            //     position: absolute;
+            //     bottom: 0;
+            //     // left: -0.57142857em;
+            //     background-color:$primary-btn-color;
+            //     width:100% ;
+            //     height: 2px;
+            // }
         }
     }
 }

@@ -99,7 +99,7 @@ export default {
 </script>
 
 <template>
-  <Container @drop="onDropGrp" class="groups table" v-if="board">
+  <Container @drop="onDropGrp" class="groups board-details" v-if="board">
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
 
 

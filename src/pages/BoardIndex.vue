@@ -11,7 +11,8 @@ export default {
 
   data() {
     return {
-      title: ''
+      title: '',
+      active: 'table'
     }
   },
   computed: {
@@ -65,11 +66,16 @@ export default {
 
       <nav class="board-nav">
 
-        <RouterLink :to="'/board/' + boardId" class="nav-item">
-          <span v-html="getSvg('homeSml')"></span>
-          Table
-        </RouterLink>
-        <RouterLink :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
+        <RouterLink :class="{ active: active === 'table' }" 
+          @click="active = 'table'" 
+          :to="'/board/' + boardId"
+          class="nav-item">
+          <span v-html="getSvg('homeSml')"></span>Main Table</RouterLink>
+
+        <RouterLink :class="{ active: active === 'kanban' }" 
+          @click="active = 'kanban'" 
+          :to="'/board/' + boardId + '/kanban'"
+          class="nav-item">Kanban</RouterLink>
       </nav>
 
       <RouterView />
