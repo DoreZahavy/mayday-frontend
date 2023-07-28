@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     onUpdateStatus(newStatus) {
-      console.log(this.info)
       this.status = newStatus
       this.$emit('update', JSON.parse(JSON.stringify(this.status)))
     }

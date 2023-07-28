@@ -35,6 +35,10 @@
         "color": "medium-purple"
       },
       {
+        "title": "High",
+        "color": "high-dark-purple"
+      },
+      {
         "title": "Critical ⚠",
         "color": "critical-dark-gray"
       },
@@ -99,8 +103,8 @@
               "color": "done-green"
             },
             "Priority": {
-              "title": "Critical ⚠",
-              "color": "critical-dark-gray"
+              "title": "Medium",
+              "color": "medium-purple"
             },
             "Date": 1690915200000,
             "Timeline": {
@@ -169,8 +173,8 @@
               "color": "stuck-red"
             },
             "Priority": {
-              "title": "Critical ⚠",
-              "color": "critical-dark-gray"
+              "title": "High",
+              "color": "high-dark-purple"
             },
             "Date": 1690387200000,
             "Timeline": {
@@ -208,8 +212,8 @@
               "color": "dark-blue"
             },
             "Priority": {
-              "title": "Critical ⚠",
-              "color": "critical-dark-gray"
+              "title": "Low",
+              "color": "low-blue"
             },
             "Date": 1693238400000,
             "Timeline": {
