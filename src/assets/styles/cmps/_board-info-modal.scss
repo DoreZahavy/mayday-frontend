@@ -1,0 +1,25 @@
+.board-info-background {
+    position: fixed;
+    opacity: .8;
+    width: 100vw;
+    height: 100vh;
+    background-color: $priority-critical;
+    z-index: 40;
+    // pointer-events: auto;
+    top: 0;
+    left: 0;
+}
+.board-info {
+    z-index: 41;
+    top: calc(50vh - ($board-info-modal-height / 2));
+    left: calc(50vw - ($board-info-modal-width /2));
+    position: fixed;
+    background: #fff;
+    width: $board-info-modal-width;
+    height: $board-info-modal-height;
+    opacity: 1;
+    .board-info-details{
+        width: 38%;
+        background-color: lightgreen;
+    }
+}
