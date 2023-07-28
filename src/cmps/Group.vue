@@ -1,11 +1,11 @@
 <template>
     <section class="group-list">
-        
+
         <div class="group-title-container flex align-center">
             <div class="group-actions-container">
                 <button @click="onRemoveGroup" class="button-as-link d-cmp group-actions">🚮</button>
             </div>
-            <InPlaceEdit v-model="groupTitle" class="group-header" :style="textColor"/>
+            <InPlaceEdit v-model="groupTitle" class="group-header" :style="textColor" />
             <span class="task-count">{{ taskCount }} Tasks</span>
         </div>
         <!-- <div v-icon="trash"></div> -->
@@ -16,7 +16,7 @@
         <section class="label-line">
             <div class="task-column">
                 <section class="group-accent-color first" :style="color"></section>
-                <button class="button-as-link d-cmp">🚮</button>
+                <!-- <button class="button-as-link d-cmp">🚮</button> -->
                 <Checkbox />
                 <div class="task-title d-cmp">Task</div>
             </div>
@@ -33,9 +33,15 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
+                    <div style="position: absolute;">
+                        <div class="task-actions-container">
+                            <div class="task-actions">
+                                <button @click="onRemoveTask(task._id)" class="button-as-link task-trash">🚮</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="task-column">
                         <section class="group-accent-color" :style="color"></section>
-                        <button @click="onRemoveTask(task._id)" class="d-cmp button-as-link task-trash">🚮</button>
                         <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                     </div>
@@ -49,7 +55,7 @@
             <section class="task new-task">
                 <div class="task-column">
                     <section class="group-accent-color last" :style="color"></section>
-                    <button class="d-cmp button-as-link task-trash">🚮</button>
+                    <!-- <button class="d-cmp button-as-link task-trash">🚮</button> -->
                     <Checkbox />
                     <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
                 </div>
@@ -107,10 +113,10 @@ export default {
         color() {
             return { background: this.group.color }
         },
-        textColor(){
+        textColor() {
             return { color: this.group.color }
         },
-        taskCount(){
+        taskCount() {
             return this.group.tasks.length
         }
     },

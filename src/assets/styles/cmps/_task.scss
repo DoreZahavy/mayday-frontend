@@ -2,7 +2,7 @@
     // position: relative;
     background: white;
     display: grid;
-    grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(8, 150px);
+    grid-template-columns: calc($row-height + $task-title-width) repeat(8, 150px);
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
@@ -14,14 +14,16 @@
     &:hover {
         background-color: $task-hover;
     }
-
+    &:hover .task-actions-container{
+        opacity: 1;
+    }
     .in-place-edit {
         padding-inline-start: 1rem;
     }
 
     &.new-task {
         transition: 150ms;
-        grid-template-columns: $row-height $row-height 1fr;
+        grid-template-columns: 0px $row-height $row-height 1fr;
         opacity: 0.8;
         transition-timing-function: ease-in-out;
 
@@ -38,8 +40,24 @@
         }
     }
 }
-.task-title{
-    border-inline-end:1px solid $border-clr;
+
+.task-title {
+    border-inline-end: 1px solid $border-clr;
+}
+
+.task-actions-container {
+    position: relative;
+
+    opacity: 0;
+    .task-actions {
+        position: absolute;
+        left: -33px;
+        top: -8px;
+    }
+}
+
+.task-options {
+    position: absolute;
 }
 
 .d-cmp {
@@ -59,37 +77,41 @@
         div {
             width: 149px;
         }
+
         vertical-align: middle !important;
         text-align: center;
     }
-    button{
-        border:0;
+
+    button {
+        border: 0;
     }
 }
 
 .task-column {
     display: grid;
-    grid-template-columns: 0px $row-height $row-height $task-title-width;
+    grid-template-columns: 0px $row-height $task-title-width;
     height: 100%;
     position: sticky;
     left: 6px;
     z-index: 30;
     background-color: #fff;
+
     article {
         grid-column-start: 1;
     }
 
-    button {
+    // button {
+    //     grid-column-start: 2;
+    // }
+
+    .checkbox {
         grid-column-start: 2;
     }
 
     p {
-        grid-column-start: 4;
-    }
-
-    .checkbox {
         grid-column-start: 3;
     }
+
 }
 
 .title {

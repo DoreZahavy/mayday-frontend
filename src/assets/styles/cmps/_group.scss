@@ -51,9 +51,8 @@
             .task-count{
                 opacity: 1;
             }
-            .group-actions {
+            .group-actions{
                 opacity: 1;
-                cursor: pointer;
             }
         }
 
@@ -80,9 +79,10 @@
 }
 
 .label-line {
+    
     position: relative;
     display: grid;
-    grid-template-columns: calc($row-height + $row-height + $task-title-width) repeat(7, 150px);
+    grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
 
@@ -91,15 +91,6 @@
     }
 }
 
-// .task-column {
-//     display: grid;
-//     grid-template-columns: $row-height $row-height $task-title-width;
-//     height: 100%;
-//     position: sticky !important;
-//     left: 0;
-//     z-index: 20;
-//     background: #fff;
-// }
 .group-list {
     margin-top: 2em;
     // border: 1px solid $border-clr;
