@@ -7,7 +7,7 @@
         <pre>{{ this.info }}</pre>
       </div>
     </template>
-    <div class="status status-content" :class="status.color">{{ status.title }}</div>
+    <div v-if="status" class="status status-content" :class="status.color">{{ status.title }}</div>
   </el-tooltip>
 </template>
 

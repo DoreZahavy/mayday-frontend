@@ -1,0 +1,31 @@
+section .number-cmp {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+
+    span.icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        opacity: 0;
+        cursor: pointer;
+
+        &.nums-icon {
+            transform: translate(3%, -44%);
+        }
+
+        &.plus-icon {
+            transform: translate(-70%, -25%);
+            scale: 1.4;
+
+            &:hover {
+                filter: brightness(85%);
+            }
+        }
+    }
+
+    &:hover span.icon {
+        opacity: 1;
+    }
+}

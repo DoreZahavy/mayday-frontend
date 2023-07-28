@@ -37,7 +37,7 @@
                         <div class="task-actions-container">
                             <div class="task-actions">
                                 <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
-                                class="button-as-link task-trash"></button>
+                                    class="button-as-link task-trash"></button>
                                 <!-- <div class="group-gap"></div> -->
                             </div>
                         </div>
@@ -100,6 +100,10 @@ export default {
     props: ['group', 'idx'],
     created() {
 
+    },
+
+    mounted() {
+        console.log(this.group)
     },
 
     data() {

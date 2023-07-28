@@ -1,7 +1,7 @@
 .txt {
     display: inline-block;
-    height: 100%;
-    padding-inline: rem(3px);
+    // height: 100%;
+    // padding-inline: rem(3px);
     overflow: hidden;
     p {
         white-space: nowrap;
@@ -10,8 +10,12 @@
     justify-self: flex-start;
 }
 span.editable-text {
+    display: table-cell;
     overflow: hidden;
     white-space: nowrap;
     // max-height: 100%;
-    // width: 100%;
+    max-width: 150px;
+    height: $row-height;
+    text-align: center;
+    vertical-align: middle;
 }

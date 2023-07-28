@@ -79,6 +79,7 @@ async function addTask(boardId, groupId, title) {
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
     group.tasks.push(getEmptyTask(title))
+    console.log(getEmptyTask(title))
     return await saveBoard(board)
 }
 

@@ -7,6 +7,9 @@
             <InPlaceEdit v-model="desc" /> <!-- TODO: change to textarea and add bounceback -->
         </article>
         <article class="board-info-details flex flex-direction-column">
+            <div>
+                <button class="button-as-link close-modal-btn" @click="this.$emit('closeModal')">&#10005;</button>
+            </div>
             <h3>Board info</h3>
             <article>
                 <span> Workspace</span>
