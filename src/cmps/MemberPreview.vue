@@ -4,7 +4,7 @@
       <img class="member-preview" :src="member.imgUrl" alt="" />
     </section>
     <article :style="{ background: memberColor }" v-else class="member-priview">
-      {{ member.name.substring(0, 1).toUpperCase() }}
+      {{ member.fullname.substring(0, 1).toUpperCase() }}
     </article>
   </section>
 </template>

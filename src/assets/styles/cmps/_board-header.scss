@@ -12,6 +12,8 @@
         // @include boardTitle;
         font-size: em(24px,14px);
         line-height: lh(32px , 14px);
+        // font-size: em(32px,14px);
+        // line-height: lh(40px , 14px);
         font-family: poppins;
         font-weight: 700;
         letter-spacing: -0.2px;
@@ -25,6 +27,19 @@
             &:hover{
                 text-decoration: underline;
             }
+        }
+    }
+    .info-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $btnSml;
+        height: $btnSml;
+        border-radius: 0.2857143em;
+        margin-inline-start: 4px;
+        cursor: pointer;
+        &:hover{
+            background-color:$secondary-btn-hover-color ;
         }
     }
 }
