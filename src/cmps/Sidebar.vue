@@ -1,4 +1,7 @@
+
+
 <script>
+import { ref } from 'vue'
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import SidebarFilter from '@/cmps/SidebarFilter.vue'
@@ -14,6 +17,7 @@ export default {
         // this.active = this.$route.boardId
         // this.boards[0] = this.$store.getters.board
         // console.log("🚀 ~ file: Sidebar.vue:10 ~ created ~ this.boards:", this.boards)
+
     },
     methods: {
         loadBoard(boardId) {

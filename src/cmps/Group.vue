@@ -1,7 +1,13 @@
 <template>
     <section class="group-list">
-        <button @click="onRemoveGroup" class="button-as-link d-cmp">🚮</button>
-        <InPlaceEdit v-model="groupTitle" class="group-header" />
+        
+        <div class="group-title-container flex align-center">
+            <div class="group-actions-container">
+                <button @click="onRemoveGroup" class="button-as-link d-cmp group-actions">🚮</button>
+            </div>
+            <InPlaceEdit v-model="groupTitle" class="group-header" :style="textColor"/>
+            <span class="task-count">{{ taskCount }} Tasks</span>
+        </div>
         <!-- <div v-icon="trash"></div> -->
         <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
@@ -99,8 +105,13 @@ export default {
             return this.$store.getters.cmpOrder
         },
         color() {
-            console.log(this.group.color)
             return { background: this.group.color }
+        },
+        textColor(){
+            return { color: this.group.color }
+        },
+        taskCount(){
+            return this.group.tasks.length
         }
     },
     methods: {
