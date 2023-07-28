@@ -82,8 +82,10 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-
-      <RouterView />
+      <section class="flex">
+        <div class="left-gap"></div>
+        <RouterView />
+      </section>
     </section>
   </main>
 </template>

@@ -7,8 +7,6 @@ article.attachments {
         left: 50%;
         top: 50%;
         opacity: 0;
-        scale: 0.8;
-        transition: 0.09s;
         cursor: pointer;
 
         &.file-icon {
@@ -17,6 +15,8 @@ article.attachments {
 
         &.plus-icon {
             transform: translate(-80%, -26%);
+            scale: 0.8;
+            transition: 0.13s;
 
             &:hover {
                 filter: brightness(85%);

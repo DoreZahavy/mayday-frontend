@@ -8,7 +8,7 @@
             </div>
         </div>
         <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
-            v-model="pickedDateTimeRange" type="datetimerange" @change="onDateTimeChange" ref="datePicker">
+            v-model="pickedDateTimeRange" type="daterange" @change="onDateTimeChange" ref="datePicker">
         </el-date-picker>
     </article>
 </template>
