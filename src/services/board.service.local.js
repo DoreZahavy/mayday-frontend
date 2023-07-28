@@ -77,7 +77,9 @@ async function removeGroup(boardId, groupId) {
 async function addTask(boardId, groupId, title) {
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
-    group.tasks.push(getEmptyTask(title))
+    const emptyTask = getEmptyTask(title)
+    console.log("🚀 ~ file: board.service.local.js:81 ~ addTask ~ emptyTask:", emptyTask)
+    group.tasks.push(emptyTask)
     return await saveBoard(board)
 }
 

@@ -21,8 +21,9 @@
     height: $board-info-modal-height;
     opacity: 1;
     grid-template-columns: auto 38%;
-
+    border-radius: 6px;
     .board-info-details {
+        border-radius: 6px;
         width: 100%;
         background-color: $task-hover;
         padding: rem(32px);
@@ -34,6 +35,22 @@
         }
         span{
             color:$secondary-text-color;
+        }
+    }
+    div{
+        position: relative;
+        button{
+            padding-block-end: 2px;
+            font-size: 17px;
+            top:-22px;
+            right: -20px;
+            position: absolute;
+            width: 28px;
+            height: 32px;
+            border-radius: 3px;
+            &:hover{
+                background-color: $secondary-btn-hover-color;
+            }
         }
     }
 
