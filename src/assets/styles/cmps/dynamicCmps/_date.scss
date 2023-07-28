@@ -2,6 +2,7 @@ section .date-container {
     position: relative;
     height: 100%;
     width: 100%;
+    cursor: pointer;
 
     .date {
         div:nth-of-type(2) {
@@ -19,7 +20,28 @@ section .date-container {
         }
     }
 
-    span {
-        margin-block-start: 18px;
+    span.icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        opacity: 0;
+        cursor: pointer;
+
+        &.date-picker-icon {
+            transform: translate(3%, -44%);
+        }
+
+        &.plus-icon {
+            transform: translate(-70%, -25%);
+            scale: 1.45;
+
+            &:hover {
+                filter: brightness(85%);
+            }
+        }
+    }
+
+    &:hover span.icon {
+        opacity: 1;
     }
 }
