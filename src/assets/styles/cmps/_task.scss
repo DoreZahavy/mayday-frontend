@@ -119,7 +119,9 @@
     left: 46px;
     z-index: 31;
     background-color: #fff;
-
+    .add-task{
+        color: $primary-text-color;
+    }
     // :before{
     //     content: "";
     //     position: absolute;
