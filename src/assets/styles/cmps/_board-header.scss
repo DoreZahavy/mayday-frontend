@@ -21,8 +21,8 @@
     }
     .board-desc{
         color: $secondary-text-color;
-        cursor: pointer;
         span{
+            cursor: pointer;
             color:#1F76C2;
             &:hover{
                 text-decoration: underline;
