@@ -60,7 +60,7 @@ section .number-cmp {
         opacity: 1;
     }
 
-    > :first-child {
+    > :nth-child(2) {
         position: absolute;
         left: 50%;
         top: 50%;
