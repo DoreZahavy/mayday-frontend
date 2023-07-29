@@ -13,6 +13,9 @@ import HomeHeader from '@/cmps/HomeHeader.vue'
 export default{
   components: {
     HomeHeader
+  },
+  created(){
+    document.title="Mayday"
   }
 }
 </script>
