@@ -1,6 +1,6 @@
 <template>
     <article style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container"
-        @mouseover="onMouseOver" @mouseout="onMouseOut">
+        :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver" @mouseout="onMouseOut">
         <div class="flex justify-center align-center" style="height:100%; width: 100%;">
             <span v-if="!hovered"
                 style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
@@ -13,8 +13,12 @@
             </div>
         </div>
         <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
-            v-model="pickedDateTimeRange" type="daterange" @change="onDateTimeChange" ref="datePicker">
+            v-model="pickedDateTimeRange" type="daterange" @change="onDateChange" ref="datePicker">
         </el-date-picker>
+        <div v-if="pickedDate" class="reset-text" @click="clearDate">
+            <span class="x-icon" v-html="getSvg('xButton')">
+            </span>
+        </div>
     </article>
 </template>
 
@@ -34,7 +38,9 @@ export default {
     },
     computed: {
         formattedStartDate() {
-            if (this.isDateNull) return '-'
+            if (this.isDateNull) {
+                return '-'
+            }
             const d = new Date(this.pickedDateTimeRange[0])
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             return `${monthNames[d.getMonth()]} ${d.getDate()}${this.isDifferentYear ? `, '${d.getFullYear().toString().slice(-2)}` : ''}`
@@ -55,10 +61,15 @@ export default {
             }
         },
         totalDays() {
-            if (this.isDateNull) return '-'
-            const start = new Date(this.pickedDateTimeRange[0])
-            const end = new Date(this.pickedDateTimeRange[1])
-            return Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1 + 'd'
+            if (this.isDateNull && !this.hovered) {
+                return '-'
+            } else if (this.isDateNull && this.hovered) {
+                return 'Set Dates'
+            } else {
+                const start = new Date(this.pickedDateTimeRange[0])
+                const end = new Date(this.pickedDateTimeRange[1])
+                return Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1 + 'd'
+            }
         },
         progress() {
             const now = new Date()
@@ -107,7 +118,7 @@ export default {
         },
     },
     methods: {
-        onDateTimeChange(date) {
+        onDateChange(date) {
             this.currDateSettings = {
                 startDate: date[0].valueOf(),
                 dueDate: date[1].valueOf()
@@ -143,7 +154,7 @@ export default {
     border-radius: 20px;
 }
 
-.date-container:hover .progress-fill {
+.date-container.hovered .progress-fill {
     filter: brightness(70%);
 }
 

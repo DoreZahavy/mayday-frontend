@@ -47,6 +47,22 @@
     &:hover span.icon {
         opacity: 1;
     }
+
+    .reset-text {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 8%;
+        top: 10px;
+        cursor: pointer;
+        display: none;
+        background-color: lightgray;
+        color: #5a5a5a;
+        width: 1.14em;
+        height: 1.1em;
+        border-radius: 2px;
+    }
 }
 
 .text-container {
@@ -75,20 +91,4 @@
     &:focus {
         outline: none;
     }
-}
-
-.reset-text {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    right: 8%;
-    top: 10px;
-    cursor: pointer;
-    display: none;
-    background-color: lightgray;
-    color: #5a5a5a;
-    width: 1.14em;
-    height: 1.1em;
-    border-radius: 2px;
 }
