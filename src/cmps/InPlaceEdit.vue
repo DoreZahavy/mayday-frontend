@@ -24,7 +24,7 @@ export default {
             this.caretMoved = false
             if (this.$refs.editor.innerText.length > 0) {
                 this.$emit('update:modelValue', this.$refs.editor.innerText)
-            }else{
+            } else {
                 this.$refs.editor.innerText = this.savedStr
             }
         },
@@ -51,8 +51,8 @@ export default {
 
 <template>
     <section class="in-place-edit">
-        <span :contenteditable="editing" :class="{ editable: editing }" @click="startEditing" @keydown="checkEnter"
-            @blur="stopEditing" ref="editor">
+        <span  :contenteditable="editing" :class="{ editable: editing }" @click="startEditing" @keydown="checkEnter"
+        @blur="stopEditing" ref="editor">
             {{ modelValue }}
         </span>
     </section>

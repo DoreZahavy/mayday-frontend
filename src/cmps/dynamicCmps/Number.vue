@@ -1,10 +1,10 @@
 <template>
     <section class="number-cmp fs15">
         <div class="text-container">
-            <input v-show="editing || number" ref="editor" v-model="number" @blur="stopEditing"
-                @keydown.enter.prevent="stopEditing" @keypress="isNumber($event)" class="editable-text" type="text"
-                @click="startEditing">
-            <div v-show="!number && !editing" @click="startEditing">
+            <span v-show="!editing && (number || number === 0)" @click="startEditing">{{ formatCurrency(number) }}</span>
+            <input v-show="editing" ref="editor" v-model="number" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
+                @keypress="isNumber($event)" class="editable-text fs15" type="text" @click="startEditing">
+            <div v-show="!number && number !== 0 && !editing" @click="startEditing">
                 <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon nums-icon" v-html="getSvg('nums')"></span>
             </div>
@@ -30,30 +30,39 @@ export default {
     },
     computed: {
         showButton() {
-            return !this.editing && this.number
+            return !this.editing && (this.number || this.number === 0)
         }
     },
     methods: {
         isNumber(evt) {
-            evt = (evt) ? evt : window.event;
-            const charCode = (evt.which) ? evt.which : evt.keyCode;
+            const charCode = (evt.which) ? evt.which : evt.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                evt.preventDefault();
+                evt.preventDefault()
             } else {
-                return true;
+                return true
             }
         },
+        formatCurrency(value) {
+            if (value === 0) {
+                return '$0';
+            }
+            return new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, currency: 'USD' }).format(value)
+        },
         startEditing() {
-            this.number = 0
             this.editing = true
             this.$nextTick(() => {
                 this.moveCaretToInputEnd()
             })
         },
         stopEditing() {
-            this.number = this.$refs.editor.value
             this.editing = false
-            this.$emit('update', Number(this.number))
+            this.number = this.$refs.editor.value
+            if (this.number === '') {
+                this.$emit('update', null)
+            } else {
+                this.$emit('update', Number(this.number))
+                this.number = Number(this.$refs.editor.value)
+            }
         },
         clearNumber() {
             this.number = null

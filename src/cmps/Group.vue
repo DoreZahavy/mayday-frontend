@@ -20,8 +20,11 @@
         <!-- render group labels by labels array -->
 
         <section class="label-line">
-            <div class="task-column not-hover">
-                <section class="group-accent-color first" :style="color"></section>
+            <div class="task-column  not-hover">
+                <div>
+                    <section class="group-accent-color first" :style="color">
+                    </section>
+                </div>
                 <Checkbox />
                 <div class="task-title d-cmp">Task</div>
             </div>
@@ -59,9 +62,12 @@
             </Draggable>
             <section class="task new-task">
                 <div class="task-column">
-                    <section class="group-accent-color last" :style="color"></section>
+                    <div>
+                        <section class="group-accent-color last" :style="color">
+                        </section>
+                    </div>
                     <Checkbox />
-                    <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
+                    <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task" :placeholder="addTaskPlaceholder"></InPlaceEdit>
                 </div>
             </section>
             <section class="progress flex">
@@ -105,7 +111,8 @@ export default {
 
     data() {
         return {
-            addTaskTxt: 'Add Task',
+            addTaskTxt: '',
+            addTaskPlaceholder:'+ Add Task',
             groupTitle: this.group.title,
             showPicker: false,
             editGroup: false
