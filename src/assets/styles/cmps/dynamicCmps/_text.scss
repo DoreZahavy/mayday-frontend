@@ -67,10 +67,6 @@
 
 .text-container {
     position: relative;
-
-    &:hover::before {
-        border: 50px solid lightgray;
-    }
 }
 
 .editable-text {
