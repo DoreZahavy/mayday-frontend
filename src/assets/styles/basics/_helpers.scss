@@ -5,6 +5,9 @@
 .fs14 {
     font-size: rem(14px);
 }
+.fs15 {
+    font-size: rem(15px);
+}
 .fs18 {
     font-size: rem(18px);
 }
@@ -51,7 +54,7 @@
     &.inline-flex {
         display: inline-flex;
     }
-    &.flex-direction-column{
+    &.flex-direction-column {
         flex-direction: column;
     }
 }
