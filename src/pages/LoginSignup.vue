@@ -42,6 +42,9 @@ export default {
     },
     components: {
         LoginHeader
+    }, 
+    created() {
+        document.title = "Mayday"
     }
 }
 </script>
@@ -81,16 +84,16 @@ export default {
                     <input type="password" v-model="credentials.password" placeholder="Password" />
                 </div>
             </form>
-                <button class="auth-btn">{{ isSignup ?
-                        'Continue' :
-                        'Log in'
-                    }}<span v-icon="'loginArrow'"></span></button>
+            <button class="auth-btn">{{ isSignup ?
+                'Continue' :
+                'Log in'
+            }}<span v-icon="'loginArrow'"></span></button>
             <hr />
             <div class="switch">
                 {{ isSignup ?
-                        'Already have an account?' :
-                        `Don't have an account yet?`
-                    }}
+                    'Already have an account?' :
+                    `Don't have an account yet?`
+                }}
                 <a @click="isSignup = !isSignup">
                     {{ isSignup ?
                         ' Log in' :
