@@ -2,7 +2,7 @@
     padding-inline-start: 6px;
     background-color: #fff;
     // overflow-x: hidden;
-    // margin-inline-start: rem(41px);
+    // margin-inline-start: rem(60px);
 
     .tasks-container {
         overflow-x: visible;
@@ -22,15 +22,17 @@
         transform: translate(-6px);
         z-index: 38;
         position: sticky;
-        left: 48px;
+        // bottom: -192px;
+        // left: 50px;
         top: 109px;
         // top: 136px;
         background-color: #fff;
 
         .group-header {
+            box-sizing: border-box;
             position: sticky;
-            left: 54px;
-            width: fit-content;
+            left: 55px;
+            // width: fit-content;
             border-radius: 4px;
             font-size: 18px;
             letter-spacing: -0.2px;
@@ -38,8 +40,14 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+
+            &:hover {
+                outline: 1px solid $border-clr;
+            }
+
             .editable-group-title {
-                .editable{
+
+                .editable {
 
                     outline: none;
                 }
@@ -47,12 +55,13 @@
 
             span:first-of-type {
                 padding-inline: 5px;
-                border: 1px solid transparent;
+                // border: 1px solid transparent;
 
                 &:hover {
-                    border: 1px solid $border-clr;
+                    // border: 1px solid $border-clr;
                 }
             }
+
             .task-count {
                 color: $secondary-text-color;
                 opacity: 0;
@@ -60,6 +69,7 @@
                 // padding-inline-start: 5px;
                 font-size: 14px;
                 margin-block-start: 4px;
+                padding-inline-end: .3em;
                 font-weight: 400;
             }
 
@@ -74,14 +84,13 @@
                 height: 21px;
                 margin-inline-start: 5px;
             }
-            &:hover {
-                border: 1px solid $border-clr;
-            }
-            &:focus-within{
-                border: 1px solid  #0073ea;
+
+            &:focus-within {
+                border: 1px solid #0073ea;
                 width: 50vw;
-                .color-btn{
-                    user-select: none;
+
+                .color-btn {
+                    // user-select: none;
                     display: inline-block;
                 }
             }
@@ -90,10 +99,10 @@
                 cursor: grabbing;
             }
 
-           
+
         }
 
-        
+
 
         &:hover {
             .task-count {
@@ -110,7 +119,7 @@
         height: 36px;
         width: 36px;
         position: absolute;
-        top: -5px;
+        top: -4px;
         left: -37px;
         opacity: 0;
     }
@@ -127,7 +136,7 @@
     position: sticky;
     top: 185px;
     // top: 132px;
-    z-index: 31;
+    z-index: 30;
     // position: relative;
     display: grid;
     grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
@@ -146,15 +155,45 @@
     position: relative;
 }
 
-.progress-bar {
-    margin-left: $progress-bar-left-margin;
-    border: 1px $border-clr solid;
-    border-radius: 0 0 0 6px;
-    border-block-start: 0;
-    border-inline-end: 0;
-    height: $row-height;
-    display: block;
-    align-items: center;
+.progress {
+    position: sticky;
+    left: 0;
+
+    .progress-margin {
+        background-color: #fff;
+
+        position: sticky;
+        left: 48px;
+        // z-index: 2;
+        height: $row-height;
+        width: 443px; // $progress-bar-left-margin;
+    }
+
+    .progress-border {
+        background-color: #fff;
+        position: sticky;
+        left: 388px;
+        width: 5px;
+        // z-index: 2;
+        height: $row-height;
+        border-left: 1px $border-clr solid;
+        border-bottom: 1px $border-clr solid;
+        border-radius: 0 0 0 6px;
+    }
+
+    .progress-bar {
+        width: 100%;
+        background-color: #0073ea;
+        // margin-left: $progress-bar-left-margin;
+        // border: 1px $border-clr solid;
+        // border-radius: 0 0 0 6px;
+        border-bottom: 1px $border-clr solid;
+        border-block-start: 0;
+        border-inline-end: 0;
+        height: $row-height;
+        display: block;
+        align-items: center;
+    }
 }
 
 .group-accent-color {

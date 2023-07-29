@@ -22,12 +22,15 @@
     .add-group-btn {
         display: flex;
         align-items: center;
+
+        position: sticky;
+        left: 48px;
         height: $btn-height;
         background-color: transparent;
         border: 1px solid #c3c6d4;
         border-radius: 0.2857143em;
         padding-inline: 8px;
-        margin-block-end: 50px;
+        margin-block: 36px;
         color: $primary-text-color;
         &:hover{
             background-color: $secondary-btn-hover-color;
@@ -38,8 +41,10 @@
 .group-gap {
     position: sticky;
     top: 0;
-    width: 100%;
-    z-index: 41;
-    height: 36px;
-    background-color: #fff;
+    left:-12px;
+    width: (60px);
+    z-index: 31;
+    height: 300px;
+    background-color: white;
+    flex: 1;
 }

@@ -103,12 +103,16 @@ export default {
   <Container @drop="onDropGrp" class="board-details" v-if="board">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
+      <div class="flex">
 
-      <!-- <div class="group-gap"></div> -->
-      <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
-        @removeTask="removeTask(group._id, $event)" @update="updateBoard(group._id, $event)"
-        @removeGroup="removeGroup(group._id)">
-      </Group>
+        <div class="group-gap"></div>
+        <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
+          @removeTask="removeTask(group._id, $event)" @update="updateBoard(group._id, $event)"
+          @removeGroup="removeGroup(group._id)">
+        </Group>
+
+      </div>
+
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
 

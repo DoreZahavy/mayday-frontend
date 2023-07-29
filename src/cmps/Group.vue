@@ -2,16 +2,17 @@
     <section class="group-list">
 
         <div class="group-title-container flex align-center">
-            
+
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div class="group-actions-container">
-                    <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
+                    <button @click="onRemoveGroup" v-html="getSvg('trash')"
+                        class="button-as-link d-cmp group-actions"></button>
                 </div>
                 <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
-                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor"/>
+                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
                 </div>
                 <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
-                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor" ></InPlaceEdit>
+                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
                 <p class="task-count">{{ taskCount }} Tasks</p>
             </div>
         </div>
@@ -37,15 +38,13 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <div style="position: absolute;">
+                    <div class="task-column">
                         <div class="task-actions-container">
                             <div class="task-actions">
                                 <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
                                     class="button-as-link task-trash"></button>
                             </div>
                         </div>
-                    </div>
-                    <div class="task-column">
                         <section class="group-accent-color" :style="color"></section>
                         <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
@@ -65,8 +64,12 @@
                     <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
                 </div>
             </section>
-            <section class="progress-bar">
+            <section class="progress flex">
 
+                <div class="progress-margin"></div>
+                <div class="progress-border"></div>
+                <section class="progress-bar">
+                </section>
             </section>
         </Container>
         <!-- render progress by progress array -->
@@ -105,7 +108,7 @@ export default {
             addTaskTxt: 'Add Task',
             groupTitle: this.group.title,
             showPicker: false,
-            editGroup : false
+            editGroup: false
         }
     },
     computed: {
@@ -150,26 +153,26 @@ export default {
         onRemoveGroup() {
             this.$emit('removeGroup')
         },
-        onSetColor(color){
+        onSetColor(color) {
             console.log('color:', color)
-            this.$emit('update', {  prop:'color', toUpdate:color })
+            this.$emit('update', { prop: 'color', toUpdate: color })
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
-        openPicker(){
+        openPicker() {
             this.showPicker = true
         },
-        closePicker(){
+        closePicker() {
             this.showPicker = false
         },
-        openEditGroup(){
+        openEditGroup() {
             this.editGroup = true
         },
-        closeEditGroup(){
+        closeEditGroup() {
             this.editGroup = false
         }
-        
+
 
     },
     components: {

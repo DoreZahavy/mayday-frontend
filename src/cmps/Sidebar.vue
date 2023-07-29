@@ -49,7 +49,7 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy
         },
-       
+
     },
     computed: {
         boardList() {
@@ -66,8 +66,14 @@ export default {
             handler() {
                 console.log('params watcher');
                 this.active = this.boardId
-                if (!this.boardId) this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
-                else this.loadBoard(this.boardId)
+                if (!this.boardId) {
+                    this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
+                    document.title = this.boardList[0].title
+                }
+                else {
+                    this.loadBoard(this.boardId)
+                    document.title = this.$store.getters.boardTitle
+                }
             },
             immediate: true,
         },
@@ -78,7 +84,7 @@ export default {
 }
 </script>
 <template>
-    <aside class="sidebar" :class="{ collapsed: isCollapsed }" >
+    <aside class="sidebar" :class="{ collapsed: isCollapsed }">
 
         <div class="divider-div">
             <ul class="clean-list nav-list">
@@ -97,7 +103,7 @@ export default {
         </div>
 
         <ul class="clean-list sidebar-list">
-            <li class="flex" v-for="board in boardList" :class="{ active: active === board._id }" >
+            <li class="flex" v-for="board in boardList" :class="{ active: active === board._id }">
                 <div class="flex align-center">
                     <div v-html="getSvg('boardType')"></div>
                     <RouterLink class="board-link" :to="'/board/' + board._id">{{ board.title }}</RouterLink>

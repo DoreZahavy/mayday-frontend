@@ -36,6 +36,10 @@ export default {
     BoardInfoModal
   },
   mounted() {
+    document.title = 'Mayday'
+    setTimeout(() => {
+      document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
+    }, 600);
   },
   methods: {
     async updateBoard({ prop, toUpdate }) {
@@ -50,9 +54,9 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
-    toggleModal(){
+    toggleModal() {
       this.showModal = !this.showModal
-      
+
     }
   },
   watch: {
@@ -69,8 +73,8 @@ export default {
     <MainHeader />
     <Sidebar />
     <section class="board-container">
-      <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard"/>
-      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal"/>
+      <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard" />
+      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
 
       <nav class="board-nav">
 
@@ -84,7 +88,7 @@ export default {
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
       <section class="flex">
-        <div class="left-gap"></div>
+        <!-- <div class="left-gap"></div> -->
         <RouterView />
       </section>
     </section>
