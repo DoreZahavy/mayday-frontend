@@ -6,7 +6,7 @@
                 {{ editing ? number : formatCurrency(number) }}
             </span>
             <div v-else @click="startEditing">
-                <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
+                <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon nums-icon" v-html="getSvg('nums')"></span>
             </div>
         </div>

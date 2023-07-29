@@ -1,9 +1,9 @@
 <template>
   <section style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container">
     <div class="flex justify-center align-center" style="height:100%">
-      <span v-if="pickedDate" class="date">{{ date }}</span>
+      <span v-if="pickedDate" class="date">{{ formattedDate }}</span>
       <div v-else>
-        <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
+        <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
         <span class="icon date-picker-icon" v-html="getSvg('datePicker')"></span>
       </div>
       <div v-if="showButton" class="reset-text" @click="clearDate">
@@ -29,12 +29,14 @@ export default {
     }
   },
   computed: {
-    date() {
-      // const d = new Date(this.pickedDate)
-      // return `${d.getDate()}/${d.getMonth() + 1}`
+    formattedDate() {
       let date = new Date(this.pickedDate)
-      const options = { day: 'numeric', month: 'numeric' }
-      return date.toLocaleString('en-gb', options)
+      const currentYear = (new Date()).getFullYear()
+      const options = { month: 'short', day: 'numeric' }
+      if (date.getFullYear() !== currentYear) {
+        options.year = 'numeric'
+      }
+      return date.toLocaleDateString('en-US', options)
     },
     showButton() {
       return this.pickedDate

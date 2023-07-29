@@ -8,10 +8,10 @@
                     <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
                 </div>
                 <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
-                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor"/>
+                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
                 </div>
                 <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
-                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor" ></InPlaceEdit>
+                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
                 <p class="task-count">{{ taskCount }} Tasks</p>
             </div>
         </div>
@@ -65,8 +65,12 @@
                     <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
                 </div>
             </section>
-            <section class="progress-bar">
-
+            <section class="progress flex">
+    
+                <div class="progress-margin"></div>
+                <div class="progress-border"></div>
+                <section class="progress-bar">
+                </section>
             </section>
         </Container>
         <!-- render progress by progress array -->
@@ -105,7 +109,7 @@ export default {
             addTaskTxt: 'Add Task',
             groupTitle: this.group.title,
             showPicker: false,
-            editGroup : false
+            editGroup: false
         }
     },
     computed: {
@@ -150,26 +154,26 @@ export default {
         onRemoveGroup() {
             this.$emit('removeGroup')
         },
-        onSetColor(color){
+        onSetColor(color) {
             console.log('color:', color)
-            this.$emit('update', {  prop:'color', toUpdate:color })
+            this.$emit('update', { prop: 'color', toUpdate: color })
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
-        openPicker(){
+        openPicker() {
             this.showPicker = true
         },
-        closePicker(){
+        closePicker() {
             this.showPicker = false
         },
-        openEditGroup(){
+        openEditGroup() {
             this.editGroup = true
         },
-        closeEditGroup(){
+        closeEditGroup() {
             this.editGroup = false
         }
-        
+
 
     },
     components: {
