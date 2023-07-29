@@ -20,14 +20,16 @@
         padding-top: 36px;
         height: 40px;
         transform: translate(-6px);
-
+        z-index: 38;
         position: sticky;
         left: 48px;
         top: 109px;
         // top: 136px;
         background-color: #fff;
-        z-index: 32;
+
         .group-header {
+            position: sticky;
+            left: 54px;
             width: fit-content;
             border: 1px solid transparent;
             border-radius: 4px;
@@ -40,39 +42,24 @@
             .editable-group-title:focus-visible {
                 border-style: none;
             }
+
             span {
                 padding-inline: 5px;
             }
+
             // span::before{
-            .color-btn {
-                //
-                // display: none;
-                position: absolute;
-                left: 0px;
+            .color-btn{
+                // content: '';
+                display: none;
+                position: relative;
                 border-radius: 50%;
                 // background-color: rgb(127, 83, 71);
                 width: 21px;
                 height: 21px;
                 margin-inline-start: 5px;
             }
-            &:focus-within {
-                .in-place-edit {
-                    .editable {
-                        // margin-inline-start: 40px;
-                        display: inline-block;
-                        // background-color: aqua;
-                        width: 50vw;
-                        // resize:none;
-                        &::before {
-                            content: '';
-                            display: inline-block;
-                            width: 21px;
-                            height: 1px;
-                            background-color: transparent;
-                        }
-                    }
-                }
-                .color-btn {
+            &:focus-within{
+                .color-btn{
                     display: inline-block;
                 }
             }
@@ -92,10 +79,12 @@
             transition: 100ms;
             padding-inline-start: 5px;
         }
+
         &:hover {
             .task-count {
                 opacity: 1;
             }
+
             .group-actions {
                 opacity: 1;
             }
@@ -103,10 +92,11 @@
     }
 
     .group-actions {
+        height: 36px;
+        width: 36px;
         position: absolute;
-        top: 6px;
-        height: min-content;
-        left: -20px;
+        top: 38px;
+        left: -30px;
         opacity: 0;
     }
 }

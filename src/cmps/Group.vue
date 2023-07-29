@@ -14,15 +14,12 @@
             </div>
             <span class="task-count">{{ taskCount }} Tasks</span>
         </div>
-        <!-- <div v-icon="trash"></div> -->
-        <!-- <div className="icon" v-html="getSvg('trash')"></div> -->
 
         <!-- render group labels by labels array -->
 
         <section class="label-line">
             <div class="task-column">
                 <section class="group-accent-color first" :style="color"></section>
-                <!-- <button class="button-as-link d-cmp">🚮</button> -->
                 <Checkbox />
                 <div class="task-title d-cmp">Task</div>
             </div>
@@ -44,7 +41,6 @@
                             <div class="task-actions">
                                 <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
                                     class="button-as-link task-trash"></button>
-                                <!-- <div class="group-gap"></div> -->
                             </div>
                         </div>
                     </div>
@@ -64,7 +60,6 @@
             <section class="task new-task">
                 <div class="task-column">
                     <section class="group-accent-color last" :style="color"></section>
-                    <!-- <button class="d-cmp button-as-link task-trash">🚮</button> -->
                     <Checkbox />
                     <InPlaceEdit v-model="addTaskTxt" class="flex align-center justify-center"></InPlaceEdit>
                 </div>
@@ -74,18 +69,9 @@
             </section>
         </Container>
         <!-- render progress by progress array -->
-        <!-- <section class="progress-grid">
-            <div v-for="(item, idx) in progress" :key="idx">{{ item }}</div>
-        </section> -->
     </section>
 </template>
 
-<!-- <Container >
-    <Draggable class="grp-scroll" v-for="group in groups" :key="group">
-      <Group :group="group"></Group>
-    </Draggable>
-  </Container>
-   -->
 <script>
 import { svgService } from '../services/svg.service'
 

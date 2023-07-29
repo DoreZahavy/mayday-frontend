@@ -14,9 +14,11 @@
     &:hover {
         background-color: $task-hover;
     }
+
     &:hover .task-actions-container {
         opacity: 1;
     }
+
     .in-place-edit {
         padding-inline-start: 1rem;
     }
@@ -47,16 +49,31 @@
 
 .task-actions-container {
     position: relative;
-
     opacity: 0;
+
+    z-index: 38;
+
     .task-actions {
         position: absolute;
-        left: -33px;
-        top: -8px;
-        z-index: 38;
+        left: -41px;
+        top: -18px;
+        height: $row-height;
+        width: $row-height;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
         .task-trash {
+            padding: 0;
+            cursor: pointer;
+        }
+
+        &:hover {
+            opacity: 1;
         }
     }
+
+
 }
 
 .task-options {
