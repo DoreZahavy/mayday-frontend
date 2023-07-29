@@ -1,11 +1,10 @@
 <template>
     <section class="number-cmp fs15">
         <div class="text-container">
-            <span v-if="editing || number" :contenteditable="editing" :class="{ editable: editing }" @keydown="checkEnter"
-                @blur="stopEditing" ref="editor" @click="startEditing">
-                {{ editing ? number : formatCurrency(number) }}
-            </span>
-            <div v-else @click="startEditing">
+            <input v-show="editing || number" ref="editor" v-model="number" @blur="stopEditing"
+                @keydown.enter.prevent="stopEditing" @keypress="isNumber($event)" class="editable-text" type="text"
+                @click="startEditing">
+            <div v-show="!number && !editing" @click="startEditing">
                 <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon nums-icon" v-html="getSvg('nums')"></span>
             </div>
@@ -26,7 +25,6 @@ export default {
     data() {
         return {
             editing: false,
-            caretMoved: false,
             number: this.info
         }
     },
@@ -36,8 +34,14 @@ export default {
         }
     },
     methods: {
-        formatCurrency(value) {
-            return new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, currency: 'USD' }).format(value)
+        isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            const charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                evt.preventDefault();
+            } else {
+                return true;
+            }
         },
         startEditing() {
             this.number = 0
@@ -47,8 +51,7 @@ export default {
             })
         },
         stopEditing() {
-            this.number = this.$refs.editor.innerText
-            this.caretMoved = false
+            this.number = this.$refs.editor.value
             this.editing = false
             this.$emit('update', Number(this.number))
         },
@@ -57,25 +60,14 @@ export default {
             this.showButton = false
             this.$emit('update', null)
         },
-        checkEnter(event) {
-            if (event.keyCode === 13) {
-                this.stopEditing()
-            }
-        },
         moveCaretToInputEnd() {
-            if (this.caretMoved) return
             const editor = this.$refs.editor
-            const range = document.createRange()
-            range.selectNodeContents(editor)
-            range.collapse(false)
-            const selection = window.getSelection()
-            selection.removeAllRanges()
-            selection.addRange(range)
+            const length = editor.value.length
             editor.focus()
-            this.caretMoved = true
+            editor.setSelectionRange(length, length)
         },
-        getSvg(iconName) {
-            return svgService.getSvg(iconName)
+        getSvg(name) {
+            return svgService.getSvg(name)
         }
     }
 }
