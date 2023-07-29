@@ -2,7 +2,7 @@
     padding-inline-start: 6px;
     background-color: #fff;
     // overflow-x: hidden;
-    margin-inline-start: rem(60px);
+    // margin-inline-start: rem(60px);
 
     .tasks-container {
         overflow-x: visible;
@@ -133,7 +133,7 @@
     position: sticky;
     top: 185px;
     // top: 132px;
-    z-index: 31;
+    z-index: 30;
     // position: relative;
     display: grid;
     grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
