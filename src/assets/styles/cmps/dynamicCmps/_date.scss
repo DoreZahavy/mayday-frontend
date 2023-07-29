@@ -46,4 +46,20 @@ section .date-container {
     &:hover span.icon {
         opacity: 1;
     }
+
+    .reset-text {
+        position: absolute;
+        display: flex;
+        place-items: center;
+        place-content: center;
+        right: 8%;
+        top: 10px;
+        cursor: pointer;
+        background-color: lightgray;
+        color: #5a5a5a;
+        width: 1.15em;
+        height: 1.11em;
+        border-radius: 2px;
+        line-height: 0.65;
+    }
 }

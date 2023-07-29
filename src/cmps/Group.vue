@@ -2,10 +2,11 @@
     <section class="group-list">
 
         <div class="group-title-container flex align-center">
-           
+
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div class="group-actions-container">
-                    <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
+                    <button @click="onRemoveGroup" v-html="getSvg('trash')"
+                        class="button-as-link d-cmp group-actions"></button>
                 </div>
                 <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
                     <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
@@ -38,12 +39,10 @@
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
                     <div class="task-column">
-                        <div style="position: sticky;">
-                            <div class="task-actions-container">
-                                <div class="task-actions">
-                                    <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
-                                        class="button-as-link task-trash"></button>
-                                </div>
+                        <div class="task-actions-container">
+                            <div class="task-actions">
+                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
+                                    class="button-as-link task-trash"></button>
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
@@ -66,7 +65,7 @@
                 </div>
             </section>
             <section class="progress flex">
-    
+
                 <div class="progress-margin"></div>
                 <div class="progress-border"></div>
                 <section class="progress-bar">

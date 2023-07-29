@@ -2,7 +2,7 @@
     padding-inline-start: 6px;
     background-color: #fff;
     // overflow-x: hidden;
-    margin-inline-start: rem(60px);
+    // margin-inline-start: rem(60px);
 
     .tasks-container {
         overflow-x: visible;
@@ -40,12 +40,14 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+
             &:hover {
                 outline: 1px solid $border-clr;
             }
+
             .editable-group-title {
-               
-                .editable{
+
+                .editable {
 
                     outline: none;
                 }
@@ -82,11 +84,12 @@
                 height: 21px;
                 margin-inline-start: 5px;
             }
-            
-            &:focus-within{
-                border: 1px solid  #0073ea;
+
+            &:focus-within {
+                border: 1px solid #0073ea;
                 width: 50vw;
-                .color-btn{
+
+                .color-btn {
                     // user-select: none;
                     display: inline-block;
                 }
@@ -116,7 +119,7 @@
         height: 36px;
         width: 36px;
         position: absolute;
-        top: 38px;
+        top: -4px;
         left: -37px;
         opacity: 0;
     }
@@ -133,13 +136,13 @@
     position: sticky;
     top: 185px;
     // top: 132px;
-    z-index: 31;
+    z-index: 30;
     // position: relative;
     display: grid;
     grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
-    
+
     &:first-child {
         border: 0;
     }
@@ -151,19 +154,22 @@
     border-right: 0;
     position: relative;
 }
-.progress{
+
+.progress {
     position: sticky;
     left: 0;
-    .progress-margin{
+
+    .progress-margin {
         background-color: #fff;
 
         position: sticky;
         left: 48px;
         // z-index: 2;
         height: $row-height;
-        width:443px;// $progress-bar-left-margin;
+        width: 443px; // $progress-bar-left-margin;
     }
-    .progress-border{
+
+    .progress-border {
         background-color: #fff;
         position: sticky;
         left: 388px;
@@ -174,6 +180,7 @@
         border-bottom: 1px $border-clr solid;
         border-radius: 0 0 0 6px;
     }
+
     .progress-bar {
         width: 100%;
         background-color: #0073ea;
@@ -197,6 +204,7 @@
     position: absolute;
     z-index: 400;
     left: -6px;
+
     &.first {
         border-radius: 6px 0 0 0;
     }

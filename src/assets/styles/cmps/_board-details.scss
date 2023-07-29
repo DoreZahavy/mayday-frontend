@@ -41,8 +41,10 @@
 .group-gap {
     position: sticky;
     top: 0;
-    width: 100%;
-    z-index: 41;
-    height: 36px;
-    background-color: #fff;
+    left:-12px;
+    width: (60px);
+    z-index: 31;
+    height: 300px;
+    background-color: white;
+    flex: 1;
 }
