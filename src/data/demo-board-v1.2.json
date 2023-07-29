@@ -109,8 +109,7 @@
             "Date": 1690915200000,
             "Timeline": {
               "startDate": null,
-              "dueDate": null,
-              "isHourIncluded": false
+              "dueDate": null
             },
             "Number": 250000,
             "Text": "Analyze user feedback and design a more intuitive and modern UI for the app #^",
@@ -135,11 +134,10 @@
               "title": "Critical ⚠",
               "color": "critical-dark-gray"
             },
-            "Date": 1690915200000,
+            "Date": 1610915200000,
             "Timeline": {
               "startDate": 1690147200000,
-              "dueDate": 1690492800000,
-              "isHourIncluded": false
+              "dueDate": 1690492800000
             },
             "Number": 9000000,
             "Text": "Analyze user feedback and design a more intuitive and modern UI for the app",
@@ -179,8 +177,7 @@
             "Date": 1690387200000,
             "Timeline": {
               "startDate": 1690051200000,
-              "dueDate": 1691088000000,
-              "isHourIncluded": false
+              "dueDate": 1691088000000
             },
             "Number": null,
             "Text": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
@@ -217,9 +214,8 @@
             },
             "Date": null,
             "Timeline": {
-              "startDate": 1690483200000,
-              "dueDate": 1692124800000,
-              "isHourIncluded": false
+              "startDate": 1596899200000,
+              "dueDate": 1692124800000
             },
             "Number": 11000000,
             "Text": "",
