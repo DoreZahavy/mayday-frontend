@@ -10,7 +10,10 @@
       <MemberPreview v-for="(member, idx) in members" :key="idx" :member="member" />
     </template>
 
-    <span v-else v-html="getSvg('person')"></span>
+    <span class="person-icon" v-else v-icon="'person'"></span>
+    <!-- <span class="person-icon" v-else v-html="getSvg('person')"></span> -->
+    <span class="plus-icon" v-icon="'plusSign'"></span>
+
   </section>
 </template>
   

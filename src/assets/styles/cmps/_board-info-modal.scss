@@ -1,9 +1,10 @@
 .board-info-background {
     position: fixed;
-    opacity: .8;
+    // opacity: .8;
     width: 100vw;
     height: 100vh;
-    background-color: $priority-critical;
+    // background-color: $priority-critical;
+    background-color: rgba(41, 47, 76, 0.7);
     z-index: 40;
     // pointer-events: auto;
     top: 0;
@@ -22,6 +23,7 @@
     opacity: 1;
     grid-template-columns: auto 38%;
     border-radius: 6px;
+    box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px ;
     .board-info-details {
         border-radius: 6px;
         width: 100%;
