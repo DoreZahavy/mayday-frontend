@@ -4,7 +4,7 @@
             <span style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
                 formattedStartDate }} - {{ formattedDueDate }}</span>
             <div class="progress-bar">
-                <div class="progress-fill" :style="{ width: progress + '%', backgroundColor: groupColor }"></div>
+                <div class="progress-fill" :style="progressStyle"></div>
             </div>
         </div>
         <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
@@ -23,21 +23,19 @@ export default {
     data() {
         return {
             currDateSettings: this.info,
-            pickedDateTimeRange: [this.info?.startDate, this.info?.dueDate], //TODO:give default value for new tasks
+            pickedDateTimeRange: [this.info?.startDate, this.info?.dueDate],
         }
     },
     computed: {
         formattedStartDate() {
-            if (!this.currDateSettings.startDate) return ""
+            if (this.isDateNull) return ''
             const d = new Date(this.pickedDateTimeRange[0])
             return `${d.getDate()}/${d.getMonth() + 1}`
-            // ${d.getHours()}:00`
         },
         formattedDueDate() {
-            if (!this.currDateSettings.dueDate) return ""
+            if (this.isDateNull) return ''
             const d = new Date(this.pickedDateTimeRange[1])
             return `${d.getDate()}/${d.getMonth() + 1}`
-            // ${d.getHours()}:00`
         },
         progress() {
             const now = new Date()
@@ -63,11 +61,21 @@ export default {
                 return Math.round((elapsed / duration) * 100)
             }
         },
-        color() {
-            return { background: this.group.color }
+        progressStyle() {
+            if (this.isDateNull) {
+                return {
+                    width: this.progress + '%',
+                    backgroundColor: '#c4c4c4'
+                }
+            } else {
+                return {
+                    width: this.progress + '%',
+                    backgroundColor: this.groupColor
+                }
+            }
         },
         isDateNull() {
-            return this.info?.startDate === null || this.info?.dueDate === null;
+            return this.info?.startDate === null || this.info?.dueDate === null
         },
     },
     methods: {

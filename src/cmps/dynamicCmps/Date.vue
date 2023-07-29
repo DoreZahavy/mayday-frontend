@@ -6,6 +6,10 @@
         <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
         <span class="icon date-picker-icon" v-html="getSvg('datePicker')"></span>
       </div>
+      <div v-if="showButton" class="reset-text" @click="clearDate">
+        <span class="x-icon" v-html="getSvg('xButton')">
+        </span>
+      </div>
     </div>
     <el-date-picker v-model="pickedDate" type="date" @change="onDateChange" ref="datePicker">
     </el-date-picker>
@@ -13,7 +17,7 @@
 </template>
 
 <script>
-import { svgService } from '../../services/svg.service';
+import { svgService } from '../../services/svg.service'
 
 export default {
   name: "Date",
@@ -31,6 +35,9 @@ export default {
       let date = new Date(this.pickedDate)
       const options = { day: 'numeric', month: 'numeric' }
       return date.toLocaleString('en-gb', options)
+    },
+    showButton() {
+      return this.pickedDate
     }
   },
   methods: {
@@ -38,6 +45,9 @@ export default {
       console.log(date)
       console.log(this.info)
       this.$emit('update', date.valueOf())
+    },
+    clearDate() {
+      this.$emit('update', null)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
