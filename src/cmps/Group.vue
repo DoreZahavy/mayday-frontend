@@ -2,6 +2,11 @@
     <section class="group-list">
 
         <div class="group-title-container flex align-center">
+            <div class="group-header">
+                <div class="group-actions-container">
+                    <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
+                </div>
+                <div @click="openPicker" :style="color" class="color-btn">
             <div class="group-actions-container">
                 <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
             </div>
@@ -11,8 +16,8 @@
                 </div>
                 <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
                 <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor" ></InPlaceEdit>
+                <p class="task-count">{{ taskCount }} Tasks</p>
             </div>
-            <span class="task-count">{{ taskCount }} Tasks</span>
         </div>
 
         <!-- render group labels by labels array -->
