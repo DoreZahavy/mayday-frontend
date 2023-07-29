@@ -17,6 +17,31 @@ section .number-cmp {
         right: 4px;
     }
 
+    &.input-focused {
+        &::before {
+            opacity: 1;
+            background-color: white;
+            border: 1px solid royalblue;
+            height: calc(73.5%);
+            top: 4.5px;
+            left: 6px;
+            right: 6px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            border: 1px solid royalblue;
+            height: calc(100%);
+            position: absolute;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        background-color: #cce5ff;
+    }
+
     &:hover {
         &::before {
             opacity: 1;

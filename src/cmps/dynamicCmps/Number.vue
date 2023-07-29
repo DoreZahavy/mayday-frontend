@@ -1,5 +1,5 @@
 <template>
-    <section class="number-cmp fs15">
+    <section class="number-cmp fs15" :class="{ 'input-focused': editing }">
         <div class="text-container">
             <span v-show="!editing && (number || number === 0)" @click="startEditing">{{ formatCurrency(number) }}</span>
             <input v-show="editing" ref="editor" v-model="number" @blur="stopEditing" @keydown.enter.prevent="stopEditing"

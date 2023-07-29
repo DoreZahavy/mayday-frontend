@@ -47,9 +47,7 @@
             }
 
             .editable-group-title {
-
                 .editable {
-
                     outline: none;
                 }
             }
@@ -70,7 +68,7 @@
                 // padding-inline-start: 5px;
                 font-size: 14px;
                 margin-block-start: 4px;
-                padding-inline-end: .3em;
+                padding-inline-end: 0.3em;
                 font-weight: 400;
             }
 
@@ -99,11 +97,7 @@
             &:active {
                 cursor: grabbing;
             }
-
-
         }
-
-
 
         &:hover {
             .task-count {
@@ -154,7 +148,6 @@
     // border: 1px solid $border-clr;
     border-right: 0;
     position: relative;
-
 }
 
 // .progress {
@@ -209,7 +202,6 @@
 
     &.first {
         border-radius: 6px 0 0 0;
-
     }
 
     &.last {
