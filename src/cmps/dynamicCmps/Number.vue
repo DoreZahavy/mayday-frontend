@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         showButton() {
-            return !this.editing && this.number
+            return !this.editing && (this.number || this.number === 0)
         }
     },
     methods: {
