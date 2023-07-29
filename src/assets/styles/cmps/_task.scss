@@ -56,7 +56,7 @@
     .task-actions {
         position: absolute;
         left: -42px;
-        top: -18px;
+        top: 0;
         height: $row-height;
         width: $row-height;
         display: flex;
@@ -114,7 +114,7 @@
     position: sticky;
     // left: 48px;
     left: 54px;
-    z-index: 29;
+    z-index: 31;
     background-color: #fff;
     // :before{
     //     content: "";
