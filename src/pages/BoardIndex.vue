@@ -84,7 +84,7 @@ export default {
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
       <section class="flex">
-        <div class="left-gap"></div>
+        <!-- <div class="left-gap"></div> -->
         <RouterView />
       </section>
     </section>

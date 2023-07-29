@@ -2,7 +2,7 @@
     <section class="group-list">
 
         <div class="group-title-container flex align-center">
-            
+           
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div class="group-actions-container">
                     <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
@@ -37,15 +37,15 @@
             @drop="onDropTask(idx, $event)">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
-                    <div style="position: absolute;">
-                        <div class="task-actions-container">
-                            <div class="task-actions">
-                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
-                                    class="button-as-link task-trash"></button>
+                    <div class="task-column">
+                        <div style="position: sticky;">
+                            <div class="task-actions-container">
+                                <div class="task-actions">
+                                    <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
+                                        class="button-as-link task-trash"></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="task-column">
                         <section class="group-accent-color" :style="color"></section>
                         <Checkbox class="" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />

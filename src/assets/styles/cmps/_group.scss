@@ -2,7 +2,7 @@
     padding-inline-start: 6px;
     background-color: #fff;
     // overflow-x: hidden;
-    // margin-inline-start: rem(41px);
+    margin-inline-start: rem(60px);
 
     .tasks-container {
         overflow-x: visible;
@@ -38,8 +38,9 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+
             .editable-group-title {
-                .editable{
+                .editable {
 
                     outline: none;
                 }
@@ -53,6 +54,7 @@
                     border: 1px solid $border-clr;
                 }
             }
+
             .task-count {
                 color: $secondary-text-color;
                 opacity: 0;
@@ -74,13 +76,16 @@
                 height: 21px;
                 margin-inline-start: 5px;
             }
+
             &:hover {
                 border: 1px solid $border-clr;
             }
-            &:focus-within{
-                border: 1px solid  #0073ea;
+
+            &:focus-within {
+                border: 1px solid #0073ea;
                 width: 50vw;
-                .color-btn{
+
+                .color-btn {
                     user-select: none;
                     display: inline-block;
                 }
@@ -90,10 +95,10 @@
                 cursor: grabbing;
             }
 
-           
+
         }
 
-        
+
 
         &:hover {
             .task-count {
@@ -133,7 +138,7 @@
     grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
-
+    
     &:first-child {
         border: 0;
     }
@@ -165,7 +170,6 @@
     position: absolute;
     z-index: 400;
     left: -6px;
-
     &.first {
         border-radius: 6px 0 0 0;
     }
