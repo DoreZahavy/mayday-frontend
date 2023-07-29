@@ -126,7 +126,7 @@
     position: sticky;
     // left: 48px;
     left: 46px;
-    z-index: 31;
+    z-index: 31 !important;
     background-color: #fff;
     .add-task {
         color: $primary-text-color;
