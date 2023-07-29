@@ -1,5 +1,5 @@
 <template>
-    <section class="txt fs15">
+    <section class="txt fs15" :class="{ 'input-focused': editing }">
         <div class="text-container">
             <span v-show="!editing && text" ref="viewer" class="editable-text" @click="startEditing">
                 {{ text }}

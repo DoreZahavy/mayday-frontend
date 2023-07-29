@@ -13,9 +13,9 @@
 
     &:hover {
         background-color: $task-hover;
-         // box-shadow: 4px 3px 6px -3px #c3c6d4;
-    box-shadow: 4px 4px 6px -3px #c3c6d4;
-    // z-index: 4;
+        // box-shadow: 4px 3px 6px -3px #c3c6d4;
+        box-shadow: 4px 4px 6px -3px #c3c6d4;
+        z-index: 4;
     }
 
     &:hover .task-actions-container {
@@ -113,12 +113,11 @@
     }
 }
 
-.task:hover .task-column{
+.task:hover .task-column {
     background-color: $task-hover;
-     // box-shadow: 4px 3px 6px -3px #c3c6d4;
-     box-shadow: 4px 4px 6px -3px #c3c6d4;
-    //  z-index: 4;
-   
+    // box-shadow: 4px 3px 6px -3px #c3c6d4;
+    box-shadow: 4px 4px 6px -3px #c3c6d4;
+    z-index: 4;
 }
 .task-column {
     display: grid;
@@ -127,9 +126,9 @@
     position: sticky;
     // left: 48px;
     left: 46px;
-    z-index: 31;
+    z-index: 31 !important;
     background-color: #fff;
-    .add-task{
+    .add-task {
         color: $primary-text-color;
     }
     // :before{
