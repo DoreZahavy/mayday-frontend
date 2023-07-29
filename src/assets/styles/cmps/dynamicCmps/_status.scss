@@ -5,21 +5,22 @@
   cursor: pointer;
   color: white;
   font-weight: 400;
-  transition: 0.3s ease;
+  transition: 0.15s ease;
+  overflow: hidden;
 
   &:before {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
+    transform: translate(90%, -90%);
     border-right: 10px solid white;
-    opacity: 0;
     z-index: 2;
-    transition: opacity 0.3s ease;
+    transition: 20s ease;
   }
 
   &:hover:before {
-    opacity: 1;
+    transform: translate(0%, 0%);
   }
 }
 
@@ -48,7 +49,7 @@
     width: 0.1px;
     height: 0.1px;
     z-index: 2;
-    transition: transform 0.9s ease;
+    transition: transform 0.6s ease;
   }
 
   &:hover:before {
@@ -65,5 +66,6 @@
   justify-content: center;
   margin: 10px;
   padding: 5px;
+  color: white;
   cursor: pointer;
 }

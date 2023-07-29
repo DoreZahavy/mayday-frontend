@@ -28,11 +28,13 @@ export default {
     },
     computed: {
         formattedStartDate() {
+            if (!this.currDateSettings.startDate) return ""
             const d = new Date(this.pickedDateTimeRange[0])
             return `${d.getDate()}/${d.getMonth() + 1}`
             // ${d.getHours()}:00`
         },
         formattedDueDate() {
+            if (!this.currDateSettings.dueDate) return ""
             const d = new Date(this.pickedDateTimeRange[1])
             return `${d.getDate()}/${d.getMonth() + 1}`
             // ${d.getHours()}:00`

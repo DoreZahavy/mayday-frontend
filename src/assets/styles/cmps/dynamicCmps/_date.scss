@@ -2,7 +2,10 @@ section .date-container {
     position: relative;
     height: 100%;
     width: 100%;
-    cursor: pointer;
+
+    * {
+        cursor: pointer !important;
+    }
 
     .date {
         div:nth-of-type(2) {
@@ -25,7 +28,6 @@ section .date-container {
         left: 50%;
         top: 50%;
         opacity: 0;
-        cursor: pointer;
 
         &.date-picker-icon {
             transform: translate(3%, -44%);

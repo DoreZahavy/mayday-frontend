@@ -2,7 +2,41 @@ section .number-cmp {
     position: relative;
     height: 100%;
     width: 100%;
-    cursor: pointer;
+
+    &::before {
+        opacity: 0;
+        content: "";
+        display: block;
+        border: 1px solid lightgray;
+        height: calc(82%);
+        position: absolute;
+        top: 3px;
+        left: 5px;
+        right: 4px;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    .reset-text {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 7.5%;
+        top: 27%;
+        cursor: pointer;
+        display: none;
+        background-color: lightgray;
+        width: 1.14em;
+        height: 1.1em;
+        border-radius: 2px;
+    }
+
+    &:hover .reset-text {
+        display: block;
+    }
 
     span.icon {
         position: absolute;
@@ -18,14 +52,17 @@ section .number-cmp {
         &.plus-icon {
             transform: translate(-70%, -25%);
             scale: 1.4;
-
-            &:hover {
-                filter: brightness(85%);
-            }
         }
     }
 
     &:hover span.icon {
         opacity: 1;
+    }
+
+    > :first-child {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }

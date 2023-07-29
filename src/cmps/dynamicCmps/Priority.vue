@@ -24,8 +24,9 @@ export default {
   },
   methods: {
     onUpdatePriority(newPriority) {
-      this.priority = JSON.parse(JSON.stringify(newPriority))
-      this.$emit('update', { cmpType: 'Priority', data: this.priority = JSON.parse(JSON.stringify(this.priority)) })
+      this.priority = newPriority
+      console.log(newPriority)
+      this.$emit('update', JSON.parse(JSON.stringify(this.priority)))
     }
   }
 }
