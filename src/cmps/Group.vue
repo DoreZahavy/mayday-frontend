@@ -25,7 +25,7 @@
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <Checkbox />
+                <Checkbox :checkBoxId="this.group._id"/>
                 <div class="task-title d-cmp">Task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox class="" />
+                        <Checkbox :checkBoxId="task._id"/>
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
@@ -66,7 +66,7 @@
                         <section class="group-accent-color last" :style="color">
                         </section>
                     </div>
-                    <Checkbox />
+                    <Checkbox :checkBoxId="''" style="pointer-events: none;"/>
                     <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task"></InPlaceEdit>
                 </div>
             </section>
