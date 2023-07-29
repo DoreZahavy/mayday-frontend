@@ -45,7 +45,7 @@ export default {
             <InPlaceEdit class="board-title " :modelValue="boardTitle" @update:modelValue="updateBoard" />
             <span class="info-icon" @click="this.$emit('toggleModal')" v-html="getSvg('infoBig')"></span>
         </div>
-        <p class="board-desc" @click="this.$emit('toggleModal')">{{ miniBoard.desc }} <span>See More</span></p> 
+        <p class="board-desc" >{{ miniBoard.desc }} <span @click="this.$emit('toggleModal')">See More</span></p> 
     </header>
 
 </template>
