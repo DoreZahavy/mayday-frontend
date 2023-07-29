@@ -7,7 +7,7 @@
             <input v-show="editing" ref="editor" v-model="text" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
                 class="editable-text">
             <span v-show="!text && !editing" @click="startEditing">
-                <span class="icon plus-icon" v-html="getSvg('addUser')"></span>
+                <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon text-icon" v-html="getSvg('text')"></span>
             </span>
             <div v-if="showButton" class="reset-text" @click="clearText">
