@@ -5,16 +5,16 @@
         background-color: #fff;
 
         position: sticky;
-        left: 48px;
+        left: 40px;
         // z-index: 2;
         height: $row-height;
-        width:443px;// $progress-bar-left-margin;
+        width: 441px;// $progress-bar-left-margin;
     }
     .progress-border{
         background-color: #fff;
         position: sticky;
-        left: 388px;
-        width: 5px;
+        left: 378px;
+        width: 10px;
         // z-index: 2;
         height: $row-height;
         border-left: 1px $border-clr solid;
@@ -23,7 +23,7 @@
     }
     .progress-bar {
         width: 100%;
-        background-color: #0073ea;
+        // background-color: #0073ea;
         // margin-left: $progress-bar-left-margin;
         // border: 1px $border-clr solid;
         // border-radius: 0 0 0 6px;
