@@ -2,15 +2,11 @@
     <section class="group-list">
 
         <div class="group-title-container flex align-center">
-            <div class="group-header">
+            
+            <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div class="group-actions-container">
                     <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
                 </div>
-                <div @click="openPicker" :style="color" class="color-btn">
-            <div class="group-actions-container">
-                <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
-            </div>
-            <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
                     <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor"/>
                 </div>
