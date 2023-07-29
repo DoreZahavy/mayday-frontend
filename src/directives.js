@@ -1,5 +1,5 @@
 export { clickOutside, icon, focusDirective }
-import { svgService } from '@/services/svg.service.js'
+import { svgService } from './services/svg.service.js'
 
 
 const focusDirective = {
@@ -23,10 +23,12 @@ const icon = {
 }
 
 const clickOutside = {
-    mounted(el, { value: cb }) {
+    mounted(el, {value:cb}) {//{ value: cb }
         el.clickOutside = (ev) => {
             if (!el.contains(ev.target)) {
+                // binding.value//
                 cb()
+                // console.log('cb:', cb)
             }
         }
         setTimeout(() => {

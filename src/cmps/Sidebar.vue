@@ -9,7 +9,8 @@ export default {
         return {
             filterBy: '',
             active: this.boardId,
-            isCollapsed: false
+            isCollapsed: false,
+
         }
     },
     created() {
@@ -47,7 +48,8 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
-        }
+        },
+       
     },
     computed: {
         boardList() {
@@ -76,7 +78,7 @@ export default {
 }
 </script>
 <template>
-    <aside class="sidebar" :class="{ collapsed: isCollapsed }">
+    <aside class="sidebar" :class="{ collapsed: isCollapsed }" >
 
         <div class="divider-div">
             <ul class="clean-list nav-list">

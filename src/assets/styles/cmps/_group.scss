@@ -37,32 +37,48 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            .editable-group-title:focus-visible{
+            .editable-group-title:focus-visible {
                 border-style: none;
             }
             span {
                 padding-inline: 5px;
             }
             // span::before{
-            .color-btn{
-                // content: '';
-                display: none;
-                position: relative;
+            .color-btn {
+                //
+                // display: none;
+                position: absolute;
+                left: 0px;
                 border-radius: 50%;
                 // background-color: rgb(127, 83, 71);
                 width: 21px;
                 height: 21px;
                 margin-inline-start: 5px;
             }
-            &:focus-within{
-                .color-btn{
+            &:focus-within {
+                .in-place-edit {
+                    .editable {
+                        // margin-inline-start: 40px;
+                        display: inline-block;
+                        // background-color: aqua;
+                        width: 50vw;
+                        // resize:none;
+                        &::before {
+                            content: '';
+                            display: inline-block;
+                            width: 21px;
+                            height: 1px;
+                            background-color: transparent;
+                        }
+                    }
+                }
+                .color-btn {
                     display: inline-block;
                 }
             }
 
             &:active {
                 cursor: grabbing;
-                
             }
 
             &:hover {

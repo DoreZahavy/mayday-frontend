@@ -2,7 +2,7 @@
     pointer-events: all;
     z-index: 50;
     position: absolute;
-    display: none;
+    display: block;
     // top: 30px;
     top: 20px;
     left: 0px;
@@ -42,6 +42,6 @@
 // .note-preview .actions .color-icon:hover .color-picker,
 // .note-add-open .actions .color-icon:hover .color-picker,
 // .note-edit .actions .color-icon:hover .color-picker{
-.color-btn:hover .color-picker {
-    display: block;
-}
+// .color-btn:hover .color-picker {
+//     display: block;
+// }

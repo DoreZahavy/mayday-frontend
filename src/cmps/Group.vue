@@ -6,7 +6,10 @@
                 <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
             </div>
             <div class="group-header">
-                <div :style="color" class="color-btn"><ColorPicker @color="onSetColor"/></div>
+                <div @click="openPicker" :style="color" class="color-btn">
+                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor"/>
+                </div>
+                <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
                 <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor" ></InPlaceEdit>
             </div>
             <span class="task-count">{{ taskCount }} Tasks</span>
@@ -113,7 +116,8 @@ export default {
     data() {
         return {
             addTaskTxt: 'Add Task',
-            groupTitle: this.group.title
+            groupTitle: this.group.title,
+            showPicker: false
         }
     },
     computed: {
@@ -165,6 +169,13 @@ export default {
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
+        openPicker(){
+            this.showPicker = true
+        },
+        closePicker(){
+            this.showPicker = false
+        }
+        
 
     },
     components: {
