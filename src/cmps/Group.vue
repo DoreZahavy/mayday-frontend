@@ -13,14 +13,14 @@
                 </div>
                 <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
                 <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
-                <p class="task-count">{{ taskCount }} Tasks</p>
+                <p class="task-count" v-if="!editGroup">{{ taskCount }} Tasks</p>
             </div>
         </div>
 
         <!-- render group labels by labels array -->
 
         <section class="label-line">
-            <div class="task-column">
+            <div class="task-column  not-hover">
                 <div>
                     <section class="group-accent-color first" :style="color">
                     </section>
