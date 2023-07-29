@@ -2,7 +2,7 @@
     // position: relative;
     background: white;
     display: grid;
-    grid-template-columns: calc($row-height  + $task-title-width) repeat(8, 150px);
+    grid-template-columns: calc($row-height + $task-title-width) repeat(8, 150px);
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
@@ -72,8 +72,6 @@
             opacity: 1;
         }
     }
-
-
 }
 
 .task-options {
@@ -100,6 +98,11 @@
 
         vertical-align: middle !important;
         text-align: center;
+    }
+
+    &.title {
+        padding-left: 1.5em;
+        justify-content: flex-start;
     }
 
     button {
@@ -130,7 +133,7 @@
     article {
         // grid-column-start: 1;
     }
-    
+
     // .group-gap {
     //     width: 40px;
     //     height: $row-height;
