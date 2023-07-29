@@ -1,8 +1,10 @@
 <template>
   <div class="home-page home-layout">
     <HomeHeader/>
-    <h1>HOME</h1>
-    <!-- <p>hello &#10005;</p> -->
+    <div  class="welcome">
+
+      <h1>All aspects of work in one complete solution</h1>
+    </div>
   </div>
 </template>
 

@@ -1,4 +1,15 @@
-.home-page{
+.home-page {
     background-color: #fff;
     min-height: 100vh;
+    .welcome {
+        width: 800px;
+        margin: 160px auto;
+        h1 {
+            color: $primary-text-color;
+            font-size: em(64px, 14px);
+            font-weight: 700;
+            font-family: poppins-bold;
+            text-align: justify;
+        }
+    }
 }
