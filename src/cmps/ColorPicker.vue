@@ -3,6 +3,7 @@ export default {
 
     methods: {
         setColor(colorHash) {
+            console.log('colorHash:', colorHash)
             this.$emit('color', colorHash)
         }
     }

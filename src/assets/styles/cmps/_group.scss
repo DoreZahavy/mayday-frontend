@@ -19,14 +19,14 @@
         box-sizing: content-box;
         padding-top: 36px;
         height: 40px;
-       transform: translate(-6px);
+        transform: translate(-6px);
 
         position: sticky;
         left: 48px;
         top: 109px;
         // top: 136px;
         background-color: #fff;
-        z-index: 31;
+        z-index: 32;
         .group-header {
             width: fit-content;
             border: 1px solid transparent;
@@ -35,13 +35,34 @@
             letter-spacing: -0.2px;
             font-family: poppins;
             cursor: pointer;
-
+            display: flex;
+            align-items: center;
+            .editable-group-title:focus-visible{
+                border-style: none;
+            }
             span {
                 padding-inline: 5px;
+            }
+            // span::before{
+            .color-btn{
+                // content: '';
+                display: none;
+                position: relative;
+                border-radius: 50%;
+                // background-color: rgb(127, 83, 71);
+                width: 21px;
+                height: 21px;
+                margin-inline-start: 5px;
+            }
+            &:focus-within{
+                .color-btn{
+                    display: inline-block;
+                }
             }
 
             &:active {
                 cursor: grabbing;
+                
             }
 
             &:hover {
@@ -55,15 +76,14 @@
             transition: 100ms;
             padding-inline-start: 5px;
         }
-        &:hover{
-            .task-count{
+        &:hover {
+            .task-count {
                 opacity: 1;
             }
-            .group-actions{
+            .group-actions {
                 opacity: 1;
             }
         }
-
     }
 
     .group-actions {
@@ -73,11 +93,7 @@
         left: -20px;
         opacity: 0;
     }
-
-    
 }
-
-
 
 .labels-grid,
 .progress-grid {
@@ -103,13 +119,11 @@
 }
 
 .group-list {
-    
     background-color: #fff;
     // border: 1px solid $border-clr;
     border-right: 0;
     position: relative;
 }
-
 
 .progress-bar {
     margin-left: $progress-bar-left-margin;
@@ -121,8 +135,6 @@
     display: flex;
     align-items: center;
 }
-
-
 
 .group-accent-color {
     width: 6px;

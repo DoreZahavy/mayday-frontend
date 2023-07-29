@@ -1,6 +1,5 @@
 .left-gap{
-    // grid-area: empty;
-    // height: 100%;
+    
     width: 48px;
     position: sticky;
     left: 0;
@@ -8,33 +7,19 @@
     background-color: #fff;
 }
 .board-details {
-    // display: grid;
-    // grid-template-areas: 
-    // "empty grps"
-    // "add add";
-    // grid-template-columns: 48px auto;
-    
-    // margin-inline-start: 48px;
-    // width: 80%;
-    // overflow-x: scroll;
-    // align-self: start;
-    // margin-top: 20px;
+ 
     width: 80%;
     // overflow-x: scroll;
     .grp-scroll {
-        // grid-area: grps;
     }
     .task {
     }
-    // display: inline-block;
-    // border: 1px solid red; for debugging purposes
 
     > * {
         max-width: none;
         width: max-content;
     }
     .add-group-btn {
-        // grid-area: add;
         display: flex;
         align-items: center;
         height: $btn-height;
@@ -42,6 +27,7 @@
         border: 1px solid #c3c6d4;
         border-radius: 0.2857143em;
         padding-inline: 8px;
+        margin-block-end: 50px;
         color: $primary-text-color;
         &:hover{
             background-color: $secondary-btn-hover-color;

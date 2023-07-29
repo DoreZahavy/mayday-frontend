@@ -5,7 +5,10 @@
             <div class="group-actions-container">
                 <button @click="onRemoveGroup" v-html="getSvg('trash')" class="button-as-link d-cmp group-actions"></button>
             </div>
-            <InPlaceEdit v-model="groupTitle" class="group-header" :style="textColor" />
+            <div class="group-header">
+                <div :style="color" class="color-btn"><ColorPicker @color="onSetColor"/></div>
+                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor" ></InPlaceEdit>
+            </div>
             <span class="task-count">{{ taskCount }} Tasks</span>
         </div>
         <!-- <div v-icon="trash"></div> -->
@@ -95,6 +98,7 @@ import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
 import Number from "@/cmps/dynamicCmps/Number.vue";
 import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
+import ColorPicker from "@/cmps/ColorPicker.vue";
 export default {
 
     props: ['group', 'idx'],
@@ -154,6 +158,10 @@ export default {
         onRemoveGroup() {
             this.$emit('removeGroup')
         },
+        onSetColor(color){
+            console.log('color:', color)
+            this.$emit('update', {  prop:'color', toUpdate:color })
+        },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
@@ -171,6 +179,7 @@ export default {
         Text,
         Timeline,
         InPlaceEdit,
+        ColorPicker,
         Container,
         Draggable
     },
