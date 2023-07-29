@@ -67,7 +67,7 @@
                         </section>
                     </div>
                     <Checkbox />
-                    <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task" :placeholder="addTaskPlaceholder"></InPlaceEdit>
+                    <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task"></InPlaceEdit>
                 </div>
             </section>
             <section class="progress flex">
@@ -111,8 +111,7 @@ export default {
 
     data() {
         return {
-            addTaskTxt: '',
-            addTaskPlaceholder:'+ Add Task',
+            addTaskTxt: '+ Add Task',
             groupTitle: this.group.title,
             showPicker: false,
             editGroup: false
@@ -196,7 +195,7 @@ export default {
         InPlaceEdit,
         ColorPicker,
         Container,
-        Draggable
+        Draggable,
     },
     watch: {
         groupTitle() {
