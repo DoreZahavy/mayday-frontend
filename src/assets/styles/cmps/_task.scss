@@ -119,6 +119,9 @@
     left: 46px;
     z-index: 31;
     background-color: #fff;
+    &:not(.not-hover):hover{
+        background-color: $task-hover;
+    }
     // :before{
     //     content: "";
     //     position: absolute;

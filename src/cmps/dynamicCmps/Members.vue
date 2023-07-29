@@ -3,7 +3,7 @@
 
     <template v-if="hasMembers && members.length>2">
       <MemberPreview :member="members[0]" />
-      <div v-if="members.length>2" class="member-preview extra-persons">{{ members.length-1 }}</div>
+      <div v-if="members.length>2" class="member-preview extra-persons">+{{ members.length-1 }}</div>
     </template>
 
     <template else v-else-if="hasMembers && members.length>0">
