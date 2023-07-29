@@ -7,11 +7,13 @@ export default {
     data() {
         return {
             editing: false,
-            caretMoved: false
+            caretMoved: false,
+            savedStr: ''
         }
     },
     methods: {
         startEditing() {
+            this.savedStr = this.$refs.editor.innerText
             this.editing = true
             this.$nextTick(() => {
                 this.moveCaretToInputEnd()
@@ -20,7 +22,11 @@ export default {
         stopEditing() {
             this.editing = false
             this.caretMoved = false
-            this.$emit('update:modelValue', this.$refs.editor.innerText)
+            if (this.$refs.editor.innerText.length > 0) {
+                this.$emit('update:modelValue', this.$refs.editor.innerText)
+            }else{
+                this.$refs.editor.innerText = this.savedStr
+            }
         },
         checkEnter(event) {
             if (event.keyCode === 13) {
