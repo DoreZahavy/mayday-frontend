@@ -112,15 +112,15 @@ export default {
         </Group>
 
       </div>
-
+      
     </Draggable>
     <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
-
     <button @click="addGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
       <span>Add new group</span>
     </button>
 
+    
   </Container>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <section class="number-cmp">
+    <section class="number-cmp fs15">
         <div class="text-container">
             <span v-if="editing || number" :contenteditable="editing" :class="{ editable: editing }" @keydown="checkEnter"
                 @blur="stopEditing" ref="editor" @click="startEditing">

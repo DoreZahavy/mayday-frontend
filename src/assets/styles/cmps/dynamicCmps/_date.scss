@@ -7,6 +7,32 @@ section .date-container {
         cursor: pointer !important;
     }
 
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+
+        .reset-text {
+            display: block;
+        }
+    }
+
+    &::before {
+        opacity: 0;
+        content: "";
+        display: block;
+        border: 1px solid lightgray;
+        height: calc(82%);
+        position: absolute;
+        top: 3px;
+        left: 5px;
+        right: 4px;
+    }
+
+    &.timeline::before {
+        opacity: 0;
+    }
+
     .date {
         div:nth-of-type(2) {
             opacity: 0;
@@ -55,6 +81,7 @@ section .date-container {
         right: 8%;
         top: 10px;
         cursor: pointer;
+        display: none;
         background-color: lightgray;
         color: #5a5a5a;
         width: 1.15em;

@@ -1,5 +1,5 @@
 <template>
-    <article style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container"
+    <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs15"
         :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver" @mouseout="onMouseOut">
         <div class="flex justify-center align-center" style="height:100%; width: 100%;">
             <span v-if="!hovered"
@@ -13,9 +13,9 @@
             </div>
         </div>
         <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
-            v-model="pickedDateTimeRange" type="daterange" @change="onDateChange" ref="datePicker">
+            v-model="pickedDateTimeRange" type="daterange" ref="datePicker">
         </el-date-picker>
-        <div v-if="pickedDate" class="reset-text" @click="clearDate">
+        <div v-if="!isDateNull" class="reset-text" @click="clearTimeline">
             <span class="x-icon" v-html="getSvg('xButton')">
             </span>
         </div>
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { svgService } from '../../services/svg.service'
+
 export default {
     name: "Timeline",
     props: {
@@ -32,9 +34,12 @@ export default {
     data() {
         return {
             currDateSettings: this.info,
-            pickedDateTimeRange: [this.info?.startDate, this.info?.dueDate],
             hovered: false,
+            pickedDateTimeRange: []
         }
+    },
+    created() {
+        this.pickedDateTimeRange = [this.currDateSettings?.startDate, this.currDateSettings?.dueDate]
     },
     computed: {
         formattedStartDate() {
@@ -72,13 +77,13 @@ export default {
             }
         },
         progress() {
+            if (!this.pickedDateTimeRange || this.pickedDateTimeRange.length === 0 || this.isDateNull) {
+                return 100
+            }
+
             const now = new Date()
             const start = new Date(this.pickedDateTimeRange[0])
             const end = new Date(this.pickedDateTimeRange[1])
-
-            now.setHours(0, 0, 0, 0)
-            start.setHours(0, 0, 0, 0)
-            end.setHours(0, 0, 0, 0)
 
             const nowTime = now.getTime()
             const startTime = start.getTime()
@@ -109,7 +114,7 @@ export default {
             }
         },
         isDateNull() {
-            return this.info?.startDate === null || this.info?.dueDate === null
+            return this.currDateSettings?.startDate === null || this.currDateSettings?.dueDate === null
         },
         isDifferentYear() {
             const start = new Date(this.pickedDateTimeRange[0])
@@ -117,26 +122,50 @@ export default {
             return start.getFullYear() !== end.getFullYear()
         },
     },
-    methods: {
-        onDateChange(date) {
-            this.currDateSettings = {
-                startDate: date[0].valueOf(),
-                dueDate: date[1].valueOf()
-            }
-            console.log(this.currDateSettings)
-            this.$emit('update',
-                {
-                    startDate: date[0].valueOf(),
-                    dueDate: date[1].valueOf()
+    watch: {
+        pickedDateTimeRange(newValue) {
+            if (newValue && newValue[0] && newValue[1]) {
+                this.currDateSettings = {
+                    startDate: newValue[0].valueOf(),
+                    dueDate: newValue[1].valueOf()
                 }
-            )
+                this.$emit('update',
+                    {
+                        startDate: newValue[0].valueOf(),
+                        dueDate: newValue[1].valueOf()
+                    }
+                )
+            } else {
+                this.currDateSettings = {
+                    startDate: null,
+                    dueDate: null
+                }
+                this.$emit('update', this.currDateSettings)
+            }
         },
+    },
+    methods: {
         onMouseOver() {
             this.hovered = true
         },
         onMouseOut() {
             this.hovered = false
         },
+        clearTimeline() {
+            this.currDateSettings = {
+                startDate: null,
+                dueDate: null
+            }
+            this.$emit('update',
+                {
+                    startDate: null,
+                    dueDate: null
+                }
+            )
+        },
+        getSvg(name) {
+            return svgService.getSvg(name)
+        }
     }
 }
 </script>

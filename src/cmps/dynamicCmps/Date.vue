@@ -1,5 +1,5 @@
 <template>
-  <article style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container">
+  <article style=" position: relative; height: 100%; width: 100%; text-align: center;" class="date-container fs15">
     <div class="flex justify-center align-center" style="height:100%">
       <span v-if="pickedDate" class="date">{{ formattedDate }}</span>
       <div v-else>

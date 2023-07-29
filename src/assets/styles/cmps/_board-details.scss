@@ -8,7 +8,7 @@
 }
 .board-details {
  
-    width: 80%;
+    width: 7000px;
     // overflow-x: scroll;
     .grp-scroll {
     }
@@ -41,10 +41,10 @@
 .group-gap {
     position: sticky;
     top: 0;
-    left:-12px;
-    width: (60px);
+    left:0;
+    width: (40px);
     z-index: 31;
-    height: 300px;
+    height: 256px;
     background-color: white;
     flex: 1;
 }

@@ -8,15 +8,26 @@
 
     .member-preview {
         border-radius: 50%;
-        width: 2em;
-        height: 2em;
+        width: 30px;
+        height: 30px;
         align-self: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        border: 2px solid #f5f6f8;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
     }
+    .extra-persons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #333;
+        color: #fff;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
 
+    }
     span {
         position: absolute;
         top: 50%;

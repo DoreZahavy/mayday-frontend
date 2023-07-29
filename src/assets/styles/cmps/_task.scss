@@ -72,8 +72,6 @@
             opacity: 1;
         }
     }
-
-
 }
 
 .task-options {
@@ -102,6 +100,11 @@
         text-align: center;
     }
 
+    &.title {
+        padding-left: 1.5em;
+        justify-content: flex-start;
+    }
+
     button {
         border: 0;
     }
@@ -113,7 +116,7 @@
     height: 100%;
     position: sticky;
     // left: 48px;
-    left: 54px;
+    left: 46px;
     z-index: 31;
     background-color: #fff;
 
