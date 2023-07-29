@@ -31,7 +31,6 @@
             position: sticky;
             left: 54px;
             width: fit-content;
-            border: 1px solid transparent;
             border-radius: 4px;
             font-size: 18px;
             letter-spacing: -0.2px;
@@ -39,16 +38,31 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+
             .editable-group-title:focus-visible {
                 border-style: none;
             }
 
-            span {
+            span:first-of-type {
                 padding-inline: 5px;
+                border: 1px solid transparent;
+
+                &:hover {
+                    border: 1px solid $border-clr;
+                }
+            }
+            .task-count {
+                color: $secondary-text-color;
+                opacity: 0;
+                transition: 100ms;
+                // padding-inline-start: 5px;
+                font-size: 14px;
+                margin-block-start: 4px;
+                font-weight: 400;
             }
 
             // span::before{
-            .color-btn{
+            .color-btn {
                 // content: '';
                 display: none;
                 position: relative;
@@ -58,8 +72,9 @@
                 height: 21px;
                 margin-inline-start: 5px;
             }
-            &:focus-within{
-                .color-btn{
+
+            &:focus-within {
+                .color-btn {
                     display: inline-block;
                 }
             }
@@ -68,17 +83,9 @@
                 cursor: grabbing;
             }
 
-            &:hover {
-                border: 1px solid $border-clr;
-            }
         }
 
-        .task-count {
-            color: $primary-text-color;
-            opacity: 0;
-            transition: 100ms;
-            padding-inline-start: 5px;
-        }
+        
 
         &:hover {
             .task-count {
@@ -95,8 +102,8 @@
         height: 36px;
         width: 36px;
         position: absolute;
-        top: 38px;
-        left: -30px;
+        top: -5px;
+        left: -37px;
         opacity: 0;
     }
 }
@@ -138,7 +145,7 @@
     border-block-start: 0;
     border-inline-end: 0;
     height: $row-height;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
