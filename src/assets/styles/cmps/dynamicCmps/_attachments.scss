@@ -29,4 +29,40 @@ article.attachments {
         opacity: 1;
         scale: 1;
     }
+    .file-list {
+        margin-block: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .file-preview {
+            margin-inline: 2px;
+            height: 20px;
+            overflow: hidden;
+            width: 20px;
+            
+            &:hover{
+                scale: 1.1;
+                img {
+                    scale: 1.1;
+                }
+            }
+            img {
+                width: 20px;
+                height: 20px;
+                object-fit: cover;
+            }
+        }
+        .extra-files {
+            background-color: #333;
+            color: #fff;
+            height: 24px;
+            width: 24px;
+            font-size: 12px;
+            border-radius: 50%;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }

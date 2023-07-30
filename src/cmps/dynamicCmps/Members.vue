@@ -1,18 +1,23 @@
 <template >
  
-<section class="members-cmp">
+<!-- <section class="members-cmp"> -->
 
   <el-tooltip placement="bottom" trigger="click" effect="light">
     <template #content>
         <div class="user-container">
-          <div class="user-pill" v-for="member in members" :key="member._id">
+          <div v-if="hasMembers" class="user-pill" v-for="member in members" :key="member._id">
             <img :src="member.imgUrl">
             <span>{{ member.fullname }}</span>
-            <span class="x-btn" v-icon="'xButton'"></span>
+            <span @click="removeMember(member._id)" class="x-btn" v-icon="'xButton'"></span>
           </div>
         </div>
-        <input type="search" placeholder="Search names">
-        <div class="user-list"></div>
+        <input class="members-search" type="search" placeholder="Search names">
+        <ul class="user-list clean-list">
+          <li class="suggested-member" v-for="member in optionalMembers" @click="addMember(member)">
+          <img :src="member.imgUrl" >
+          <span>{{ member.fullname }}</span>
+          </li>
+        </ul>
       </template>
       <section  class="members-list">
         
@@ -31,7 +36,7 @@
       
     </section>
   </el-tooltip>
-</section>
+<!-- </section> -->
 
 </template>
   
@@ -53,12 +58,31 @@ export default {
   },
   computed: {
     hasMembers() {
-      return (this.info[0]._id)
+      return (this.info[0]?._id)
     },
+    optionalMembers(){
+      let optionalMembers = this.$store.getters.boardMembers
+      return optionalMembers
+    }
   },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
+    },
+    removeMember(memberId){
+      // const members= JSON.parse(JSON.stringify(this.info))
+      // console.log('this.members:', this.members)
+      // console.log(this.members);
+      const memberIdx = this.members.findIndex(m=>m._id===memberId)
+      this.members.splice(memberIdx,1)
+      this.$emit('update', this.members)
+
+    },
+    addMember(member){
+      console.log(member)
+      this.members.push(member)
+      this.$emit('update', JSON.parse(JSON.stringify(this.members)))
+
     }
   }
 }

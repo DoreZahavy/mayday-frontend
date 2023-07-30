@@ -1,5 +1,4 @@
 .task {
-    
     // position: relative;
     background: white;
     display: grid;
@@ -7,65 +6,58 @@
     height: $row-height;
     align-items: center;
     grid-auto-flow: row;
-
     // height: rem(36px);
     border-block-end: 1px solid $border-clr;
     // outline: 1px solid $border-clr;
-
     &:hover {
         background-color: $task-hover;
-        // box-shadow: 4px 3px 6px -3px #c3c6d4;
+        // box-shadow: 4px 3px 6px -3px #C3C6D4;
         box-shadow: 4px 4px 6px -3px #c3c6d4;
         z-index: 4;
+        .task-column {
+            background-color: $task-hover;
+            // box-shadow: 4px 3px 6px -3px #C3C6D4;
+            box-shadow: 4px 4px 6px -3px #c3c6d4;
+            z-index: 4;
+        }
+        .task-actions-container {
+            opacity: 1;
+        }
     }
-
-    &:hover .task-actions-container {
-        opacity: 1;
-    }
-
+  
     &:focus-within {
         background-color: #cce5ff;
-
         .task-column {
             background-color: #cce5ff;
         }
     }
-
     .in-place-edit {
         padding-inline-start: 1rem;
     }
-
     &.new-task {
         transition: 150ms;
         grid-template-columns: 0px $row-height $row-height 1fr;
         opacity: 0.8;
         transition-timing-function: ease-in-out;
-
         &:hover {
             opacity: 1;
         }
-
         &:focus {
             opacity: 1;
         }
-
         &:active {
             opacity: 1;
         }
     }
 }
-
 .task-title {
     border-inline-end: 1px solid $border-clr;
     color: $primary-text-color;
 }
-
 .task-actions-container {
     position: relative;
     opacity: 0;
-
     z-index: 38;
-
     .task-actions {
         position: absolute;
         left: -42px;
@@ -75,22 +67,18 @@
         display: flex;
         justify-content: center;
         cursor: pointer;
-
         .task-trash {
             padding: 0;
             cursor: pointer;
         }
-
         &:hover {
             opacity: 1;
         }
     }
 }
-
 .task-options {
     position: absolute;
 }
-
 .d-cmp {
     display: flex;
     justify-content: center;
@@ -103,7 +91,6 @@
         // border-inline-end:0;
         // border-inline-start: 1px solid $border-clr;
     }
-
     &.header {
         div {
             width: 150px;
@@ -112,17 +99,14 @@
         vertical-align: middle !important;
         text-align: center;
     }
-
     &.title {
         padding-left: 1.5em;
         justify-content: flex-start;
     }
-
     button {
         border: 0;
     }
 }
-
 .task-column {
     color: $primary-text-color;
     display: grid;
@@ -159,11 +143,9 @@
     //     height: $row-height;
     //     background-color: red;
     // }
-
     .checkbox {
         grid-column-start: 2;
     }
-
     p {
         grid-column-start: 3;
     }
@@ -172,7 +154,6 @@
         text-align: start;
     }
 }
-
 .checkbox {
     input {
         margin: 0;
