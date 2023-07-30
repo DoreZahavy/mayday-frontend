@@ -1,20 +1,38 @@
-<template>
-  <section class="members-list">
+<template >
+ 
+<section class="members-cmp">
 
-    <template v-if="hasMembers && members.length>2">
-      <MemberPreview :member="members[0]" />
-      <div v-if="members.length>2" class="member-preview extra-persons">+{{ members.length-1 }}</div>
-    </template>
+  <el-tooltip placement="bottom" trigger="click" effect="light">
+    <template #content>
+        <div class="user-container">
+          <div class="user-pill" v-for="member in members" :key="member._id">
+            <img :src="member.imgUrl">
+            <span>{{ member.fullname }}</span>
+            <span class="x-btn" v-icon="'xButton'"></span>
+          </div>
+        </div>
+        <input type="search" placeholder="Search names">
+        <div class="user-list"></div>
+      </template>
+      <section  class="members-list">
+        
+        <template v-if="hasMembers && members.length>2">
+          <MemberPreview :member="members[0]" />
+          <div v-if="members.length>2" class="member-preview extra-persons">+{{ members.length-1 }}</div>
+        </template>
+        
+      <template else v-else-if="hasMembers && members.length>0">
+        <MemberPreview v-for="(member, idx) in members" :key="idx" :member="member" />
+      </template>
+      
+      <span class="person-icon" v-else v-icon="'person'"></span>
+      <!-- <span class="person-icon" v-else v-html="getSvg('person')"></span> -->
+      <span class="plus-icon" v-icon="'plusSign'"></span>
+      
+    </section>
+  </el-tooltip>
+</section>
 
-    <template else v-else-if="hasMembers && members.length>0">
-      <MemberPreview v-for="(member, idx) in members" :key="idx" :member="member" />
-    </template>
-
-    <span class="person-icon" v-else v-icon="'person'"></span>
-    <!-- <span class="person-icon" v-else v-html="getSvg('person')"></span> -->
-    <span class="plus-icon" v-icon="'plusSign'"></span>
-
-  </section>
 </template>
   
 <script>

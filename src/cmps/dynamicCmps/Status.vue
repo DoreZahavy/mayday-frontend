@@ -1,13 +1,16 @@
 <template>
-  <el-tooltip placement="bottom" trigger="click" effect="light">
-    <template #content>
-      <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
+  <section class="asd">
+
+    <el-tooltip placement="bottom" trigger="click" effect="light">
+      <template #content>
+        <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
         @click.stop="onUpdateStatus(label)">
         {{ label.title }}
       </div>
     </template>
     <div v-if="status" class="status status-content" :class="status.color">{{ status.title }}</div>
   </el-tooltip>
+</section>
 </template>
 
 <script>
