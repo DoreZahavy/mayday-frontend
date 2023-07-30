@@ -1,7 +1,8 @@
 <template>
     <section class="txt fs15" :class="{ 'input-focused': editing }">
         <div class="text-container">
-            <span v-show="!editing && text" ref="viewer" class="editable-text" @click="startEditing">
+            <span v-show="!editing && text" ref="viewer" class="editable-text" :class="{ 'centered': !textOverflowing }"
+                @click="startEditing">
                 {{ text }}
             </span>
             <input v-show="editing" ref="editor" v-model="text" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
@@ -29,8 +30,16 @@ export default {
     data() {
         return {
             editing: false,
-            text: this.info
+            text: this.info,
+            textOverflowing: false
         }
+    },
+    mounted() {
+        this.checkOverflow()
+        window.addEventListener('resize', this.checkOverflow)
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.checkOverflow)
     },
     computed: {
         showButton() {
@@ -61,7 +70,17 @@ export default {
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
-        }
+        },
+        checkOverflow() {
+            this.$nextTick(() => {
+                const element = this.$refs.viewer
+                if (element.offsetWidth < element.scrollWidth) {
+                    this.textOverflowing = true
+                } else {
+                    this.textOverflowing = false
+                }
+            })
+        },
     }
 }
 </script>

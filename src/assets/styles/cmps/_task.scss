@@ -16,10 +16,25 @@
         // box-shadow: 4px 3px 6px -3px #c3c6d4;
         box-shadow: 4px 4px 6px -3px #c3c6d4;
         z-index: 4;
+
+        .task-column {
+            background-color: $task-hover;
+            // box-shadow: 4px 3px 6px -3px #c3c6d4;
+            box-shadow: 4px 4px 6px -3px #c3c6d4;
+            z-index: 4;
+        }
     }
 
     &:hover .task-actions-container {
         opacity: 1;
+    }
+
+    &:focus-within {
+        background-color: #cce5ff;
+
+        .task-column {
+            background-color: #cce5ff;
+        }
     }
 
     .in-place-edit {
@@ -114,12 +129,6 @@
     }
 }
 
-.task:hover .task-column {
-    background-color: $task-hover;
-    // box-shadow: 4px 3px 6px -3px #c3c6d4;
-    box-shadow: 4px 4px 6px -3px #c3c6d4;
-    z-index: 4;
-}
 .task-column {
     color: $primary-text-color;
     display: grid;
@@ -148,7 +157,7 @@
     article {
         // grid-column-start: 1;
     }
-    .d-cmp{
+    .d-cmp {
         max-width: none;
     }
     // .group-gap {
@@ -169,8 +178,6 @@
         text-align: start;
     }
 }
-
-
 
 .checkbox {
     input {

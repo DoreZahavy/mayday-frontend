@@ -16,7 +16,8 @@
   height: 100%;
   position: relative;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: 0.05s ease ease-in-out;
   overflow: hidden;
 
   &:before {
@@ -38,8 +39,8 @@
 }
 
 .el-popper {
-  box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.32) !important;
+  box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.32);
 }
 
 .status-option {
