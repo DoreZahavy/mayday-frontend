@@ -4,6 +4,8 @@ import BoardIndex from '@/pages/BoardIndex.vue'
 import LoginSignup from '@/pages/LoginSignup.vue'
 import BoardDetails from '@/cmps/BoardDetails.vue'
 import Kanban from '@/cmps/Kanban.vue'
+import Activities from '@/cmps/Activities.vue'
+import Conversations from '@/cmps/Conversations.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +22,6 @@ const router = createRouter({
     },
     {
       path: '/board/:boardId?',
-      name: 'BoardIndex',
       component: BoardIndex,
       children: [
         {
@@ -32,10 +33,9 @@ const router = createRouter({
           path: 'kanban',
           name: 'Kanban',
           component: Kanban,
-        },
+        }
       ]
     },
-
   ]
 })
 

@@ -4,6 +4,8 @@ import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import BoardHeader from '@/cmps/BoardHeader.vue'
 import MainHeader from '@/cmps/MainHeader.vue'
 import BoardInfoModal from '../cmps/BoardInfoModal.vue'
+import Activities from '../cmps/Activities.vue'
+import Conversations from '../cmps/Conversations.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -14,7 +16,11 @@ export default {
     return {
       title: '',
       active: 'table',
-      showModal: false
+      showModal: false,
+      showDrawerModal: false,
+      showActivitiesContent: false,
+      showConversationsContent: false,
+      conversationsTaskId: '1234'
     }
   },
   computed: {
@@ -33,7 +39,9 @@ export default {
     InPlaceEdit,
     BoardHeader,
     MainHeader,
-    BoardInfoModal
+    BoardInfoModal,
+    Activities,
+    Conversations,
   },
   mounted() {
     document.title = 'Mayday'
@@ -56,7 +64,16 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal
-
+    },
+    showActivities() {
+      this.showDrawerModal = true
+      this.showConversationsContent = false
+      this.showActivitiesContent = true
+    },
+    showConversations() {
+      this.showDrawerModal = true
+      this.showActivitiesContent = false
+      this.showConversationsContent = true
     }
   },
   watch: {
@@ -72,10 +89,27 @@ export default {
   <main class="main-layout">
     <MainHeader />
     <Sidebar />
+    <div>
+      <button
+        style="position: fixed; cursor: pointer; top: 10px; right: 61.8%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
+        @click="showActivities">Open Activities</button>
+      <button
+        style="position: fixed; cursor: pointer; top: 10px; right: 69.27%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
+        @click="showConversations">Open Conversations</button>
+
+      <transition name="slide">
+        <div class="modal" v-if="showDrawerModal">
+          <span class="close-button" @click="showDrawerModal = false" v-html="getSvg('xButton')"></span>
+          <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
+          <Conversations class="modal-content" v-if="showConversationsContent" :taskId="conversationsTaskId">
+          </Conversations>
+          <Activities class="modal-content" v-else-if="showActivitiesContent"></Activities>
+        </div>
+      </transition>
+    </div>
     <section class="board-container">
       <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard" />
       <BoardHeader :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
-
       <nav class="board-nav">
 
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"
