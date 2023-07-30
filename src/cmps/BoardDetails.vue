@@ -106,14 +106,14 @@ export default {
         </Group>
 
       </div>
-      
+
     </Draggable>
     <button @click="addGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
       <span>Add new group</span>
     </button>
 
-    
+
   </Container>
 </template>
 

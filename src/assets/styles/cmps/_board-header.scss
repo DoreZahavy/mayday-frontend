@@ -22,6 +22,7 @@
     .board-desc{
         color: $secondary-text-color;
         span{
+            padding-inline-start: 6px;
             cursor: pointer;
             color:#1F76C2;
             &:hover{

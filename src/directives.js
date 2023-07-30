@@ -23,7 +23,7 @@ const icon = {
 }
 
 const clickOutside = {
-    mounted(el, {value:cb}) {//{ value: cb }
+    mounted(el, { value: cb }) {//{ value: cb }
         el.clickOutside = (ev) => {
             if (!el.contains(ev.target)) {
                 // binding.value//

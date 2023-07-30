@@ -1,5 +1,5 @@
 <template>
-    <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs15"
+    <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs16"
         :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver" @mouseout="onMouseOut">
         <div class="flex justify-center align-center" style="height:100%; width: 100%;">
             <span v-if="!hovered"
@@ -13,8 +13,7 @@
             </div>
         </div>
         <el-date-picker style="position: absolute; left:0; top: 0; width: 100%; height: 125%; z-index: 25;"
-            v-model="pickedDateTimeRange" type="daterange" ref="datePicker">
-        </el-date-picker>
+            v-model="pickedDateTimeRange" type="daterange" ref="datePicker"></el-date-picker>
         <div v-if="!isDateNull" class="reset-text" @click="clearTimeline">
             <span class="x-icon" v-html="getSvg('xButton')">
             </span>
@@ -165,7 +164,7 @@ export default {
         },
         getSvg(name) {
             return svgService.getSvg(name)
-        }
+        },
     }
 }
 </script>

@@ -3,7 +3,7 @@
     </div>
     <section class="board-info">
         <article class="board-info-inputs">
-            <InPlaceEdit v-model="title" />
+            <InPlaceEdit v-model="title" class="title"/>
             <InPlaceEdit v-model="desc" /> <!-- TODO: change to textarea and add bounceback -->
         </article>
         <article class="board-info-details flex flex-direction-column">
