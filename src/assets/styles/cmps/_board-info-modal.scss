@@ -24,6 +24,35 @@
     grid-template-columns: auto 38%;
     border-radius: 6px;
     box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px ;
+    .board-info-inputs{
+        .title{
+            
+            // color: #adaa9c;
+            font-size: 24px;
+            padding-block: rem(38px) rem(32px);
+            font-weight: 600;
+            font-family: poppins;
+
+            span{
+                padding-inline-start: 6px;
+                padding: 0;
+                display: block;
+                width: 100%;
+                outline:none;
+                &:hover{
+                    outline:1px solid $border-clr;
+                    border-radius: 3px;
+                }
+                &:active{
+                }
+                &:focus{
+                    padding: 1px;
+                    outline:2px solid #0060DF;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
     .board-info-details {
         border-radius: 6px;
         width: 100%;
@@ -60,25 +89,25 @@
         box-sizing: border-box;
         padding-inline: rem(35px);
 
-        &:first-of-type {
-            padding-block: rem(38px) rem(32px);
-            font-size: rem(24px);
-            font-weight: 500;
-            font-family: poppins;
-            span{
-                display: block;
-                width: 100%;
-                outline:none;
-                &:hover{
-                    outline:1px solid $border-clr;
-                    border-radius: 3px;
-                }
-                &:active{
-                    outline:1px solid $border-clr;
-                    border-radius: 3px;
-                }
-            }
-        }
+        // &:first-of-type {
+        //     padding-block: rem(38px) rem(32px);
+        //     font-size: rem(24px);
+        //     font-weight: 500;
+        //     font-family: poppins;
+        //     span{
+        //         display: block;
+        //         width: 100%;
+        //         outline:none;
+        //         &:hover{
+        //             outline:1px solid $border-clr;
+        //             border-radius: 3px;
+        //         }
+        //         &:active{
+        //             outline:1px solid $border-clr;
+        //             border-radius: 3px;
+        //         }
+        //     }
+        // }
 
         &:last-of-type {
             width: 100%;
