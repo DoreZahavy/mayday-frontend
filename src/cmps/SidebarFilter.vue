@@ -28,7 +28,7 @@ export default {
 </script>
 <template>
     <section class="sidebar-filter">
-        <span v-html="getSvg('search')"></span>
+        <span v-html="getSvg('search')" class="search-icon-wrapper"></span>
         <input type="search" v-model="filterBy" placeholder="Search">
     </section>
 </template>
