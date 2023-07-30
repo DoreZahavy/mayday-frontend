@@ -11,23 +11,52 @@
     border: 1px solid $primary-text-color;
     border-radius: 0.2857em;
     color: $secondary-text-color;
-    &:hover{
+
+    &:hover {
         border-color: $primary-text-color;
     }
-    &:focus-within:not(:hover){
+
+    &:focus-within:not(:hover) {
         border-color: $primary-btn-color;
     }
-    .search-icon-wrapper{
+
+    .reset-text {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $secondary-btn-hover-color;
+        }
+
+        x-icon {
+            color: $primary-text-color;
+            width: 100%;
+            display: block;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            svg {
+                width: 18px;
+                height: 18px;
+                padding-top: 2px;
+                color: black;
+            }
+        }
+    }
+
+    .search-icon-wrapper {
         margin-bottom: 2px;
         width: 18px;
         height: 18px;
         display: flex;
         margin-inline-end: 3px;
     }
+
     input {
         font-family: figtree;
         font-size: 14px;
-        color:$primary-text-color;
+        color: $primary-text-color;
         border: none;
         width: 100%;
         background-color: transparent;
@@ -37,7 +66,8 @@
         outline: none;
         padding: 1px 2px 1px 2px;
     }
-    span{
+
+    span {
         // position: absolute;
         // left: 3px;
         // top: 5px;
