@@ -170,7 +170,8 @@ export const boardStore = {
         const boards = await boardService.query()
         context.commit({ type: "setBoards", boards })
         context.commit({ type: "setBoard", board: boards[0] })
-        // context.commit({ type: "setBoard", board: boards[0] })
+        // const boardId = this.$route.params.boardId
+        // context.commit({ type: "setBoard", boardId })
       } catch (err) {
         console.log(err)
         throw err

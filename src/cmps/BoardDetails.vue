@@ -40,15 +40,12 @@ export default {
       try {
 
         await this.$store.dispatch({ type: 'updateBoard', groupId, taskId, prop, toUpdate })
-        showSuccessMsg('Board updated')
+        // showSuccessMsg('Board updated')
 
       } catch (err) {
         showErrorMsg('Failed to update board')
 
       }
-      // console.log('groupId,taskId,prop,toUpdate:', groupId,taskId,prop,toUpdate)
-      // update.groupId = groupId
-      // this.$store.dispatch({ type: 'updateBoard', groupId, taskId, prop, toUpdate })
     },
     async addTask(groupId, title) {
       try {
@@ -61,9 +58,6 @@ export default {
 
       }
     },
-    // saveGroup(groupId, title) {
-    //   this.$store.dispatch({ type: 'saveGroup', groupId, title })
-    // },
     async removeGroup(groupId) {
       try {
         await this.$store.dispatch({ type: 'removeGroup', groupId })
@@ -114,7 +108,6 @@ export default {
       </div>
       
     </Draggable>
-    <!-- <div @click="saveGroup" class="add-group-btn" v-html="getSvg('addGroup')"></div> -->
     <button @click="addGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
       <span>Add new group</span>
