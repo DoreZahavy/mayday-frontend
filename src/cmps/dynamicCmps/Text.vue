@@ -5,7 +5,7 @@
                 {{ text }}
             </span>
             <input v-show="editing" ref="editor" v-model="text" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
-                class="editable-text fs15">
+                class="editable-text fs16">
             <span v-show="!text && !editing" @click="startEditing">
                 <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon text-icon" v-html="getSvg('text')"></span>

@@ -3,7 +3,7 @@
         <div class="text-container">
             <span v-show="!editing && (number || number === 0)" @click="startEditing">{{ formatCurrency(number) }}</span>
             <input v-show="editing" ref="editor" v-model="number" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
-                @keypress="isNumber($event)" class="editable-text fs15" type="text" @click="startEditing">
+                @keypress="isNumber($event)" class="editable-text fs16" type="text" @click="startEditing">
             <div v-show="!number && number !== 0 && !editing" @click="startEditing">
                 <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
                 <span class="icon nums-icon" v-html="getSvg('nums')"></span>

@@ -6,7 +6,7 @@
         {{ label.title }}
       </div>
     </template>
-    <div v-if="priority" class="status status-content" :class="priority.color">{{ priority.title }}</div>
+    <div v-if="priority" class="status status-content fs18" :class="priority.color">{{ priority.title }}</div>
   </el-tooltip>
 </template>
 

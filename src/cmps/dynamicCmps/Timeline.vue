@@ -1,5 +1,5 @@
 <template>
-    <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs15"
+    <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs16"
         :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver" @mouseout="onMouseOut">
         <div class="flex justify-center align-center" style="height:100%; width: 100%;">
             <span v-if="!hovered"

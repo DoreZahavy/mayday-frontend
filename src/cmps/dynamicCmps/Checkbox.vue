@@ -1,7 +1,7 @@
 <template>
-  <div class="d-cmp checkbox" >
+  <div class="d-cmp checkbox fs16">
     <label :for="stringId" class="checkbox-label"></label>
-    <input type="checkbox"  :id="stringId">
+    <input type="checkbox" :id="stringId">
   </div>
 </template>
   
