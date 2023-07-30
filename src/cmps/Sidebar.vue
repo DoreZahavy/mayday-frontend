@@ -90,7 +90,7 @@ export default {
             <ul class="clean-list nav-list">
                 <li>
                     <div class="flex align-center">
-                        <span v-html="getSvg('home')"></span>
+                        <span v-html="getSvg('home')" class="sidebar-list-svg"></span>
                         <RouterLink to="/">Home</RouterLink>
                     </div>
                 </li>

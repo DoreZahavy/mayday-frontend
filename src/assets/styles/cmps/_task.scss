@@ -48,6 +48,7 @@
 
 .task-title {
     border-inline-end: 1px solid $border-clr;
+    color: $primary-text-color;
 }
 
 .task-actions-container {
@@ -88,7 +89,7 @@
     height: 100%;
     border-inline-end: 1px solid $border-clr;
     padding: 0;
-
+    max-width: 150px;
     &:last-child {
         // border-inline-end:0;
         // border-inline-start: 1px solid $border-clr;
@@ -96,9 +97,9 @@
 
     &.header {
         div {
-            width: 149px;
+            width: 150px;
         }
-
+        color: $primary-text-color;
         vertical-align: middle !important;
         text-align: center;
     }
@@ -120,6 +121,7 @@
     z-index: 4;
 }
 .task-column {
+    color: $primary-text-color;
     display: grid;
     grid-template-columns: 0px $row-height $task-title-width;
     height: 100%;
@@ -145,7 +147,9 @@
     article {
         // grid-column-start: 1;
     }
-
+    .d-cmp{
+        max-width: none;
+    }
     // .group-gap {
     //     width: 40px;
     //     height: $row-height;

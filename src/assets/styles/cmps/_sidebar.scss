@@ -16,6 +16,9 @@
             visibility: visible;
         }
     }
+    .sidebar-list-svg{
+        padding-block-start: 3px;
+    }
     position: relative;
     grid-area: sidebar;
     width: $sidebar-width;
