@@ -34,7 +34,6 @@
             position: sticky;
             left: 55px;
             // width: fit-content;
-            border-radius: 4px;
             font-size: 18px;
             letter-spacing: -0.2px;
             font-family: poppins;
@@ -42,18 +41,20 @@
             display: flex;
             align-items: center;
 
-            &:hover {
-                outline: 1px solid $border-clr;
-            }
+            
 
             .editable-group-title {
+                border-radius: 4px;
                 .editable {
                     outline: none;
+                }
+                &:hover {
+                    outline: 1px solid $border-clr;
                 }
             }
 
             span:first-of-type {
-                padding-inline: 5px;
+                padding-inline: 4px;
                 // border: 1px solid transparent;
 
                 &:hover {
@@ -69,6 +70,7 @@
                 font-size: 14px;
                 margin-block-start: 4px;
                 padding-inline-end: 0.3em;
+                padding-inline-start: 7px;
                 font-weight: 400;
             }
 

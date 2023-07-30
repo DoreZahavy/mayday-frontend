@@ -131,6 +131,7 @@
     z-index: 31 !important;
     background-color: #fff;
     .add-task {
+        padding-inline-start: 27px;
         color: $primary-text-color;
     }
     // :before{
@@ -163,11 +164,13 @@
     p {
         grid-column-start: 3;
     }
+    .title {
+        padding-inline-start: 34px;
+        text-align: start;
+    }
 }
 
-.title {
-    text-align: start;
-}
+
 
 .checkbox {
     input {
