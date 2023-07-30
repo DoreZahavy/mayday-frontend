@@ -26,7 +26,7 @@
     box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px ;
     .board-info-inputs{
         .title{
-            
+            padding-inline-start: 26px;
             // color: #adaa9c;
             font-size: 24px;
             padding-block: rem(38px) rem(32px);
@@ -34,8 +34,8 @@
             font-family: poppins;
 
             span{
-                padding-inline-start: 6px;
                 padding: 0;
+                padding-inline-start: 6px;
                 display: block;
                 width: 100%;
                 outline:none;
