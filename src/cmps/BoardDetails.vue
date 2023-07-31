@@ -85,6 +85,10 @@ export default {
         showErrorMsg('Failed to add task')
       }
     },
+    openConversations(taskId) {
+      console.log(taskId)
+      this.$emit('openConversations', taskId)
+    },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     }
@@ -101,8 +105,8 @@ export default {
 
         <div class="group-gap"></div>
         <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
-          @removeTask="removeTask(group._id, $event)" @update="updateBoard(group._id, $event)"
-          @removeGroup="removeGroup(group._id)">
+          @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
+          @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)">
         </Group>
 
       </div>

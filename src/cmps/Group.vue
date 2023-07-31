@@ -1,6 +1,8 @@
 <template>
     <section class="group-list">
 
+        <div><button @click="onOpenConversations('54321')">openConversations</button></div>
+
         <div class="group-title-container flex align-center">
 
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
@@ -50,7 +52,8 @@
                         </div>
                         <section class="group-accent-color" :style="color"></section>
                         <Checkbox :checkBoxId="task._id" />
-                        <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
+                        <TaskTitle class="" @openConversations="onOpenConversations(taskId)"
+                            @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                         <div class="conversation-cell">
                             <ConversationBtn :taskId="task._id" />
                         </div>
@@ -74,11 +77,15 @@
                 </div>
             </section>
             <section class="progress flex">
-
                 <div class="progress-margin"></div>
-                <div class="progress-border"></div>
-                <section class="progress-bar">
-                </section>
+                <div class="progress-container flex">
+                    <div class="progress-border"></div>
+                    <section class="progress-bar">
+                        <article v-for="(cmp, idx) in cmpOrder">
+                            {{ idx }}
+                        </article>
+                    </section>
+                </div>
             </section>
         </Container>
         <!-- render progress by progress array -->
@@ -86,6 +93,7 @@
 </template>
 
 <script>
+import { eventBusService } from '../services/event-bus.service.js'
 import { svgService } from '../services/svg.service'
 
 import { Container, Draggable } from "vue3-smooth-dnd"
@@ -165,6 +173,9 @@ export default {
         },
         onRemoveGroup() {
             this.$emit('removeGroup')
+        },
+        onOpenConversations(taskId) {
+            eventBusService.emit('task-clicked', taskId)
         },
         onSetColor(color) {
             console.log('color:', color)
