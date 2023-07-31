@@ -8,8 +8,10 @@
         position: sticky;
         left: 40px;
         height: $row-height;
-        width: 400px;;
-        box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .12);
+        width: 400px;
+        box-shadow:
+            1px 8px 0 -1px #fff,
+            inset 0 8px 9px -9px rgba(0, 0, 0, 0.12);
     }
 
     .progress-border {
@@ -24,8 +26,6 @@
         border-radius: 0 0 0 6px;
         &:before {
             content: "";
-        &:before{
-            content: '';
             display: block;
             position: absolute;
             left: -11px;
@@ -56,6 +56,4 @@
     .progress-container {
         border-bottom-left-radius: 6px;
     }
-   
-}
 }

@@ -4,7 +4,7 @@
     background-color: #fff;
     // overflow-x: hidden;
     // margin-inline-start: rem(60px);
-    .bottom-gap{
+    .bottom-gap {
         height: 36px;
         width: 100%;
         background-color: #fff;
@@ -45,8 +45,6 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-
-            
 
             .editable-group-title {
                 border-radius: 4px;
@@ -99,7 +97,7 @@
                     // user-select: none;
                     display: inline-block;
                 }
-                .in-place-edit:hover{
+                .in-place-edit:hover {
                     outline-style: none;
                 }
             }
@@ -148,7 +146,7 @@
     grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
-    .label-line-gap{
+    .label-line-gap {
         width: 40px;
         height: 37px;
         background-color: #fff;
@@ -170,7 +168,7 @@
     //  right: 1081px;
     //  top: -1px;
     //  z-index: 50;
-      
+
     // }
 }
 
@@ -180,8 +178,6 @@
     border-right: 0;
     position: relative;
 }
-
-
 
 .group-accent-color {
     width: 6px;
