@@ -74,7 +74,7 @@ export default {
         checkOverflow() {
             this.$nextTick(() => {
                 const element = this.$refs.viewer
-                if(!element) return
+                if (!element.value.length) return
                 if (element.offsetWidth < element.scrollWidth) {
                     this.textOverflowing = true
                 } else {
