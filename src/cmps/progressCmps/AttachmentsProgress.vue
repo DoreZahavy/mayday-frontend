@@ -1,6 +1,6 @@
 <template>
-    <article>
-        <pre>{{ files }}</pre>
+    <article class="attachments-progress">
+        <!-- <pre>{{ files }}</pre> -->
         <div class="file-list flex align-center" v-if="files.length > 4">
             <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
             <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
@@ -19,7 +19,7 @@
                 </div> -->
             <div class="extra-files">+{{ files.length - 3 }}</div>
         </div>
-        <div class="file-list flex align-center" v-else-if="files.length > 0">
+        <div v-else-if="files.length > 0" class="file-list flex align-center">
             <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file" class="file-preview" />
 
             <!-- <div class="file-preview" v-for="fileUrl in files">
@@ -28,7 +28,8 @@
         </div>
     </article>
 </template>
-  
+<!-- v-if="files.length > 4"
+v-else-if="files.length > 0" -->
 <script>
 import AttachmentPreview from '../AttachmentPreview.vue'
 
@@ -37,23 +38,22 @@ export default {
     name: "AttachmentsProgress",
     props: {
         group: Object,
-       
+
     },
-    data(){
+    data() {
         return {
-            // files:this.getFiles()
+            // files: this.getFiles()
         }
     },
     methods: {
         openModal(file) {
             this.$store.commit({ type: 'fileModal', file })
-            
+
         },
         getFiles() {
             var files = []
-            this.info.tasks.forEach(task => {
-                // files.concat([1,2,3])
-                files.concat(task.Attachments)
+            this.group.tasks.forEach(task => {
+                files = files.concat(task.Attachments)
             })
             return files
         }
@@ -61,19 +61,14 @@ export default {
     computed: {
         files() {
             var files = []
-            // for (var i = 0; i < this.group.tasks.length; i++) {
-            //     files = files.concat(this.group.tasks[i].Attachments)
-            // }
             this.group.tasks.forEach(task => {
                 files = files.concat(task.Attachments)
-                // files.concat([1,2,3])
             })
             return files
-            // return this.group.tasks[0].Attachments
         },
-        components:{
-            AttachmentPreview
-        }
+    },
+    components: {
+        AttachmentPreview
     }
 
 

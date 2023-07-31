@@ -47,19 +47,19 @@ export default {
         <div class="screen" @click.stop="closeModal"></div>
         <div class="modal">
             <header class="flex align-center">
-                <span v-if="isPdf" class="x-btn" v-icon="'pdf'"></span>
-                <span v-if="isImage" class="x-btn" v-icon="'imgFile'"></span>
-                <span v-if="isVideo" class="x-btn" v-icon="'video'"></span>
+                <span v-if="isPdf" class="type-img" v-icon="'pdf'"></span>
+                <span v-if="isImage" class="type-img" v-icon="'imgFile'"></span>
+                <span v-if="isVideo" class="type-img" v-icon="'video'"></span>
                 <p>{{ file }}</p>
 
+                <span class="x-btn" @click.stop="closeModal">&#10005;</span>
             </header>
             <div class="file-content">
 
-                <embed v-if="isPdf" :src="file" width="800px" height="2100px" />
+                <embed v-if="isPdf" :src="file" />
                 <img v-if="isImage" :src="file" alt="">
             </div>
             <!-- <pre>{{ file }}</pre> -->
         </div>
-        <span class="x-btn" v-icon="'xButton'"></span>
     </div>
 </template>
