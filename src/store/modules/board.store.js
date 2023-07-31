@@ -161,12 +161,15 @@ export const boardStore = {
         result.splice(addedIndex, 0, itemToAdd);
       }
       context.commit({ type: 'setTaskOrder', result, idx })
+      
       try {
-        await boardService.saveBoard(context.state.board)
-      } catch (err) {
-        console.log(err)
-        throw err
-      }
+          if(idx===context.state.board.groups.length-1) await boardService.saveBoard(context.state.board)
+          else return
+        } catch (err) {
+          console.log(err)
+          throw err
+        }
+      
     },
 
     async loadBoards(context) {

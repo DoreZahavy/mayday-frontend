@@ -3,7 +3,10 @@
         <label @drop.prevent="handleFile" @dragover="handleFile">
             <input type="file" @change="handleFile" hidden>
             <div class="file-list flex align-center" v-if="files.length > 4">
-                <div class="file-preview">
+                <AttachmentPreview :file="files[0]" class="file-preview" />
+                <AttachmentPreview :file="files[1]" class="file-preview" />
+                <AttachmentPreview :file="files[2]" class="file-preview" />
+                <!-- <div class="file-preview">
 
                     <img :src="files[0]">
                 </div>
@@ -14,13 +17,15 @@
                 <div class="file-preview">
 
                     <img :src="files[2]">
-                </div>
-                <div  class="extra-files">+{{ files.length-3 }}</div>
+                </div> -->
+                <div class="extra-files">+{{ files.length - 3 }}</div>
             </div>
             <div class="file-list flex align-center" v-else-if="files.length > 0">
-                <div class="file-preview" v-for="fileUrl in files">
+                <FilePreview v-for="file in files" :file="file" class="file-preview" />
+
+                <!-- <div class="file-preview" v-for="fileUrl in files">
                     <img :src="fileUrl">
-                </div>
+                </div> -->
             </div>
             <div v-else>
                 <span class="icon file-icon" v-html="getSvg('file')"></span>
@@ -34,6 +39,7 @@
 <script>
 import { svgService } from '../../services/svg.service'
 import { uploadService } from '../../services/upload.service'
+import AttachmentPreview from '../AttachmentPreview.vue'
 
 export default {
 
@@ -56,7 +62,13 @@ export default {
             this.files.push(res.url)
             this.$emit('update', this.files)
 
-        }
+        },
+
+
+    },
+    components: {
+        AttachmentPreview
     }
+
 }
 </script>
