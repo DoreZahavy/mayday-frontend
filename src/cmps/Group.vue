@@ -3,6 +3,7 @@
 
         <div class="group-title-container flex align-center">
 
+            <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link" :style="textColor"></button>
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <div class="group-actions-container">
                     <button @click="onRemoveGroup" v-html="getSvg('trash')"
@@ -79,8 +80,8 @@
                 <div class="progress-margin"></div>
                 <div class="progress-container flex">
                     <div class="progress-border"></div>
-                    <ProgressBar :cmpOrder="cmpOrder" :group="group"/>
-                    
+                    <ProgressBar :cmpOrder="cmpOrder" :group="group" />
+
                 </div>
             </section>
             <div class="bottom-gap"></div>
@@ -188,9 +189,10 @@ export default {
         },
         closeEditGroup() {
             this.editGroup = false
+        },
+        onCollapse() {
+            this.$emit('update', { prop: 'minimized', toUpdate: true })
         }
-
-
     },
     components: {
         Checkbox,
@@ -221,7 +223,7 @@ export default {
             this.$emit('addTask', this.addTaskTxt)
 
         },
-        collapseAll(){
+        collapseAll() {
             console.log(this.collapseAll)
         }
     }

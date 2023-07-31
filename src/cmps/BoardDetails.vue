@@ -11,7 +11,7 @@ import { svgService } from '../services/svg.service'
 export default {
   data() {
     return {
-      collapse: true
+      // collapse: true
     }
   },
   computed: {
@@ -40,11 +40,9 @@ export default {
     },
     collapseGroup() {
       this.collapse = true
-      console.log("🚀 ~ file: BoardDetails.vue:40 ~ collapseGroup ~ this.collapse :", this.collapse)
     },
     expandGroup() {
       this.collapse = false
-      console.log("🚀 ~ file: BoardDetails.vue:44 ~ expandGroup ~  this.collapse:", this.collapse)
     },
     async updateBoard(groupId, { taskId, prop, toUpdate }) {
       try {
@@ -111,7 +109,9 @@ export default {
   <Container @drag-start="collapseGroup" @drag-end="expandGroup" @drop="onDropGrp" class="board-details" v-if="board">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
-      <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
+      <MinimizedGroup :group="group" :groupIdx="idx" 
+      @update="updateBoard(group._id, $event)" 
+      @removeGroup="removeGroup(group._id)"
        v-if="group.minimized===true">
 
       </MinimizedGroup>
