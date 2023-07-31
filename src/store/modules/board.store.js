@@ -95,7 +95,7 @@ export const boardStore = {
 
     setCmpConfig(state, { result }) {
       state.board.cmpConfig = result
-    }
+    },
 
   },
 

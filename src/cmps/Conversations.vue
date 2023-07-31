@@ -1,5 +1,7 @@
 <template>
-    <h2>Conversations {{ taskId }}</h2>
+    <section class="modal-content">
+        <h2>Conversations (Task Id: {{ taskId }})</h2>
+    </section>
 </template>
 
 <script>

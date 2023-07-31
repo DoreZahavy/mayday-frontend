@@ -1,6 +1,8 @@
 <template>
     <section class="group-list">
 
+        <div><button @click="onOpenConversations('54321')">openConversations</button></div>
+
         <div class="group-title-container flex align-center">
 
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
@@ -25,7 +27,7 @@
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <Checkbox :checkBoxId="this.group._id"/>
+                <Checkbox :checkBoxId="this.group._id" />
                 <div class="task-title d-cmp">Task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -49,8 +51,9 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox :checkBoxId="task._id"/>
-                        <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
+                        <Checkbox :checkBoxId="task._id" />
+                        <TaskTitle class="" @openConversations="onOpenConversations(taskId)"
+                            @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task[cmp]" :groupColor="group.color"
@@ -66,8 +69,8 @@
                         <section class="group-accent-color last" :style="color">
                         </section>
                     </div>
-                    <Checkbox :checkBoxId="''" style="pointer-events: none;"/>
-                    <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task"></InPlaceEdit>
+                    <Checkbox :checkBoxId="''" style="pointer-events: none;" />
+                    <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit>
                 </div>
             </section>
             <section class="progress flex">
@@ -83,6 +86,7 @@
 </template>
 
 <script>
+import { eventBusService } from '../services/event-bus.service.js'
 import { svgService } from '../services/svg.service'
 
 import { Container, Draggable } from "vue3-smooth-dnd"
@@ -149,9 +153,9 @@ export default {
             return this.group.tasks[index]
         },
         onUpdateTask(prop, taskId, toUpdate) {
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
 
             this.$emit('update', { taskId, prop, toUpdate })
         },
@@ -161,6 +165,9 @@ export default {
         },
         onRemoveGroup() {
             this.$emit('removeGroup')
+        },
+        onOpenConversations(taskId) {
+            eventBusService.emit('task-clicked', taskId)
         },
         onSetColor(color) {
             console.log('color:', color)

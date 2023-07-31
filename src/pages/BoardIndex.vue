@@ -8,7 +8,7 @@ import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
 
 import { svgService } from '../services/svg.service'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
 
 export default {
 
@@ -20,7 +20,6 @@ export default {
       showDrawerModal: false,
       showActivitiesContent: false,
       showConversationsContent: false,
-      conversationsTaskId: '1234'
     }
   },
   computed: {
@@ -32,7 +31,7 @@ export default {
     },
     boardId() {
       return this.$route.params.boardId
-    },
+    }
   },
   components: {
     Sidebar,
@@ -43,11 +42,19 @@ export default {
     Activities,
     Conversations,
   },
+  created() {
+    this.unsub = eventBusService.on('task-clicked', (taskId) => {
+      this.openConversations(taskId)
+    })
+  },
   mounted() {
     document.title = 'Mayday'
     setTimeout(() => {
       document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
-    }, 600);
+    }, 600)
+  },
+  beforeUnmount() {
+    this.unsub()
   },
   methods: {
     async updateBoard({ prop, toUpdate }) {
@@ -65,15 +72,20 @@ export default {
     toggleModal() {
       this.showModal = !this.showModal
     },
-    showActivities() {
+    openActivities() {
       this.showDrawerModal = true
       this.showConversationsContent = false
       this.showActivitiesContent = true
     },
-    showConversations() {
+    openConversations(taskId) {
+      console.log(taskId)
+      this.conversationsTaskId = taskId
       this.showDrawerModal = true
       this.showActivitiesContent = false
       this.showConversationsContent = true
+    },
+    closeDrawerModal() {
+      this.showDrawerModal = false
     }
   },
   watch: {
@@ -92,18 +104,14 @@ export default {
     <div>
       <button
         style="position: fixed; cursor: pointer; top: 10px; right: 61.8%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
-        @click="showActivities">Open Activities</button>
-      <button
-        style="position: fixed; cursor: pointer; top: 10px; right: 69.27%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
-        @click="showConversations">Open Conversations</button>
-
+        @click="openActivities">Open Activities</button>
       <transition name="slide">
         <div class="modal" v-if="showDrawerModal">
-          <span class="close-button" @click="showDrawerModal = false" v-html="getSvg('xButton')"></span>
+          <span class="close-button" @click="closeDrawerModal" v-html="getSvg('xButton')"></span>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
-          <Conversations class="modal-content" v-if="showConversationsContent" :taskId="conversationsTaskId">
+          <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
-          <Activities class="modal-content" v-else-if="showActivitiesContent"></Activities>
+          <Activities v-else-if="showActivitiesContent"></Activities>
         </div>
       </transition>
     </div>
