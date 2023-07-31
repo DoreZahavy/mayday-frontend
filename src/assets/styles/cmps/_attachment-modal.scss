@@ -23,10 +23,26 @@
                 color: $primary-text-color;
                 font-weight: 700;
             }
-            span > * {
+            .type-img > * {
                 width: 27px;
                 height: 36px;
                 margin-inline-end: 8px;
+            }
+            .x-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                top: 21px;
+                right: 16px;
+                position: absolute;
+                width: $btnSml;
+                height: $btnSml;
+                border-radius: 4px;
+                cursor: pointer;
+                &:hover{
+                    background-color: $secondary-btn-hover-color;
+                }
             }
         }
         .file-content {
