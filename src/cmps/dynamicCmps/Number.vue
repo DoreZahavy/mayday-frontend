@@ -1,7 +1,7 @@
 <template>
     <section class="number-cmp fs15" :class="{ 'input-focused': editing }">
         <div class="text-container">
-            <span v-show="!editing && (number || number === 0)" @click="startEditing">{{ formatCurrency(number) }}</span>
+            <span v-show="!editing && (number || number === 0)" @click="startEditing">{{ formatNumber(number) }}</span>
             <input v-show="editing" ref="editor" v-model="number" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
                 @keypress="isNumber($event)" class="editable-text fs16" type="text" @click="startEditing">
             <div v-show="!number && number !== 0 && !editing" @click="startEditing">
@@ -41,6 +41,10 @@ export default {
             } else {
                 return true
             }
+        },
+        formatNumber(value) {
+            if (value) return value.toLocaleString()
+            return value
         },
         formatCurrency(value) {
             if (value === 0) {

@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'StatusProgress',
-  props: ['group'],
+  props: { group: Object },
   computed: {
     statusCounts() {
       let statuses = {}
@@ -41,18 +41,18 @@ export default {
   margin-left: 0.2em;
   height: 67.93%;
   width: 92.8%;
-  background-color: lightcyan;
+  background-color: #c4c4c4;
   cursor: pointer;
 }
 
 .progress-segment {
-  height: 90%;
+  height: 100%;
   transition: .2s ease;
 }
 
 .progress-segment:hover {
   border-radius: 2px;
-  transform: scaleY(1.36);
+  transform: scaleY(1.2);
   transition: .01s ease;
 }
 </style>

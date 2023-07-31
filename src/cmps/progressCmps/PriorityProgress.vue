@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'PriorityProgress',
-  props: ['group'],
+  props: { group: Object },
   computed: {
     priorityCounts() {
       let priorities = {}
@@ -41,17 +41,18 @@ export default {
   margin-left: 0.6em;
   height: 67.93%;
   width: 89.2%;
+  background-color: #c4c4c4;
   cursor: pointer;
 }
 
 .progress-segment {
-  height: 90%;
+  height: 100%;
   transition: .2s ease;
 }
 
 .progress-segment:hover {
   border-radius: 2px;
-  transform: scaleY(1.36);
+  transform: scaleY(1.2);
   transition: .01s ease;
 }
 </style>
