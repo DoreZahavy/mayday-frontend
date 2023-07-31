@@ -30,12 +30,13 @@
 </template>
   
 <script>
+import AttachmentPreview from '../AttachmentPreview.vue'
 
 export default {
 
     name: "AttachmentsProgress",
     props: {
-        info: Object,
+        group: Object,
        
     },
     data(){
@@ -51,8 +52,8 @@ export default {
         getFiles() {
             var files = []
             this.info.tasks.forEach(task => {
-                files.concat([1,2,3])
-                // files.concat(task.files)
+                // files.concat([1,2,3])
+                files.concat(task.Attachments)
             })
             return files
         }
@@ -60,10 +61,18 @@ export default {
     computed: {
         files() {
             var files = []
-            this.info.tasks.forEach(task => {
-                files.concat(task.files)
+            // for (var i = 0; i < this.group.tasks.length; i++) {
+            //     files = files.concat(this.group.tasks[i].Attachments)
+            // }
+            this.group.tasks.forEach(task => {
+                files = files.concat(task.Attachments)
+                // files.concat([1,2,3])
             })
             return files
+            // return this.group.tasks[0].Attachments
+        },
+        components:{
+            AttachmentPreview
         }
     }
 
