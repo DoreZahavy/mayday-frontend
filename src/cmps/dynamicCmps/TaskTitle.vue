@@ -1,8 +1,11 @@
 <template>
-  <p v-if="taskTitle" ref="editor" :contenteditable="editing" @click="startEditing" @blur="stopEditing"
-    :class="{ editable: editing }" class="title d-cmp fs18">
-    {{ taskTitle }}
-  </p>
+  <div style="overflow: hidden;">
+
+    <p v-if="taskTitle" ref="editor" :contenteditable="editing" @click="startEditing" @blur="stopEditing"
+      :class="{ editable: editing }" class="title d-cmp" style="text-overflow: ellipsis;">
+      {{ taskTitle }}
+    </p>
+  </div>
 </template>
   
 <script>

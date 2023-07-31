@@ -139,7 +139,7 @@
     z-index: 30;
     // position: relative;
     display: grid;
-    grid-template-columns: calc($row-height + $task-title-width) repeat(7, 150px);
+    grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
     border-block: 1px solid $border-clr;
     height: $row-height;
 

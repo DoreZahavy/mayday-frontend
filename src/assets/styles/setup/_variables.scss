@@ -93,17 +93,20 @@ $main-viewport-height: calc(100% - $main-header-height);
 
 //sidebar
 $sidebar-width: 255px;
-$input-height:32px;
-$input-width:180px;
-$selected-blue:#CCE5FF;
+$input-height: 32px;
+$input-width: 180px;
+$selected-blue: #CCE5FF;
 
 //groups
-$task-title-width: 300px;
 $group-accent-width: 6px;
 
+//tasks
+$task-title-width: 260px;
+$task-conversation-btn-width: 65px;
+
 //BoardInfoModal
-$board-info-modal-height:550px;
-$board-info-modal-width:850px;
+$board-info-modal-height: 550px;
+$board-info-modal-width: 850px;
 
 //group progress bar
 $progress-bar-left-margin: calc($row-height + $task-title-width - 1px);

@@ -20,12 +20,12 @@
         <!-- render group labels by labels array -->
 
         <section class="label-line">
-            <div class="task-column  not-hover">
+            <div class="task-column first not-hover">
                 <div>
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <Checkbox :checkBoxId="this.group._id"/>
+                <Checkbox :checkBoxId="this.group._id" />
                 <div class="task-title d-cmp">Task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -49,8 +49,11 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox :checkBoxId="task._id"/>
+                        <Checkbox :checkBoxId="task._id" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
+                        <div class="conversation-cell">
+                            <ConversationBtn :taskId="task._id" />
+                        </div>
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task[cmp]" :groupColor="group.color"
@@ -66,8 +69,8 @@
                         <section class="group-accent-color last" :style="color">
                         </section>
                     </div>
-                    <Checkbox :checkBoxId="''" style="pointer-events: none;"/>
-                    <InPlaceEdit v-model="addTaskTxt"  class="flex align-center add-task"></InPlaceEdit>
+                    <Checkbox :checkBoxId="''" style="pointer-events: none;" />
+                    <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit>
                 </div>
             </section>
             <section class="progress flex">
@@ -98,6 +101,7 @@ import Number from "@/cmps/dynamicCmps/Number.vue";
 import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 import ColorPicker from "@/cmps/ColorPicker.vue";
+import ConversationBtn from '@/cmps/ConversationBtn.vue';
 export default {
 
     props: ['group', 'idx'],
@@ -149,9 +153,9 @@ export default {
             return this.group.tasks[index]
         },
         onUpdateTask(prop, taskId, toUpdate) {
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
-        console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
+            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
 
             this.$emit('update', { taskId, prop, toUpdate })
         },
@@ -199,6 +203,7 @@ export default {
         ColorPicker,
         Container,
         Draggable,
+        ConversationBtn
     },
     watch: {
         groupTitle() {
