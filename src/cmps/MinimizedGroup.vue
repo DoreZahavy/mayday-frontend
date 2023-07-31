@@ -1,21 +1,21 @@
 <template>
     <section>
         <article class="minimized-group">
+            <div class="group-color-accent" :style="backgroundColor"></div>
             <div class="preview">
                 <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
-                <div class="group-actions-container">
-                    <button @click="onRemoveGroup" v-html="getSvg('trash')"
-                        class="button-as-link d-cmp group-actions"></button>
+                    <div class="group-actions-container">
+                        <button @click="onRemoveGroup" v-html="getSvg('trash')"
+                            class="button-as-link group-actions"></button>
+                    </div>
+                    <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
+                        <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
+                    </div>
+                    <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor">
+                    <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
+                    <p class="task-count" v-if="!editGroup">{{ taskCount }} Tasks</p>
                 </div>
-                <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
-                    <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
-                </div>
-                <!-- <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor"> -->
-                <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
-                <p class="task-count" v-if="!editGroup">{{ taskCount }} Tasks</p>
-            </div>
-                <button @click="this.$emit('expand', groupIdx)">expand</button>
-                <span :style="textColor">{{ group.title }}</span>
+                <button @click="onExpand" v-html="getSvg('arrowRight')" class="button-as-link" :style="textColor"></button>
             </div>
             <div class="columns">
                 <div class="label-line">
@@ -33,6 +33,13 @@ import ProgressBar from '@/cmps/ProgressBar.vue';
 import { svgService } from '../services/svg.service'
 export default {
     props: ['group', 'groupIdx'],
+    data() {
+        return {
+            groupTitle: this.group.title,
+            showPicker: false,
+            editGroup: false,
+        }
+    },
     computed: {
         labels() {
             return this.$store.getters.labels
@@ -42,11 +49,16 @@ export default {
         },
         textColor() {
             return { color: this.group.color }
-        }
+        },
+        backgroundColor() {
+            return { background: this.group.color }
+        },
+        taskCount() {
+            return this.group.tasks.length
+        },
     },
-    methods:{
+    methods: {
         getSvg(iconName) {
-            console.log("🚀 ~ file: MinimizedGroup.vue:38 ~ getSvg ~ iconName:", iconName)
             return svgService.getSvg(iconName)
         },
         openPicker() {
@@ -60,6 +72,15 @@ export default {
         },
         closeEditGroup() {
             this.editGroup = false
+        },
+        openEditGroup() {
+            this.editGroup = true
+        },
+        onRemoveGroup() {
+            this.$emit('removeGroup')
+        },
+        onExpand() {
+            this.$emit('update', { prop: 'minimized', toUpdate: false })
         }
     },
     components: {
