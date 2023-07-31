@@ -44,6 +44,7 @@ export const boardStore = {
       })
     },
     statusLabelConfig({ board }) {
+      console.log("🚀 ~ file: board.store.js:48 ~ statusLabelConfig ~ board.statusLabelConfig:", board.statusLabelConfig)
       return JSON.parse(JSON.stringify(board.statusLabelConfig))
     },
     priorityLabelConfig({ board }) {

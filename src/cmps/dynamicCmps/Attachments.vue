@@ -59,7 +59,6 @@ export default {
         },
         async handleFile(ev) {
             const res = await uploadService.uploadImg(ev)
-            console.log('res:', res)
             this.files.push(res.url)
             this.$emit('update', this.files)
 

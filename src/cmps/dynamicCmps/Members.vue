@@ -79,7 +79,6 @@ export default {
 
     },
     addMember(member){
-      console.log(member)
       this.members.push(member)
       this.$emit('update', JSON.parse(JSON.stringify(this.members)))
 

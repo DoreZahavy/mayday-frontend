@@ -63,7 +63,6 @@ export default {
     watch: {
         boardId: {
             handler() {
-                console.log('params watcher');
                 this.active = this.boardId
                 if (!this.boardId) {
                     this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
