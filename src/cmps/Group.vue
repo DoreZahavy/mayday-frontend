@@ -74,11 +74,15 @@
                 </div>
             </section>
             <section class="progress flex">
-
                 <div class="progress-margin"></div>
-                <div class="progress-border"></div>
-                <section class="progress-bar">
-                </section>
+                <div class="progress-container flex">
+                    <div class="progress-border"></div>
+                    <section class="progress-bar">
+                        <article v-for="(cmp, idx) in cmpOrder">
+                            {{ idx }}
+                        </article>
+                    </section>
+                </div>
             </section>
         </Container>
         <!-- render progress by progress array -->
