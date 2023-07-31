@@ -78,6 +78,7 @@
 
 //Inputs
 .button-as-link {
+    cursor: pointer;
     border: 0 !important;
     background-color: transparent;
     z-index: 41;
@@ -86,7 +87,9 @@
 .sticky {
     position: static;
 }
-
+.relative{
+    position: relative;
+}
 // Label colors
 
 // Status labels
