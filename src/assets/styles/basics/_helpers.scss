@@ -97,7 +97,7 @@
 }
 
 .task:hover .done-green,
-.done-green:hover {
+.done-green:hover:not(.progress-segment) {
     background-color: #4ad69c;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .task:hover .working-orange,
-.working-orange:hover {
+.working-orange:hover:not(.progress-segment) {
     background-color: #fbc175;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .task:hover .stuck-red,
-.stuck-red:hover {
+.stuck-red:hover:not(.progress-segment) {
     background-color: #e8798b;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .task:hover .default-gray,
-.default-gray:hover {
+.default-gray:hover:not(.progress-segment) {
     background-color: #d2d2d3;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .task:hover .low-blue,
-.low-blue:hover {
+.low-blue:hover:not(.progress-segment) {
     background-color: #86b6fb;
 }
 
@@ -167,7 +167,7 @@
 }
 
 .task:hover .medium-purple,
-.medium-purple:hover {
+.medium-purple:hover:not(.progress-segment) {
     background-color: #8588e6;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .task:hover .high-dark-purple,
-.high-dark-purple:hover {
+.high-dark-purple:hover:not(.progress-segment) {
     background-color: #7659b2;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .task:hover .critical-dark-gray,
-.critical-dark-gray:hover {
+.critical-dark-gray:hover:not(.progress-segment) {
     background-color: #6d6d6e;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .task:hover .green-grass,
-.green-grass:hover {
+.green-grass:hover:not(.progress-segment) {
     background-color: #4ba27f;
 }
 
@@ -225,7 +225,7 @@
 }
 
 .task:hover .bright-green,
-.bright-green:hover {
+.bright-green:hover:not(.progress-segment) {
     background-color: #b7dd65;
 }
 
@@ -239,7 +239,7 @@
 }
 
 .task:hover .saladish,
-.saladish:hover {
+.saladish:hover:not(.progress-segment) {
     background-color: #d7c978;
 }
 
@@ -253,7 +253,7 @@
 }
 
 .task:hover .egg-yolk,
-.egg-yolk:hover {
+.egg-yolk:hover:not(.progress-segment) {
     background-color: #fcd84a;
 }
 
@@ -267,7 +267,7 @@
 }
 
 .task:hover .dark-orange,
-.dark-orange:hover {
+.dark-orange:hover:not(.progress-segment) {
     background-color: #fc906a;
 }
 
@@ -281,7 +281,7 @@
 }
 
 .task:hover .peach,
-.peach:hover {
+.peach:hover:not(.progress-segment) {
     background-color: #fcc3c4;
 }
 
@@ -295,7 +295,7 @@
 }
 
 .task:hover .sunset,
-.sunset:hover {
+.sunset:hover:not(.progress-segment) {
     background-color: #fc9b9c;
 }
 
@@ -309,7 +309,7 @@
 }
 
 .task:hover .dark-red,
-.dark-red:hover {
+.dark-red:hover:not(.progress-segment) {
     background-color: #cc6d85;
 }
 
@@ -323,7 +323,7 @@
 }
 
 .task:hover .sofia-pink,
-.sofia-pink:hover {
+.sofia-pink:hover:not(.progress-segment) {
     background-color: #fc58ab;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .task:hover .lipstick,
-.lipstick:hover {
+.lipstick:hover:not(.progress-segment) {
     background-color: #fc89d3;
 }
 
@@ -351,7 +351,7 @@
 }
 
 .task:hover .bubble,
-.bubble:hover {
+.bubble:hover:not(.progress-segment) {
     background-color: #f9bbf4;
 }
 
@@ -365,7 +365,7 @@
 }
 
 .task:hover .dark-purple,
-.dark-purple:hover {
+.dark-purple:hover:not(.progress-segment) {
     background-color: #9d7edd;
 }
 
@@ -379,7 +379,7 @@
 }
 
 .task:hover .berry,
-.berry:hover {
+.berry:hover:not(.progress-segment) {
     background-color: #a273ac;
 }
 
@@ -393,7 +393,7 @@
 }
 
 .task:hover .indigo,
-.indigo:hover {
+.indigo:hover:not(.progress-segment) {
     background-color: #8588e7;
 }
 
@@ -407,7 +407,7 @@
 }
 
 .task:hover .navy,
-.navy:hover {
+.navy:hover:not(.progress-segment) {
     background-color: #6282b0;
 }
 
@@ -421,7 +421,7 @@
 }
 
 .task:hover .bright-blue,
-.bright-blue:hover {
+.bright-blue:hover:not(.progress-segment) {
     background-color: #86b6fb;
 }
 
@@ -435,7 +435,7 @@
 }
 
 .task:hover .dark-blue,
-.dark-blue:hover {
+.dark-blue:hover:not(.progress-segment) {
     background-color: #49a7d1;
 }
 
@@ -449,7 +449,7 @@
 }
 
 .task:hover .aquamarine,
-.aquamarine:hover {
+.aquamarine:hover:not(.progress-segment) {
     background-color: #81d9d6;
 }
 
@@ -463,7 +463,7 @@
 }
 
 .task:hover .chili-blue,
-.chili-blue:hover {
+.chili-blue:hover:not(.progress-segment) {
     background-color: #91d9fd;
 }
 
@@ -477,7 +477,7 @@
 }
 
 .task:hover .river,
-.river:hover {
+.river:hover:not(.progress-segment) {
     background-color: #93bbcf;
 }
 
@@ -491,7 +491,7 @@
 }
 
 .task:hover .winter,
-.winter:hover {
+.winter:hover:not(.progress-segment) {
     background-color: #b6c3cf;
 }
 
@@ -505,7 +505,7 @@
 }
 
 .task:hover .american-gray,
-.american-gray:hover {
+.american-gray:hover:not(.progress-segment) {
     background-color: #a3a3a4;
 }
 
@@ -519,7 +519,7 @@
 }
 
 .task:hover .blackish,
-.blackish:hover {
+.blackish:hover:not(.progress-segment) {
     background-color: #6d6d6e;
 }
 
@@ -533,7 +533,7 @@
 }
 
 .task:hover .brown,
-.brown:hover {
+.brown:hover:not(.progress-segment) {
     background-color: #a3847c;
 }
 
@@ -547,7 +547,7 @@
 }
 
 .task:hover .orchid,
-.orchid:hover {
+.orchid:hover:not(.progress-segment) {
     background-color: #e29bc6;
 }
 
@@ -561,7 +561,7 @@
 }
 
 .task:hover .tan,
-.tan:hover {
+.tan:hover:not(.progress-segment) {
     background-color: #c3b3a0;
 }
 
@@ -575,7 +575,7 @@
 }
 
 .task:hover .sky,
-.sky:hover {
+.sky:hover:not(.progress-segment) {
     background-color: #bbe9f7;
 }
 
@@ -589,7 +589,7 @@
 }
 
 .task:hover .coffee,
-.coffee:hover {
+.coffee:hover:not(.progress-segment) {
     background-color: #cea498;
 }
 
@@ -603,7 +603,7 @@
 }
 
 .task:hover .royal,
-.royal:hover {
+.royal:hover:not(.progress-segment) {
     background-color: #689deb;
 }
 
@@ -617,7 +617,7 @@
 }
 
 .task:hover .teal,
-.teal:hover {
+.teal:hover:not(.progress-segment) {
     background-color: #5a8990;
 }
 
@@ -631,7 +631,7 @@
 }
 
 .task:hover .lavender,
-.lavender:hover {
+.lavender:hover:not(.progress-segment) {
     background-color: #cec0f9;
 }
 
@@ -645,7 +645,7 @@
 }
 
 .task:hover .steel,
-.steel:hover {
+.steel:hover:not(.progress-segment) {
     background-color: #c0cfed;
 }
 
@@ -659,7 +659,7 @@
 }
 
 .task:hover .liliac,
-.liliac:hover {
+.liliac:hover:not(.progress-segment) {
     background-color: #b8b5cc;
 }
 
@@ -673,7 +673,7 @@
 }
 
 .task:hover .pecan,
-.pecan:hover {
+.pecan:hover:not(.progress-segment) {
     background-color: #867576;
 }
 
@@ -687,7 +687,7 @@
 }
 
 .task:hover .purple,
-.purple:hover {
+.purple:hover:not(.progress-segment) {
     background-color: #bb8be5;
 }
 
@@ -701,7 +701,7 @@
 }
 
 .task:hover .dark-indigo,
-.dark-indigo:hover {
+.dark-indigo:hover:not(.progress-segment) {
     background-color: #7759b3;
 }
 

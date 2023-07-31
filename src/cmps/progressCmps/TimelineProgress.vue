@@ -1,7 +1,6 @@
 <template>
     <article v-if="group" style="position: relative; height: 100%; width: 100%; text-align: center; overflow:hidden;"
-        class="overall-timeline fs16" :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver"
-        @mouseout="onMouseOut">
+        class="overall-timeline fs16" :class="{ hovered: !isDateNull && hovered }">
         <div class="flex justify-center align-center" style="position: relative; height:100%; width: 100%;">
             <span v-if="!hovered"
                 style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
@@ -10,10 +9,12 @@
                 style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
                     totalDays }}</span>
             <div class="overall-progress-bar">
-                <div class="overall-progress-fill" :style="progressStyle"></div>
+                <div class="overall-progress-fill" :style="progressStyle" :class="{ hovered: !isDateNull && hovered }">
+                </div>
             </div>
         </div>
     </article>
+    <div class="timeline-hover-indicator" @mouseover="onMouseOver" @mouseout="onMouseOut"></div>
 </template>
 
 <script>
@@ -55,10 +56,8 @@ export default {
             }
         },
         totalDays() {
-            if (this.isDateNull && !this.hovered) {
+            if (this.isDateNull) {
                 return '-'
-            } else if (this.isDateNull && this.hovered) {
-                return 'Set Dates'
             } else {
                 const start = new Date(this.earliestStartDate)
                 const end = new Date(this.latestDueDate)
@@ -137,23 +136,36 @@ export default {
 </script>
 
 <style scoped>
-.overall-timeline:hover .progress-fill {
+.hover-indicator:hover {
     filter: brightness(70%);
-    z-index: 999999999999999999999999999;
 }
 
 .overall-progress-bar {
     position: absolute;
-    z-index: 0;
     width: 70%;
-    height: 66%;
+    height: 65%;
     background-color: #333;
     border: none;
     overflow: hidden;
     border-radius: 20px;
+    z-index: -1;
 }
 
 .overall-progress-fill {
     height: 100%;
+    z-index: -1;
+}
+
+.timeline-hover-indicator {
+    position: absolute;
+    top: 0;
+    width: 10.8em;
+    height: 100%;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.overall-progress-fill.hovered {
+    filter: brightness(80%);
 }
 </style>
