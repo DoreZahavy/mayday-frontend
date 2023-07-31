@@ -46,7 +46,7 @@ import { svgService } from '../../services/svg.service.js'
 
 export default {
   name: "Members",
-  emits: ["update"],
+  // emits: ["update"],
   props: { info: Array },
   data() {
     return {

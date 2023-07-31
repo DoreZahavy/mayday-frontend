@@ -81,11 +81,8 @@
                 <div class="progress-margin"></div>
                 <div class="progress-container flex">
                     <div class="progress-border"></div>
-                    <section class="progress-bar">
-                        <article v-for="(cmp, idx) in cmpOrder">
-                            {{ idx }}
-                        </article>
-                    </section>
+                    <ProgressBar :cmpOrder="cmpOrder" :group="group"/>
+                    
                 </div>
             </section>
             <div class="bottom-gap"></div>
@@ -112,6 +109,7 @@ import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 import ColorPicker from "@/cmps/ColorPicker.vue";
 import ConversationBtn from '@/cmps/ConversationBtn.vue';
+import ProgressBar from '@/cmps/ProgressBar.vue';
 export default {
 
     props: ['group', 'idx'],
@@ -216,7 +214,8 @@ export default {
         ColorPicker,
         Container,
         Draggable,
-        ConversationBtn
+        ConversationBtn,
+        ProgressBar
     },
     watch: {
         groupTitle() {
