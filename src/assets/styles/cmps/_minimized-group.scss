@@ -1,0 +1,45 @@
+.minimized-group {
+    margin-block-start:50px;
+    margin-inline-start: 50px;
+    display: grid;
+    grid-template-columns: 300px auto;
+    border: 1px solid $border-clr;
+    .preview{
+        border-inline-end: 1px solid $border-clr;
+    }
+    .columns {
+        display: grid;
+        grid-template-rows: repeat(2, $row-height);
+
+        .label-line {
+            position: static;
+            // top: 179px;
+            z-index: 40;
+            display: grid;
+            grid-template-columns: repeat(8, 150px);
+            border-block: 1px solid $border-clr;
+            height: $row-height;
+
+            &:first-child {
+                border: 0;
+            }
+        }
+    }
+
+    .progress-bar {
+        display: grid;
+        grid-template-columns: repeat(8, 150px);
+
+        article {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            border: 1px solid $border-clr;
+            border-block: 1px solid $border-clr;
+            
+            &:first-child {
+                border: 0;
+            }
+        }
+    }
+}

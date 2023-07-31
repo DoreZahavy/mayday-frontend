@@ -103,6 +103,7 @@
         "_id": "zIBuXJXfMu",
         "title": "Product Development",
         "color": "#784bd1",
+        "minimized": true,
         "tasks": [
           {
             "_id": "pZHEuw3xee",
@@ -322,6 +323,7 @@
         "_id": "gMaUZyQxoV",
         "title": "Marketing and Communications",
         "color": "#ff158a",
+        "minimized": false,
         "tasks": [
           {
             "_id": "dLD1YaukLD",
@@ -512,6 +514,7 @@
         "_id": "oOUugB",
         "title": "Operations and Infrastructure",
         "color": "#ffcb00",
+        "minimized": false,
         "tasks": [
           {
             "_id": "16DakE",
