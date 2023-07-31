@@ -21,6 +21,7 @@
 
         <section class="label-line">
             <div class="task-column first not-hover">
+                <div class="label-line-gap"></div>
                 <div>
                     <section class="group-accent-color first" :style="color">
                     </section>
@@ -85,6 +86,7 @@
                     </section>
                 </div>
             </section>
+            <div class="bottom-gap"></div>
         </Container>
         <!-- render progress by progress array -->
     </section>
@@ -159,10 +161,6 @@ export default {
             return this.group.tasks[index]
         },
         onUpdateTask(prop, taskId, toUpdate) {
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
-
             this.$emit('update', { taskId, prop, toUpdate })
         },
         onRemoveTask(taskId) {

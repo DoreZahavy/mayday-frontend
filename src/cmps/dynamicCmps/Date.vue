@@ -41,8 +41,6 @@ export default {
   },
   methods: {
     onDateChange(date) {
-      console.log(date)
-      console.log(this.info)
       this.$emit('update', date.valueOf())
     },
     clearDate() {
