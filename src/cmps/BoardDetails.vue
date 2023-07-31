@@ -3,6 +3,7 @@ import { boardService } from "@/services/board.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import Group from '@/cmps/Group.vue'
+import MinimizedGroup from "./MinimizedGroup.vue";
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
 import { svgService } from '../services/svg.service'
@@ -26,12 +27,12 @@ export default {
   },
   components: {
     Group,
+    MinimizedGroup,
     InPlaceEdit,
     Container,
     Draggable
   },
   created() {
-
   },
   methods: {
     onDropGrp(dropResult) {
@@ -110,15 +111,17 @@ export default {
   <Container @drag-start="collapseGroup" @drag-end="expandGroup" @drop="onDropGrp" class="board-details" v-if="board">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
-      <div class="flex">
+      <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
+       v-if="group.minimized===true">
+
+      </MinimizedGroup>
+      <div class="flex" v-else>
 
         <div class="group-gap"></div>
-
-        <Group :collapseAll1="collapseAll" :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
+        <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
           @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
           @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)">
         </Group>
-        <!-- <span v-else>{{ group.title }}</span> -->
       </div>
 
     </Draggable>

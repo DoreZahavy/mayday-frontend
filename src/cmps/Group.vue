@@ -112,7 +112,6 @@ export default {
 
     props: ['group', 'idx', 'collapseAll'],
     created() {
-
     },
 
     mounted() {

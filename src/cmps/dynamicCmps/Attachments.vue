@@ -1,14 +1,16 @@
 <template>
     <article class="attachments">
         <el-tooltip placement="bottom" trigger="click" effect="light">
+            <!-- <span v-if="files.length > 0" class="icon plus-icon-left" v-icon="'plusSign'"></span> -->
+
             <template #content>
                 <ul class="file-pill-list clean-list">
-                    
-                    <li  v-for="file in files">
 
-                        <span v-if="isPdf" class="x-btn" v-icon="'pdf'"></span>
-                        <span v-if="isImage" class="x-btn" v-icon="'imgFile'"></span>
-                        <span v-if="isVideo" class="x-btn" v-icon="'video'"></span>
+                    <li v-for="file in files">
+
+                        <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
+                        <span v-if="isImage(file)" class="x-btn" v-icon="'imgFile'"></span>
+                        <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span>
                         <p>{{ file }}</p>
                         <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
                     </li>
@@ -21,44 +23,46 @@
                     <input type="file" @change="handleFile" hidden>
                 </label>
             </template>
+            <!-- <div >
+                <span class="icon file-icon" v-icon="'file'"></span>
+                <span class="icon plus-icon" v-icon="'plusSign'"></span>
+    
+            </div> -->
             <!-- </label> -->
-            <div class="file-list flex align-center" v-if="files.length > 4">
-                <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
-                <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
-                <AttachmentPreview @click.stop="openModal(files[2])" :file="files[2]" class="file-preview" />
-                <!-- <div class="file-preview">
+            
 
-                    <img :src="files[0]">
+
+                <div class="file-list flex align-center" v-if="files.length > 4">
+
+
+                    <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
+                    <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
+                    <AttachmentPreview @click.stop="openModal(files[2])" :file="files[2]" class="file-preview" />
+
+                    <div class="extra-files">+{{ files.length - 3 }}</div>
                 </div>
-                <div class="file-preview">
+                <div class="file-list flex align-center" v-else-if="files.length > 0">
 
-                    <img :src="files[1]">
-                </div>
-                <div class="file-preview">
+                    <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file"
+                        class="file-preview" />
 
-                    <img :src="files[2]">
-                </div> -->
-                <div class="extra-files">+{{ files.length - 3 }}</div>
-            </div>
-            <div class="file-list flex align-center" v-else-if="files.length > 0">
-                <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file" class="file-preview" />
-
-                <!-- <div class="file-preview" v-for="fileUrl in files">
+                    <!-- <div class="file-preview" v-for="fileUrl in files">
                     <img :src="fileUrl">
                 </div> -->
-            </div>
-            <div v-else>
-                <span class="icon file-icon" v-html="getSvg('file')"></span>
-                <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
+                </div>
+           
+            <!-- </label> -->
+            <div>
+                <span class="icon file-icon" v-icon="'file'"></span>
+                <span class="icon plus-icon" v-icon="'plusSign'"></span>
 
             </div>
-            <!-- </label> -->
         </el-tooltip>
+
     </article>
 </template>
   
 <script>
-import { svgService } from '../../services/svg.service'
 import { uploadService } from '../../services/upload.service'
 import AttachmentPreview from '../AttachmentPreview.vue'
 
@@ -74,9 +78,7 @@ export default {
         }
     },
     methods: {
-        getSvg(iconName) {
-            return svgService.getSvg(iconName)
-        },
+
         async handleFile(ev) {
             const res = await uploadService.uploadImg(ev)
             this.files.push(res.url)
@@ -86,16 +88,17 @@ export default {
         openModal(file) {
             this.$store.commit({ type: 'fileModal', file })
         },
-        getExtension(filename) {
-            var parts = filename.split('.')
+        getExtension(file) {
+
+            var parts = file.split('.')
             return parts[parts.length - 1]
         },
 
 
     },
     computed: {
-        isImage() {
-            var ext = this.getExtension(this.file)
+        isImage(file) {
+            var ext = this.getExtension(file)
             switch (ext.toLowerCase()) {
                 case 'jpg':
                 case 'gif':
@@ -105,8 +108,8 @@ export default {
             }
             return false
         },
-        isVideo() {
-            var ext = this.getExtension(this.file)
+        isVideo(file) {
+            var ext = this.getExtension(file)
             switch (ext.toLowerCase()) {
                 case 'm4v':
                 case 'avi':
@@ -116,14 +119,14 @@ export default {
             }
             return false
         },
-        isPdf() {
-            var ext = this.getExtension(this.file)
+        isPdf(file) {
+            var ext = this.getExtension(file)
             if (ext.toLowerCase() === 'pdf') return true
             return false
         },
         hasFiles() {
-      return (this.info[0]?._id)
-    },
+            return (this.info[0]?._id)
+        },
     },
     components: {
         AttachmentPreview
