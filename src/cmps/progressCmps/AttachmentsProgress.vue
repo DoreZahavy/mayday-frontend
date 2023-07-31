@@ -45,9 +45,9 @@ export default {
     computed: {
         files() {
             var files = []
-            group.tasks.forEach(task => {
-                files.concat(task.files)
-            })
+            // this.group.tasks.forEach(task => {
+                // files.concat(task.files)
+            // })
             console.log('files:', files)
             return files
         }
