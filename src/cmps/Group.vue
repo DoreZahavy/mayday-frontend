@@ -1,7 +1,7 @@
 <template>
     <section class="group-list">
 
-        <div><button @click="onOpenConversations('54321')">openConversations</button></div>
+        <!-- <div><button @click="onOpenConversations('54321')">openConversations</button></div> -->
 
         <div class="group-title-container flex align-center">
 
@@ -23,6 +23,7 @@
 
         <section class="label-line">
             <div class="task-column first not-hover">
+                <div class="label-line-gap"></div>
                 <div>
                     <section class="group-accent-color first" :style="color">
                     </section>
@@ -87,6 +88,7 @@
                     </section>
                 </div>
             </section>
+            <div class="bottom-gap"></div>
         </Container>
         <!-- render progress by progress array -->
     </section>
