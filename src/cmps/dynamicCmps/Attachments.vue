@@ -1,8 +1,27 @@
 <template>
     <article class="attachments">
-        <label @drop.prevent="handleFile" @dragover.prevent="handleFile">
-            <input type="file" @change="handleFile" hidden>
-        <!-- </label> -->
+        <el-tooltip placement="bottom" trigger="click" effect="light">
+            <template #content>
+                <ul class="file-pill-list clean-list">
+                    
+                    <li  v-for="file in files">
+
+                        <span v-if="isPdf" class="x-btn" v-icon="'pdf'"></span>
+                        <span v-if="isImage" class="x-btn" v-icon="'imgFile'"></span>
+                        <span v-if="isVideo" class="x-btn" v-icon="'video'"></span>
+                        <p>{{ file }}</p>
+                        <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
+                    </li>
+                </ul>
+                <label class="from-computer" @drop.prevent="handleFile" @dragover.prevent="handleFile">
+                    <span v-icon="'attachment'"></span>
+                    <p>From Computer</p>
+                    <!-- <div class="from-computer">
+                    </div> -->
+                    <input type="file" @change="handleFile" hidden>
+                </label>
+            </template>
+            <!-- </label> -->
             <div class="file-list flex align-center" v-if="files.length > 4">
                 <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
                 <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
@@ -33,7 +52,8 @@
                 <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
 
             </div>
-        </label>
+            <!-- </label> -->
+        </el-tooltip>
     </article>
 </template>
   
@@ -63,11 +83,47 @@ export default {
             this.$emit('update', this.files)
 
         },
-        openModal(file){
-            this.$store.commit({type:'fileModal',file})
-        }
+        openModal(file) {
+            this.$store.commit({ type: 'fileModal', file })
+        },
+        getExtension(filename) {
+            var parts = filename.split('.')
+            return parts[parts.length - 1]
+        },
 
 
+    },
+    computed: {
+        isImage() {
+            var ext = this.getExtension(this.file)
+            switch (ext.toLowerCase()) {
+                case 'jpg':
+                case 'gif':
+                case 'bmp':
+                case 'png':
+                    return true
+            }
+            return false
+        },
+        isVideo() {
+            var ext = this.getExtension(this.file)
+            switch (ext.toLowerCase()) {
+                case 'm4v':
+                case 'avi':
+                case 'mpg':
+                case 'mp4':
+                    return true
+            }
+            return false
+        },
+        isPdf() {
+            var ext = this.getExtension(this.file)
+            if (ext.toLowerCase() === 'pdf') return true
+            return false
+        },
+        hasFiles() {
+      return (this.info[0]?._id)
+    },
     },
     components: {
         AttachmentPreview

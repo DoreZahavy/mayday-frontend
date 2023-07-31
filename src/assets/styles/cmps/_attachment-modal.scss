@@ -7,15 +7,39 @@
         inset: 0;
     }
     .modal {
+        background-color: #f5f6f8;
         border-radius: 1em;
         height: 97vh;
         width: 97vw;
         transform: translate(-1.5vw, 1.5vh);
-        background-color: #fff;
-        img{
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
+        header {
+            border-radius: 1em 1em 0 0;
+            padding: 16px 32px;
+            background-color: #fff;
+            height: 77px;
+            width: 100%;
+            border-bottom: 1px solid #d0d4e4;
+            p {
+                color: $primary-text-color;
+                font-weight: 700;
+            }
+            span > * {
+                width: 27px;
+                height: 36px;
+                margin-inline-end: 8px;
+            }
+        }
+        .file-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            img {
+                width: 70%;
+                height: 70%;
+                // margin: auto;
+                object-fit: contain;
+            }
         }
     }
 }

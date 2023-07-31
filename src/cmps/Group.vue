@@ -19,7 +19,7 @@
 
         <!-- render group labels by labels array -->
 
-        <section class="label-line">
+        <section class="label-line" v-if="!collapseAll">
             <div class="task-column first not-hover">
                 <div class="label-line-gap"></div>
                 <div>
@@ -39,7 +39,7 @@
         <!-- 🚮 -->
         <!-- render tasks by cmp order -->
         <Container class="tasks-container" :get-child-payload="getTaskChildPayload" group-name="1"
-            @drop="onDropTask(idx, $event)">
+            @drop="onDropTask(idx, $event)" v-if="!collapseAll">
             <Draggable v-for="(task, idx) in group.tasks" :key="task._id">
                 <section class="task">
                     <div class="task-column">
@@ -110,13 +110,12 @@ import ConversationBtn from '@/cmps/ConversationBtn.vue';
 import ProgressBar from '@/cmps/ProgressBar.vue';
 export default {
 
-    props: ['group', 'idx'],
+    props: ['group', 'idx', 'collapseAll'],
     created() {
 
     },
 
     mounted() {
-        console.log(this.group)
     },
 
     data() {
@@ -124,7 +123,7 @@ export default {
             addTaskTxt: '+ Add Task',
             groupTitle: this.group.title,
             showPicker: false,
-            editGroup: false
+            editGroup: false,
         }
     },
     computed: {
@@ -222,6 +221,9 @@ export default {
         addTaskTxt() {
             this.$emit('addTask', this.addTaskTxt)
 
+        },
+        collapseAll(){
+            console.log(this.collapseAll)
         }
     }
 };

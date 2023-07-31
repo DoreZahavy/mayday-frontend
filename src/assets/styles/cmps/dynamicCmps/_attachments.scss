@@ -2,10 +2,10 @@ article.attachments {
     position: relative;
     width: 100%;
     height: 100%;
-    label{
-    //     position: absolute;
-    //     width: 100%;
-    // height: 100%;
+    label {
+        //     position: absolute;
+        //     width: 100%;
+        // height: 100%;
     }
 
     span.icon {
@@ -45,7 +45,6 @@ article.attachments {
             // width: 20px;
             // overflow: hidden;
             // transition: transform 0.05s cubic-bezier(0, 0, 0.35, 1);
-            
 
             &:hover {
                 scale: 1.2;
@@ -76,4 +75,60 @@ article.attachments {
             justify-content: center;
         }
     }
+}
+.file-pill-list {
+    width: 264px;
+    // padding-top: 5px;
+    background-color: aqua;
+    li {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: 320px;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover {
+            background-color: $secondary-btn-hover-color;
+        }
+        img {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+        }
+        span {
+            padding-left: 8px;
+            font-size: 1rem;
+            color: $primary-text-color;
+        }
+    }
+}
+.from-computer {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    p {
+        color: $primary-text-color;
+        font-weight: 400;
+        font-size: em(14px,12px);
+     }
+     span > * {
+        color: #676879;
+        margin-inline-end: 8px;
+        width: 12.66667;
+        height: 17;
+        transform: translate(0,2px);
+    }
+    &:hover {
+        background-color: $primary-btn-color;
+        color: #fff;
+        svg,p{
+            color: #fff;
+
+        }
+    }
+  
+    
 }
