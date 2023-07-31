@@ -21,6 +21,7 @@ export default {
       showDrawerModal: false,
       showActivitiesContent: false,
       showConversationsContent: false,
+      conversationsTaskId: undefined
     }
   },
   computed: {
@@ -83,7 +84,6 @@ export default {
       this.showActivitiesContent = true
     },
     openConversations(taskId) {
-      console.log(taskId)
       this.conversationsTaskId = taskId
       this.showDrawerModal = true
       this.showActivitiesContent = false
