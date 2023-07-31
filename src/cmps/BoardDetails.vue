@@ -43,7 +43,7 @@ export default {
         // showSuccessMsg('Board updated')
 
       } catch (err) {
-        showErrorMsg('Failed to update board')
+        // showErrorMsg('Failed to update board')
 
       }
     },

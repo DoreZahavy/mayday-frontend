@@ -104,7 +104,7 @@ export default {
         <ul class="clean-list sidebar-list">
             <li class="flex" v-for="board in boardList" :class="{ active: active === board._id }">
                 <div class="flex align-center">
-                    <div v-html="getSvg('boardType')"></div>
+                    <div v-html="getSvg('boardType')" class="flex align-center justify-center"></div>
                     <RouterLink class="board-link" :to="'/board/' + board._id">{{ board.title }}</RouterLink>
                 </div>
                 <!-- <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p> -->

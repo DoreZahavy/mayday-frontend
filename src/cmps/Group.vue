@@ -22,7 +22,7 @@
         <!-- render group labels by labels array -->
 
         <section class="label-line">
-            <div class="task-column  not-hover">
+            <div class="task-column first not-hover">
                 <div>
                     <section class="group-accent-color first" :style="color">
                     </section>
@@ -54,6 +54,9 @@
                         <Checkbox :checkBoxId="task._id" />
                         <TaskTitle class="" @openConversations="onOpenConversations(taskId)"
                             @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
+                        <div class="conversation-cell">
+                            <ConversationBtn :taskId="task._id" />
+                        </div>
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
                         <component :is="cmp" :info="task[cmp]" :groupColor="group.color"
@@ -74,11 +77,15 @@
                 </div>
             </section>
             <section class="progress flex">
-
                 <div class="progress-margin"></div>
-                <div class="progress-border"></div>
-                <section class="progress-bar">
-                </section>
+                <div class="progress-container flex">
+                    <div class="progress-border"></div>
+                    <section class="progress-bar">
+                        <article v-for="(cmp, idx) in cmpOrder">
+                            {{ idx }}
+                        </article>
+                    </section>
+                </div>
             </section>
         </Container>
         <!-- render progress by progress array -->
@@ -102,6 +109,7 @@ import Number from "@/cmps/dynamicCmps/Number.vue";
 import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
 import ColorPicker from "@/cmps/ColorPicker.vue";
+import ConversationBtn from '@/cmps/ConversationBtn.vue';
 export default {
 
     props: ['group', 'idx'],
@@ -206,6 +214,7 @@ export default {
         ColorPicker,
         Container,
         Draggable,
+        ConversationBtn
     },
     watch: {
         groupTitle() {

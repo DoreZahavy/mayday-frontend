@@ -6,6 +6,7 @@ import MainHeader from '@/cmps/MainHeader.vue'
 import BoardInfoModal from '../cmps/BoardInfoModal.vue'
 import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
+import AttachmentModal from '../cmps/AttachmentModal.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
@@ -31,6 +32,9 @@ export default {
     },
     boardId() {
       return this.$route.params.boardId
+    },
+    attachmentModal() {
+      return this.$store.getters.attachmentModal
     }
   },
   components: {
@@ -41,6 +45,7 @@ export default {
     BoardInfoModal,
     Activities,
     Conversations,
+    AttachmentModal
   },
   created() {
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
@@ -134,6 +139,7 @@ export default {
         <RouterView />
       </section>
     </section>
+    <AttachmentModal :file="attachmentModal" v-if="attachmentModal" />
   </main>
 </template>
 
