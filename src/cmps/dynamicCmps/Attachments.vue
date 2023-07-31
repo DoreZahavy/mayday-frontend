@@ -1,11 +1,12 @@
 <template>
     <article class="attachments">
-        <label @drop.prevent="handleFile" @dragover="handleFile">
+        <label @drop.prevent="handleFile" @dragover.prevent="handleFile">
             <input type="file" @change="handleFile" hidden>
+        <!-- </label> -->
             <div class="file-list flex align-center" v-if="files.length > 4">
-                <AttachmentPreview :file="files[0]" class="file-preview" />
-                <AttachmentPreview :file="files[1]" class="file-preview" />
-                <AttachmentPreview :file="files[2]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[2])" :file="files[2]" class="file-preview" />
                 <!-- <div class="file-preview">
 
                     <img :src="files[0]">
@@ -21,7 +22,7 @@
                 <div class="extra-files">+{{ files.length - 3 }}</div>
             </div>
             <div class="file-list flex align-center" v-else-if="files.length > 0">
-                <FilePreview v-for="file in files" :file="file" class="file-preview" />
+                <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file" class="file-preview" />
 
                 <!-- <div class="file-preview" v-for="fileUrl in files">
                     <img :src="fileUrl">
@@ -63,6 +64,9 @@ export default {
             this.$emit('update', this.files)
 
         },
+        openModal(file){
+            this.$store.commit({type:'fileModal',file})
+        }
 
 
     },

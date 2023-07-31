@@ -2,6 +2,11 @@ article.attachments {
     position: relative;
     width: 100%;
     height: 100%;
+    label{
+    //     position: absolute;
+    //     width: 100%;
+    // height: 100%;
+    }
 
     span.icon {
         position: absolute;
@@ -38,10 +43,11 @@ article.attachments {
             margin-inline: 2px;
             // height: 20px;
             // width: 20px;
-            overflow: hidden;
-            transition: transform .05s cubic-bezier(0, 0, 0.35, 1);
+            // overflow: hidden;
+            // transition: transform 0.05s cubic-bezier(0, 0, 0.35, 1);
             
-            &:hover{
+
+            &:hover {
                 scale: 1.2;
                 img {
                     // scale: 1.1;
@@ -52,7 +58,7 @@ article.attachments {
                 height: 20px;
                 object-fit: cover;
             }
-            span{
+            span {
                 // overflow: visible;
                 // width: 17px;
             }

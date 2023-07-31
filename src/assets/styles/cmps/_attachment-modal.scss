@@ -1,0 +1,21 @@
+.file-modal {
+    z-index: 5000;
+    .screen {
+        background-color: rgba(41, 47, 76, 0.7);
+        // transition: opacity 0.1s ease-in-out;
+        position: fixed;
+        inset: 0;
+    }
+    .modal {
+        border-radius: 1em;
+        height: 97vh;
+        width: 97vw;
+        transform: translate(-1.5vw, 1.5vh);
+        background-color: #fff;
+        img{
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+    }
+}

@@ -94,6 +94,9 @@
                     // user-select: none;
                     display: inline-block;
                 }
+                .in-place-edit:hover{
+                    outline-style: none;
+                }
             }
 
             &:active {

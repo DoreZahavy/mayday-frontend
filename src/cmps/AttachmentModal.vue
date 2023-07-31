@@ -1,27 +1,15 @@
-<template>
-    <div  class="file-preview">
-        <img v-if="isImage" :src="file">
-        <span v-else-if="isVideo" v-icon="'video'"></span>
-        <span v-else-if="isPdf" v-icon="'pdf'"></span>
-        <span v-else v-icon="'otherFile'"></span>
-        <!-- <AttachmentModal v-if="fileModal === true"  /> -->
-           
-    </div>
-</template>
-    
 <script>
-import AttachmentModal from './AttachmentModal.vue'
 export default {
-    name: "file-preview",
-    props: {
-        file: String,
+    props: ['file'],
+    methods: {
+        closeModal() {
+            this.$store.commit('fileModal', '')
+        },
+        getExtension(filename) {
+            var parts = filename.split('.')
+            return parts[parts.length - 1]
+        },
     },
-    data(){
-        return {
-            fileModal: false
-        }
-    },
-
     computed: {
         isImage() {
             var ext = this.getExtension(this.file)
@@ -51,18 +39,15 @@ export default {
             return false
         },
     },
-    methods:{
-        getExtension(filename) {
-            var parts = filename.split('.')
-            return parts[parts.length - 1]
-        },
-       
-        
-    },
-    components:{
-        AttachmentModal
-    }
-    
-};
+  
+}
 </script>
-    
+<template>
+    <div class="file-modal">
+        <div class="screen" @click.stop="closeModal"></div>
+        <div class="modal">
+            <img v-if="isImage" :src="file" alt="">
+            <!-- <pre>{{ file }}</pre> -->
+        </div>
+    </div>
+</template>

@@ -7,6 +7,7 @@ export const boardStore = {
     return {
       board: {},
       boards: [],
+      attachmentModal: '',
       // cmpOrder: ["status", "priority", "members", "date"],
       // labels: ["status", "priority", "members", "date"]
     }
@@ -27,6 +28,9 @@ export const boardStore = {
     },
     boardMembers({ board }) {
       return board.members
+    },
+    attachmentModal({ attachmentModal }) {
+      return attachmentModal
     },
 
     groups({ board }) {
@@ -95,6 +99,9 @@ export const boardStore = {
 
     setCmpConfig(state, { result }) {
       state.board.cmpConfig = result
+    },
+    fileModal(state, { file }) {
+      state.attachmentModal = file
     }
 
   },
@@ -161,15 +168,15 @@ export const boardStore = {
         result.splice(addedIndex, 0, itemToAdd);
       }
       context.commit({ type: 'setTaskOrder', result, idx })
-      
+
       try {
-          if(idx===context.state.board.groups.length-1) await boardService.saveBoard(context.state.board)
-          else return
-        } catch (err) {
-          console.log(err)
-          throw err
-        }
-      
+        if (idx === context.state.board.groups.length - 1) await boardService.saveBoard(context.state.board)
+        else return
+      } catch (err) {
+        console.log(err)
+        throw err
+      }
+
     },
 
     async loadBoards(context) {
