@@ -10,7 +10,7 @@ import { svgService } from '../services/svg.service'
 export default {
   data() {
     return {
-
+      collapse: true
     }
   },
   computed: {
@@ -20,7 +20,9 @@ export default {
     groups() {
       return this.$store.getters.groups
     },
-
+    collapseAll(){
+      return this.collapse
+    }
   },
   components: {
     Group,
@@ -35,7 +37,14 @@ export default {
     onDropGrp(dropResult) {
       this.$store.dispatch({ type: 'applyDragGrp', dragResult: dropResult })
     },
-
+    collapseGroup() {
+      this.collapse = true
+      console.log("🚀 ~ file: BoardDetails.vue:40 ~ collapseGroup ~ this.collapse :", this.collapse)
+    },
+    expandGroup() {
+      this.collapse = false
+      console.log("🚀 ~ file: BoardDetails.vue:44 ~ expandGroup ~  this.collapse:", this.collapse)
+    },
     async updateBoard(groupId, { taskId, prop, toUpdate }) {
       try {
 
@@ -48,8 +57,6 @@ export default {
       }
     },
     async addTask(groupId, title) {
-      console.log("🚀 ~ file: BoardDetails.vue:51 ~ addTask ~ title:", title)
-      console.log("🚀 ~ file: BoardDetails.vue:51 ~ addTask ~ groupId:", groupId)
       try {
         const board = await this.$store.dispatch({ type: 'addTask', groupId, title })
         console.log('board:', board)
@@ -100,17 +107,18 @@ export default {
 </script>
 
 <template class="flex">
-  <Container @drop="onDropGrp" class="board-details" v-if="board">
+  <Container @drag-start="collapseGroup" @drag-end="expandGroup" @drop="onDropGrp" class="board-details" v-if="board">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <div class="flex">
 
         <div class="group-gap"></div>
-        <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
+
+        <Group :collapseAll1="collapseAll" :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
           @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
           @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)">
         </Group>
-
+        <!-- <span v-else>{{ group.title }}</span> -->
       </div>
 
     </Draggable>
