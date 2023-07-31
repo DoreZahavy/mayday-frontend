@@ -1,4 +1,5 @@
 function getSvg(iconName) {
+    console.log("🚀 ~ file: svg.service.js:2 ~ getSvg ~ iconName:", iconName)
     return maydaySvgs[iconName]
 }
 export const svgService = { getSvg }
