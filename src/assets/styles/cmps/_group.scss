@@ -41,8 +41,6 @@
             display: flex;
             align-items: center;
 
-            
-
             .editable-group-title {
                 border-radius: 4px;
                 .editable {
@@ -94,7 +92,7 @@
                     // user-select: none;
                     display: inline-block;
                 }
-                .in-place-edit:hover{
+                .in-place-edit:hover {
                     outline-style: none;
                 }
             }
@@ -146,17 +144,16 @@
     &:first-child {
         border: 0;
     }
-    &::before{
-     content: '';
-     width:40px;
-     height: 36px;
-     background-color: #fff;
-     position: absolute;
-     position: absolute;
-     right: 1081px;
-     top: -1px;
-     z-index: 50;
-      
+    &::before {
+        content: "";
+        width: 40px;
+        height: 36px;
+        background-color: #fff;
+        position: absolute;
+        position: absolute;
+        right: 1081px;
+        top: -1px;
+        z-index: 50;
     }
 }
 
@@ -166,8 +163,6 @@
     border-right: 0;
     position: relative;
 }
-
-
 
 .group-accent-color {
     width: 6px;

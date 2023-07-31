@@ -8,8 +8,10 @@
         position: sticky;
         left: 40px;
         height: $row-height;
-        width: 400px;;
-        box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .12);
+        width: 400px;
+        box-shadow:
+            1px 8px 0 -1px #fff,
+            inset 0 8px 9px -9px rgba(0, 0, 0, 0.12);
     }
 
     .progress-border {
@@ -22,13 +24,8 @@
         border-left: 1px $border-clr solid;
         border-bottom: 1px $border-clr solid;
         border-radius: 0 0 0 6px;
-<<<<<<< HEAD
         &:before {
             content: "";
-=======
-        &:before{
-            content: '';
->>>>>>> 025d4519f2d1dc13a819d60e3089cd70251ed605
             display: block;
             position: absolute;
             left: -11px;
@@ -48,25 +45,15 @@
         height: $row-height;
         // display: block;
         align-items: center;
-<<<<<<< HEAD
         box-shadow: 0 8px 9px -9px rgba(0, 0, 0, 0.12);
-=======
-        box-shadow: 0 8px 9px -9px rgba(0, 0, 0, .12);
->>>>>>> 025d4519f2d1dc13a819d60e3089cd70251ed605
 
         article {
             display: block;
             height: 100%;
             border-inline-end: 1px $border-clr solid;
         }
-<<<<<<< HEAD
     }
     .progress-container {
-        border-bottom-left-radius: 6px;
-=======
->>>>>>> 025d4519f2d1dc13a819d60e3089cd70251ed605
-    }
-    .progress-container{
         border-bottom-left-radius: 6px;
     }
 }

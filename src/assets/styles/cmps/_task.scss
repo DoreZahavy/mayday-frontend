@@ -175,6 +175,7 @@
     }
     .conversation-cell {
         button {
+            cursor: pointer;
             width: 100%;
             height: 100%;
             padding: 0;
@@ -187,11 +188,32 @@
             &:hover {
                 color: $primary-btn-color;
             }
+            &.has-msgs {
+                color: $primary-btn-color;
+            }
+        }
+        .msg-count {
+            position: absolute;
+            color: #fff;
+            background-color: $primary-btn-color;
+            line-height: 9px;
+            top: 15px;
+            font-size: 9px;
+            font-weight: 400;
+            border-radius: 10px;
+            text-align: center;
+            padding: 1.7px 2px;
+            width: 12px;
+            height: 12px;
+            margin-left: 15px;
+            margin-top: 1px;
+            z-index: 41;
         }
         display: flex;
         align-items: center;
         justify-content: center;
         border-inline-end: 1px solid $border-clr;
+        cursor: pointer;
     }
 }
 

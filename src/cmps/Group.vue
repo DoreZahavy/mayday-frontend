@@ -1,8 +1,6 @@
 <template>
     <section class="group-list">
 
-        <div><button @click="onOpenConversations('54321')">openConversations</button></div>
-
         <div class="group-title-container flex align-center">
 
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
@@ -52,10 +50,10 @@
                         </div>
                         <section class="group-accent-color" :style="color"></section>
                         <Checkbox :checkBoxId="task._id" />
-                        <TaskTitle class="" @openConversations="onOpenConversations(taskId)"
-                            @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
+                        <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                         <div class="conversation-cell">
-                            <ConversationBtn :taskId="task._id" />
+                            <ConversationBtn :taskId="task._id" :taskConversationsAmount="task.updates.length"
+                                @openConversations="onOpenConversations(task._id)" />
                         </div>
                     </div>
                     <section v-for="(cmp, idx) in cmpOrder" :key="idx" class="d-cmp">
@@ -175,6 +173,7 @@ export default {
             this.$emit('removeGroup')
         },
         onOpenConversations(taskId) {
+            console.log(taskId)
             eventBusService.emit('task-clicked', taskId)
         },
         onSetColor(color) {
