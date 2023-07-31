@@ -136,7 +136,7 @@
     position: sticky;
     top: 185px;
     // top: 132px;
-    z-index: 30;
+    z-index: 32;
     // position: relative;
     display: grid;
     grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
@@ -145,6 +145,18 @@
 
     &:first-child {
         border: 0;
+    }
+    &::before{
+     content: '';
+     width:40px;
+     height: 36px;
+     background-color: #fff;
+     position: absolute;
+     position: absolute;
+     right: 1081px;
+     top: -1px;
+     z-index: 50;
+      
     }
 }
 
