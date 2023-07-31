@@ -29,7 +29,6 @@ export default {
     stopEditing() {
       this.taskTitle = this.$refs.editor.innerText
       this.caretMoved = false
-      console.log(this.taskTitle)
       this.$emit('update', this.taskTitle)
       this.editing = false
     },

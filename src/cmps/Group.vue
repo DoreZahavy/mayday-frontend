@@ -163,10 +163,6 @@ export default {
             return this.group.tasks[index]
         },
         onUpdateTask(prop, taskId, toUpdate) {
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ toUpdate:", toUpdate)
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ taskId:", taskId)
-            console.log("🚀 ~ file: Group.vue:152 ~ onUpdateTask ~ prop:", prop)
-
             this.$emit('update', { taskId, prop, toUpdate })
         },
         onRemoveTask(taskId) {

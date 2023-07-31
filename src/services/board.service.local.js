@@ -41,7 +41,7 @@ async function query() {
         boards = jsonBoards
         utilService.saveToStorage(BOARD_KEY, boards)
     }
-    console.log('boards:', boards)
+    // console.log('boards:', boards)
     return boards
 }
 
@@ -68,7 +68,7 @@ async function addGroup(boardId) {
 }
 
 async function removeGroup(boardId, groupId) {
-    console.log('boardId,groupId:', boardId, groupId)
+    // console.log('boardId,groupId:', boardId, groupId)
     const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(g => g._id === groupId)
     board.groups.splice(groupIdx, 1)
@@ -79,13 +79,13 @@ async function addTask(boardId, groupId, title) {
     const board = await getById(boardId)
     const group = board.groups.find(grp => grp._id === groupId)
     group.tasks.push(getEmptyTask(title))
-    console.log(getEmptyTask(title))
+    // console.log(getEmptyTask(title))
     return await saveBoard(board)
 }
 
 async function removeTask(boardId, groupId, taskId) {
     const board = await getById(boardId)
-    console.log('board:', board)
+    // console.log('board:', board)
     const group = board.groups.find(grp => grp._id === groupId)
     const taskIdx = group.tasks.findIndex(t => t._id === taskId)
     group.tasks.splice(taskIdx, 1)
@@ -96,6 +96,50 @@ function getEmptyBoard(title = 'New Board') {
     return {
         _id: utilService.makeId(),
         title,
+        statusLabelConfig: [
+            {
+                title: "Done",
+                color: "done-green"
+            },
+            {
+                title: "Working on it",
+                color: "working-orange"
+            },
+            {
+                title: "Stuck",
+                color: "stuck-red"
+            },
+            {
+                title: "Almost there",
+                color: "dark-blue"
+            },
+            {
+                title: "",
+                color: "default-gray"
+            }
+        ],
+        priorityLabelConfig: [
+            {
+              title: "Low",
+              color: "low-blue"
+            },
+            {
+              title: "Medium",
+              color: "medium-purple"
+            },
+            {
+              title: "High",
+              color: "high-dark-purple"
+            },
+            {
+              title: "Critical ⚠",
+              color: "critical-dark-gray"
+            },
+            {
+              title: "",
+              color: "default-gray"
+            }
+          ],
         cmpConfig: [
             {
                 type: 'Status',

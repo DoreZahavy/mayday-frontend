@@ -26,7 +26,6 @@ export default {
   methods: {
     onUpdatePriority(newPriority) {
       this.priority = newPriority
-      console.log(newPriority)
       this.$emit('update', JSON.parse(JSON.stringify(this.priority)))
     },
     handleTooltipOpen() {

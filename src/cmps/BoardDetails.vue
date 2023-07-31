@@ -48,6 +48,8 @@ export default {
       }
     },
     async addTask(groupId, title) {
+      console.log("🚀 ~ file: BoardDetails.vue:51 ~ addTask ~ title:", title)
+      console.log("🚀 ~ file: BoardDetails.vue:51 ~ addTask ~ groupId:", groupId)
       try {
         const board = await this.$store.dispatch({ type: 'addTask', groupId, title })
         console.log('board:', board)
