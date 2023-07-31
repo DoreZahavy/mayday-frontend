@@ -1,5 +1,6 @@
 <template>
     <article>
+        <pre>{{ files }}</pre>
         <div class="file-list flex align-center" v-if="files.length > 4">
             <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
             <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
@@ -34,21 +35,34 @@ export default {
 
     name: "AttachmentsProgress",
     props: {
-        group: Object,
-        cmpOrder: Array
+        info: Object,
+       
+    },
+    data(){
+        return {
+            // files:this.getFiles()
+        }
     },
     methods: {
         openModal(file) {
             this.$store.commit({ type: 'fileModal', file })
+            
         },
+        getFiles() {
+            var files = []
+            this.info.tasks.forEach(task => {
+                files.concat([1,2,3])
+                // files.concat(task.files)
+            })
+            return files
+        }
     },
     computed: {
         files() {
             var files = []
-            // this.group.tasks.forEach(task => {
-                // files.concat(task.files)
-            // })
-            console.log('files:', files)
+            this.info.tasks.forEach(task => {
+                files.concat(task.files)
+            })
             return files
         }
     }

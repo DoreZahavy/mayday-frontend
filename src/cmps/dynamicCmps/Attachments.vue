@@ -6,9 +6,9 @@
                     
                     <li  v-for="file in files">
 
-                        <span v-if="isPdf" class="x-btn" v-icon="'pdf'"></span>
-                        <span v-if="isImage" class="x-btn" v-icon="'imgFile'"></span>
-                        <span v-if="isVideo" class="x-btn" v-icon="'video'"></span>
+                        <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
+                        <span v-if="isImage(file)" class="x-btn" v-icon="'imgFile'"></span>
+                        <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span>
                         <p>{{ file }}</p>
                         <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
                     </li>
@@ -94,8 +94,8 @@ export default {
 
     },
     computed: {
-        isImage() {
-            var ext = this.getExtension(this.file)
+        isImage(file) {
+            var ext = this.getExtension(file)
             switch (ext.toLowerCase()) {
                 case 'jpg':
                 case 'gif':
@@ -105,8 +105,8 @@ export default {
             }
             return false
         },
-        isVideo() {
-            var ext = this.getExtension(this.file)
+        isVideo(file) {
+            var ext = this.getExtension(file)
             switch (ext.toLowerCase()) {
                 case 'm4v':
                 case 'avi':
@@ -116,8 +116,8 @@ export default {
             }
             return false
         },
-        isPdf() {
-            var ext = this.getExtension(this.file)
+        isPdf(file) {
+            var ext = this.getExtension(file)
             if (ext.toLowerCase() === 'pdf') return true
             return false
         },
