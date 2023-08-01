@@ -8,6 +8,7 @@ export const boardStore = {
       board: {},
       boards: [],
       attachmentModal: '',
+      updates:[],
       // cmpOrder: ["status", "priority", "members", "date"],
       // labels: ["status", "priority", "members", "date"]
     }
@@ -25,6 +26,9 @@ export const boardStore = {
     },
     boards({ boards }) {
       return boards
+    },
+    updates({ updates }) {
+      return updates
     },
     boardMembers({ board }) {
       return board.members
@@ -102,6 +106,15 @@ export const boardStore = {
     },
     fileModal(state, { file }) {
       state.attachmentModal = file
+    },
+    loadUpdates(state,{taskId}){
+      const groups = state.board.groups
+      groups.forEach(group => {
+        const task = group.tasks.find(task=>task._id===taskId)
+        if(task) {
+          state.updates = task.updates
+        }
+      })
     }
 
   },
@@ -277,5 +290,8 @@ export const boardStore = {
         throw err
       }
     },
+    // loadUpdates(context,{taskId}){
+    //   context.state.board
+    // }
   },
 }

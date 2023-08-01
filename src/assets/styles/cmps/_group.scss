@@ -33,11 +33,16 @@
         top: 139px;
         // top: 136px;
         background-color: #fff;
+        .arrow-down{
+            margin-inline-start: 6px;
+            position: sticky;
+            left: 53px;
+        }
 
         .group-header {
             box-sizing: border-box;
             position: sticky;
-            left: 55px;
+            left: 84px;
             // width: fit-content;
             font-size: 18px;
             letter-spacing: -0.2px;
@@ -45,6 +50,9 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+            svg{
+                transform: translate(-8px);
+            }
 
             .editable-group-title {
                 border-radius: 4px;

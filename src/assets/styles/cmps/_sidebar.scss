@@ -1,5 +1,20 @@
 .sidebar {
     transition: width 0.1s cubic-bezier(0, 0, 0.35, 1);
+    .collapse-arrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 12px 8px;
+        height: 36px;
+        border-top-right-radius: 0.571428em;
+        border-bottom-left-radius: 0.571428em;
+        background-color: #f6f7fb;
+        cursor: pointer;
+        opacity: 0;
+        &:hover {
+            background-color: $secondary-btn-hover-color;
+        }
+    }
     &.collapsed {
         width: 30px;
         > *:not(.collapse-arrow) {
@@ -8,13 +23,24 @@
         }
         .collapse-arrow {
             scale: -1;
+            opacity: 1;
         }
     }
     &:hover {
+        .collapse-arrow{
+            opacity: 1;
+        }
         width: $sidebar-width;
         > *:not(.collapse-arrow) {
             visibility: visible;
         }
+    }
+    &.collapsed:hover{
+        position: fixed;
+        top: 48px;
+        left: 0;
+        z-index: 3000;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
     .sidebar-list-svg{
         padding-block-start: 3px;
@@ -104,18 +130,5 @@
             }
         }
     }
-    .collapse-arrow {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 12px 8px;
-        height: 36px;
-        border-top-right-radius: 0.571428em;
-        border-bottom-left-radius: 0.571428em;
-        background-color: #f6f7fb;
-        cursor: pointer;
-        &:hover {
-            background-color: $secondary-btn-hover-color;
-        }
-    }
+    
 }

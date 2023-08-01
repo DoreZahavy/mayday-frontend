@@ -11,11 +11,25 @@ export default {
     },
     data() {
         return {
+            updates: []
         }
     },
     created() {
     },
     methods: {
-    }
+    },
+    computed:{
+        updates(){
+            this.$store.getters.updates
+        }
+    },
+    watch: {
+        taskId: {
+            handler() {
+                this.$store.commit('loadUpdates', this.taskId)
+            },
+            immediate: true,
+        },
+    },
 }
 </script>

@@ -33,7 +33,8 @@ const router = createRouter({
           path: 'kanban',
           name: 'Kanban',
           component: Kanban,
-        }
+        },
+      
       ]
     },
   ]

@@ -113,6 +113,7 @@ export default {
       <transition name="slide">
         <div class="modal" v-if="showDrawerModal">
           <span class="close-button" @click="closeDrawerModal" v-html="getSvg('xButton')"></span>
+          heyy
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
