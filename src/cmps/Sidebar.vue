@@ -13,7 +13,10 @@ export default {
         }
     },
     created() {
-
+        // if (!this.boardId) this.$store.commit('loadFirstBoard')
+        // this.active = this.boardId
+        // this.$router.push('/board/' + this.boardId)
+        // document.title = this.$store.getters.boardTitle
     },
     methods: {
         loadBoard(boardId) {
@@ -63,6 +66,8 @@ export default {
     watch: {
         boardId: {
             handler() {
+                // this.loadBoard(this.boardId)
+                // document.title = this.$store.getters.boardTitle
                 this.active = this.boardId
                 if (!this.boardId) {
                     this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)

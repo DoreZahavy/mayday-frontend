@@ -38,7 +38,7 @@ export default {
             pickedDateTimeRange: []
         }
     },
-    created() {
+    mounted() {
         this.pickedDateTimeRange = [this.currDateSettings?.startDate, this.currDateSettings?.dueDate]
     },
     computed: {
