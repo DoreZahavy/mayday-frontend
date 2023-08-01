@@ -73,9 +73,9 @@ export default {
     async removeGroup(groupId) {
       try {
         await this.$store.dispatch({ type: 'removeGroup', groupId })
-        showSuccessMsg('Task deleted')
+        showSuccessMsg('Group deleted')
       } catch (err) {
-        showErrorMsg('Failed to delete task')
+        showErrorMsg('Failed to delete group')
       }
 
     },

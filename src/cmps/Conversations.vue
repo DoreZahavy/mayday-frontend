@@ -29,7 +29,7 @@ export default {
     },
     computed:{
         updates(){
-            this.$store.getters.updates
+            return this.$store.getters.updates
         }
     },
     watch: {
