@@ -3,6 +3,7 @@
         <h2>Activities</h2>
         <ul class="activity-list">
             <li class="activity-item" v-for="activity in activities" :key="activity.id">
+                <span v-html="getSvg('activityTime')"></span>
                 <span class="time-passed">{{ getTimePassed(activity.createdAt) }}</span>
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
                 <span v-else v-html="getSvg('person')"></span>
@@ -25,9 +26,15 @@
                 <span v-else-if="activity.propType.toLowerCase() === 'person'" class="activity-type-icon"
                     v-html="getSvg('personActivity')"></span>
 
-                <span class="activity-type">{{ activity.propType }}</span>
-                <span class="changed-from" :title="activity.updateFrom">{{ activity.updateFrom }}</span>
-                <span class="changed-into" :title="activity.updateTo">{{ activity.updateTo }}</span>
+                <span class="activity-type"
+                    :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{
+                        activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1) }}</span>
+                <span class="changed-from"
+                    :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
+                        activity.updateFrom }}</span>
+                <span class="changed-into"
+                    :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
+                        activity.updateTo }}</span>
             </li>
         </ul>
     </section>
@@ -96,8 +103,8 @@ export default {
 
 .activity-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 4fr 0.3fr 2.5fr 3fr 3fr;
-    gap: 7px;
+    grid-template-columns: 0.2fr 0.3fr 1fr 4fr 0.3fr 2.5fr 3fr 3fr;
+    gap: 3px;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;

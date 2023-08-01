@@ -2,9 +2,9 @@
     <section class="modal-content update-modal">
 
         <h2>Conversations (Task Id: {{ taskId }})</h2>
-        <input type="text" v-if="!editing" @focus="this.editing = true">
-        <div class="quill-container" v-else>
-            <QuillEditor @blur="this.editing = false" v-model="this.content"/>
+        <input type="text" 1v-if="!editing" @focus="this.editing = true">
+        <div class="quill-container" 1v-else>
+            <!-- <QuillEditor theme="snow" toolbar="full"/> -->
             <button @click="addUpdate">Update</button>
         </div>
         <ul class="update-list">
@@ -17,27 +17,32 @@
 
 <script>
 import ConversationItem from '@/cmps/ConversationItem.vue'
+// import { QuillEditor } from 'vue-quill-editor'
 export default {
     props: {
         taskId: String
+    },
+    components: {
+        ConversationItem,
+        // QuillEditor
     },
     data() {
         return {
             updates: null,
             editing: false,
-            content:''
+            content: ''
         }
     },
     created() {
         this.updates = this.$store.getters.updates
     },
     methods: {
-        addUpdate(){
+        addUpdate() {
             console.log(this.content)
         }
     },
-    computed:{
-        updates(){
+    computed: {
+        updates() {
             return this.$store.getters.updates
         }
     },
@@ -48,9 +53,6 @@ export default {
             },
             immediate: true,
         },
-    },
-    components: {
-        ConversationItem
     }
 }
 </script>
