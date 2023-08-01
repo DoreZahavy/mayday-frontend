@@ -7,9 +7,10 @@
             <h2>{{ update.user.fullname }}</h2>
             <span>{{ formattedDate }}</span>
         </header>
-        <p>
-            {{ update.content }}
-        </p>
+        <section >
+            <p ref="updateContent">
+            </p>
+        </section>
     </article>
 </template>
 <script>
@@ -25,6 +26,10 @@ export default {
             }
             return date.toLocaleDateString('en-US', options)
         }
+    },
+    mounted(){
+        // console.log(this.$refs.updateContent)
+        this.$refs.updateContent.innerText = this.update.content
     }
 }
 </script>

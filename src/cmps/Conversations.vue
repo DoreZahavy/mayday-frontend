@@ -3,7 +3,8 @@
 
         <!-- <input type="text" v-if="!editing" @focus="this.editing = true"> -->
         <div class="quill-container">
-            <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content"  ref="quillEditor"></QuillEditor>
+            <QuillEditor theme="snow" toolbar="full" v-model="content" @update:content="content" ref="quillEditor">
+            </QuillEditor>
             <button @click="addUpdate">Update</button>
         </div>
         <ul class="update-list">
@@ -16,6 +17,7 @@
 
 <script>
 import ConversationItem from '@/cmps/ConversationItem.vue'
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 export default {
     props: {
         taskId: String
@@ -35,13 +37,23 @@ export default {
     },
     methods: {
         addUpdate() {
-            const quill = this.$refs.quillEditor.getContents();
-            console.log(quill)
+            const quillContents = this.$refs.quillEditor.getHTML()
+            const updatedUpdates = JSON.parse(JSON.stringify(this.updates))
+            updatedUpdates.unshift(quillContents)
+            // this.$store.dispatch('updateBoard', { groupId: this.groupId, taskId: this.taskId, prop: 'updates', toUpdate: updatedUpdates })
         }
     },
     computed: {
-        updates() {
-            return this.$store.getters.updates
+        groupId() {
+            const groups = JSON.parse(JSON.stringify(this.$store.getters.groups))
+            let groupId
+            groups.forEach(g => {
+                g.tasks.find(task => {
+                    task._id.localeCompare(this.taskId) === 0
+                    if (task) groupId = g._id
+                })
+            });
+            return groupId
         }
     },
     watch: {
