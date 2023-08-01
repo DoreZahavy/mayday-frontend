@@ -17,7 +17,6 @@
 
 <script>
 import ConversationItem from '@/cmps/ConversationItem.vue'
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 export default {
     props: {
         taskId: String
