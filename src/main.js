@@ -8,11 +8,8 @@ import router from './router'
 import '@/assets/styles/styles.scss'
 import { store } from '@/store'
 import { clickOutside, icon, focusDirective } from './directives.js'
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const app = createApp(App)
-app.component('QuillEditor', QuillEditor)
 app.use(ElementPlus)
 app.directive('focus', focusDirective)
 app.directive('icon', icon)

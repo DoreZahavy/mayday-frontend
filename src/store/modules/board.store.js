@@ -81,7 +81,6 @@ export const boardStore = {
     },
 
     saveBoard(state, { board }) {
-
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
@@ -114,9 +113,9 @@ export const boardStore = {
         const task = group.tasks.find(task => {
           return task._id === taskId
         })
-        
+
         if (task) {
-          taskUpdates = {...task}
+          taskUpdates = { ...task }
         }
       })
       state.updates = taskUpdates.updates
