@@ -121,7 +121,7 @@ export default {
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
-          <Activities v-else-if="showActivitiesContent"></Activities>
+          <Activities v-else-if="showActivitiesContent" :boardId="boardId"></Activities>
         </div>
       </transition>
     </div>

@@ -2,6 +2,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import jsonBoards from '@/data/demo-board-v1.2.json'
 import { storageService } from './async-storage.service.js'
+import { isEqual } from 'lodash'
 
 const BOARD_KEY = 'boardDB'
 
@@ -26,9 +27,10 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         id: utilService.makeId(),
         createdAt: Date.now(),
         byMember: userService.getLoggedinUser(),
-        group:'',
-        task:'',
-        propType:prop
+        group: '',
+        taskId: '',
+        taskName: '',
+        propType: prop
     }
     const board = await getById(boardId)
     if (taskId) {
@@ -36,19 +38,23 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         activity.task = taskId
         const group = board.groups.find(g => g._id === groupId)
         const task = group.tasks.find(t => t._id === taskId)
+        activity.taskName = task.title
         activity.updateFrom = task[prop]
+        if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
         task[prop] = toUpdate
     } else if (groupId) {
         activity.group = groupId
         const group = board.groups.find(g => g._id === groupId)
         activity.updateFrom = group[prop]
+        if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
         group[prop] = toUpdate
     } else {
         activity.updateFrom = board[prop]
+        if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
         board[prop] = toUpdate
     }
     activity.updateTo = toUpdate
-    board.activities.unshift(activity)
+    if (prop !== 'minimized') board.activities.unshift(activity)
     return await saveBoard(board)
 }
 

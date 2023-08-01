@@ -36,6 +36,11 @@ export default {
             console.log(this.content)
         }
     },
+    computed:{
+        updates(){
+            return this.$store.getters.updates
+        }
+    },
     watch: {
         taskId: {
             handler() {
