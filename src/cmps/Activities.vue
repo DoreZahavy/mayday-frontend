@@ -27,13 +27,55 @@
                 <span class="activity-type"
                     :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{
                         activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1) }}</span>
-                <span class="changed-from"
+                <span v-if="activity.propType.toLowerCase() === 'date'">
+                    {{ formatDate(activity.updateFrom) }}
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'number'">
+                    {{ formatNumber(activity.updateFrom) }}
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'timeline'">
+                    <div class="flex justify-center align-center timeline-container">
+                        <span class="timeline-text">
+                            {{ formattedStartDate(activity.updateFrom.startDate) }}<span
+                                v-if="formattedDueDate(activity.updateFrom.startDate, activity.updateFrom.dueDate) !== ''">
+                                - </span>{{ formattedDueDate(activity.updateFrom.startDate, activity.updateFrom.dueDate) }}
+                        </span>
+                        <div class="progress-bar progress-bar-from">
+                            <div class="progress-fill"
+                                :style="progressStyle(activity.updateFrom.startDate, activity.updateFrom.dueDate)"></div>
+                        </div>
+                    </div>
+                </span>
+
+
+                <span v-else class="changed-from"
                     :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
                         activity.updateFrom }}</span>
                 <span
                     v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'">></span>
                 <span v-else> </span>
-                <span class="changed-into"
+
+
+                <span v-if="activity.propType.toLowerCase() === 'date'">
+                    {{ formatDate(activity.updateTo) }}
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'number'">
+                    {{ formatNumber(activity.updateTo) }}
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'timeline'">
+                    <div class="flex justify-center align-center timeline-container">
+                        <span class="timeline-text">
+                            {{ formattedStartDate(activity.updateTo.startDate) }}<span
+                                v-if="formattedDueDate(activity.updateTo.startDate, activity.updateTo.dueDate) !== ''"> -
+                            </span>{{ formattedDueDate(activity.updateTo.startDate, activity.updateTo.dueDate) }}
+                        </span>
+                        <div class="progress-bar progress-bar-to">
+                            <div class="progress-fill"
+                                :style="progressStyle(activity.updateTo.startDate, activity.updateTo.dueDate)"></div>
+                        </div>
+                    </div>
+                </span>
+                <span v-else class="changed-into"
                     :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
                         activity.updateTo }}</span>
             </li>
@@ -74,6 +116,59 @@ export default {
             if (minutes < 60) return `${Math.floor(minutes)}m`
             if (hours < 24) return `${Math.floor(hours)}h`
             return `${Math.floor(days)}d`
+        },
+        formatDate(timestamp) {
+            const date = new Date(timestamp)
+            const options = { month: 'short', day: 'numeric', year: 'numeric' }
+            return date.toLocaleDateString('en-US', options)
+        },
+        formatNumber(number) {
+            return Number(number).toLocaleString()
+        },
+        formatTimeline(start, end) {
+            return `${start} - ${end}`
+        },
+        progressStyle(start, end) {
+            return {
+                width: this.progress(start, end) + '%',
+                backgroundColor: '#333'
+            }
+        },
+        progress(start, end) {
+            const now = new Date()
+            const startTime = new Date(start).getTime()
+            const endTime = new Date(end).getTime()
+
+            const duration = endTime - startTime
+            const elapsed = now.getTime() - startTime
+
+            if (now.getTime() < startTime) {
+                return 0
+            } else if (now.getTime() > endTime) {
+                return 100
+            } else {
+                return Math.round((elapsed / duration) * 100)
+            }
+        },
+        formattedStartDate(timestamp) {
+            const d = new Date(timestamp);
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            return `${monthNames[d.getMonth()]} ${d.getDate()}`;
+        },
+        formattedDueDate(start, end) {
+            if (!start || !end) return '';
+            const d1 = new Date(start);
+            const d2 = new Date(end);
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            if (d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
+                return '';
+            } else if (d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
+                return `${d2.getDate()}`;
+            } else if (d1.getFullYear() === d2.getFullYear()) {
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}`;
+            } else {
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}, '${d2.getFullYear().toString().slice(-2)}`;
+            }
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
@@ -137,6 +232,41 @@ export default {
         align-items: center;
         justify-content: center;
         font-size: 12px;
+    }
+
+    .timeline-container {
+        position: relative;
+        height: 1.6em;
+        width: 100%;
+        text-align: center;
+    }
+
+    .timeline-text {
+        position: absolute;
+        z-index: 1;
+        max-width: 80%;
+        text-align: center;
+        color: #fff;
+        font-weight: 400;
+        font-size: 0.8em;
+    }
+
+    .progress-bar {
+        position: absolute;
+        z-index: 0;
+        width: 90%;
+        height: 1.6em;
+        border: none;
+        overflow: hidden;
+        border-radius: 20px;
+
+        &.progress-bar-from {
+            background-color: #e2445b;
+        }
+
+        &.progress-bar-to {
+            background-color: #0286c3;
+        }
     }
 }
 </style>
