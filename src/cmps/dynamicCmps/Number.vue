@@ -20,7 +20,7 @@
 
 export default {
     name: "Number",
-    emits:['update'],
+    emits: ['update'],
     props: {
         info: Number,
         groupColor: String
@@ -51,7 +51,7 @@ export default {
         },
         formatCurrency(value) {
             if (value === 0) {
-                return '$0';
+                return '$0'
             }
             return new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, currency: 'USD' }).format(value)
         },

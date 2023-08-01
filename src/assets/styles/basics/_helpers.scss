@@ -62,7 +62,13 @@
 .align-self-center {
     align-self: center;
 }
-
+//grid
+.grid{
+    display: grid;
+}
+.justify-self-end{
+    justify-self: end;
+}
 // List
 .clean-list {
     list-style-type: none;
@@ -84,10 +90,25 @@
     z-index: 41;
 }
 
+.blue-button{
+    padding: 0;
+    margin-block:5px;
+    width: 62px;
+    height: 32px;
+    color: white;
+    background: $primary-btn-color;
+    border: 0;
+    border-radius: 3px;
+    font-size: 12px;
+    &:hover{
+        background: $primary-btn-hover-color;
+    }
+}
+
 .sticky {
     position: static;
 }
-.relative{
+.relative {
     position: relative;
 }
 // Label colors
@@ -100,7 +121,7 @@
 }
 
 .task:hover .done-green,
-.done-green:hover:not(.progress-segment) {
+.done-green:hover:not(.progress-segment, .activity-status) {
     background-color: #4ad69c;
 }
 
@@ -114,7 +135,7 @@
 }
 
 .task:hover .working-orange,
-.working-orange:hover:not(.progress-segment) {
+.working-orange:hover:not(.progress-segment, .activity-status) {
     background-color: #fbc175;
 }
 
@@ -128,7 +149,7 @@
 }
 
 .task:hover .stuck-red,
-.stuck-red:hover:not(.progress-segment) {
+.stuck-red:hover:not(.progress-segment, .activity-status) {
     background-color: #e8798b;
 }
 
@@ -142,7 +163,7 @@
 }
 
 .task:hover .default-gray,
-.default-gray:hover:not(.progress-segment) {
+.default-gray:hover:not(.progress-segment, .activity-status) {
     background-color: #d2d2d3;
 }
 
@@ -156,7 +177,7 @@
 }
 
 .task:hover .low-blue,
-.low-blue:hover:not(.progress-segment) {
+.low-blue:hover:not(.progress-segment, .activity-status) {
     background-color: #86b6fb;
 }
 
@@ -170,7 +191,7 @@
 }
 
 .task:hover .medium-purple,
-.medium-purple:hover:not(.progress-segment) {
+.medium-purple:hover:not(.progress-segment, .activity-status) {
     background-color: #8588e6;
 }
 
@@ -184,7 +205,7 @@
 }
 
 .task:hover .high-dark-purple,
-.high-dark-purple:hover:not(.progress-segment) {
+.high-dark-purple:hover:not(.progress-segment, .activity-status) {
     background-color: #7659b2;
 }
 
@@ -198,7 +219,7 @@
 }
 
 .task:hover .critical-dark-gray,
-.critical-dark-gray:hover:not(.progress-segment) {
+.critical-dark-gray:hover:not(.progress-segment, .activity-status) {
     background-color: #6d6d6e;
 }
 
@@ -214,7 +235,7 @@
 }
 
 .task:hover .green-grass,
-.green-grass:hover:not(.progress-segment) {
+.green-grass:hover:not(.progress-segment, .activity-status) {
     background-color: #4ba27f;
 }
 
@@ -228,7 +249,7 @@
 }
 
 .task:hover .bright-green,
-.bright-green:hover:not(.progress-segment) {
+.bright-green:hover:not(.progress-segment, .activity-status) {
     background-color: #b7dd65;
 }
 
@@ -242,7 +263,7 @@
 }
 
 .task:hover .saladish,
-.saladish:hover:not(.progress-segment) {
+.saladish:hover:not(.progress-segment, .activity-status) {
     background-color: #d7c978;
 }
 
@@ -256,7 +277,7 @@
 }
 
 .task:hover .egg-yolk,
-.egg-yolk:hover:not(.progress-segment) {
+.egg-yolk:hover:not(.progress-segment, .activity-status) {
     background-color: #fcd84a;
 }
 
@@ -270,7 +291,7 @@
 }
 
 .task:hover .dark-orange,
-.dark-orange:hover:not(.progress-segment) {
+.dark-orange:hover:not(.progress-segment, .activity-status) {
     background-color: #fc906a;
 }
 
@@ -284,7 +305,7 @@
 }
 
 .task:hover .peach,
-.peach:hover:not(.progress-segment) {
+.peach:hover:not(.progress-segment, .activity-status) {
     background-color: #fcc3c4;
 }
 
@@ -298,7 +319,7 @@
 }
 
 .task:hover .sunset,
-.sunset:hover:not(.progress-segment) {
+.sunset:hover:not(.progress-segment, .activity-status) {
     background-color: #fc9b9c;
 }
 
@@ -312,7 +333,7 @@
 }
 
 .task:hover .dark-red,
-.dark-red:hover:not(.progress-segment) {
+.dark-red:hover:not(.progress-segment, .activity-status) {
     background-color: #cc6d85;
 }
 
@@ -326,7 +347,7 @@
 }
 
 .task:hover .sofia-pink,
-.sofia-pink:hover:not(.progress-segment) {
+.sofia-pink:hover:not(.progress-segment, .activity-status) {
     background-color: #fc58ab;
 }
 
@@ -340,7 +361,7 @@
 }
 
 .task:hover .lipstick,
-.lipstick:hover:not(.progress-segment) {
+.lipstick:hover:not(.progress-segment, .activity-status) {
     background-color: #fc89d3;
 }
 
@@ -354,7 +375,7 @@
 }
 
 .task:hover .bubble,
-.bubble:hover:not(.progress-segment) {
+.bubble:hover:not(.progress-segment, .activity-status) {
     background-color: #f9bbf4;
 }
 
@@ -368,7 +389,7 @@
 }
 
 .task:hover .dark-purple,
-.dark-purple:hover:not(.progress-segment) {
+.dark-purple:hover:not(.progress-segment, .activity-status) {
     background-color: #9d7edd;
 }
 
@@ -382,7 +403,7 @@
 }
 
 .task:hover .berry,
-.berry:hover:not(.progress-segment) {
+.berry:hover:not(.progress-segment, .activity-status) {
     background-color: #a273ac;
 }
 
@@ -396,7 +417,7 @@
 }
 
 .task:hover .indigo,
-.indigo:hover:not(.progress-segment) {
+.indigo:hover:not(.progress-segment, .activity-status) {
     background-color: #8588e7;
 }
 
@@ -410,7 +431,7 @@
 }
 
 .task:hover .navy,
-.navy:hover:not(.progress-segment) {
+.navy:hover:not(.progress-segment, .activity-status) {
     background-color: #6282b0;
 }
 
@@ -424,7 +445,7 @@
 }
 
 .task:hover .bright-blue,
-.bright-blue:hover:not(.progress-segment) {
+.bright-blue:hover:not(.progress-segment, .activity-status) {
     background-color: #86b6fb;
 }
 
@@ -438,7 +459,7 @@
 }
 
 .task:hover .dark-blue,
-.dark-blue:hover:not(.progress-segment) {
+.dark-blue:hover:not(.progress-segment, .activity-status) {
     background-color: #49a7d1;
 }
 
@@ -452,7 +473,7 @@
 }
 
 .task:hover .aquamarine,
-.aquamarine:hover:not(.progress-segment) {
+.aquamarine:hover:not(.progress-segment, .activity-status) {
     background-color: #81d9d6;
 }
 
@@ -466,7 +487,7 @@
 }
 
 .task:hover .chili-blue,
-.chili-blue:hover:not(.progress-segment) {
+.chili-blue:hover:not(.progress-segment, .activity-status) {
     background-color: #91d9fd;
 }
 
@@ -480,7 +501,7 @@
 }
 
 .task:hover .river,
-.river:hover:not(.progress-segment) {
+.river:hover:not(.progress-segment, .activity-status) {
     background-color: #93bbcf;
 }
 
@@ -494,7 +515,7 @@
 }
 
 .task:hover .winter,
-.winter:hover:not(.progress-segment) {
+.winter:hover:not(.progress-segment, .activity-status) {
     background-color: #b6c3cf;
 }
 
@@ -508,7 +529,7 @@
 }
 
 .task:hover .american-gray,
-.american-gray:hover:not(.progress-segment) {
+.american-gray:hover:not(.progress-segment, .activity-status) {
     background-color: #a3a3a4;
 }
 
@@ -522,7 +543,7 @@
 }
 
 .task:hover .blackish,
-.blackish:hover:not(.progress-segment) {
+.blackish:hover:not(.progress-segment, .activity-status) {
     background-color: #6d6d6e;
 }
 
@@ -536,7 +557,7 @@
 }
 
 .task:hover .brown,
-.brown:hover:not(.progress-segment) {
+.brown:hover:not(.progress-segment, .activity-status) {
     background-color: #a3847c;
 }
 
@@ -550,7 +571,7 @@
 }
 
 .task:hover .orchid,
-.orchid:hover:not(.progress-segment) {
+.orchid:hover:not(.progress-segment, .activity-status) {
     background-color: #e29bc6;
 }
 
@@ -564,7 +585,7 @@
 }
 
 .task:hover .tan,
-.tan:hover:not(.progress-segment) {
+.tan:hover:not(.progress-segment, .activity-status) {
     background-color: #c3b3a0;
 }
 
@@ -578,7 +599,7 @@
 }
 
 .task:hover .sky,
-.sky:hover:not(.progress-segment) {
+.sky:hover:not(.progress-segment, .activity-status) {
     background-color: #bbe9f7;
 }
 
@@ -592,7 +613,7 @@
 }
 
 .task:hover .coffee,
-.coffee:hover:not(.progress-segment) {
+.coffee:hover:not(.progress-segment, .activity-status) {
     background-color: #cea498;
 }
 
@@ -606,7 +627,7 @@
 }
 
 .task:hover .royal,
-.royal:hover:not(.progress-segment) {
+.royal:hover:not(.progress-segment, .activity-status) {
     background-color: #689deb;
 }
 
@@ -620,7 +641,7 @@
 }
 
 .task:hover .teal,
-.teal:hover:not(.progress-segment) {
+.teal:hover:not(.progress-segment, .activity-status) {
     background-color: #5a8990;
 }
 
@@ -634,7 +655,7 @@
 }
 
 .task:hover .lavender,
-.lavender:hover:not(.progress-segment) {
+.lavender:hover:not(.progress-segment, .activity-status) {
     background-color: #cec0f9;
 }
 
@@ -648,7 +669,7 @@
 }
 
 .task:hover .steel,
-.steel:hover:not(.progress-segment) {
+.steel:hover:not(.progress-segment, .activity-status) {
     background-color: #c0cfed;
 }
 
@@ -662,7 +683,7 @@
 }
 
 .task:hover .liliac,
-.liliac:hover:not(.progress-segment) {
+.liliac:hover:not(.progress-segment, .activity-status) {
     background-color: #b8b5cc;
 }
 
@@ -676,7 +697,7 @@
 }
 
 .task:hover .pecan,
-.pecan:hover:not(.progress-segment) {
+.pecan:hover:not(.progress-segment, .activity-status) {
     background-color: #867576;
 }
 
@@ -690,7 +711,7 @@
 }
 
 .task:hover .purple,
-.purple:hover:not(.progress-segment) {
+.purple:hover:not(.progress-segment, .activity-status) {
     background-color: #bb8be5;
 }
 
@@ -704,7 +725,7 @@
 }
 
 .task:hover .dark-indigo,
-.dark-indigo:hover:not(.progress-segment) {
+.dark-indigo:hover:not(.progress-segment, .activity-status) {
     background-color: #7759b3;
 }
 

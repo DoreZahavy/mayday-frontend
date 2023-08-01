@@ -45,7 +45,7 @@ import { svgService } from '../../services/svg.service.js'
 export default {
   name: "Members",
   emits: ['update'],
-  props: { info: Array,groupColor: String },
+  props: { info: Array, groupColor: String },
   data() {
     return {
       members: this.info,
@@ -70,7 +70,7 @@ export default {
     removeMember(memberId) {
       // const members= JSON.parse(JSON.stringify(this.info))
       // console.log('this.members:', this.members)
-      // console.log(this.members);
+      // console.log(this.members)
       const memberIdx = this.members.findIndex(m => m._id === memberId)
       this.members.splice(memberIdx, 1)
       this.$emit('update', this.members)

@@ -1,14 +1,15 @@
 <script>
+import { boardService } from "@/services/board.service.js"
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import Group from '@/cmps/Group.vue'
-import MinimizedGroup from "@/cmps/MinimizedGroup.vue";
+import MinimizedGroup from "@/cmps/MinimizedGroup.vue"
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
 import { svgService } from '../services/svg.service'
 
 export default {
-  emits:['openConversations'],
+  emits: ['openConversations'],
   data() {
     return {
       // collapse: true
@@ -39,11 +40,11 @@ export default {
       this.$store.dispatch({ type: 'applyDragGrp', dragResult: dropResult })
     },
     collapseGroups() {
-      
+
       this.board.groups.forEach(group => {
         console.log(group.title)
         // updateBoard(group._id, { prop: true, toUpdate: 'minimized' })
-      });
+      })
     },
     expandGroups() {
       this.collapse = false

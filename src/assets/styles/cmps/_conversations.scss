@@ -1,14 +1,33 @@
+.conversations {
+    display: grid;
+    input{
+        width: 100%;
+        height: 40px;
+        border: none;
+        outline:1px solid $primary-btn-color;
+        border-radius: 6px;
+        padding-inline: 20px;
+        color: $primary-text-color;
+        font-size: 16px;
+    }
+}
+
 .update-list-item {
-    border:1px solid $border-clr;
+    border: 1px solid $border-clr;
     border-radius: 6px;
     margin-block-end: 1rem;
     overflow: hidden;
 }
-.update-list{
-    margin-block-start: 10px;
-    padding: 0;
-    max-width: 95%;
+
+.update-list {
+    width: 100%;
 }
-.quill-container{
-    max-width: 95%;
+
+.quill-container {
+    border-radius: 6px;
+    overflow: hidden;
+    outline: 1px solid $primary-btn-color;
+    outline-offset: -1px;
+    width: 100%;
+    min-height: 144px;
 }
