@@ -120,6 +120,9 @@ export const boardStore = {
         }
       })
       state.updates = taskUpdates.updates
+    },
+    loadFirstBoard(state){
+      state.board = state.boards[0]
     }
 
   },
@@ -202,7 +205,7 @@ export const boardStore = {
         console.log('loading')
         const boards = await boardService.query()
         context.commit({ type: "setBoards", boards })
-        context.commit({ type: "setBoard", board: boards[0] })
+        // context.commit({ type: "setBoard", board: boards[0] })
         // const boardId = this.$route.params.boardId
         // context.commit({ type: "setBoard", boardId })
       } catch (err) {
