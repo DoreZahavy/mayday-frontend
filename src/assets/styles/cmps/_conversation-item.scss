@@ -1,0 +1,22 @@
+.conversation-item {
+    display: grid;
+    grid-template-rows: 64px minmax(100px, auto) 64px;
+    header{
+        display: grid;
+        grid-template-columns: 64px auto 120px;
+    }
+    .image-container {
+        border-radius: 100%;
+        max-width: 32px;
+        max-height: 32px;
+        overflow: hidden;
+
+        img {
+            max-width: 45px;
+            max-height: 45px;
+            display: block;
+            width: auto;
+            height: auto;
+        }
+    }
+}

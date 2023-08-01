@@ -14,7 +14,7 @@ export default {
     priorityCounts() {
       let priorities = {}
       for (let task of this.group.tasks) {
-        console.log(task.Priority)
+        // console.log(task.Priority)
         let priority = task.Priority.title
         if (!(priority in priorities)) {
           priorities[priority] = { count: 0, color: task.Priority.color }

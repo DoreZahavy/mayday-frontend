@@ -75,7 +75,7 @@
                     </div>
                     <Checkbox :checkBoxId="''" style="pointer-events: none;" />
                     <!-- <input type="text" placeholder="+ Add Task"> -->
-                    <AddTask @addTask="setAddTaskTxt"/>
+                    <AddTask @addTask="setAddTaskTxt" class="add-task"/>
                     <!-- <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit> -->
                 </div>
             </section>
@@ -229,7 +229,7 @@ export default {
         },
         addTaskTxt() {
             this.$emit('addTask', this.addTaskTxt)
-
+            // this.addTaskTxt = ''
         },
         collapseAll() {
             console.log(this.collapseAll)
