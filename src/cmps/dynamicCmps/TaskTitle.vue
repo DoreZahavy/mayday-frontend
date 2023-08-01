@@ -11,7 +11,10 @@
 <script>
 export default {
   name: "TaskTitle",
-  props: ['info'],
+  props: {
+        info: String,
+       
+    },
   data() {
     return {
       editing: false,
