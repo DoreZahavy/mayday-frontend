@@ -46,7 +46,7 @@ export default {
 <template>
     <section class="sidebar-filter">
         <span v-html="getSvg('search')" class="search-icon-wrapper"></span>
-        <input type="search" v-model="filterBy" placeholder="Search">
+        <input type="text" v-model="filterBy" placeholder="Search">
         <div v-if="showButton" class="reset-text" @click="clearText">
             <span class="x-icon" v-html="getSvg('xButton')">
             </span>

@@ -14,7 +14,7 @@ export default {
     statusCounts() {
       let statuses = {}
       for (let task of this.group.tasks) {
-        console.log(task.Status)
+        // console.log(task.Status)
         let status = task.Status.title
         if (!(status in statuses)) {
           statuses[status] = { count: 0, color: task.Status.color }
