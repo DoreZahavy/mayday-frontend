@@ -112,8 +112,12 @@ export default {
         @click="openActivities">Open Activities</button>
       <transition name="slide">
         <div class="modal" v-if="showDrawerModal">
-          <span class="close-button" @click="closeDrawerModal" v-html="getSvg('xButton')"></span>
-          heyy
+          <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
+          <h4 class="drawer-title">editable title</h4>
+          <nav class="drawer-nav">
+            <button class="drawer-nav-link">Activity</button>
+            <button class="drawer-nav-link">Updates</button>
+          </nav>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>

@@ -112,7 +112,9 @@ export const boardStore = {
       groups.forEach(group => {
         const task = group.tasks.find(task=>task._id===taskId)
         if(task) {
+          console.log('task:', task)
           state.updates = task.updates
+          return
         }
       })
     }

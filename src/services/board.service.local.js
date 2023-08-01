@@ -1,4 +1,5 @@
 import { utilService } from './util.service.js'
+import { userService } from './user.service.js'
 import jsonBoards from '@/data/demo-board-v1.2.json'
 import { storageService } from './async-storage.service.js'
 
@@ -21,17 +22,28 @@ export const boardService = {
 }
 
 async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
+    const activity = {
+        "id": utilService.makeId(),
+        "createdAt": Date.now(),
+        "byMember": userService.getLoggedinUser(),
+      
+    }
     const board = await getById(boardId)
     if (taskId) {
+        activity.group = groupId
+        activity.task = taskId
         const group = board.groups.find(g => g._id === groupId)
         const task = group.tasks.find(t => t._id === taskId)
         task[prop] = toUpdate
     } else if (groupId) {
+        activity.group = groupId
         const group = board.groups.find(g => g._id === groupId)
         group[prop] = toUpdate
     } else (
         board[prop] = toUpdate
     )
+    activity.txt = `changed ${prop}`
+    board.activities.unshift(activity)
     return await saveBoard(board)
 }
 

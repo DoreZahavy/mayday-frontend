@@ -1,6 +1,13 @@
 <template>
-    <section class="modal-content">
+    <section class="modal-content update-modal">
+     
         <h2>Conversations (Task Id: {{ taskId }})</h2>
+        <input type="text" class="add-update" placeholder="Write an update..."/>
+        <ul class="update-list">
+            <li v-for="update in updates" class="update-item">
+            <pre>{{ update }}</pre>
+            </li>
+        </ul>
     </section>
 </template>
 
@@ -11,10 +18,12 @@ export default {
     },
     data() {
         return {
-            updates: []
+            // updates: []
         }
     },
     created() {
+        console.log('this.taskId:', this.taskId)
+        console.log('updates:', this.updates)
     },
     methods: {
     },
