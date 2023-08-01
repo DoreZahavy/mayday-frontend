@@ -5,10 +5,21 @@ export default{
 methods:{
     getSvg(iconName) {
             return svgService.getSvg(iconName)
+        },
+        goToBoard(){
+            const boardId = this.boardList[0]._id
+            this.$store.commit('setBoardById', boardId)
+            console.log('boardId:', boardId)
+            this.$router.push('/board/' + boardId)
+            // this.$router.push('/board')
         }
 },
 computed:{
-    // this.$store.getters,
+    boardList(){
+
+        return this.$store.getters.boardList
+        // return list[0]._id
+    }
 }
 }
 </script>
@@ -22,8 +33,10 @@ computed:{
             </div>
             <div class="flex align-center">
                 <RouterLink class="login-link" to="/loginsignup">Log in</RouterLink>
-                <RouterLink class="get-started" to="/board">get started<span class="start-arrow" v-html="getSvg('start')"></span></RouterLink>
+                <a class="get-started" @click="goToBoard" >get started<span class="start-arrow" v-html="getSvg('start')"></span></a> 
+                <!-- <RouterLink class="get-started" :to="'/board'" >get started<span class="start-arrow" v-html="getSvg('start')"></span></RouterLink>  -->
             </div>
         </section>
     </header>
 </template>
+<!-- :to="'/board'" -->

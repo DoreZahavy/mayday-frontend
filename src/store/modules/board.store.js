@@ -62,6 +62,7 @@ export const boardStore = {
 
   mutations: {
     setBoardById(state, { boardId }) {
+      console.log('boardId:', boardId)
       const board = state.boards.find(board => board._id === boardId)
       state.board = board
     },
@@ -81,6 +82,7 @@ export const boardStore = {
     },
 
     saveBoard(state, { board }) {
+      if(!board) return
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
@@ -215,6 +217,7 @@ export const boardStore = {
 
     async updateBoard(context, { boardId, groupId, taskId, prop, toUpdate }) {
       try {
+        // if(!context.state.board._id) return 
         if (!boardId) boardId = context.state.board._id
         const board = await boardService.updateBoard(boardId, groupId, taskId, prop, toUpdate)
         context.commit({ type: "saveBoard", board })

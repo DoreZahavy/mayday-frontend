@@ -14,6 +14,7 @@
 <script>
 export default {
   name: "Priority",
+  emits: ['update'],
   props: {
     info: Object,
     groupColor: String
