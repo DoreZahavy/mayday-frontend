@@ -10,6 +10,7 @@
 <script>
 import { svgService } from '@/services/svg.service'
 export default {
+    emits:['openConversations'],
     props: {
         taskId: String,
         taskConversationsAmount: Number

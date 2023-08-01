@@ -3,6 +3,7 @@ import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import { svgService } from '../services/svg.service'
 
 export default {
+    emits:['update', 'toggleModal'],
     props:['miniBoard'],
     data(){
         return {

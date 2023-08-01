@@ -26,6 +26,7 @@ import { svgService } from '../../services/svg.service'
 
 export default {
     name: "Timeline",
+    // emits:['update']
     props: {
         info: Object,
         groupColor: String

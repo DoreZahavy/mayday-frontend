@@ -1,5 +1,6 @@
 <script>
 export default {
+    emits:['update'],
     props: {
         modelValue: String
     },
