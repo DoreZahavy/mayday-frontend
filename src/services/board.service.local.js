@@ -251,8 +251,7 @@ function _getEmptyDateComponent() {
 function _getEmptyTimelineComponent() {
     return {
         startDate: null,
-        dueDate: null,
-        isHourIncluded: false
+        dueDate: null
     }
 }
 
