@@ -1,5 +1,4 @@
-.left-gap{
-    
+.left-gap {
     width: 48px;
     position: sticky;
     left: 0;
@@ -7,7 +6,6 @@
     background-color: #fff;
 }
 .board-details {
- 
     width: 70000px;
     // overflow-x: scroll;
     .grp-scroll {
@@ -30,7 +28,7 @@
         padding-inline: 8px;
         margin-block: 36px;
         color: $primary-text-color;
-        &:hover{
+        &:hover {
             background-color: $secondary-btn-hover-color;
         }
     }
@@ -39,7 +37,7 @@
 .group-gap {
     position: sticky;
     top: 0;
-    left:0;
+    left: 0;
     width: (40px);
     z-index: 31;
     // height: 256px;

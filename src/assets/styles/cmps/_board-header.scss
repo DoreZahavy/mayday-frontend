@@ -10,8 +10,8 @@
     width: 100%;
     .board-title {
         // @include boardTitle;
-        font-size: em(24px,14px);
-        line-height: lh(32px , 14px);
+        font-size: em(24px, 14px);
+        line-height: lh(32px, 14px);
         // font-size: em(32px,14px);
         // line-height: lh(40px , 14px);
         font-family: poppins;
@@ -19,18 +19,18 @@
         letter-spacing: -0.2px;
         color: $primary-text-color;
     }
-    .board-desc{
+    .board-desc {
         color: $secondary-text-color;
-        span{
+        span {
             padding-inline-start: 6px;
             cursor: pointer;
-            color:#1F76C2;
-            &:hover{
+            color: #1f76c2;
+            &:hover {
                 text-decoration: underline;
             }
         }
     }
-    .info-icon{
+    .info-icon {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,8 +40,8 @@
         border-radius: 0.2857143em;
         margin-inline-start: 4px;
         cursor: pointer;
-        &:hover{
-            background-color:$secondary-btn-hover-color ;
+        &:hover {
+            background-color: $secondary-btn-hover-color;
         }
     }
 }

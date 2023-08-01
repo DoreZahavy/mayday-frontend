@@ -22,7 +22,7 @@ import { svgService } from '../../services/svg.service'
 export default {
   name: "Date",
 
-  props: ['info'],
+  props: ['info','groupColor'],
   data() {
     return {
       pickedDate: this.info

@@ -16,6 +16,7 @@ export default {
   name: "Priority",
   props: {
     info: Object,
+    groupColor: String
   },
   data() {
     return {

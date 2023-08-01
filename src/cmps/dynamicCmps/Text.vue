@@ -26,6 +26,7 @@ export default {
     name: "Text",
     props: {
         info: String,
+        groupColor: String
     },
     data() {
         return {

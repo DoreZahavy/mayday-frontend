@@ -37,7 +37,7 @@ export default {
 .priority-progress-bar {
   display: flex;
   align-items: center;
-  margin-top: 0.391em;
+  margin-top: 5.48px;
   margin-left: 0.6em;
   height: 67.93%;
   width: 89.2%;
@@ -53,6 +53,6 @@ export default {
 .progress-segment:hover {
   border-radius: 2px;
   transform: scaleY(1.2);
-  transition: .01s ease;
+  transition: .0005s ease;
 }
 </style>

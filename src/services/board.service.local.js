@@ -23,10 +23,12 @@ export const boardService = {
 
 async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
     const activity = {
-        "id": utilService.makeId(),
-        "createdAt": Date.now(),
-        "byMember": userService.getLoggedinUser(),
-      
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        byMember: userService.getLoggedinUser(),
+        group:'',
+        task:'',
+        propType:prop
     }
     const board = await getById(boardId)
     if (taskId) {
@@ -34,15 +36,18 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         activity.task = taskId
         const group = board.groups.find(g => g._id === groupId)
         const task = group.tasks.find(t => t._id === taskId)
+        activity.updateFrom = task[prop]
         task[prop] = toUpdate
     } else if (groupId) {
         activity.group = groupId
         const group = board.groups.find(g => g._id === groupId)
+        activity.updateFrom = group[prop]
         group[prop] = toUpdate
-    } else (
+    } else {
+        activity.updateFrom = board[prop]
         board[prop] = toUpdate
-    )
-    activity.txt = `changed ${prop}`
+    }
+    activity.updateTo = toUpdate
     board.activities.unshift(activity)
     return await saveBoard(board)
 }
@@ -132,26 +137,26 @@ function getEmptyBoard(title = 'New Board') {
         ],
         priorityLabelConfig: [
             {
-              title: "Low",
-              color: "low-blue"
+                title: "Low",
+                color: "low-blue"
             },
             {
-              title: "Medium",
-              color: "medium-purple"
+                title: "Medium",
+                color: "medium-purple"
             },
             {
-              title: "High",
-              color: "high-dark-purple"
+                title: "High",
+                color: "high-dark-purple"
             },
             {
-              title: "Critical ⚠",
-              color: "critical-dark-gray"
+                title: "Critical ⚠",
+                color: "critical-dark-gray"
             },
             {
-              title: "",
-              color: "default-gray"
+                title: "",
+                color: "default-gray"
             }
-          ],
+        ],
         cmpConfig: [
             {
                 type: 'Status',
@@ -195,7 +200,7 @@ function getEmptyGroup() {
         _id: utilService.makeId(),
         title: 'New Group',
         color: '#007f00',
-        minimized:false,
+        minimized: false,
         tasks: [],
     }
 }

@@ -16,6 +16,7 @@ export default {
   name: "Status",
   props: {
     info: Object,
+    groupColor: String
   },
   data() {
     return {
