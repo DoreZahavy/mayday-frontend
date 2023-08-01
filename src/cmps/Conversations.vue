@@ -1,12 +1,12 @@
 <template>
     <section class="modal-content update-modal">
-     
+
         <h2>Conversations (Task Id: {{ taskId }})</h2>
-        <input type="text" class="add-update" placeholder="Write an update..."/>
+        <input type="text" class="add-update" placeholder="Write an update..." />
         <ul class="update-list">
-            <li v-for="update in updates" class="update-item">
-            <pre>{{ update }}</pre>
-            </li>
+            <!-- <li v-for="update in updates" class="update-item">
+                <pre>{{ update }}</pre>
+            </li> -->
         </ul>
     </section>
 </template>
@@ -18,24 +18,27 @@ export default {
     },
     data() {
         return {
-            // updates: []
+            updates: this.$store.getters.updates
         }
     },
     created() {
-        console.log('this.taskId:', this.taskId)
-        console.log('updates:', this.updates)
+        this.updates = {...this.updates}
+        console.log("🚀 ~ file: Conversations.vue:26 ~ created ~ this.updates:", this.updates)
+        this.updates.forEach(update => {
+            update = {...update}
+        });
+        console.log(this.updates)
     },
     methods: {
     },
-    computed:{
-        updates(){
-            this.$store.getters.updates
+    computed: {
+        updates() {
         }
     },
     watch: {
         taskId: {
             handler() {
-                this.$store.commit('loadUpdates', this.taskId)
+                this.$store.commit('loadUpdates', { taskId: this.taskId })
             },
             immediate: true,
         },

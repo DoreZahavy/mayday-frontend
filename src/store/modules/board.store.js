@@ -8,7 +8,7 @@ export const boardStore = {
       board: {},
       boards: [],
       attachmentModal: '',
-      updates:[],
+      updates: [],
       // cmpOrder: ["status", "priority", "members", "date"],
       // labels: ["status", "priority", "members", "date"]
     }
@@ -36,7 +36,6 @@ export const boardStore = {
     attachmentModal({ attachmentModal }) {
       return attachmentModal
     },
-
     groups({ board }) {
 
       return board.groups
@@ -107,16 +106,20 @@ export const boardStore = {
     fileModal(state, { file }) {
       state.attachmentModal = file
     },
-    loadUpdates(state,{taskId}){
+    loadUpdates(state, { taskId }) {
       const groups = state.board.groups
+      // console.log("🚀 ~ file: board.store.js:113 ~ loadUpdates ~ groups:", JSON.parse(JSON.stringify(state.board.groups)))
+      let taskUpdates = ''
       groups.forEach(group => {
-        const task = group.tasks.find(task=>task._id===taskId)
-        if(task) {
-          console.log('task:', task)
-          state.updates = task.updates
-          return
+        const task = group.tasks.find(task => {
+          return task._id === taskId
+        })
+        if (task) {
+          taskUpdates = task.updates
+
         }
       })
+      state.updates = taskUpdates ? { ...taskUpdates } : null
     }
 
   },
