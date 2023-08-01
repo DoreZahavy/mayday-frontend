@@ -27,6 +27,11 @@ export default {
     },
     methods: {
     },
+    computed:{
+        updates(){
+            return this.$store.getters.updates
+        }
+    },
     watch: {
         taskId: {
             handler() {
