@@ -7,11 +7,27 @@
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
                 <span v-else v-html="getSvg('person')"></span>
                 <span class="task-name">{{ activity.taskName }}</span>
-                <span class="activity-type-icon" v-html="getSvg('plusSign')"></span>
-                <span class="activity-type">{{
-                    activity.propType }}</span>
-                <span class="changed-from">{{ activity.updateFrom }}</span>
-                <span class="changed-into">{{ activity.updateTo }}</span>
+                <span v-if="activity.propType.toLowerCase() === 'title'" class="activity-type-icon"
+                    v-html="getSvg('titleActivity')"></span>
+                <span
+                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
+                    class="activity-type-icon" v-html="getSvg('statusActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'number'" class="activity-type-icon"
+                    v-html="getSvg('numberActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'date'" class="activity-type-icon"
+                    v-html="getSvg('dateActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'timeline'" class="activity-type-icon"
+                    v-html="getSvg('timelineActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'text'" class="activity-type-icon"
+                    v-html="getSvg('textActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'attachments'" class="activity-type-icon"
+                    v-html="getSvg('attachmentsActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'person'" class="activity-type-icon"
+                    v-html="getSvg('personActivity')"></span>
+
+                <span class="activity-type">{{ activity.propType }}</span>
+                <span class="changed-from" :title="activity.updateFrom">{{ activity.updateFrom }}</span>
+                <span class="changed-into" :title="activity.updateTo">{{ activity.updateTo }}</span>
             </li>
         </ul>
     </section>
@@ -65,7 +81,8 @@ export default {
     background-color: #fff;
     color: #323338;
     width: 100%;
-    overflow: scroll;
+    max-height: 3000vh;
+    overflow-y: auto;
     font-weight: 300;
     letter-spacing: 0.8px;
     padding-top: 15px;
@@ -74,10 +91,13 @@ export default {
 .activity-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .activity-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr 0.3fr 2.5fr 3fr 3fr;
+    gap: 7px;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;
@@ -90,7 +110,6 @@ export default {
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        margin-right: 10px;
     }
 
     .guest {
@@ -106,11 +125,12 @@ export default {
     }
 
     .task-name,
-    .activity-type,
     .changed-from,
     .changed-into {
-        flex-grow: 1;
         text-align: center;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 </style>

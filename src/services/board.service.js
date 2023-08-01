@@ -25,9 +25,9 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         id: utilService.makeId(),
         createdAt: Date.now(),
         byMember: userService.getLoggedinUser(),
-        group:'',
-        task:'',
-        propType:prop
+        group: '',
+        task: '',
+        propType: prop
     }
     const board = await getById(boardId)
     if (taskId) {
@@ -57,20 +57,20 @@ async function query() {
 }
 
 async function getById(boardId) {
-	return httpService.get(`board/${boardId}`)
+    return httpService.get(`board/${boardId}`)
 }
 
 async function removeBoard(boardId) {
-	return httpService.delete(`board/${boardId}`)
+    return httpService.delete(`board/${boardId}`)
 }
 
 async function addBoard() {
-	return httpService.post('board', getEmptyBoard())
+    return httpService.post('board', getEmptyBoard())
 
 }
 
 async function saveBoard(board) {
-	return httpService.put(`board/${board._id}`, board)
+    return httpService.put(`board/${board._id}`, board)
 
 }
 
@@ -187,9 +187,9 @@ function getEmptyBoard(title = 'New Board') {
             }
         ],
         groups: [getEmptyGroup()],
-		members:[],
-		desc:'',
-		activities:[]
+        members: [],
+        desc: '',
+        activities: []
     }
 }
 
@@ -243,8 +243,7 @@ function _getEmptyDateComponent() {
 function _getEmptyTimelineComponent() {
     return {
         startDate: null,
-        dueDate: null,
-        isHourIncluded: false
+        dueDate: null
     }
 }
 
