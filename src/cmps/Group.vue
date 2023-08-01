@@ -74,7 +74,9 @@
                         </section>
                     </div>
                     <Checkbox :checkBoxId="''" style="pointer-events: none;" />
-                    <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit>
+                    <!-- <input type="text" placeholder="+ Add Task"> -->
+                    <AddTask @addTask="setAddTaskTxt"/>
+                    <!-- <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit> -->
                 </div>
             </section>
             <section class="progress flex">
@@ -82,7 +84,6 @@
                 <div class="progress-container flex">
                     <div class="progress-border"></div>
                     <ProgressBar :cmpOrder="cmpOrder" :group="group" />
-
                 </div>
             </section>
             <div class="bottom-gap"></div>
@@ -107,6 +108,7 @@ import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
 import Number from "@/cmps/dynamicCmps/Number.vue";
 import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
 import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
+import AddTask from '@/cmps/AddTask.vue';
 import ColorPicker from "@/cmps/ColorPicker.vue";
 import ConversationBtn from '@/cmps/ConversationBtn.vue';
 import ProgressBar from '@/cmps/ProgressBar.vue';
@@ -121,10 +123,10 @@ export default {
 
     data() {
         return {
-            addTaskTxt: '+ Add Task',
             groupTitle: this.group.title,
             showPicker: false,
             editGroup: false,
+            addTaskTxt:''
         }
     },
     computed: {
@@ -145,6 +147,10 @@ export default {
         }
     },
     methods: {
+        setAddTaskTxt(text){
+            console.log(text)
+            this.addTaskTxt = text
+        },
         onDropTask(idx, dropResult) {
             this.$store.dispatch({ type: 'applyDragTask', idx, dragResult: dropResult })
         },
@@ -211,7 +217,8 @@ export default {
         Container,
         Draggable,
         ConversationBtn,
-        ProgressBar
+        ProgressBar,
+        AddTask
     },
     watch: {
         groupTitle() {

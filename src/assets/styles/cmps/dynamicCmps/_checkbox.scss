@@ -7,19 +7,30 @@
         height: 1px;
         overflow: hidden;
 
-        &:checked + .checkbox-label  {
-                background-color: red;
+        &:checked+.checkbox-label {
+            background-color: $primary-btn-color;
         }
+
         width: 0px;
         height: 0px;
     }
-    
+
     .checkbox-label {
         // padding-inline-start: 1px;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-content: center;
         width: 16px;
         height: 16px;
         background-color: white;
         border: 1px solid $border-clr;
+        border-radius: 2px;
+
+        svg {
+            margin-block-start: 2px;
+            fill: white;
+            width: 12px;
+            height: 9px;
+        }
     }
 }

@@ -63,7 +63,7 @@
             display: grid;
             grid-template-columns: $row-height auto;
             grid-template-rows: repeat(2, calc($minimized-group-height / 2));
-
+            max-width: 400px;
             .editable-group-title {
                 margin-block-start: 6px;
                 max-width: 308px;
