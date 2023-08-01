@@ -29,7 +29,7 @@ export default {
     },
     mounted(){
         // console.log(this.$refs.updateContent)
-        this.$refs.updateContent.innerText = this.update.content
+        this.$refs.updateContent.innerHTML = this.update.content
     }
 }
 </script>

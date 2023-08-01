@@ -111,7 +111,7 @@ export default {
         style="position: fixed; cursor: pointer; top: 10px; right: 61.8%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
         @click="openActivities">Open Activities</button>
       <transition name="slide">
-        <div class="modal" v-if="showDrawerModal">
+        <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
           <h4 class="drawer-title">editable title</h4>
           <nav class="drawer-nav">
