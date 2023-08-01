@@ -41,18 +41,25 @@
                                 - </span>{{ formattedDueDate(activity.updateFrom.startDate, activity.updateFrom.dueDate) }}
                         </span>
                         <div class="progress-bar progress-bar-from">
-                            <div class="progress-fill"
-                                :style="progressStyle(activity.updateFrom.startDate, activity.updateFrom.dueDate)"></div>
+                            <div :style="progressStyle(activity.updateFrom.startDate, activity.updateFrom.dueDate)"></div>
                         </div>
                     </div>
                 </span>
-
-
+                <span
+                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
+                    <div class="activity-status" :class="activity.updateFrom.color">
+                        <span class="activity-status-text">{{ activity.updateFrom.title }}</span>
+                    </div>
+                </span>
                 <span v-else class="changed-from"
                     :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
                         activity.updateFrom }}</span>
+
+
                 <span
-                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'">></span>
+                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'"
+                    v-html="getSvg('activityArrow')" class="activity-arrow"
+                    :class="{ 'activity-arrow-status-priority': activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' }"></span>
                 <span v-else> </span>
 
 
@@ -70,9 +77,14 @@
                             </span>{{ formattedDueDate(activity.updateTo.startDate, activity.updateTo.dueDate) }}
                         </span>
                         <div class="progress-bar progress-bar-to">
-                            <div class="progress-fill"
-                                :style="progressStyle(activity.updateTo.startDate, activity.updateTo.dueDate)"></div>
+                            <div :style="progressStyle(activity.updateTo.startDate, activity.updateTo.dueDate)"></div>
                         </div>
+                    </div>
+                </span>
+                <span
+                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
+                    <div class="activity-status" :class="activity.updateTo.color">
+                        <span class="activity-status-text">{{ activity.updateTo.title }}</span>
                     </div>
                 </span>
                 <span v-else class="changed-into"
@@ -267,6 +279,35 @@ export default {
         &.progress-bar-to {
             background-color: #0286c3;
         }
+    }
+
+    .activity-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 80%;
+        margin-left: 0.87em;
+        height: 3.2em;
+        border-radius: 3px;
+        font-size: 0.95em;
+        font-weight: 400;
+        color: #fff;
+
+        .activity-status-text {
+            width: 80%;
+            text-align: center;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .activity-arrow {
+        margin-top: 4.5px;
+    }
+
+    .activity-arrow-status-priority {
+        margin-top: 12.5px;
     }
 }
 </style>
