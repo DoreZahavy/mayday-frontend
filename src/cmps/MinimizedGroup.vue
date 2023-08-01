@@ -1,5 +1,8 @@
 <template>
-    <section>
+    <section class="flex relative">
+        <div class="minimized-group-side-div">
+
+        </div>
         <article class="minimized-group">
             <div class="group-color-accent" :style="backgroundColor"></div>
             <div class="preview">
@@ -14,8 +17,8 @@
                     <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor">
                     <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
                     <p class="task-count" v-if="!editGroup">{{ taskCount }} Tasks</p>
+                    <button @click="onExpand" v-html="getSvg('arrowRight')" class="button-as-link expand-group flex justify-center align-center" :style="textColor"></button>
                 </div>
-                <button @click="onExpand" v-html="getSvg('arrowRight')" class="button-as-link" :style="textColor"></button>
             </div>
             <div class="columns">
                 <div class="label-line">

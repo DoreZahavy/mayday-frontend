@@ -5,6 +5,7 @@
 
             <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link arrow-down" :style="textColor"></button>
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
+                <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link" :style="textColor"></button>
                 <div class="group-actions-container">
                     <button @click="onRemoveGroup" v-html="getSvg('trash')"
                         class="button-as-link d-cmp group-actions"></button>
