@@ -3,7 +3,7 @@
 
         <!-- <input type="text" v-if="!editing" @focus="this.editing = true"> -->
         <div class="quill-container">
-            <QuillEditor theme="snow" toolbar="full" v-model="content"/>
+            <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content"  ref="quillEditor"></QuillEditor>
             <button @click="addUpdate">Update</button>
         </div>
         <ul class="update-list">
@@ -27,7 +27,7 @@ export default {
         return {
             updates: null,
             editing: false,
-            content: ''
+            content: null
         }
     },
     created() {
@@ -35,7 +35,8 @@ export default {
     },
     methods: {
         addUpdate() {
-            console.log(this.content)
+            const quill = this.$refs.quillEditor.getContents();
+            console.log(quill)
         }
     },
     computed: {

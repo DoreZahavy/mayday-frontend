@@ -8,10 +8,7 @@
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
                 <span v-else v-html="getSvg('person')"></span>
                 <span class="task-name">{{ activity.taskName }}</span>
-                <span v-if="activity.propType.toLowerCase() === 'title'" class="activity-type-icon"
-                    v-html="getSvg('titleActivity')"></span>
-                <span
-                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
+                <span v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
                     class="activity-type-icon" v-html="getSvg('statusActivity')"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'number'" class="activity-type-icon"
                     v-html="getSvg('numberActivity')"></span>
@@ -19,8 +16,8 @@
                     v-html="getSvg('dateActivity')"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'timeline'" class="activity-type-icon"
                     v-html="getSvg('timelineActivity')"></span>
-                <span v-else-if="activity.propType.toLowerCase() === 'text'" class="activity-type-icon"
-                    v-html="getSvg('textActivity')"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'text' || activity.propType.toLowerCase() === 'title'"
+                    class="activity-type-icon" v-html="getSvg('textActivity')"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'attachments'" class="activity-type-icon"
                     v-html="getSvg('attachmentsActivity')"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'person'" class="activity-type-icon"
@@ -29,25 +26,16 @@
                 <span class="activity-type"
                     :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{
                         activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1) }}</span>
-                <span
-                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'"
-                    class="changed">
+                <div class="changed">
                     <span class="changed-from"
                         :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
                             activity.updateFrom }}</span>
-                    <span>></span>
+                    <span
+                        v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'">></span>
                     <span class="changed-into"
                         :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
                             activity.updateTo }}</span>
-                </span>
-                <span v-else>
-                    <span class="changed-from"
-                        :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
-                            activity.updateFrom }}</span>
-                    <span class="changed-into"
-                        :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
-                            activity.updateTo }}</span>
-                </span>
+                </div>
             </li>
         </ul>
     </section>
@@ -116,7 +104,7 @@ export default {
 
 .activity-item {
     display: grid;
-    grid-template-columns: 0.2fr 0.3fr 1fr 5fr 0.3fr 1.5fr 3.2fr;
+    grid-template-columns: 0.2fr 0.3fr 1fr 5fr 0.3fr 1.5fr 2fr 2fr;
     gap: 10px;
     align-items: center;
     padding: 10px;
@@ -149,11 +137,17 @@ export default {
         gap: 2px;
         justify-content: space-between;
         text-align: center;
+
+        .changed-from,
+        .changed-into {
+            text-align: left;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
-    .task-name,
-    .changed-from,
-    .changed-into {
+    .task-name {
         text-align: left;
         overflow-x: hidden;
         text-overflow: ellipsis;
