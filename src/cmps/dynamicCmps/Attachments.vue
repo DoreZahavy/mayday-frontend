@@ -23,12 +23,7 @@
                     <input type="file" @change="handleFile" hidden>
                 </label>
             </template>
-            <!-- <div >
-                <span class="icon file-icon" v-icon="'file'"></span>
-                <span class="icon plus-icon" v-icon="'plusSign'"></span>
-    
-            </div> -->
-            <!-- </label> -->
+        
             
 
 
