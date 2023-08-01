@@ -108,9 +108,9 @@ export default {
     <Sidebar />
     <div>
       <button
-        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 83.5px; right: 5%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.2em"
-        @click="openActivities">Board Activities
-        <MemberPreview />
+        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 83.5px; right: 7%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.05em"
+        @click="openActivities">Activity
+        <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
       </button>
       <transition name="slide">
         <div class="modal" v-if="showDrawerModal">
