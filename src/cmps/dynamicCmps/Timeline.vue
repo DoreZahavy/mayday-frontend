@@ -26,6 +26,7 @@ import { svgService } from '../../services/svg.service'
 
 export default {
     name: "Timeline",
+    // emits:['update']
     props: {
         info: Object,
         groupColor: String
@@ -37,7 +38,7 @@ export default {
             pickedDateTimeRange: []
         }
     },
-    created() {
+    mounted() {
         this.pickedDateTimeRange = [this.currDateSettings?.startDate, this.currDateSettings?.dueDate]
     },
     computed: {

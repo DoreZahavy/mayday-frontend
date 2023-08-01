@@ -17,7 +17,8 @@
                     <input type="text" v-model="groupTitle" class="editable-group-title" :style="textColor">
                     <InPlaceEdit v-model="groupTitle" class="editable-group-title" :style="textColor"></InPlaceEdit>
                     <p class="task-count" v-if="!editGroup">{{ taskCount }} Tasks</p>
-                    <button @click="onExpand" v-html="getSvg('arrowRight')" class="button-as-link expand-group flex justify-center align-center" :style="textColor"></button>
+                    <button @click="onExpand" v-html="getSvg('arrowRight')"
+                        class="button-as-link expand-group flex justify-center align-center" :style="textColor"></button>
                 </div>
             </div>
             <div class="columns">
@@ -35,6 +36,7 @@
 import ProgressBar from '@/cmps/ProgressBar.vue';
 import { svgService } from '../services/svg.service'
 export default {
+    emits: ['update'],
     props: ['group', 'groupIdx'],
     data() {
         return {

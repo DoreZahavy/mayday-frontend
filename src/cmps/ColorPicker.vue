@@ -1,6 +1,6 @@
 <script>
 export default {
-
+    emits:['color'],
     methods: {
         setColor(colorHash) {
             console.log('colorHash:', colorHash)

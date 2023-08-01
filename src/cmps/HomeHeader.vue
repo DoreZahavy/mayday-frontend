@@ -6,6 +6,9 @@ methods:{
     getSvg(iconName) {
             return svgService.getSvg(iconName)
         }
+},
+computed:{
+    // this.$store.getters,
 }
 }
 </script>

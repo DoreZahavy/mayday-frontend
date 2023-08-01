@@ -9,6 +9,7 @@ import { Container, Draggable } from "vue3-smooth-dnd"
 import { svgService } from '../services/svg.service'
 
 export default {
+  emits:['openConversations'],
   data() {
     return {
       // collapse: true

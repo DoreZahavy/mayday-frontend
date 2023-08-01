@@ -54,6 +54,7 @@
 import { uploadService } from '../../services/upload.service'
 import AttachmentPreview from '../AttachmentPreview.vue'
 export default {
+    emits: ['update'],
     name: "Attachments",
     props: {
         info: Array,
