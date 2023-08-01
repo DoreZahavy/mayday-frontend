@@ -29,12 +29,25 @@
                 <span class="activity-type"
                     :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{
                         activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1) }}</span>
-                <span class="changed-from"
-                    :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
-                        activity.updateFrom }}</span>
-                <span class="changed-into"
-                    :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
-                        activity.updateTo }}</span>
+                <span
+                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'"
+                    class="changed">
+                    <span class="changed-from"
+                        :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
+                            activity.updateFrom }}</span>
+                    <span>></span>
+                    <span class="changed-into"
+                        :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
+                            activity.updateTo }}</span>
+                </span>
+                <span v-else>
+                    <span class="changed-from"
+                        :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
+                            activity.updateFrom }}</span>
+                    <span class="changed-into"
+                        :title="typeof activity.updateTo === 'number' || typeof activity.updateTo === 'string' ? activity.updateTo : ''">{{
+                            activity.updateTo }}</span>
+                </span>
             </li>
         </ul>
     </section>
@@ -103,25 +116,25 @@ export default {
 
 .activity-item {
     display: grid;
-    grid-template-columns: 0.2fr 0.3fr 1fr 4fr 0.3fr 2.5fr 3fr 3fr;
-    gap: 3px;
+    grid-template-columns: 0.2fr 0.3fr 1fr 5fr 0.3fr 1.5fr 3.2fr;
+    gap: 10px;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;
 
     .time-passed {
-        width: 80px;
+        width: 40px;
     }
 
     .user-image {
-        width: 30px;
-        height: 30px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
     }
 
     .guest {
-        width: 90px;
-        height: 50px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         margin-right: 10px;
         background-color: #ccc;
@@ -131,10 +144,17 @@ export default {
         font-size: 12px;
     }
 
+    .changed {
+        display: flex;
+        gap: 2px;
+        justify-content: space-between;
+        text-align: center;
+    }
+
     .task-name,
     .changed-from,
     .changed-into {
-        text-align: center;
+        text-align: left;
         overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
