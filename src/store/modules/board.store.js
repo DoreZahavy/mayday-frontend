@@ -114,12 +114,12 @@ export const boardStore = {
         const task = group.tasks.find(task => {
           return task._id === taskId
         })
+        
         if (task) {
-          taskUpdates = task.updates
-
+          taskUpdates = {...task}
         }
       })
-      state.updates = taskUpdates ? { ...taskUpdates } : null
+      state.updates = taskUpdates.updates
     }
 
   },

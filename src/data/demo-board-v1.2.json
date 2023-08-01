@@ -111,7 +111,7 @@
             "title": "Feature Enhancement - Notifications ",
             "updates": [
               {
-                "title": "It goes well",
+                "content": "It goes well",
                 "date": 1690915200000,
                 "user": {
                   "_id": "Nn3N3mTxUn",
@@ -120,7 +120,7 @@
                 }
               },
               {
-                "title": "It goes well",
+                "content": "It goes well",
                 "date": 1690915200000,
                 "user": {
                   "_id": "Nn3N3mTxUn",
