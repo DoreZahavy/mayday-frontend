@@ -37,7 +37,7 @@ export default {
 .status-progress-bar {
   display: flex;
   align-items: center;
-  margin-top: 0.391em;
+  margin-top: 5.48px;
   margin-left: 0.2em;
   height: 67.93%;
   width: 92.8%;
@@ -47,12 +47,12 @@ export default {
 
 .progress-segment {
   height: 100%;
-  transition: .2s ease;
+  transition: .25s ease;
 }
 
 .progress-segment:hover {
   border-radius: 2px;
   transform: scaleY(1.2);
-  transition: .01s ease;
+  transition: .0005s ease;
 }
 </style>
