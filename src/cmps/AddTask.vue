@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+    emits:['addTask'],
     name: 'addTask',
     props:
         { groupId: String }

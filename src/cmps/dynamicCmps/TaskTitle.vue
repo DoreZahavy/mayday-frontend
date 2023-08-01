@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "TaskTitle",
-  emits: ['update'],
+  emits:['update'],
   props: {
         info: String,
        

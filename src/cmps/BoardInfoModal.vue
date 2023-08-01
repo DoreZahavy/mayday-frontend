@@ -3,7 +3,7 @@
     </div>
     <section class="board-info">
         <article class="board-info-inputs">
-            <InPlaceEdit v-model="title" class="title"/>
+            <InPlaceEdit v-model="title" class="title" />
             <InPlaceEdit v-model="desc" /> <!-- TODO: change to textarea and add bounceback -->
         </article>
         <article class="board-info-details flex flex-direction-column">
@@ -30,6 +30,7 @@
 import InPlaceEdit from './InPlaceEdit.vue';
 
 export default {
+    emits: ['update'],
     props:
     {
         miniBoard: Object
@@ -40,15 +41,15 @@ export default {
             desc: this.miniBoard.desc
         }
     },
-    watch:{
-        title:{
-            handler(){
-                this.$emit('update',{prop:'title',toUpdate:this.title})
+    watch: {
+        title: {
+            handler() {
+                this.$emit('update', { prop: 'title', toUpdate: this.title })
             }
         },
-        desc:{
-            handler(){
-                this.$emit('update',{prop:'desc',toUpdate:this.desc})
+        desc: {
+            handler() {
+                this.$emit('update', { prop: 'desc', toUpdate: this.desc })
             }
         }
     },

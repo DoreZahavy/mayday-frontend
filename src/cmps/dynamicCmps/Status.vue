@@ -14,7 +14,7 @@
 <script>
 export default {
   name: "Status",
-  emits: ['update'],
+  emits:['update'],
   props: {
     info: Object,
     groupColor: String

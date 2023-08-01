@@ -3,7 +3,8 @@
 
         <div class="group-title-container flex align-center">
 
-            <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link arrow-down" :style="textColor"></button>
+            <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link arrow-down"
+                :style="textColor"></button>
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <!-- <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link" :style="textColor"></button> -->
                 <div class="group-actions-container">
@@ -75,7 +76,7 @@
                     </div>
                     <Checkbox :checkBoxId="''" style="pointer-events: none;" />
                     <!-- <input type="text" placeholder="+ Add Task"> -->
-                    <AddTask @addTask="setAddTaskTxt" class="add-task"/>
+                    <AddTask @addTask="setAddTaskTxt" class="add-task" />
                     <!-- <InPlaceEdit v-model="addTaskTxt" class="flex align-center add-task"></InPlaceEdit> -->
                 </div>
             </section>
@@ -113,7 +114,7 @@ import ColorPicker from "@/cmps/ColorPicker.vue";
 import ConversationBtn from '@/cmps/ConversationBtn.vue';
 import ProgressBar from '@/cmps/ProgressBar.vue';
 export default {
-
+    // emits: ['update'],
     props: ['group', 'idx', 'collapseAll'],
     created() {
     },
@@ -126,7 +127,7 @@ export default {
             groupTitle: this.group.title,
             showPicker: false,
             editGroup: false,
-            addTaskTxt:''
+            addTaskTxt: ''
         }
     },
     computed: {
@@ -147,7 +148,7 @@ export default {
         }
     },
     methods: {
-        setAddTaskTxt(text){
+        setAddTaskTxt(text) {
             console.log(text)
             this.addTaskTxt = text
         },

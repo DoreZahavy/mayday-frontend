@@ -21,7 +21,7 @@ import { svgService } from '../../services/svg.service'
 
 export default {
     name: "Number",
-    emits: ['update'],
+    emits:['update'],
     props: {
         info: Number,
         groupColor: String
