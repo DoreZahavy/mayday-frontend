@@ -40,18 +40,21 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         const task = group.tasks.find(t => t._id === taskId)
         activity.taskName = task.title
         activity.updateFrom = task[prop]
+        if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
         task[prop] = toUpdate
     } else if (groupId) {
         activity.group = groupId
         const group = board.groups.find(g => g._id === groupId)
         activity.updateFrom = group[prop]
+        if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
         group[prop] = toUpdate
     } else {
         activity.updateFrom = board[prop]
+        if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
         board[prop] = toUpdate
     }
     activity.updateTo = toUpdate
-    board.activities.unshift(activity)
+    if (prop !== 'minimized') board.activities.unshift(activity)
     return await saveBoard(board)
 }
 

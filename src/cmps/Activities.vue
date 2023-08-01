@@ -5,9 +5,11 @@
             <li class="activity-item" v-for="activity in activities" :key="activity.id">
                 <span class="time-passed">{{ getTimePassed(activity.createdAt) }}</span>
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
-                <span v-else class="guest">Guest</span>
+                <span v-else v-html="getSvg('person')"></span>
                 <span class="task-name">{{ activity.taskName }}</span>
-                <span class="activity-type">{{ activity.prop }}</span>
+                <span class="activity-type-icon" v-html="getSvg('plusSign')"></span>
+                <span class="activity-type">{{
+                    activity.propType }}</span>
                 <span class="changed-from">{{ activity.updateFrom }}</span>
                 <span class="changed-into">{{ activity.updateTo }}</span>
             </li>
@@ -16,6 +18,7 @@
 </template>
 
 <script>
+import { svgService } from '../services/svg.service'
 export default {
     props: {
         boardId: String
@@ -32,7 +35,7 @@ export default {
             } else {
                 return []
             }
-        }
+        },
     },
     methods: {
         getTimePassed(timestamp) {
@@ -47,6 +50,9 @@ export default {
             if (minutes < 60) return `${Math.floor(minutes)}m`
             if (hours < 24) return `${Math.floor(hours)}h`
             return `${Math.floor(days)}d`
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
         }
     },
     created() {
@@ -59,7 +65,7 @@ export default {
     background-color: #fff;
     color: #323338;
     width: 100%;
-    overflow: auto;
+    overflow: scroll;
     font-weight: 300;
     letter-spacing: 0.8px;
     padding-top: 15px;
