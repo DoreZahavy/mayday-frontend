@@ -29,35 +29,41 @@
     
             </div> -->
             <!-- </label> -->
-            
 
 
-                <div class="file-list flex align-center" v-if="files.length > 4">
+
+            <div class="file-list flex align-center" v-if="files.length > 4">
 
 
-                    <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
-                    <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
-                    <AttachmentPreview @click.stop="openModal(files[2])" :file="files[2]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[0])" :file="files[0]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[1])" :file="files[1]" class="file-preview" />
+                <AttachmentPreview @click.stop="openModal(files[2])" :file="files[2]" class="file-preview" />
 
-                    <div class="extra-files">+{{ files.length - 3 }}</div>
-                </div>
-                <div class="file-list flex align-center" v-else-if="files.length > 0">
+                <div class="extra-files">+{{ files.length - 3 }}</div>
+            </div>
+            <div class="file-list flex align-center" v-else-if="files.length > 0">
 
-                    <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file"
-                        class="file-preview" />
+                <AttachmentPreview v-for="file in files" @click.stop="openModal(file)" :file="file" class="file-preview" />
 
-                    <!-- <div class="file-preview" v-for="fileUrl in files">
+                <!-- <div class="file-preview" v-for="fileUrl in files">
                     <img :src="fileUrl">
                 </div> -->
-                </div>
-           
+            </div>
+
             <!-- </label> -->
-            <div>
+            <div v-if="!files.length">
                 <span class="icon file-icon" v-icon="'file'"></span>
                 <span class="icon plus-icon" v-icon="'plusSign'"></span>
 
             </div>
         </el-tooltip>
+
+
+        <div v-if="info.length" @click="handleFile"
+            style="position: absolute; left: 2em; bottom: -0.35em; margin-bottom: 20px;height: 10px;">
+            <span class="icon plus-icon" v-icon="'plusSign'"></span>
+        </div>
+
 
     </article>
 </template>
