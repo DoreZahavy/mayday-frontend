@@ -65,8 +65,7 @@ export default {
                     if (task._id.localeCompare(this.taskId) === 0) groupId = g._id
                     // groupId = task._id.localeCompare(this.taskId) === 0 ? g._id : null
                 })
-            });
-            console.log(groupId)
+            })
             return groupId
         }
     },

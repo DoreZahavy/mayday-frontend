@@ -41,18 +41,25 @@
                                 - </span>{{ formattedDueDate(activity.updateFrom.startDate, activity.updateFrom.dueDate) }}
                         </span>
                         <div class="progress-bar progress-bar-from">
-                            <div class="progress-fill"
-                                :style="progressStyle(activity.updateFrom.startDate, activity.updateFrom.dueDate)"></div>
+                            <div :style="progressStyle(activity.updateFrom.startDate, activity.updateFrom.dueDate)"></div>
                         </div>
                     </div>
                 </span>
-
-
+                <span
+                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
+                    <div class="activity-status" :class="activity.updateFrom.color">
+                        <span class="activity-status-text">{{ activity.updateFrom.title }}</span>
+                    </div>
+                </span>
                 <span v-else class="changed-from"
                     :title="typeof activity.updateFrom === 'number' || typeof activity.updateFrom === 'string' ? activity.updateFrom : ''">{{
                         activity.updateFrom }}</span>
+
+
                 <span
-                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'">></span>
+                    v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' || activity.propType.toLowerCase() === 'timeline'"
+                    v-html="getSvg('activityArrow')" class="activity-arrow"
+                    :class="{ 'activity-arrow-status-priority': activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority' }"></span>
                 <span v-else> </span>
 
 
@@ -70,9 +77,14 @@
                             </span>{{ formattedDueDate(activity.updateTo.startDate, activity.updateTo.dueDate) }}
                         </span>
                         <div class="progress-bar progress-bar-to">
-                            <div class="progress-fill"
-                                :style="progressStyle(activity.updateTo.startDate, activity.updateTo.dueDate)"></div>
+                            <div :style="progressStyle(activity.updateTo.startDate, activity.updateTo.dueDate)"></div>
                         </div>
+                    </div>
+                </span>
+                <span
+                    v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
+                    <div class="activity-status" :class="activity.updateTo.color">
+                        <span class="activity-status-text">{{ activity.updateTo.title }}</span>
                     </div>
                 </span>
                 <span v-else class="changed-into"
@@ -151,23 +163,23 @@ export default {
             }
         },
         formattedStartDate(timestamp) {
-            const d = new Date(timestamp);
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return `${monthNames[d.getMonth()]} ${d.getDate()}`;
+            const d = new Date(timestamp)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            return `${monthNames[d.getMonth()]} ${d.getDate()}`
         },
         formattedDueDate(start, end) {
-            if (!start || !end) return '';
-            const d1 = new Date(start);
-            const d2 = new Date(end);
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            if (!start || !end) return ''
+            const d1 = new Date(start)
+            const d2 = new Date(end)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             if (d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
-                return '';
+                return ''
             } else if (d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
-                return `${d2.getDate()}`;
+                return `${d2.getDate()}`
             } else if (d1.getFullYear() === d2.getFullYear()) {
-                return `${monthNames[d2.getMonth()]} ${d2.getDate()}`;
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}`
             } else {
-                return `${monthNames[d2.getMonth()]} ${d2.getDate()}, '${d2.getFullYear().toString().slice(-2)}`;
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}, '${d2.getFullYear().toString().slice(-2)}`
             }
         },
         getSvg(iconName) {
@@ -267,6 +279,35 @@ export default {
         &.progress-bar-to {
             background-color: #0286c3;
         }
+    }
+
+    .activity-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 80%;
+        margin-left: 0.87em;
+        height: 3.2em;
+        border-radius: 3px;
+        font-size: 0.95em;
+        font-weight: 400;
+        color: #fff;
+
+        .activity-status-text {
+            width: 80%;
+            text-align: center;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .activity-arrow {
+        margin-top: 4.5px;
+    }
+
+    .activity-arrow-status-priority {
+        margin-top: 12.5px;
     }
 }
 </style>

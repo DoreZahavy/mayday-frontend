@@ -1,4 +1,4 @@
-import { userService } from "@/services/user.service.js";
+import { userService } from "@/services/user.service.js"
 
 export const userStore = {
     strict: true,
@@ -11,10 +11,10 @@ export const userStore = {
 
     getters: {
         users({ users }) {
-            return users;
+            return users
         },
         loggedinUser({ loggedinUser }) {
-            return loggedinUser;
+            return loggedinUser
         },
     },
 

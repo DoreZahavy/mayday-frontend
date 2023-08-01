@@ -33,7 +33,7 @@
     </section>
 </template>
 <script>
-import ProgressBar from '@/cmps/ProgressBar.vue';
+import ProgressBar from '@/cmps/ProgressBar.vue'
 import { svgService } from '../services/svg.service'
 export default {
     emits: ['update'],

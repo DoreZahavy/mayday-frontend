@@ -18,10 +18,10 @@ export default {
 
   computed: {
     memberColor() {
-      return this.member.color;
+      return this.member.color
     },
   },
-};
+}
 </script>
   
 <style>

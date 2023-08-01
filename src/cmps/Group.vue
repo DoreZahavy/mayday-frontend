@@ -98,21 +98,21 @@ import { eventBusService } from '../services/event-bus.service.js'
 import { svgService } from '../services/svg.service'
 
 import { Container, Draggable } from "vue3-smooth-dnd"
-import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue";
-import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue";
-import Members from "@/cmps/dynamicCmps/Members.vue";
-import Date from "@/cmps/dynamicCmps/Date.vue";
-import Status from "@/cmps/dynamicCmps/Status.vue";
-import Priority from "@/cmps/dynamicCmps/Priority.vue";
-import Text from "@/cmps/dynamicCmps/Text.vue";
-import Timeline from "@/cmps/dynamicCmps/Timeline.vue";
-import Number from "@/cmps/dynamicCmps/Number.vue";
-import Attachments from "@/cmps/dynamicCmps/Attachments.vue";
-import InPlaceEdit from "@/cmps/InPlaceEdit.vue";
-import AddTask from '@/cmps/AddTask.vue';
-import ColorPicker from "@/cmps/ColorPicker.vue";
-import ConversationBtn from '@/cmps/ConversationBtn.vue';
-import ProgressBar from '@/cmps/ProgressBar.vue';
+import TaskTitle from "@/cmps/dynamicCmps/TaskTitle.vue"
+import Checkbox from "@/cmps/dynamicCmps/Checkbox.vue"
+import Members from "@/cmps/dynamicCmps/Members.vue"
+import Date from "@/cmps/dynamicCmps/Date.vue"
+import Status from "@/cmps/dynamicCmps/Status.vue"
+import Priority from "@/cmps/dynamicCmps/Priority.vue"
+import Text from "@/cmps/dynamicCmps/Text.vue"
+import Timeline from "@/cmps/dynamicCmps/Timeline.vue"
+import Number from "@/cmps/dynamicCmps/Number.vue"
+import Attachments from "@/cmps/dynamicCmps/Attachments.vue"
+import InPlaceEdit from "@/cmps/InPlaceEdit.vue"
+import AddTask from '@/cmps/AddTask.vue'
+import ColorPicker from "@/cmps/ColorPicker.vue"
+import ConversationBtn from '@/cmps/ConversationBtn.vue'
+import ProgressBar from '@/cmps/ProgressBar.vue'
 export default {
     // emits: ['update'],
     props: ['group', 'idx', 'collapseAll'],
@@ -236,5 +236,5 @@ export default {
             console.log(this.collapseAll)
         }
     }
-};
+}
 </script>

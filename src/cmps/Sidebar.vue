@@ -43,7 +43,7 @@ export default {
                 this.$router.push('/board/' + board._id)
                 showSuccessMsg('board Added')
             } catch (err) {
-                console.log(err);
+                console.log(err)
                 showErrorMsg('Failed adding new board')
             }
         },

@@ -108,8 +108,10 @@ export default {
     <Sidebar />
     <div>
       <button
-        style="position: fixed; cursor: pointer; top: 10px; right: 61.8%; border: 1px solid royalblue; border-radius: 5px; background-color: whitesmoke; padding: 5px;"
-        @click="openActivities">Open Activities</button>
+        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 83.5px; right: 7%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.05em"
+        @click="openActivities">Activity
+        <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
+      </button>
       <transition name="slide">
         <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
