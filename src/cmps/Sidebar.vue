@@ -13,8 +13,10 @@ export default {
         }
     },
     created() {
+        this.loadBoard(this.boardId)
+        document.title = this.$store.getters.boardTitle
         // if (!this.boardId) this.$store.commit('loadFirstBoard')
-        // this.active = this.boardId
+        this.active = this.boardId
         // this.$router.push('/board/' + this.boardId)
         // document.title = this.$store.getters.boardTitle
     },
@@ -66,17 +68,20 @@ export default {
     watch: {
         boardId: {
             handler() {
-                // this.loadBoard(this.boardId)
-                // document.title = this.$store.getters.boardTitle
+                this.loadBoard(this.boardId)
+                document.title = this.$store.getters.boardTitle
                 this.active = this.boardId
-                if (!this.boardId) {
-                    this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
-                    document.title = this.boardList[0].title
-                }
-                else {
-                    this.loadBoard(this.boardId)
-                    document.title = this.$store.getters.boardTitle
-                }
+                // document.title = this.$store.getters.boardTitle
+                // this.loadBoard(this.boardId)
+                // this.active = this.boardId
+                // if (!this.boardId) {
+                //     this.$router.push('/board/' + this.boardList[0]._id) // this.loadBoard(this.boardList[0]._id)
+                //     document.title = this.boardList[0].title
+                // }
+                // else {
+                //     this.loadBoard(this.boardId)
+                //     document.title = this.$store.getters.boardTitle
+                // }
             },
             immediate: true,
         },

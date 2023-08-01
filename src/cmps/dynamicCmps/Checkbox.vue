@@ -9,8 +9,7 @@
 import { svgService } from '@/services/svg.service'
 export default {
   name: "side-indicator",
-  props: ['checkBoxId']
-  ,
+  props: ['checkBoxId'],
   created() {
   },
   computed: {
