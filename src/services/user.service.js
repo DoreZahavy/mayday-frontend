@@ -20,7 +20,7 @@ function getLoggedinUser() {
 
 
 async function login({ username, password }) {
-console.log('username:', username )
+    console.log('username:', username)
     const user = await httpService.post(`auth/login`, { username, password })
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
@@ -48,7 +48,7 @@ async function signup({ username, password, fullname }) {
 }
 
 async function logout() {
-    console.log('logging out service');
+    console.log('logging out service')
     await httpService.post(`auth/logout`)
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 
@@ -66,7 +66,7 @@ async function get(userId) {
 }
 
 async function query() {
-	return await httpService.get('user')
+    return await httpService.get('user')
 }
 
 function getEmptyCredentials() {

@@ -163,23 +163,23 @@ export default {
             }
         },
         formattedStartDate(timestamp) {
-            const d = new Date(timestamp);
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return `${monthNames[d.getMonth()]} ${d.getDate()}`;
+            const d = new Date(timestamp)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            return `${monthNames[d.getMonth()]} ${d.getDate()}`
         },
         formattedDueDate(start, end) {
-            if (!start || !end) return '';
-            const d1 = new Date(start);
-            const d2 = new Date(end);
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            if (!start || !end) return ''
+            const d1 = new Date(start)
+            const d2 = new Date(end)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             if (d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
-                return '';
+                return ''
             } else if (d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()) {
-                return `${d2.getDate()}`;
+                return `${d2.getDate()}`
             } else if (d1.getFullYear() === d2.getFullYear()) {
-                return `${monthNames[d2.getMonth()]} ${d2.getDate()}`;
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}`
             } else {
-                return `${monthNames[d2.getMonth()]} ${d2.getDate()}, '${d2.getFullYear().toString().slice(-2)}`;
+                return `${monthNames[d2.getMonth()]} ${d2.getDate()}, '${d2.getFullYear().toString().slice(-2)}`
             }
         },
         getSvg(iconName) {

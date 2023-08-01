@@ -17,11 +17,11 @@ export default {
       return `checkbox${this.checkBoxId}`
     }
   },
-  methods:{
+  methods: {
     getSvg(iconName) {
-            return svgService.getSvg(iconName)
-        },
+      return svgService.getSvg(iconName)
+    },
   }
-};
+}
 </script>
   

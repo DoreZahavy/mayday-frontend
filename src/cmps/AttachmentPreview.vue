@@ -1,11 +1,11 @@
 <template>
-    <div  class="file-preview">
+    <div class="file-preview">
         <img v-if="isImage" :src="file">
         <span v-else-if="isVideo" v-icon="'video'"></span>
         <span v-else-if="isPdf" v-icon="'pdf'"></span>
         <span v-else v-icon="'otherFile'"></span>
         <!-- <AttachmentModal v-if="fileModal === true"  /> -->
-           
+
     </div>
 </template>
     
@@ -16,7 +16,7 @@ export default {
     props: {
         file: String,
     },
-    data(){
+    data() {
         return {
             fileModal: false
         }
@@ -51,18 +51,18 @@ export default {
             return false
         },
     },
-    methods:{
+    methods: {
         getExtension(filename) {
             var parts = filename.split('.')
             return parts[parts.length - 1]
         },
-       
-        
+
+
     },
-    components:{
+    components: {
         AttachmentModal
     }
-    
-};
+
+}
 </script>
     

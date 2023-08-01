@@ -27,7 +27,7 @@
     </section>
 </template>
 <script>
-import InPlaceEdit from './InPlaceEdit.vue';
+import InPlaceEdit from './InPlaceEdit.vue'
 
 export default {
     emits: ['update'],

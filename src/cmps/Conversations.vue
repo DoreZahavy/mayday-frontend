@@ -51,7 +51,7 @@ export default {
                     task._id.localeCompare(this.taskId) === 0
                     if (task) groupId = g._id
                 })
-            });
+            })
             return groupId
         }
     },
