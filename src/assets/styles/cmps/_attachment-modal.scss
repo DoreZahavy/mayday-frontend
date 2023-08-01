@@ -6,12 +6,15 @@
         position: fixed;
         inset: 0;
     }
-    .modal {
-        background-color: #f5f6f8;
-        border-radius: 1em;
+    .file-area {
+        position: fixed;
         height: 97vh;
         width: 97vw;
-        transform: translate(-1.5vw, 1.5vh);
+        top: 1.5vh;
+        left: 1.5vw;
+        background-color: #f5f6f8;
+        border-radius: 1em;
+        // transform: translate(-1.5vw, 1.5vh);
         header {
             border-radius: 1em 1em 0 0;
             padding: 16px 32px;

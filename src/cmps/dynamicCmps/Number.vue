@@ -5,19 +5,18 @@
             <input v-show="editing" ref="editor" v-model="number" @blur="stopEditing" @keydown.enter.prevent="stopEditing"
                 @keypress="isNumber($event)" class="editable-text fs16" type="text" @click="startEditing">
             <div v-show="!number && number !== 0 && !editing" @click="startEditing">
-                <span class="icon plus-icon" v-html="getSvg('plusSign')"></span>
-                <span class="icon nums-icon" v-html="getSvg('nums')"></span>
+                <span class="icon plus-icon" v-icon="'plusSign'"></span>
+                <span class="icon nums-icon" v-icon="'nums'"></span>
             </div>
         </div>
         <div v-if="showButton" class="reset-text" @click="clearNumber">
-            <span class="x-icon" v-html="getSvg('xButton')">
+            <span class="x-icon" v-icon="'xButton'">
             </span>
         </div>
     </section>
 </template>
 
 <script>
-import { svgService } from '../../services/svg.service'
 
 export default {
     name: "Number",
@@ -83,9 +82,7 @@ export default {
             editor.focus()
             editor.setSelectionRange(length, length)
         },
-        getSvg(name) {
-            return svgService.getSvg(name)
-        }
+      
     }
 }
 </script>

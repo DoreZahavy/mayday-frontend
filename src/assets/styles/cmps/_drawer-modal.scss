@@ -1,4 +1,4 @@
-.modal {
+.drawer-modal {
     position: fixed;
     background-color: #fff;
     top: 49px;
@@ -7,8 +7,6 @@
     height: calc(100vh - 49px);
     z-index: 90;
     box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 16px;
-    padding-top: 20px;
     .close-button {
         display: flex;
         align-items: center;
@@ -27,6 +25,7 @@
         }
     }
     .modal-content {
+        padding: 20px;
         background-color: #fff;
         color: #323338;
         width: 100%;

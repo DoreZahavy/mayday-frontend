@@ -113,7 +113,7 @@ export default {
         <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
       </button>
       <transition name="slide">
-        <div class="modal" v-if="showDrawerModal">
+        <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
           <h4 class="drawer-title"
             style="font-weight: 900; font-family: figtree; margin-left: 4px; margin-top: 9px;font-size: 1.5em;">

@@ -2,7 +2,15 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
 
-
+import { socketService } from "./socket.service"
+;(()=>{
+setTimeout(()=>{
+	socketService.on('update-board',(board)=>{
+		this.$store.commit({type:'saveBoard',board})
+	})
+	
+})
+})()
 
 export const boardService = {
     query,
