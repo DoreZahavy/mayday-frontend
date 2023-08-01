@@ -115,7 +115,10 @@ export default {
       <transition name="slide">
         <div class="modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
-          <h4 class="drawer-title">editable title</h4>
+          <h4 class="drawer-title"
+            style="font-weight: 900; font-family: figtree; margin-left: 4px; margin-top: 9px;font-size: 1.5em;">
+            Mayday
+            Teams</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link">Activity</button>
             <button class="drawer-nav-link">Updates</button>
