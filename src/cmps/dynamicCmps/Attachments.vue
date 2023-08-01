@@ -45,8 +45,7 @@
                 <span class="icon plus-icon" v-icon="'plusSign'"></span>
             </div>
         </el-tooltip>
-        <div v-if="info.length" 
-            style="position: absolute; left: 2em; bottom: -0.35em; margin-bottom: 20px;height: 10px;">
+        <div v-if="info.length" style="position: absolute; left: 2em; bottom: -0.35em; margin-bottom: 20px;height: 10px;">
             <span class="icon plus-icon" v-icon="'plusSign'"></span>
         </div>
     </article>
