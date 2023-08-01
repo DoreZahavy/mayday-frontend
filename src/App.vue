@@ -8,14 +8,20 @@ import { boardService } from "@/services/board.service.local.js";
 export default {
 
   created() {
-
-    this.$store.dispatch({ type: 'loadBoards' })
+    this.loadBoards()
   },
   components: {
     AppHeader,
     UserMsg,
-
+    
   },
+  methods:{
+    async loadBoards(){
+      await this.$store.dispatch({ type: 'loadBoards' })
+      const boardId = this.$route.params.boardId
+      if(boardId) this.$store.commit({ type: "setBoardById", boardId })
+    }
+  }
 }
 </script>
 

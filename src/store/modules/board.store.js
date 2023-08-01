@@ -206,6 +206,8 @@ export const boardStore = {
         console.log('loading')
         const boards = await boardService.query()
         context.commit({ type: "setBoards", boards })
+        return boards
+        // if(this.$route.params.boardId) context.commit({ type: "setBoardById", boardId })
         // context.commit({ type: "setBoard", board: boards[0] })
         // const boardId = this.$route.params.boardId
         // context.commit({ type: "setBoard", boardId })
