@@ -10,6 +10,7 @@ import AttachmentModal from '../cmps/AttachmentModal.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
+import { SOCKET_EMIT_SET_TOPIC, socketService } from '../services/socket.service'
 
 export default {
 
@@ -49,9 +50,16 @@ export default {
     AttachmentModal
   },
   created() {
+    socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    socketService.on(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
       this.openConversations(taskId)
     })
+  },
+  unmounted(){
+    socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+
   },
   mounted() {
     document.title = 'Mayday'

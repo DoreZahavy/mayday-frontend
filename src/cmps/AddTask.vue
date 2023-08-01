@@ -1,6 +1,6 @@
 <template>
     <form class="add-task" @submit.prevent="addTask">
-        <input type="text" v-model="title" placeholder="+ Add Task">
+        <input @blur="addTask" type="text" v-model="title" placeholder="+ Add Task">
     </form>
 </template>
 <script>
@@ -18,6 +18,7 @@ export default {
     methods:{
         addTask(){
             this.$emit('addTask',this.title)
+            this.title = ''
         }
     }
 }

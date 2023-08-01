@@ -1,12 +1,15 @@
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
+import { store } from '../store'
 
 import { socketService } from "./socket.service"
 ;(()=>{
 setTimeout(()=>{
 	socketService.on('update-board',(board)=>{
-		this.$store.commit({type:'saveBoard',board})
+        console.log('recieved socket');
+        console.log('board',board)
+		store.commit({type:'saveBoard',board})
 	})
 	
 })
@@ -34,7 +37,8 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         createdAt: Date.now(),
         byMember: userService.getLoggedinUser(),
         group: '',
-        task: '',
+        taskId: '',
+        taskName: '',
         propType: prop
     }
     const board = await getById(boardId)
@@ -43,19 +47,23 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         activity.task = taskId
         const group = board.groups.find(g => g._id === groupId)
         const task = group.tasks.find(t => t._id === taskId)
+        activity.taskName = task.title
         activity.updateFrom = task[prop]
+        if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
         task[prop] = toUpdate
     } else if (groupId) {
         activity.group = groupId
         const group = board.groups.find(g => g._id === groupId)
         activity.updateFrom = group[prop]
+        if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
         group[prop] = toUpdate
     } else {
         activity.updateFrom = board[prop]
+        if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
         board[prop] = toUpdate
     }
     activity.updateTo = toUpdate
-    board.activities.unshift(activity)
+    if (prop !== 'minimized') board.activities.unshift(activity)
     return await saveBoard(board)
 }
 
@@ -224,7 +232,6 @@ function getEmptyTask(title) {
         Number: _getEmptyNumberComponent(),
         Text: _getEmptyTextComponent(),
         Attachments: _getEmptyAttachmentsComponent()
-        // components: [_getEmptyComponents()],
     }
 }
 
@@ -267,17 +274,6 @@ function _getEmptyAttachmentsComponent() {
     return []
 }
 
-function _getEmptyComponents() {
-    return {
-        Members: [_getEmptyMembersComponent()],
-        Status: _getEmptyStatusComponent(),
-        Priority: _getEmptyPriorityComponent(),
-        Date: _getEmptyDateComponent(),
-        Timeline: _getEmptyTimelineComponent(),
-        Number: _getEmptyNumberComponent(),
-        Text: _getEmptyTextComponent(),
-        Attachments: _getEmptyAttachmentsComponent()
-    }
-}
+
 
 
