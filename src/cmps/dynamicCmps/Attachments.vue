@@ -8,9 +8,9 @@
 
                     <li v-for="file in files">
 
-                        <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
+                        <!-- <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
                         <span v-if="isImage(file)" class="x-btn" v-icon="'imgFile'"></span>
-                        <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span>
+                        <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span> -->
                         <p>{{ file }}</p>
                         <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
                     </li>
