@@ -1,6 +1,5 @@
 <script>
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
-import { svgService } from '../services/svg.service'
 
 export default {
     emits:['update', 'toggleModal'],
@@ -11,9 +10,7 @@ export default {
         }
     },
     methods:{
-        getSvg(iconName) {
-            return svgService.getSvg(iconName)
-        },
+       
         updateBoard(title){
             this.$emit('update',{prop:'title',toUpdate:title})
 
@@ -44,7 +41,7 @@ export default {
         <div class="flex align-center">
             <!-- v-model="boardTitle" -->
             <InPlaceEdit class="board-title " :modelValue="boardTitle" @update:modelValue="updateBoard" />
-            <span class="info-icon" @click="this.$emit('toggleModal')" v-html="getSvg('infoBig')"></span>
+            <span class="info-icon" @click="this.$emit('toggleModal')" v-icon="'infoBig'"></span>
         </div>
         <p class="board-desc" >{{ miniBoard.desc }} <span @click="this.$emit('toggleModal')">See More</span></p> 
     </header>

@@ -22,6 +22,9 @@ export const userStore = {
         logout(state) {
             state.loggedinUser = null
         },
+        setLoggedinUser(state, { user }) {
+            state.loggedinUser = (user)? {...user} : null
+        },
     },
 
     actions: {

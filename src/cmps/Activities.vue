@@ -3,25 +3,25 @@
         <h2>Activities</h2>
         <ul class="activity-list">
             <li class="activity-item" v-for="activity in activities" :key="activity.id">
-                <span v-html="getSvg('activityTime')"></span>
+                <span v-icon="'activityTime'"></span>
                 <span class="time-passed">{{ getTimePassed(activity.createdAt) }}</span>
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
-                <span v-else v-html="getSvg('person')"></span>
+                <span v-else v-icon="'person'"></span>
                 <span class="task-name">{{ activity.taskName }}</span>
                 <span v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
-                    class="activity-type-icon" v-html="getSvg('statusActivity')"></span>
+                    class="activity-type-icon" v-icon="'statusActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'number'" class="activity-type-icon"
-                    v-html="getSvg('numberActivity')"></span>
+                    v-icon="'numberActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'date'" class="activity-type-icon"
-                    v-html="getSvg('dateActivity')"></span>
+                    v-icon="'dateActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'timeline'" class="activity-type-icon"
-                    v-html="getSvg('timelineActivity')"></span>
+                    v-icon="'timelineActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'text' || activity.propType.toLowerCase() === 'title'"
-                    class="activity-type-icon" v-html="getSvg('textActivity')"></span>
+                    class="activity-type-icon" v-icon="'textActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'attachments'" class="activity-type-icon"
-                    v-html="getSvg('attachmentsActivity')"></span>
+                    v-icon="'attachmentsActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'person'" class="activity-type-icon"
-                    v-html="getSvg('personActivity')"></span>
+                    v-icon="'personActivity'"></span>
 
                 <span class="activity-type"
                     :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{

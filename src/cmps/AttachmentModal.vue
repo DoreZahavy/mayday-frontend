@@ -45,7 +45,7 @@ export default {
 <template>
     <div class="file-modal">
         <div class="screen" @click.stop="closeModal"></div>
-        <div class="modal">
+        <div class="file-area">
             <header class="flex align-center">
                 <span v-if="isPdf" class="type-img" v-icon="'pdf'"></span>
                 <span v-if="isImage" class="type-img" v-icon="'imgFile'"></span>

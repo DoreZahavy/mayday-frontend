@@ -1,5 +1,4 @@
 <script>
-import { boardService } from "@/services/board.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import Group from '@/cmps/Group.vue'
