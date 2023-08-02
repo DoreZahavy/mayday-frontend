@@ -5,7 +5,7 @@
         </label>
         <div class="quill-container" v-else>
             <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content" ref="quillEditor"
-                class="quill-editor" id="quill">
+                class="quill-editor" id="quill" @blur="this.editing = false">
             </QuillEditor>
         </div>
         <button @click="addUpdate" class="blue-button justify-self-end" v-if="editing">Update</button>

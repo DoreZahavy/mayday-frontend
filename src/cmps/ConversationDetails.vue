@@ -1,16 +1,25 @@
 <template>
     <article class="conversation-item">
         <header>
-            <MemberPreview :member="update.user" />
+            <MemberPreview :member="update.user" class="member-thumbnail" />
             <h2>{{ this.update.user.fullname }}</h2>
             <div>
                 <span>{{ getTimePassed(update.date) }}</span>
-                <button @click="onRemoveUpdate" class="button-as-link" v-html="getSvg('trash')"></button>
+                
+                <el-popover placement="left-start" :width="200" trigger="hover">
+
+                    <template #reference>
+                        <button ref="actionsBtn" class="button-as-link" v-html="getSvg('threeDots')"></button>
+                    </template>
+                </el-popover>
             </div>
         </header>
         <section>
             <p ref="updateContent">
             </p>
+        </section>
+        <section class="actions">
+            <div @click="onLike" class="button-as-link"><span v-html="getSvg('like')"></span> Like</div>
         </section>
     </article>
 </template>
