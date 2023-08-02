@@ -43,7 +43,14 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.32) !important;
 }
 
-.status-option {
+.el-popover.el-popper {
+  padding: 8px;
+  min-width: 200px !important;
+  z-index: 9999;
+  text-align: center;
+}
+
+.el-popover .status-option {
   min-width: 152px;
   height: 32px;
   border-radius: 2px;
@@ -55,14 +62,14 @@
   margin-bottom: 9px;
   padding: 8px;
   color: white;
-  font-size: 1.3em;
+  font-size: 1.05em;
   font-weight: 570;
   cursor: pointer;
 
   &:first-of-type {
-    margin-top: 20px;
+    margin-top: 15px;
   }
   &:last-of-type {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
