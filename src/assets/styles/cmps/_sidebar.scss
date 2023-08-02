@@ -102,10 +102,22 @@
         }
     }
     .sidebar-list {
+            .actions-button{
+                width: 24px;
+                height: 24px;
+                border-radius:6px;
+                &:hover{
+                    background-color: $secondary-btn-hover-color;
+                }
+                svg{
+                    height: fit-content;
+                    padding-block-end: 2px;
+                }
+            }
         li {
             color: $primary-text-color;
             .trash-board {
-                opacity: 0;
+                opacity: 1;
             }
             &:hover {
                 background-color: $secondary-btn-hover-color;

@@ -3,13 +3,23 @@
 
         <div class="group-title-container flex align-center">
 
-            <button @click="onCollapse" v-icon="'arrowDown'" class="button-as-link arrow-down"
-                :style="textColor"></button>
+            <button @click="onCollapse" v-icon="'arrowDown'" class="button-as-link arrow-down" :style="textColor"></button>
             <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                 <!-- <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link" :style="textColor"></button> -->
                 <div class="group-actions-container">
-                    <button @click="onRemoveGroup" v-icon="'trash'"
-                        class="button-as-link d-cmp group-actions"></button>
+                    <!-- <button @click="onRemoveGroup" v-icon="'trash'" class="button-as-link d-cmp group-actions"></button> -->
+                    <el-popover placement="left-start" :width="265" trigger="click">
+                        <button @click="onRemoveGroup"
+                            class="remove-update-button button-as-link flex align-center fs14">
+                            <i v-html="getSvg('trash')"></i>
+                            <span>
+                                Delete
+                            </span>
+                        </button>
+                        <template #reference>
+                            <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')"></div>
+                        </template>
+                    </el-popover>
                 </div>
                 <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
                     <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
@@ -48,8 +58,20 @@
                     <div class="task-column">
                         <div class="task-actions-container">
                             <div class="task-actions">
-                                <button @click="onRemoveTask(task._id)" v-html="getSvg('trash')"
-                                    class="button-as-link task-trash"></button>
+                                <!-- <button @click="onRemoveTask(task._id)" v-html="getSvg('threeDots')"
+                                    class="button-as-link task-trash"></button> -->
+                                <el-popover placement="left-start" :width="265" trigger="click">
+                                    <button @click="onRemoveTask(task._id)"
+                                        class="remove-update-button button-as-link flex align-center fs14">
+                                        <i v-html="getSvg('trash')"></i>
+                                        <span>
+                                            Delete
+                                        </span>
+                                    </button>
+                                    <template #reference>
+                                        <div class="button-as-link actions-button" v-html="getSvg('threeDots')"></div>
+                                    </template>
+                                </el-popover>
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>

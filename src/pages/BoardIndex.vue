@@ -157,32 +157,22 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-      <div
-        style="display: flex; justify-content: space-between; align-items: center; width: 550px; height: 65px; background-color: rgba(157, 204, 251, 0); border-radius: 4px;margin-left: 2.72rem;">
-        <span
-          style="width:80px; display: flex; justify-content: center; align-items: center; font-size: 1em; width: 83px; margin-right: 1.3em; border-radius: 5px; cursor: pointer;"
-          class="blue-button">New Item
+      <div class="board-filter-container">
+        <span class="blue-button new-task-button">New Item</span>
+        <span class="span-common span-search">
+          <span v-html="getSvg('search')" class="span-common"></span>Search
         </span>
-        <span style="color: #323338; width:80px; display: flex; gap: 2px; width: 83px; cursor: pointer;">
-          <span v-html="getSvg('search')"
-            style="color: #323338; width:20px; height: 20px; display: flex; margin-top: -2px;"></span>Search
+        <span class="span-common" style="margin-top: 0px; gap: 0.4em;">
+          <span v-html="getSvg('personFilter')" class="span-person"></span>Person
         </span>
-        <span style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; cursor: pointer;">
-          <span v-html="getSvg('personFilter')"
-            style="color: #323338;  width:18px; height: 18px; display: flex; gap: 2px; margin-top: 0.7px;"></span>Person
+        <span class="span-common" style="margin-top: 6.4px;">
+          <span v-html="getSvg('filter')" class="span-filter"></span>Filter
         </span>
-        <span
-          style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; margin-top: 4.5px; cursor: pointer;">
-          <span v-html="getSvg('filter')"
-            style="color: #323338;width:23px; height: 23px; display: flex; gap: 2px; margin-top: 0px;"></span>Filter</span>
-        <span
-          style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; margin-top: -2px; cursor: pointer;">
-          <span v-html="getSvg('sortBig')"
-            style="color: #323338; width:18px; height: 18px; display: flex; gap: 2px; margin-top: -1.3px;"></span>Sort
+        <span class="span-common" style="margin-top: 0; gap: 0.3em;">
+          <span v-html="getSvg('sortBig')" class="span-sort"></span>Sort
         </span>
-        <span style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; cursor: pointer;">
-          <span v-html="getSvg('hide')"
-            style="color: #323338; width:18px; height: 18px; display: flex; margin-top: -1.9px"></span>Hide
+        <span class="span-common" style="margin-top: 0; gap: 0.4em;">
+          <span v-html="getSvg('hide')" class="span-hide"></span>Hide
         </span>
       </div>
       <section class="flex">

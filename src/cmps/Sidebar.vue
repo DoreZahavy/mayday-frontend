@@ -117,7 +117,21 @@ export default {
                     <RouterLink class="board-link" :to="'/board/' + board._id">{{ board.title }}</RouterLink>
                 </div>
                 <!-- <p class="board-link" @click="loadBoard(board._id)">{{ board.title }}</p> -->
-                <div class="trash-board" @click="onRemoveBoard(board._id)" v-html="getSvg('trash')"></div>
+                <!-- <div class="trash-board"> -->
+                <el-popover placement="bottom-start" :width="265" trigger="click" class="board-actions">
+                    <button @click="onRemoveBoard(board._id)"
+                        class="remove-update-button button-as-link flex align-center fs16">
+                        <i v-html="getSvg('trash')"></i>
+                        <span>
+                            Delete
+                        </span>
+                    </button>
+                    <template #reference>
+                        <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')">
+                        </div>
+                    </template>
+                </el-popover>
+                <!-- </div> -->
             </li>
         </ul>
         <div class="collapse-arrow" v-html="getSvg('arrowLeft')" @click="isCollapsed = !isCollapsed"></div>
