@@ -7,8 +7,10 @@
                     getTimePassed(activity.createdAt) }}</span></span>
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
                 <span v-else v-html="getSvg('person')" style="margin-top: 0.3em;"></span>
-                <span class="task-name" :title="activity.taskName.charAt(0).toUpperCase() + activity.taskName.slice(1)">{{
-                    activity.taskName }}</span>
+                <span v-if="activity.taskName" class="task-name"
+                    :title="activity.taskName.charAt(0).toUpperCase() + activity.taskName.slice(1)">{{
+                        activity.taskName }}</span>
+                <span v-else class="task-name">-</span>
                 <span v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
                     class="activity-type-icon" v-icon="'statusActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'number'" class="activity-type-icon"
