@@ -4,16 +4,18 @@
             <div class="image-container">
                 <img :src="update.user.imgUrl">
             </div>
-            <h2>{{ update.user.fullname }}</h2>
+            <h2>{{ update.user.fullName }}</h2>
             <span>{{ formattedDate }}</span>
+            <button @click="onRemoveUpdate" class="blue-button">remove</button>
         </header>
-        <section >
+        <section>
             <p ref="updateContent">
             </p>
         </section>
     </article>
 </template>
 <script>
+// import { svgService } from '@/services/svg.service'
 export default {
     props: { update: Object },
     computed: {
@@ -25,11 +27,16 @@ export default {
                 options.year = 'numeric'
             }
             return date.toLocaleDateString('en-US', options)
-        }
+        },
     },
-    mounted(){
+    mounted() {
         // console.log(this.$refs.updateContent)
         this.$refs.updateContent.innerHTML = this.update.content
+    },
+    methods: {
+        onRemoveUpdate() {
+            this.$emit('removeUpdate', this.update._id)
+        }
     }
 }
 </script>

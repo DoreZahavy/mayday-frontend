@@ -3,7 +3,12 @@
     grid-template-rows: 64px minmax(100px, auto) 64px;
     header{
         display: grid;
-        grid-template-columns: 64px auto 120px;
+        grid-template-columns: 64px auto 120px 64px;
+        padding: 16px;
+        padding-block-end: 8px;
+    }
+    section p{
+        padding: 16px;
     }
     .image-container {
         border-radius: 100%;

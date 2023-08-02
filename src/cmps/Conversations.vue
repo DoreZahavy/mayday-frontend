@@ -3,15 +3,15 @@
         <label for="quill" v-if="!editing">
             <input type="text" @focus="this.editing = true" placeholder="Write an update...">
         </label>
-        <div class="quill-container" v-else >
+        <div class="quill-container" v-else>
             <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content" ref="quillEditor"
-                class="quill-editor" id="quill" >
+                class="quill-editor" id="quill">
             </QuillEditor>
         </div>
         <button @click="addUpdate" class="blue-button justify-self-end">Update</button>
         <ul class="update-list">
             <li v-for="update in updates" class="update-list-item clean-list">
-                <conversationDetails :update="update" />
+                <conversationDetails :update="update" @removeUpdate="onRemoveUpdate" />
             </li>
         </ul>
     </section>
@@ -19,6 +19,7 @@
 
 <script>
 import conversationDetails from '@/cmps/conversationDetails.vue'
+import { utilService } from '@/services/util.service.js'
 export default {
     props: {
         taskId: String
@@ -43,6 +44,7 @@ export default {
             const update = {
                 content: quillContents,
                 date: Date.now(),
+                _id: utilService.makeId(),
                 user: {
                     _id: "Nn3N3mTxUn",
                     fullname: "Yona Stephenson",
@@ -51,7 +53,14 @@ export default {
             }
             updates.unshift(update)
             this.updates = updates
-            console.log("🚀 ~ file: Conversations.vue:52 ~ addUpdate ~ this.updates:", this.updates)
+            this.$store.dispatch('updateBoard', { groupId: this.groupId, taskId: this.taskId, prop: 'updates', toUpdate: updates })
+        },
+        onRemoveUpdate(updateId) {
+            const updates = JSON.parse(JSON.stringify(this.updates))
+            console.log("🚀 ~ file: Conversations.vue:61 ~ onRemoveUpdate ~ updates:", updates)
+            const idx = updates.findIndex(update => update._id === updateId)
+            updates.splice(idx,1)
+            this.updates = updates
             this.$store.dispatch('updateBoard', { groupId: this.groupId, taskId: this.taskId, prop: 'updates', toUpdate: updates })
         }
     },
