@@ -1,5 +1,5 @@
-import { boardService } from "@/services/board.service.js";
-// import { boardService } from "@/services/board.service.local.js";
+// import { boardService } from "@/services/board.service.js";
+import { boardService } from "@/services/board.service.local.js";
 
 export const boardStore = {
   strict: true,
@@ -80,7 +80,7 @@ export const boardStore = {
     },
 
     saveBoard(state, { board }) {
-      if(!board) return
+      if (!board) return
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
@@ -120,7 +120,7 @@ export const boardStore = {
       })
       state.updates = taskUpdates.updates
     },
-    loadFirstBoard(state){
+    loadFirstBoard(state) {
       state.board = state.boards[0]
     }
 

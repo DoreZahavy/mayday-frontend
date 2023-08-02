@@ -6,7 +6,7 @@
                 <span><span v-html="getSvg('activityTime')"></span><span class="time-passed"> {{
                     getTimePassed(activity.createdAt) }}</span></span>
                 <img v-if="activity.byMember" :src="activity.byMember.imgUrl" class="user-image" alt="User" />
-                <span v-else v-html="getSvg('person')"></span>
+                <span v-else v-html="getSvg('person')" style="margin-top: 0.3em;"></span>
                 <span class="task-name" :title="activity.taskName.charAt(0).toUpperCase() + activity.taskName.slice(1)">{{
                     activity.taskName }}</span>
                 <span v-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'"
@@ -30,7 +30,8 @@
                 <span v-if="activity.propType.toLowerCase() === 'date'">
                     {{ formatDate(activity.updateFrom) }}
                 </span>
-                <span v-else-if="activity.propType.toLowerCase() === 'number'">
+                <span v-else-if="activity.propType.toLowerCase() === 'number'" class="changed-into"
+                    style="margin-right: 0.8em;">
                     {{ formatNumber(activity.updateFrom) }}
                 </span>
                 <span v-else-if="activity.propType.toLowerCase() === 'timeline'">
@@ -63,10 +64,10 @@
                 <span v-else> </span>
 
 
-                <span v-if="activity.propType.toLowerCase() === 'date'">
+                <span v-if="activity.propType.toLowerCase() === 'date'" class="changed-into">
                     {{ formatDate(activity.updateTo) }}
                 </span>
-                <span v-else-if="activity.propType.toLowerCase() === 'number'">
+                <span v-else-if="activity.propType.toLowerCase() === 'number'" class="changed-into">
                     {{ formatNumber(activity.updateTo) }}
                 </span>
                 <span v-else-if="activity.propType.toLowerCase() === 'timeline'">
@@ -207,30 +208,58 @@ export default {
     list-style: none;
     padding: 0;
     margin-top: 13px;
+    letter-spacing: 0.01px;
+    margin-left: 0.6em;
 }
 
 .activity-item {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 5fr 0.6fr 2fr 3fr 0.2fr 3fr;
-    gap: 4px;
-    padding: 15px;
-    border-bottom: 1px solid #e0e0e0;
+    grid-template-columns: 1.8fr 1fr 6fr 0.6fr 3.5fr 3fr 0.1fr 3fr;
+    align-items: center;
+    gap: 2px;
+    padding: 12px;
+    max-height: 60px;
+    border-bottom: 1px solid #c3c6d4;
+    font-family: figtree;
+    font-size: 1em;
+    font-weight: 500;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
 
     .time-passed,
     .task-name,
     .activity-type-icon,
-    .activity-type,
-    .changed-from,
-    .changed-into {
+    .activity-type {
         text-align: left;
         overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
 
+
+
+    .changed-from,
+    .changed-into {
+        text-align: center;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .activity-type {
+        margin-left: 4px;
+    }
+
+    .task-name {
+        width: 90%;
+    }
+
     .time-passed {
         width: 1em;
         letter-spacing: 0.001px;
+        margin-right: 0.5em;
     }
 
     .user-image,
@@ -266,8 +295,8 @@ export default {
     .progress-bar {
         position: absolute;
         z-index: 0;
-        width: 90%;
-        height: 1.6em;
+        width: 95%;
+        height: 1.5em;
         border: none;
         overflow: hidden;
         border-radius: 20px;
@@ -285,9 +314,12 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        max-width: 80%;
-        margin-left: 0.87em;
-        height: 3.2em;
+        text-align: center;
+        width: 6.35em;
+        margin-left: 51%;
+        margin-top: -1.4%;
+        transform: translate(-50%, 0%);
+        height: 2.95em;
         border-radius: 3px;
         font-size: 0.95em;
         font-weight: 400;
@@ -295,6 +327,7 @@ export default {
 
         .activity-status-text {
             width: 80%;
+            letter-spacing: 0.01px;
             text-align: center;
             overflow-x: hidden;
             text-overflow: ellipsis;
@@ -304,10 +337,6 @@ export default {
 
     .activity-arrow {
         margin-top: 4.5px;
-    }
-
-    .activity-arrow-status-priority {
-        margin-top: 12.5px;
     }
 }
 </style>
