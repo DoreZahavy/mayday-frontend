@@ -1,14 +1,16 @@
 .board-filter-container {
+    position: sticky;
+    left: 2.72rem;
+    top: 0px;
     display: flex;
-    justify-content: space-between;
+    gap: 4px;
     align-items: center;
-    width: 550px;
     height: 65px;
     border-radius: 3px;
     margin-left: 2.72rem;
     margin-bottom: 1.5em;
     .new-task-button {
-        width: 83px;
+        min-width: 83px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -20,13 +22,23 @@
 
     .span-common {
         color: #323338;
-        width: 83px;
+        width: 90px;
         display: flex;
-        gap: 3px;
+        gap: 6px;
         cursor: pointer;
 
         &.span-search {
-            gap: 2px;
+            gap: 3px;
+            padding-left: 0.1em;
+            margin-right: 1em;
+
+            span {
+                width: 21px;
+                height: 21px;
+                margin-left: 0.5em;
+                margin-top: -2.5px;
+                color: #38393e;
+            }
         }
 
         span {
