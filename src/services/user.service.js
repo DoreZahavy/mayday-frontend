@@ -19,13 +19,13 @@ function getLoggedinUser() {
 
 
 
-async function login({ username, password }) {
-    console.log('username:', username)
-    const user = await httpService.post(`auth/login`, { username, password })
+async function login({ email, password }) {
+    console.log('email:', email)
+    const user = await httpService.post(`auth/login`, { email, password })
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 
-    // return axios.post('/api/auth/login', { username, password })
+    // return axios.post('/api/auth/login', { email, password })
     //     .then(res => res.data)
     //     .then(user => {
     //         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
@@ -33,13 +33,13 @@ async function login({ username, password }) {
     //     })
 }
 
-async function signup({ username, password, fullname }) {
+async function signup({ email, password, fullname }) {
 
-
-    const user = await httpService.post(`auth/signup`, { username, password, fullname })
+console.log('email,password,fullname:', email,password,fullname)
+    const user = await httpService.post(`auth/signup`, { email, password, fullname })
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
-    // return axios.post('/api/auth/signup', { username, password, fullname })
+    // return axios.post('/api/auth/signup', { email, password, fullname })
     //     .then(res => res.data)
     //     .then(user => {
     //         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
@@ -71,7 +71,7 @@ async function query() {
 
 function getEmptyCredentials() {
     return {
-        username: '',
+        email: '',
         password: '',
         fullname: ''
     }

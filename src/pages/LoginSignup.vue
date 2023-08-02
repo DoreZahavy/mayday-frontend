@@ -1,5 +1,7 @@
 <script>
 import LoginHeader from '@/cmps/LoginHeader.vue'
+import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
+
 export default {
     name: 'LoginSignup',
 
@@ -7,12 +9,12 @@ export default {
         return {
             isSignup: false,
             credentials: {
-                username: 'admin',
+                email: 'admin',
                 password: 'admin'
             },
             signupInfo: {
                 fullname: '',
-                username: '',
+                email: '',
                 password: ''
             }
         }
@@ -20,7 +22,7 @@ export default {
     methods: {
         async login() {
             try {
-                await this.$store.dispatch({ type: 'login', credentials })
+                await this.$store.dispatch({ type: 'login', credentials:this.credentials })
                 showSuccessMsg(`Login successful`)
             }
             catch (err) {
@@ -29,9 +31,9 @@ export default {
             }
 
         },
-        async signup(signupInfo) {
+        async signup() {
             try {
-                await this.$store.dispatch({ type: 'signup', signupInfo })
+                await this.$store.dispatch({ type: 'signup', signupInfo:this.signupInfo })
                 showSuccessMsg(`Signup successful`)
             }
             catch (err) {
@@ -62,9 +64,9 @@ export default {
                     <input type="text" v-model="signupInfo.fullname" placeholder="Full name" />
                 </div>
                 <div class="input-container">
-                    <span class="input-label">Username</span>
+                    <span class="input-label">Email</span>
 
-                    <input type="text" v-model="signupInfo.username" placeholder="Username" />
+                    <input type="text" v-model="signupInfo.email" placeholder="Email" />
                 </div>
                 <div class="input-container">
                     <span class="input-label">Password</span>
@@ -76,18 +78,16 @@ export default {
             <form v-else @submit.prevent="login">
                 <h1><b>Log </b>In</h1>
                 <div class="input-container">
-                    <span class="input-label">Username</span>
-                    <input type="text" v-model="credentials.username" placeholder="Username" />
+                    <span class="input-label">Email</span>
+                    <input type="text" v-model="credentials.email" placeholder="Email" />
                 </div>
                 <div class="input-container">
                     <span class="input-label">Password</span>
                     <input type="password" v-model="credentials.password" placeholder="Password" />
                 </div>
             </form>
-            <button class="auth-btn">{{ isSignup ?
-                'Continue' :
-                'Log in'
-            }}<span v-icon="'loginArrow'"></span></button>
+            <button @click="signup" v-if="isSignup" class="auth-btn">Continue<span v-icon="'loginArrow'"></span></button>
+            <button @click="login" v-else class="auth-btn">Log in<span v-icon="'loginArrow'"></span></button>
             <hr />
             <div class="switch">
                 {{ isSignup ?

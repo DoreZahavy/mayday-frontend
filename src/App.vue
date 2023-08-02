@@ -18,7 +18,7 @@ export default {
   methods: {
     async loadBoards() {
       const user = userService.getLoggedinUser()
-      if (user) store.commit({ type: 'setLoggedinUser', user })
+      if (user) this.$store.commit({ type: 'setLoggedinUser', user })
       await this.$store.dispatch({ type: 'loadBoards' })
       const boardId = this.$route.params.boardId
       if (boardId) this.$store.commit({ type: "setBoardById", boardId })

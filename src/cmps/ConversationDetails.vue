@@ -1,16 +1,30 @@
 <template>
     <article class="conversation-item">
         <header>
-            <MemberPreview :member="update.user" />
+            <MemberPreview :member="update.user" class="member-thumbnail" />
             <h2>{{ this.update.user.fullname }}</h2>
-            <div>
+            <div class="flex">
+                <i v-html="getSvg('activityTime')"></i>
                 <span>{{ getTimePassed(update.date) }}</span>
-                <button @click="onRemoveUpdate" class="button-as-link" v-html="getSvg('trash')"></button>
             </div>
+            <el-popover placement="left-start" :width="265" trigger="click">
+                <button @click="onRemoveUpdate" class="remove-update-button button-as-link flex align-center fs14">
+                    <i v-html="getSvg('trash')"></i>
+                    <span>
+                        Delete update for everyone
+                    </span>
+                </button>
+                <template #reference>
+                    <div class="button-as-link actions-button" v-html="getSvg('threeDots')"></div>
+                </template>
+            </el-popover>
         </header>
         <section>
             <p ref="updateContent">
             </p>
+        </section>
+        <section class="actions">
+            <div @click="onLike" class="button-as-link"><span v-html="getSvg('like')"></span> Like</div>
         </section>
     </article>
 </template>

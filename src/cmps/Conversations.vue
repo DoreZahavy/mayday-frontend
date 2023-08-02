@@ -1,14 +1,14 @@
 <template>
     <section class="modal-content update-modal conversations">
-        <label for="quill" v-if="!editing">
+        <!-- <label for="quill" v-if="!editing">
             <input type="text" @focus="this.editing = true" placeholder="Write an update...">
-        </label>
-        <div class="quill-container" v-else>
+        </label> -->
+        <div class="quill-container" >
             <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content" ref="quillEditor"
-                class="quill-editor" id="quill">
+                class="quill-editor" id="quill" @blur="this.editing = false">
             </QuillEditor>
         </div>
-        <button @click="addUpdate" class="blue-button justify-self-end" v-if="editing">Update</button>
+        <button @click="addUpdate" class="blue-button justify-self-end">Update</button>
         <ul class="update-list">
             <li v-for="update in updates" class="update-list-item clean-list">
                 <conversationDetails :update="update" @removeUpdate="onRemoveUpdate" />

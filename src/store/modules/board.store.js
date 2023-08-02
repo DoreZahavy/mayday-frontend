@@ -16,6 +16,9 @@ export const boardStore = {
     board({ board }) {
       return board
     },
+    boardUsers({ board }) {
+      return board.members
+    },
     boardTitle({ board }) {
       return board?.title
     },
@@ -59,6 +62,9 @@ export const boardStore = {
   },
 
   mutations: {
+    addMember(state,{userId}){
+      console.log('state:', state)
+    },
     setBoardById(state, { boardId }) {
       console.log('boardId:', boardId)
       const board = state.boards.find(board => board._id === boardId)
