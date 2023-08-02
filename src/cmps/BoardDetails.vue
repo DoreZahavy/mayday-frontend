@@ -5,6 +5,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import Group from '@/cmps/Group.vue'
 import MinimizedGroup from "@/cmps/MinimizedGroup.vue"
 import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
+import CheckboxModal from '@/cmps/CheckboxModal.vue'
 import { Container, Draggable } from "vue3-smooth-dnd"
 import { svgService } from '../services/svg.service'
 
@@ -13,6 +14,7 @@ export default {
   data() {
     return {
       // collapse: true
+      checkedTasks: []
     }
   },
   computed: {
@@ -31,7 +33,8 @@ export default {
     MinimizedGroup,
     InPlaceEdit,
     Container,
-    Draggable
+    Draggable,
+    CheckboxModal
   },
   created() {
   },
@@ -104,6 +107,9 @@ export default {
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
+    },
+    onCheckedTasksChanged(tasks) {
+      this.checkedTasks = tasks
     }
 
   }
@@ -111,7 +117,7 @@ export default {
 </script>
 
 <template class="flex">
-  <Container :drag-begin-delay="200" @drop="onDropGrp" class="board-details" v-if="board">
+  <Container @drop="onDropGrp" class="board-details" v-if="board">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)"
@@ -123,7 +129,8 @@ export default {
         <div class="group-gap"></div>
         <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
           @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
-          @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)">
+          @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
+          @checkedTasksChanged="onCheckedTasksChanged">
         </Group>
       </div>
 
@@ -134,6 +141,7 @@ export default {
     </button>
 
 
+    <CheckboxModal v-if="checkedTasks.length >= 1" />
   </Container>
 </template>
 
