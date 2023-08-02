@@ -12,7 +12,7 @@
 }
 .home-layout {
     display: grid;
-    grid-template-columns: 0px minmax(auto, 1440px) 0px;
+    grid-template-columns: minmax(32px, 1fr) minmax(auto, 1440px) minmax(32px, 1fr);
     grid-template-rows: 72px auto;
     *:not(.full) {
         grid-column: 2;
