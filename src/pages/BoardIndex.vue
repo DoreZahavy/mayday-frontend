@@ -123,7 +123,7 @@ export default {
     <Sidebar />
     <div>
       <button
-        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 83.5px; right: 7%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.05em"
+        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 78.5px; right: 7%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.05em"
         @click="openActivities">Activity
         <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
       </button>
@@ -161,6 +161,34 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; width: 550px; height: 65px; background-color: rgba(157, 204, 251, 0); border-radius: 4px;margin-left: 2.72rem;">
+        <span
+          style="width:80px; display: flex; justify-content: center; align-items: center; font-size: 1em; width: 83px; margin-right: 1.3em; border-radius: 5px; cursor: pointer;"
+          class="blue-button">New Item
+        </span>
+        <span style="color: #323338; width:80px; display: flex; gap: 2px; width: 83px; cursor: pointer;">
+          <span v-html="getSvg('search')"
+            style="color: #323338; width:20px; height: 20px; display: flex; margin-top: -2px;"></span>Search
+        </span>
+        <span style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; cursor: pointer;">
+          <span v-html="getSvg('personFilter')"
+            style="color: #323338;  width:18px; height: 18px; display: flex; gap: 2px; margin-top: 0.7px;"></span>Person
+        </span>
+        <span
+          style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; margin-top: 4.5px; cursor: pointer;">
+          <span v-html="getSvg('filter')"
+            style="color: #323338;width:23px; height: 23px; display: flex; gap: 2px; margin-top: 0px;"></span>Filter</span>
+        <span
+          style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; margin-top: -2px; cursor: pointer;">
+          <span v-html="getSvg('sortBig')"
+            style="color: #323338; width:18px; height: 18px; display: flex; gap: 2px; margin-top: -1.3px;"></span>Sort
+        </span>
+        <span style="color: #323338; width:80px; display: flex; gap: 3px; width: 83px; cursor: pointer;">
+          <span v-html="getSvg('hide')"
+            style="color: #323338; width:18px; height: 18px; display: flex; margin-top: -1.9px"></span>Hide
+        </span>
+      </div>
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />

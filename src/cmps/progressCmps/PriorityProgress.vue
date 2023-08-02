@@ -38,7 +38,7 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 5.48px;
-  margin-left: 0.6em;
+  margin-inline: .6em;
   height: 67.93%;
   width: 89.2%;
   background-color: #c4c4c4;

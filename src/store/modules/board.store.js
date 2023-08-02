@@ -86,7 +86,7 @@ export const boardStore = {
     },
 
     saveBoard(state, { board }) {
-      if(!board) return
+      if (!board) return
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
@@ -126,7 +126,7 @@ export const boardStore = {
       })
       state.updates = taskUpdates.updates
     },
-    loadFirstBoard(state){
+    loadFirstBoard(state) {
       state.board = state.boards[0]
     }
 
@@ -135,17 +135,17 @@ export const boardStore = {
   actions: {
     async applyDragGrp(context, { dragResult }) {
       const { groups } = context.state.board
-      const { removedIndex, addedIndex, payload } = dragResult;
+      const { removedIndex, addedIndex, payload } = dragResult
 
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...groups];
-      let itemToAdd = payload;
+      if (removedIndex === null && addedIndex === null) return arr
+      const result = [...groups]
+      let itemToAdd = payload
 
       if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
+        itemToAdd = result.splice(removedIndex, 1)[0]
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
+        result.splice(addedIndex, 0, itemToAdd)
       }
       context.commit({ type: 'setGroupsOrder', result })
       try {
@@ -159,16 +159,16 @@ export const boardStore = {
     async applyDragHeader(context, { dragResult }) {
       const { cmpConfig } = context.state.board
       const { removedIndex, addedIndex, payload } = dragResult
-      let itemToAdd = payload;
+      let itemToAdd = payload
 
-      if (removedIndex === null && addedIndex === null) return;
+      if (removedIndex === null && addedIndex === null) return
       const result = [...cmpConfig]
 
       if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
+        itemToAdd = result.splice(removedIndex, 1)[0]
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
+        result.splice(addedIndex, 0, itemToAdd)
       }
       context.commit({ type: 'setCmpConfig', result })
       try {
@@ -181,17 +181,17 @@ export const boardStore = {
 
     async applyDragTask(context, { idx, dragResult }) {
       const arr = context.state.board.groups[idx].tasks
-      const { removedIndex, addedIndex, payload } = dragResult;
+      const { removedIndex, addedIndex, payload } = dragResult
 
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let itemToAdd = payload;
+      if (removedIndex === null && addedIndex === null) return arr
+      const result = [...arr]
+      let itemToAdd = payload
 
       if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
+        itemToAdd = result.splice(removedIndex, 1)[0]
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
+        result.splice(addedIndex, 0, itemToAdd)
       }
       context.commit({ type: 'setTaskOrder', result, idx })
 

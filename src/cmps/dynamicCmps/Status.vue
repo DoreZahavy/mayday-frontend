@@ -1,20 +1,22 @@
 <template>
-  <el-tooltip placement="bottom" trigger="click" effect="light" @show="handleTooltipOpen" @hide="handleTooltipClose">
-    <template #content>
-      <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
-        @click.stop="onUpdateStatus(label)">
-        {{ label.title }}
+  <el-popover ref="popover" placement="bottom" trigger="click" @show="handleTooltipOpen" @hide="handleTooltipClose">
+    <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
+      @click="onUpdateStatus(label)">
+      {{ label.title }}
+    </div>
+    <template #reference>
+      <div v-if="status" class="status status-content fs18" :class="status.color">
+        {{ status.title }}
       </div>
     </template>
-    <div v-if="status" class="status status-content fs18" :class="status.color">{{ status.title }}</div>
-  </el-tooltip>
+  </el-popover>
   <input ref="taskFocusedSwitch" type="text" style="opacity: 0; position: absolute; pointer-events: none;">
 </template>
 
 <script>
 export default {
   name: "Status",
-  emits:['update'],
+  emits: ['update'],
   props: {
     info: Object,
     groupColor: String
@@ -29,6 +31,7 @@ export default {
     onUpdateStatus(newStatus) {
       this.status = newStatus
       this.$emit('update', JSON.parse(JSON.stringify(this.status)))
+      this.$refs.popover.hide()
     },
     handleTooltipOpen() {
       requestAnimationFrame(() => {

@@ -1,4 +1,5 @@
-article.attachments, article.attachments-progress {
+article.attachments,
+article.attachments-progress {
     position: relative;
     width: 100%;
     height: 100%;
@@ -16,13 +17,13 @@ article.attachments, article.attachments-progress {
         cursor: pointer;
 
         &.file-icon {
-            transform: translate(-40%, -40%);
+            transform: translate(-40%, -44%);
         }
 
         &.plus-icon {
-            transform: translate(-80%, -26%);
+            transform: translate(-80%, -30%);
             scale: 0.8;
-            transition: 0.13s;
+            transition: scale 0.13s;
 
             &:hover {
                 filter: brightness(85%);
@@ -40,7 +41,6 @@ article.attachments, article.attachments-progress {
         scale: 1;
     }
 
- 
     .file-list {
         margin-block-start: 8px;
         display: flex;
@@ -80,21 +80,21 @@ article.attachments, article.attachments-progress {
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: translate(0 ,-2px);
+            transform: translate(0, -2px);
         }
     }
 }
-   // <ul class="file-pill-list clean-list">
+// <ul class="file-pill-list clean-list">
 
-    //                 <li v-for="file in files">
+//                 <li v-for="file in files">
 
-    //                     <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
-    //                     <span v-if="isImage(file)" class="x-btn" v-icon="'imgFile'"></span>
-    //                     <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span>
-    //                     <p>{{ file }}</p>
-    //                     <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
-    //                 </li>
-    //             </ul>
+//                     <span v-if="isPdf(file)" class="x-btn" v-icon="'pdf'"></span>
+//                     <span v-if="isImage(file)" class="x-btn" v-icon="'imgFile'"></span>
+//                     <span v-if="isVideo(file)" class="x-btn" v-icon="'video'"></span>
+//                     <p>{{ file }}</p>
+//                     <span @click="removeFile(member._id)" class="x-btn" v-icon="'xButton'"></span>
+//                 </li>
+//             </ul>
 .file-pill-list {
     width: 264px;
     // padding-top: 5px;
@@ -131,23 +131,21 @@ article.attachments, article.attachments-progress {
     p {
         color: $primary-text-color;
         font-weight: 400;
-        font-size: em(14px,12px);
-     }
-     span > * {
+        font-size: em(14px, 12px);
+    }
+    span > * {
         color: #676879;
         margin-inline-end: 8px;
         width: 12.66667;
         height: 17;
-        transform: translate(0,2px);
+        transform: translate(0, 2px);
     }
     &:hover {
         background-color: $primary-btn-color;
         color: #fff;
-        svg,p{
+        svg,
+        p {
             color: #fff;
-
         }
     }
-  
-    
 }

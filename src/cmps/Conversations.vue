@@ -5,10 +5,10 @@
         </label>
         <div class="quill-container" v-else>
             <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content" ref="quillEditor"
-                class="quill-editor" id="quill">
+                class="quill-editor" id="quill" @blur="this.editing = false">
             </QuillEditor>
         </div>
-        <button @click="addUpdate" class="blue-button justify-self-end">Update</button>
+        <button @click="addUpdate" class="blue-button justify-self-end" v-if="editing">Update</button>
         <ul class="update-list">
             <li v-for="update in updates" class="update-list-item clean-list">
                 <conversationDetails :update="update" @removeUpdate="onRemoveUpdate" />
