@@ -1,5 +1,6 @@
 .home-header{
     // padding: 0 $btnSml;
+    padding-inline: 32px;
     img{
         height: em(26px,14px);
         width: em(26px,14px);
@@ -37,6 +38,7 @@
         line-height: lh(17px,13px);
         border-radius: 3em;
         min-width: 130px;
+        max-width: 140px;
         height: 40px;
         margin-inline-start: 1em;
         padding: 8px 14px 8px 16px;
