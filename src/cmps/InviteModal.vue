@@ -61,7 +61,7 @@ export default {
                 <div v-out="closeFilteredUsers" v-if="showFilteredUsers" class="filtered-users">
                     <ul class="clean-list">
                         <li v-for="user in filteredUsers" @click="addUser(user)">
-                            <img :src="user.imgUrl" alt="https://cdn1.monday.com/dapulse_default_photo.png">
+                            <img :src="user.imgUrl">
                             {{ user.fullname }}
                         </li>
                     </ul>
@@ -71,7 +71,7 @@ export default {
                 <li class="member flex align-center space-between" v-for="member in boardUsers">
                     <div class="flex align-center">
                         <!-- <pre>{{ member }}</pre> -->
-                        <img :src="member.imgUrl" alt="https://cdn1.monday.com/dapulse_default_photo.png">
+                        <img :src="member.imgUrl" >
                         <p>{{ member.fullname }}</p>
                     </div>
                     <span v-icon="'xButton'" @click="removeUser(member._id)"></span>
