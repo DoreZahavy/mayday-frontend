@@ -7,6 +7,7 @@ import BoardInfoModal from '../cmps/BoardInfoModal.vue'
 import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
 import AttachmentModal from '../cmps/AttachmentModal.vue'
+import InviteModal from '../cmps/InviteModal.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
@@ -22,7 +23,8 @@ export default {
       showDrawerModal: false,
       showActivitiesContent: false,
       showConversationsContent: false,
-      conversationsTaskId: undefined
+      conversationsTaskId: undefined,
+      inviteModal: false
     }
   },
   computed: {
@@ -47,7 +49,8 @@ export default {
     BoardInfoModal,
     Activities,
     Conversations,
-    AttachmentModal
+    AttachmentModal,
+    InviteModal
   },
   created() {
     socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
@@ -57,7 +60,7 @@ export default {
       this.openConversations(taskId)
     })
   },
-  unmounted(){
+  unmounted() {
     socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
   },
@@ -99,6 +102,10 @@ export default {
     },
     closeDrawerModal() {
       this.showDrawerModal = false
+    },
+    addMember(userId){
+      console.log('userId:', userId)
+      this.$store.commit({type:'addMember',userId})
     }
   },
   watch: {
@@ -120,6 +127,8 @@ export default {
         @click="openActivities">Activity
         <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
       </button>
+      <!-- <button @click="inviteModal = true" class="invite-btn">invite</button> -->
+      <InviteModal v-if="inviteModal" @add="addMember" @close="inviteModal = false" />
       <transition name="slide">
         <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
@@ -140,7 +149,7 @@ export default {
     </div>
     <section class="board-container">
       <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard" />
-      <BoardHeader :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
+      <BoardHeader @open="inviteModal = true" :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
       <nav class="board-nav">
 
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"

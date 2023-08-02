@@ -1,5 +1,5 @@
-import { boardService } from "@/services/board.service.js";
-// import { boardService } from "@/services/board.service.local.js";
+// import { boardService } from "@/services/board.service.js"
+import { boardService } from "@/services/board.service.local.js"
 
 export const boardStore = {
   strict: true,
@@ -15,6 +15,9 @@ export const boardStore = {
   getters: {
     board({ board }) {
       return board
+    },
+    boardUsers({ board }) {
+      return board.members
     },
     boardTitle({ board }) {
       return board?.title
@@ -59,6 +62,9 @@ export const boardStore = {
   },
 
   mutations: {
+    addMember(state,{userId}){
+      console.log('state:', state)
+    },
     setBoardById(state, { boardId }) {
       console.log('boardId:', boardId)
       const board = state.boards.find(board => board._id === boardId)
