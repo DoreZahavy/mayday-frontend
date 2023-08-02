@@ -2,12 +2,12 @@
     <article style="position: relative; height: 100%; width: 100%; text-align: center;" class="date-container timeline fs16"
         :class="{ hovered: !isDateNull && hovered }" @mouseover="onMouseOver" @mouseout="onMouseOut">
         <div class="flex justify-center align-center" style="height:100%; width: 100%;">
-            <span v-if="!hovered"
-                style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
-                    formattedStartDate }}<span v-if="formattedDueDate !== ''"> - </span>{{ formattedDueDate }}</span>
+            <span v-if="!hovered" style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400; white-space: nowrap;
+            text-overflow: ellipsis; overflow: hidden;" :class="{ 'align-left': isDifferentYear }">
+                {{ formattedStartDate }}<span v-if="formattedDueDate !== ''"> - </span>{{ formattedDueDate }}</span>
             <span v-else
-                style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
-                    totalDays }}</span>
+                style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                {{ totalDays }}</span>
             <div class="progress-bar">
                 <div class="progress-fill" :style="progressStyle"></div>
             </div>
@@ -189,5 +189,10 @@ export default {
 
 .progress-fill {
     height: 100%;
+}
+
+.align-left {
+    text-align: left;
+    max-width: 6.5em;
 }
 </style>

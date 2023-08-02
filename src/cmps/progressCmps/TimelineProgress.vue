@@ -3,11 +3,13 @@
         class="overall-timeline fs16" :class="{ hovered: !isDateNull && hovered }">
         <div class="flex justify-center align-center" style="position: relative; height:100%; width: 100%;">
             <span v-if="!hovered"
-                style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
-                    formattedStartDate }}<span v-if="formattedDueDate !== ''"> - </span>{{ formattedDueDate }}</span>
-            <span v-else
-                style="position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight: 400;">{{
-                    totalDays }}</span>
+                style="position:absolute; z-index:1; width:79%; text-align:center; color: #fff; font-weight: 400;"
+                :class="{ 'align-left': isDifferentYear }"> {{
+                    formattedStartDate
+                }}<span v-if="formattedDueDate !== ''"> - </span>{{ formattedDueDate }}</span>
+            <span v-else style=" position:absolute; z-index:1; width:100%; text-align:center; color: #fff; font-weight:
+            400;">{{
+                totalDays }}</span>
             <div class="overall-progress-bar">
                 <div class="overall-progress-fill" :style="progressStyle" :class="{ hovered: !isDateNull && hovered }">
                 </div>
@@ -167,5 +169,13 @@ export default {
 
 .overall-progress-fill.hovered {
     filter: brightness(80%);
+}
+
+.align-left {
+    text-align: left;
+    max-width: 6.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 </style>
