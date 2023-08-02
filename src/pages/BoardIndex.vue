@@ -50,7 +50,7 @@ export default {
     Activities,
     Conversations,
     AttachmentModal,
-    InviteModal
+    InviteModal,
   },
   created() {
     socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
@@ -185,6 +185,7 @@ export default {
       </section>
     </section>
     <AttachmentModal :file="attachmentModal" v-if="attachmentModal" />
+    <!-- <CheckboxModal :checkedTasks=""/> -->
   </main>
 </template>
 
