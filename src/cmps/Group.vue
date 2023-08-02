@@ -9,15 +9,15 @@
                 <div class="group-actions-container">
                     <!-- <button @click="onRemoveGroup" v-icon="'trash'" class="button-as-link d-cmp group-actions"></button> -->
                     <el-popover placement="left-start" :width="265" trigger="click">
-                        <button @click="onRemoveGroup"
-                            class="remove-update-button button-as-link flex align-center fs14">
+                        <button @click="onRemoveGroup" class="remove-update-button button-as-link flex align-center fs14">
                             <i v-html="getSvg('trash')"></i>
                             <span>
                                 Delete
                             </span>
                         </button>
                         <template #reference>
-                            <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')"></div>
+                            <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')">
+                            </div>
                         </template>
                     </el-popover>
                 </div>
@@ -75,7 +75,8 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox :checkBoxId="task._id" />
+                        <Checkbox :checkBoxId="task._id" :groupColor="group.color" @checked="onChecked"
+                            @unchecked="onUnchecked" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                         <div class="conversation-cell">
                             <ConversationBtn :taskId="task._id" :taskConversationsAmount="task.updates.length"
@@ -149,7 +150,8 @@ export default {
             groupTitle: this.group.title,
             showPicker: false,
             editGroup: false,
-            addTaskTxt: ''
+            addTaskTxt: '',
+            checkedTasks: []
         }
     },
     computed: {
@@ -222,6 +224,15 @@ export default {
         },
         onCollapse() {
             this.$emit('update', { prop: 'minimized', toUpdate: true })
+        },
+        onChecked(task) {
+            this.checkedTasks.push(task)
+            console.log(this.checkedTasks)
+        },
+        onUnchecked(task) {
+            const idx = this.checkedTasks.findIndex((t) => t._id === task._id)
+            this.checkedTasks.splice(idx, 1)
+            console.log(this.checkedTasks)
         }
     },
     components: {
@@ -241,7 +252,7 @@ export default {
         Draggable,
         ConversationBtn,
         ProgressBar,
-        AddTask
+        AddTask,
     },
     watch: {
         groupTitle() {
@@ -252,10 +263,16 @@ export default {
         },
         addTaskTxt() {
             this.$emit('addTask', this.addTaskTxt)
-            // this.addTaskTxt = ''
         },
         collapseAll() {
             console.log(this.collapseAll)
+        },
+        checkedTasks: {
+            handler(checkedTasks) {
+                console.log(checkedTasks)
+                this.$emit('checkedTasksChanged', this.checkedTasks)
+            },
+            deep: true
         }
     }
 }
