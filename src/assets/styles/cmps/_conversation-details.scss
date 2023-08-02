@@ -3,12 +3,18 @@
     grid-template-rows: 64px minmax(100px, auto) 64px;
     header{
         display: grid;
-        grid-template-columns: 64px auto 120px 64px;
+        grid-template-columns: 30px auto  64px;
         padding: 16px;
         padding-block-end: 8px;
+        h2{
+            font-size: 16px;
+            font-family: figtree;
+            font-weight: 400;
+        }
     }
     section p{
         padding: 16px;
+        font-size: 16px;
     }
     .image-container {
         border-radius: 100%;
@@ -23,4 +29,14 @@
             height: auto;
         }
     }
+    .member-preview {
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-inline-start: -10px;
+      }
 }

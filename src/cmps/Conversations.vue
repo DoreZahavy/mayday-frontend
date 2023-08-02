@@ -8,7 +8,7 @@
                 class="quill-editor" id="quill">
             </QuillEditor>
         </div>
-        <button @click="addUpdate" class="blue-button justify-self-end">Update</button>
+        <button @click="addUpdate" class="blue-button justify-self-end" v-if="editing">Update</button>
         <ul class="update-list">
             <li v-for="update in updates" class="update-list-item clean-list">
                 <conversationDetails :update="update" @removeUpdate="onRemoveUpdate" />

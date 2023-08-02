@@ -25,7 +25,7 @@ export default {
 </script>
   
 <style>
-.member-priview {
+.member-preview {
   color: #fff;
   height: 30px;
   width: 30px;
