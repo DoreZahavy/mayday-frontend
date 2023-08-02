@@ -71,7 +71,6 @@
     position: relative;
     opacity: 0;
     z-index: 38;
-
     .task-actions {
         position: absolute;
         left: -46px;
@@ -80,10 +79,21 @@
         width: 40px;
         display: flex;
         justify-content: center;
+        align-items: center;
         background-color: #fff;
         cursor: pointer;
         box-shadow: 0 5px #fff;
-
+        .actions-button{
+            height: 21px;
+            width: 21px;
+            border-radius: 4px;
+            &:hover{
+                background-color: $secondary-btn-hover-color;
+            }
+            svg{
+                padding-block-end: 2px;
+            }
+        }
         .task-trash {
             padding: 0;
             cursor: pointer;
