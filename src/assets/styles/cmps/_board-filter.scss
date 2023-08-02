@@ -1,0 +1,60 @@
+.board-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    height: 65px;
+    border-radius: 3px;
+    margin-left: 2.72rem;
+    margin-bottom: 1.5em;
+
+    .new-task-button {
+        width: 83px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        margin-right: 1.3em;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .span-common {
+        color: #323338;
+        width: 83px;
+        display: flex;
+        gap: 3px;
+        cursor: pointer;
+
+        &.span-search {
+            gap: 2px;
+        }
+
+        span {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            gap: 2px;
+            margin-top: -0.5px;
+            color: #676879;
+
+            &.span-filter {
+                width: 23px;
+                height: 23px;
+                margin-top: 0px;
+            }
+
+            &.span-person {
+                margin-top: -0.5px;
+            }
+
+            &.span-sort {
+                margin-top: -1.3px;
+            }
+
+            &.span-hide {
+                margin-top: -1.4px;
+            }
+        }
+    }
+}
