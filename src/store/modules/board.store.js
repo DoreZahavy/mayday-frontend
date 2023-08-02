@@ -1,4 +1,4 @@
-// import { boardService } from "@/services/board.service.js"
+// import { boardService } from '@/services/board.service.js'
 import { boardService } from "@/services/board.service.local.js"
 
 export const boardStore = {
@@ -25,6 +25,7 @@ export const boardStore = {
     miniBoard({ board }) {
       return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
+
     boards({ boards }) {
       return boards
     },
@@ -62,9 +63,7 @@ export const boardStore = {
   },
 
   mutations: {
-    addMember(state,{userId}){
-      console.log('state:', state)
-    },
+
     setBoardById(state, { boardId }) {
       console.log('boardId:', boardId)
       const board = state.boards.find(board => board._id === boardId)
@@ -128,11 +127,42 @@ export const boardStore = {
     },
     loadFirstBoard(state) {
       state.board = state.boards[0]
-    }
+    },
+    addMember(state, { user }) {
+
+      state.board.members.unshift(user)
+    },
+    removeMember(state, { userId }) {
+      const memberIdx = state.board.members.findIndex(m => m._id === userId)
+      state.board.members.splice(memberIdx, 1)
+    },
 
   },
 
   actions: {
+    async addMember(context, { user }) {
+      try {
+
+        context.commit({ type: 'addMember', user })
+        return await boardService.saveBoard(context.state.board)
+
+      } catch (err) {
+        console.log(err)
+        throw err
+      }
+    },
+    async removeMember(context, { userId }) {
+      try {
+
+        context.commit({ type: 'removeMember', userId })
+        return await boardService.saveBoard(context.state.board)
+      } catch (err) {
+        console.log(err)
+        throw err
+      }
+      // console.log('state:', state)
+      // state.board.members.unshift
+    },
     async applyDragGrp(context, { dragResult }) {
       const { groups } = context.state.board
       const { removedIndex, addedIndex, payload } = dragResult

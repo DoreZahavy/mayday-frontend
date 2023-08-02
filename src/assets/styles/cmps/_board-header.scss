@@ -73,6 +73,15 @@
         outline: none;
         border-radius: 4px;
         cursor: pointer;
+        color: $primary-text-color;
+        font-family: figtree;
+        font-size: 1rem;
+        margin-inline-start: 6px;
+        span:first-child{
+            margin-inline-end: 8px;
+            color: #676879;
+            transform: translate(0,1px);
+        }
 
         &:hover {
             background-color: $secondary-btn-hover-color;

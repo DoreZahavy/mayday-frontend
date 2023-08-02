@@ -38,7 +38,7 @@ async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
         activity.task = taskId
         const group = board.groups.find(g => g._id === groupId)
         const task = group.tasks.find(t => t._id === taskId)
-        activity.taskName = task.title
+        if(task.title) activity.taskName = task.title
         activity.updateFrom = task[prop]
         if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
         task[prop] = toUpdate
