@@ -1,4 +1,4 @@
-.checkbox-modal{
+.checkbox-modal {
     z-index: 42;
     position: sticky;
     left: 25%;
@@ -7,4 +7,33 @@
     height: 64px;
     background-color: white;
     border-radius: 6px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 63px 1fr 63px;
+
+    .task-count {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: white;
+        background-color: $primary-btn-color;
+    }
+    .task-info-container{
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+    .close-modal{
+        border-inline-start: 2px solid $border-clr;
+        svg{
+            width:26px;
+            height: 26px;
+        }
+    }
+    .task-pebble{
+        width: 7px;
+        height: 7px;
+        border-radius: 100%;
+        margin: 4px;
+    }
 }

@@ -141,7 +141,7 @@ export default {
     </button>
 
 
-    <CheckboxModal v-if="checkedTasks.length >= 1" />
+    <CheckboxModal v-if="checkedTasks.length >= 1"  :checkedTasks="this.checkedTasks"/>
   </Container>
 </template>
 

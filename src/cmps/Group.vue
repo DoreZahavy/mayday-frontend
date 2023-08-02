@@ -227,7 +227,6 @@ export default {
         },
         onChecked(task) {
             this.checkedTasks.push(task)
-            console.log(this.checkedTasks)
         },
         onUnchecked(task) {
             const idx = this.checkedTasks.findIndex((t) => t._id === task._id)
@@ -265,11 +264,9 @@ export default {
             this.$emit('addTask', this.addTaskTxt)
         },
         collapseAll() {
-            console.log(this.collapseAll)
         },
         checkedTasks: {
             handler(checkedTasks) {
-                console.log(checkedTasks)
                 this.$emit('checkedTasksChanged', this.checkedTasks)
             },
             deep: true
