@@ -8,6 +8,7 @@ import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
 import AttachmentModal from '../cmps/AttachmentModal.vue'
 import InviteModal from '../cmps/InviteModal.vue'
+import BoardFilter from '../cmps/BoardFilter.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
@@ -34,6 +35,9 @@ export default {
     boardTitle() {
       return this.$store.getters.boardTitle
     },
+    board() {
+      return this.$store.getters.board
+    },
     boardId() {
       return this.$route.params.boardId
     },
@@ -50,7 +54,8 @@ export default {
     Activities,
     Conversations,
     AttachmentModal,
-    InviteModal
+    InviteModal,
+    BoardFilter
   },
   created() {
     socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
@@ -103,9 +108,20 @@ export default {
     closeDrawerModal() {
       this.showDrawerModal = false
     },
-    addMember(userId){
+    addMember(userId) {
       console.log('userId:', userId)
-      this.$store.commit({type:'addMember',userId})
+      this.$store.commit({ type: 'addMember', userId })
+    },
+    async addTask() {
+      try {
+        const currBoard = { ...this.board }
+        const groupId = JSON.parse(JSON.stringify(currBoard.groups))[0]._id
+        await this.$store.dispatch({ type: 'addTask', groupId, title: "New Task" })
+        showSuccessMsg('Task added')
+
+      } catch (err) {
+        showErrorMsg('Failed to add task')
+      }
     }
   },
   watch: {
@@ -161,24 +177,8 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-      <div class="board-filter-container">
-        <span class="blue-button new-task-button">New Item</span>
-        <span class="span-common span-search">
-          <span v-html="getSvg('search')" class="span-common"></span>Search
-        </span>
-        <span class="span-common" style="margin-top: 0px; gap: 0.4em;">
-          <span v-html="getSvg('personFilter')" class="span-person"></span>Person
-        </span>
-        <span class="span-common" style="margin-top: 6.4px;">
-          <span v-html="getSvg('filter')" class="span-filter"></span>Filter
-        </span>
-        <span class="span-common" style="margin-top: 0; gap: 0.3em;">
-          <span v-html="getSvg('sortBig')" class="span-sort"></span>Sort
-        </span>
-        <span class="span-common" style="margin-top: 0; gap: 0.4em;">
-          <span v-html="getSvg('hide')" class="span-hide"></span>Hide
-        </span>
-      </div>
+
+      <BoardFilter @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />
