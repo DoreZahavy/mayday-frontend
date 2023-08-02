@@ -39,6 +39,11 @@ export default {
     },
     attachmentModal() {
       return this.$store.getters.attachmentModal
+    },
+    membersLength(){
+      // const members = this.$store.getters.boardMembers
+      // return members.length
+      
     }
   },
   components: {
@@ -75,6 +80,8 @@ export default {
   },
   methods: {
     async updateBoard({ prop, toUpdate }) {
+      console.log('prop:', prop)
+      console.log('toUpdate:', toUpdate)
       try {
         await this.$store.dispatch({ type: 'updateBoard', prop, toUpdate })
         showSuccessMsg('board Updated')
@@ -103,9 +110,13 @@ export default {
     closeDrawerModal() {
       this.showDrawerModal = false
     },
-    addMember(userId){
-      console.log('userId:', userId)
-      this.$store.commit({type:'addMember',userId})
+    addMember(user){
+      // console.log('userId:', userId)
+      this.$store.dispatch({type:'addMember',user})
+    },
+    removeMember(userId){
+      
+      this.$store.dispatch({type:'removeMember',userId})
     }
   },
   watch: {
@@ -124,7 +135,7 @@ export default {
     <div>
       
       <!-- <button @click="inviteModal = true" class="invite-btn">invite</button> -->
-      <InviteModal v-if="inviteModal" @add="addMember" @close="inviteModal = false" />
+      <InviteModal v-if="inviteModal" @add="addMember" @remove="removeMember" @close="inviteModal = false" />
       <transition name="slide">
         <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
@@ -145,7 +156,7 @@ export default {
     </div>
     <section class="board-container">
       <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard" />
-      <BoardHeader @openact="openActivities" @open="inviteModal = true" :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
+      <BoardHeader :members="membersLength" @openact="openActivities" @open="inviteModal = true" :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
       <nav class="board-nav">
 
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"

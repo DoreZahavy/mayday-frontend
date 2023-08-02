@@ -4,7 +4,7 @@ import InviteModal from '../cmps/InviteModal.vue'
 
 export default {
     emits: ['update', 'toggleModal'],
-    props: ['miniBoard'],
+    props: ['members','miniBoard'],
     data() {
         return {
             boardTitle: this.miniBoard.title
@@ -59,7 +59,7 @@ export default {
                 </button>
                 <button class="invite-btn" @click="openInviteModal">
                 <span v-icon="'invMember'"></span>
-                <span>Invite</span>
+                <span>Invite / {{ members }}</span>
                 </button>
 
             </div>

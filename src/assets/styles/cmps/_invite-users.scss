@@ -15,10 +15,24 @@
         top: 50vh;
         left: 50vw;
         transform: translate(-50%, -50%);
-        overflow: hidden;
+        overflow: scroll;
         z-index: 60;
         border-radius: 0.5em;
-        box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px;
+        box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px;
+        // box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px;
+
+        .x-btn {
+            position: absolute;
+            top: 20px;
+            right: 12px;
+            width: 28px;
+            height: 32px;
+            cursor: pointer;
+            svg {
+                // font-size: 24px;
+                scale: 1.7;
+            }
+        }
         h1 {
             font-size: em(24px, 14px);
             font-weight: 400;
@@ -61,7 +75,7 @@
                     }
                 }
             }
-           
+
             input {
                 background-color: transparent;
                 width: 100%;
@@ -96,9 +110,9 @@
                 }
                 p {
                     font-weight: 500;
-                    font-size: em(15px,14px);
+                    font-size: em(15px, 14px);
                 }
-                span{
+                span {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -109,11 +123,11 @@
                     height: 32px;
                     width: 36px;
                     border-radius: 4px;
-                    &:hover{
-                        background-color:$secondary-btn-hover-color ;
+                    &:hover {
+                        background-color: $secondary-btn-hover-color;
                     }
                 }
-                svg{
+                svg {
                     width: 20px;
                     height: 20px;
                 }
