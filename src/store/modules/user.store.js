@@ -16,6 +16,9 @@ export const userStore = {
         loggedinUser({ loggedinUser }) {
             return loggedinUser
         },
+        usersExcludeMe({users, loggedinUser}) {
+            return users.filter(u => u._id !== loggedinUser._id)
+        },
     },
 
     mutations: {
@@ -24,6 +27,12 @@ export const userStore = {
         },
         setLoggedinUser(state, { user }) {
             state.loggedinUser = (user)? {...user} : null
+        },
+        setUsers(state, { users }) {
+            state.users = users
+        },
+        removeUser(state, { userId }) {
+            state.users = state.users.filter(user => user._id !== userId)
         },
     },
 
@@ -40,6 +49,7 @@ export const userStore = {
         },
         async signup({ commit }, { signupInfo }) {
             try {
+                console.log('signupInfo:', signupInfo)
                 const user = await userService.signup(signupInfo)
                 commit({ type: "setUser", user })
             } catch (err) {
@@ -66,7 +76,26 @@ export const userStore = {
                 console.log(err)
                 throw err
             }
-        }
+        },
+        async removeUser({ commit }, { userId }) {
+            try {
+                await userService.remove(userId)
+                commit({ type: 'removeUser', userId })
+            } catch (err) {
+                console.log('userStore: Error in removeUser', err)
+                throw err
+            }
+        },
+        // async updateUser({ commit }, { user }) {
+        //     try {
+        //         user = await userService.update(user)
+        //         commit({ type: 'setUser', user })
+        //     } catch (err) {
+        //         console.log('userStore: Error in updateUser', err)
+        //         throw err
+        //     }
+
+        // },
 
 
     },
