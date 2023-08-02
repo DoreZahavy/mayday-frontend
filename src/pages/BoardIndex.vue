@@ -122,11 +122,7 @@ export default {
     <MainHeader />
     <Sidebar />
     <div>
-      <button
-        style="position: fixed; font-family:'figtree'; cursor: pointer; z-index: 43; top: 78.5px; right: 7%; border: none; background-color: transparent; padding: 5px; font-weight: 100; font-size: 1.05em"
-        @click="openActivities">Activity
-        <span v-html="getSvg('person')" style="position:absolute; top: 2px; right: -28px;"></span>
-      </button>
+      
       <!-- <button @click="inviteModal = true" class="invite-btn">invite</button> -->
       <InviteModal v-if="inviteModal" @add="addMember" @close="inviteModal = false" />
       <transition name="slide">
@@ -149,7 +145,7 @@ export default {
     </div>
     <section class="board-container">
       <BoardInfoModal @closeModal="toggleModal" @update="updateBoard" v-if="this.showModal" :miniBoard="miniBoard" />
-      <BoardHeader @open="inviteModal = true" :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
+      <BoardHeader @openact="openActivities" @open="inviteModal = true" :miniBoard="miniBoard" @update="updateBoard" @toggleModal="toggleModal" />
       <nav class="board-nav">
 
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"

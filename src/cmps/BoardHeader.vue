@@ -3,24 +3,27 @@ import InPlaceEdit from '@/cmps/InPlaceEdit.vue'
 import InviteModal from '../cmps/InviteModal.vue'
 
 export default {
-    emits:['update', 'toggleModal'],
-    props:['miniBoard'],
-    data(){
+    emits: ['update', 'toggleModal'],
+    props: ['miniBoard'],
+    data() {
         return {
-            boardTitle:this.miniBoard.title
+            boardTitle: this.miniBoard.title
         }
     },
-    methods:{
-       
-        updateBoard(title){
-            this.$emit('update',{prop:'title',toUpdate:title})
+    methods: {
+
+        updateBoard(title) {
+            this.$emit('update', { prop: 'title', toUpdate: title })
 
         },
-        openInviteModal(){
+        openInviteModal() {
             this.$emit('open')
+        },
+        openActivities() {
+            this.$emit('openact')
         }
     },
-    components:{
+    components: {
         InPlaceEdit,
         InviteModal
     },
@@ -50,12 +53,17 @@ export default {
                 <InPlaceEdit class="board-title " :modelValue="boardTitle" @update:modelValue="updateBoard" />
                 <span class="info-icon" @click="this.$emit('toggleModal')" v-icon="'infoBig'"></span>
             </div>
-            <div class="btns">
-                <button @click="openInviteModal" class="invite-btn">invite</button>
+            <div class="btns flex align-center">
+                <button class="activity-btn flex align-center" @click="openActivities"><span>Activity</span>
+                    <span v-icon="'person'"></span>
+                </button>
+                <button class="invite-btn" @click="openInviteModal">
+                <span v-icon="'invMember'"></span>
+                <span>Invite</span>
+                </button>
 
             </div>
         </div>
-        <p class="board-desc" >{{ miniBoard.desc }} <span @click="this.$emit('toggleModal')">See More</span></p> 
+        <p class="board-desc">{{ miniBoard.desc }} <span @click="this.$emit('toggleModal')">See More</span></p>
     </header>
-
 </template>
