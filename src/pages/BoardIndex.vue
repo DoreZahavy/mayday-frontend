@@ -8,16 +8,11 @@ import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
 import AttachmentModal from '../cmps/AttachmentModal.vue'
 import InviteModal from '../cmps/InviteModal.vue'
-import BoardFilter from '@/cmps/BoardFilter.vue'
-
+import BoardFilter from '../cmps/BoardFilter.vue'
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
 import { SOCKET_EMIT_SET_TOPIC, socketService } from '../services/socket.service'
-// import { socketService } from "./socket.service"
-import { store } from '../store'
-
 export default {
-
   data() {
     return {
       title: '',
@@ -49,7 +44,6 @@ export default {
     membersLength() {
       // const members = this.$store.getters.boardMembers
       // return members.length
-
     }
   },
   components: {
@@ -65,20 +59,17 @@ export default {
     BoardFilter
   },
   created() {
-  
-    // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-
+     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+     // socketService.on(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
       this.openConversations(taskId)
     })
   },
   unmounted() {
     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-
   },
   mounted() {
-   
     document.title = 'Mayday'
     setTimeout(() => {
       document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
@@ -94,7 +85,6 @@ export default {
       try {
         await this.$store.dispatch({ type: 'updateBoard', prop, toUpdate })
         showSuccessMsg('board Updated')
-
       } catch (err) {
         showErrorMsg('Failed to update Board')
       }
@@ -125,28 +115,31 @@ export default {
       this.$store.dispatch({ type: 'addMember', user })
     },
     removeMember(userId) {
-
       this.$store.dispatch({ type: 'removeMember', userId })
     },
-   
+    async addTask() {
+      try {
+        const groupId = JSON.parse(JSON.stringify({ ...this.board }.groups[0]._id))
+        await this.$store.dispatch({ type: 'addTask', groupId, title: 'New Task' })
+        showSuccessMsg('Task added')
+      } catch (err) {
+        showErrorMsg('Failed to add task')
+      }
+    },
   },
   watch: {
     boardId() {
-      // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
     },
   }
 }
 </script>
-
 <template>
   <main class="main-layout">
     <MainHeader />
     <Sidebar />
     <div>
-
       <!-- <button @click="inviteModal = true" class="invite-btn">invite</button> -->
       <InviteModal v-if="inviteModal" @add="addMember" @remove="removeMember" @close="inviteModal = false" />
       <transition name="slide">
@@ -158,9 +151,8 @@ export default {
             Teams</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link" @click="openActivities">Activity</button>
-            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
+            <button class="drawer-nav-link" @click="openConversations">Updates</button>
           </nav>
-          <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
           <Activities v-else-if="showActivitiesContent" :boardId="boardId" :taskId="conversationsTaskId">
@@ -173,21 +165,18 @@ export default {
       <BoardHeader :members="membersLength" @openact="openActivities" @open="inviteModal = true" :miniBoard="miniBoard"
         @update="updateBoard" @toggleModal="toggleModal" />
       <nav class="board-nav">
-
         <RouterLink :class="{ active: active === 'table' }" @click="active = 'table'" :to="'/board/' + boardId"
           class="nav-item">
           <!-- <span>&#61996</span> -->
           <span v-html="getSvg('homeSml')"></span>Main Table
         </RouterLink>
-
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-
       <BoardFilter style="
     position: sticky;
     left: 2.72rem;
-    top: 0px;" @addTask="addTask" @filter="console.log('filter')" />
+    top: 0px;" :board="board" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />
@@ -197,5 +186,12 @@ export default {
     <!-- <CheckboxModal :checkedTasks=""/> -->
   </main>
 </template>
+
+
+
+
+
+
+
 
 
