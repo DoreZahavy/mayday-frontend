@@ -34,7 +34,7 @@ export default {
             content: null
         }
     },
-    created() {
+    mounted() {
         this.updates = this.$store.getters.updates
     },
     methods: {

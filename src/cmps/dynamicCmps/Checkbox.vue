@@ -19,8 +19,8 @@ export default {
     }
   },
   created() {
-    const ref = 'checkbox' + this.taskId
-    this.$refs[ref].addEventListener('change', onElementCheckedChange);
+    // const ref = 'checkbox' + this.taskId
+    // this.$refs[ref].addEventListener('change', onElementCheckedChange);
   },
   computed: {
     stringId() {
