@@ -47,7 +47,6 @@ export default {
     membersLength() {
       // const members = this.$store.getters.boardMembers
       // return members.length
-
     }
   },
   components: {
@@ -72,7 +71,6 @@ export default {
   },
   unmounted() {
     socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-
   },
   mounted() {
     document.title = 'Mayday'
@@ -161,9 +159,8 @@ export default {
             Teams</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link" @click="openActivities">Activity</button>
-            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
+            <button class="drawer-nav-link" @click="openConversations">Updates</button>
           </nav>
-          <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
           <Activities v-else-if="showActivitiesContent" :boardId="boardId" :taskId="conversationsTaskId">
@@ -190,7 +187,7 @@ export default {
       <BoardFilter style="
     position: sticky;
     left: 2.72rem;
-    top: 0px;" @addTask="addTask" @filter="console.log('filter')" />
+    top: 0px;" :board="board" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />
