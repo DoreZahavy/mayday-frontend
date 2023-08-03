@@ -22,7 +22,7 @@ import { svgService } from '../../services/svg.service'
 export default {
   name: "Date",
   emits: ['update'],
-  props: ['info','groupColor'],
+  props: ['info', 'groupColor'],
   data() {
     return {
       pickedDate: this.info
@@ -49,6 +49,11 @@ export default {
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
+    }
+  },
+  watch: {
+    info() {
+      this.pickedDate = this.info
     }
   }
 }

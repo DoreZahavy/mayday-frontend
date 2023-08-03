@@ -1,15 +1,17 @@
 <template>
-    <Container class="kanban-container flex" group-name="cols" tag="div" orientation="horizontal"
+    <Container class="h-full flex overflow-x-auto gap-8  p-8" group-name="cols" tag="div" orientation="horizontal"
         @drop="onColumnDrop($event)">
-        <Draggable class="kanban-column " v-for="(column, idx) in scene" :key="column.idx">
-            <div class=" flex flex-column ">
+        <Draggable class="bg-gray-200 dark:bg-gray-700 rounded-lg h-full w-96 flex-shrink-0 shadow-xl"
+            v-for="column in scene" :key="column.id">
+            <div class="h-full flex flex-col">
 
                 <!-- header-->
-                <div class="column-header flex" :style="headerColor(column.title)">
-                    <span class="column-title">{{ column.title + ' / ' + column.tasks.length }}</span>
+                <div class="cursor-move rounded-t-lg p-4 space-x-4 bg-primary text-white flex space-x-2">
+                    <HandIcon class="h-6 w-6"></HandIcon>
+                    <span class="text-lg">{{ column.title }}</span>
                 </div>
                 <!-- column -->
-                <Container class="flex flex-column column-body " group-name="col-items"
+                <Container class="flex-grow overflow-y-auto overflow-x-hidden" group-name="col-items"
                     :shouldAcceptDrop="(e, payload) => (e.groupName === 'col-items' && !payload.loading)"
                     :get-child-payload="getCardPayload(column.id)" :drop-placeholder="{
                         className:
@@ -26,7 +28,7 @@
               -rotate-2 scale-90" @drop="(e) => onCardDrop(column.id, e)">
 
                     <!-- Items -->
-                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task"></KanbanItem>
+                    <KanbanItem v-for="item in column.children" :key="item.id" :item="item"></KanbanItem>
                 </Container>
             </div>
         </Draggable>
@@ -35,23 +37,16 @@
   
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
-import KanbanItem from '@/cmps/KanbanItem.vue'
+
 
 
 
 export default {
-    components: {
-
-
-        Container,
-        Draggable,
-
-        KanbanItem
-    },
+    components: { Container, Draggable },
     data() {
         return {
-            colOrder: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck']
-            //    scene : [{title:'blank',Tasks:[]}, {title:'Done',Tasks:[]},{ title:'Working on it',Tasks:[]},{ title:'Stuck',Tasks:[]},{ title:'Almost there',Tasks:[]}]
+            colOrder:['Done','Blank','Almost there','Working on it','Stuck']
+        //    scene : [{title:'blank',Tasks:[]}, {title:'Done',Tasks:[]},{ title:'Working on it',Tasks:[]},{ title:'Stuck',Tasks:[]},{ title:'Almost there',Tasks:[]}]
 
         }
     },
@@ -62,9 +57,9 @@ export default {
             return kanban ? kanban.offsetHeight - 122 : 0;
         },
         onColumnDrop(dropResult) {
-            // const scene = Object.assign({}, this.scene)
-            this.colOrder = this.applyDrag(this.colOrder, dropResult)
-            // this.scene = scene
+            const scene = Object.assign({}, this.scene)
+            scene.children = applyDrag(scene.children, dropResult)
+            this.scene = scene
         },
         onCardDrop(columnId, dropResult) {
 
@@ -84,7 +79,7 @@ export default {
                     setTimeout(function () { dropResult.payload.loading = false }, (Math.random() * 5000) + 1000);
                 }
 
-                newColumn.children = this.applyDrag(newColumn.children, dropResult)
+                newColumn.children = applyDrag(newColumn.children, dropResult)
                 scene.children.splice(itemIndex, 1, newColumn)
                 this.scene = scene
             }
@@ -93,26 +88,6 @@ export default {
             return index => {
                 return this.scene.children.filter(p => p.id === columnId)[0].children[index]
             }
-        },
-        applyDrag(arr, dragResult) {
-            const { removedIndex, addedIndex, payload } = dragResult;
-            if (removedIndex === null && addedIndex === null) return arr;
-            const result = [...arr];
-            let itemToAdd = payload;
-            if (removedIndex !== null) {
-                itemToAdd = result.splice(removedIndex, 1)[0];
-            }
-            if (addedIndex !== null) {
-                result.splice(addedIndex, 0, itemToAdd);
-            }
-            return result;
-        },
-        headerColor(title) {
-            if (title === 'Done') return { backgroundColor: '#00c875' }
-            if (title === 'Working on it') return { backgroundColor: '#fdab3d' }
-            if (title === 'Blank') return { backgroundColor: '#c4c4c4' }
-            if (title === 'Almost there') return { backgroundColor: '#0086c0' }
-            if (title === 'Stuck') return { backgroundColor: '#e2445c' }
         },
     },
     computed: {
@@ -123,17 +98,17 @@ export default {
             return this.$store.getters.groups
         },
         scene() {
-            const board = JSON.parse(JSON.stringify(this.$store.getters.board))
-            var scene = [{ title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }]
+            const board = this.$store.getters.board
+            var scene = [{title:'',tasks:[]}, {title:'',tasks:[]},{ title:'',tasks:[]},{ title:'',tasks:[]},{ title:'',tasks:[]}]
             // var scene = []
             for (var i = 0; i < this.colOrder.length; i++) {
                 scene[i].title = this.colOrder[i]
             }
             board.groups.forEach(group => {
-                group.tasks.forEach(task => {
+                group.task.forEach(task => {
                     task.groupId = group._id
                     var idx = this.colOrder.indexOf(task.Status.title)
-                    if (idx === -1) idx = this.colOrder.indexOf('Blank')
+                    if(idx===-1) idx =this.colOrder.indexOf('Blank')
                     scene[idx].tasks.push(task)
                 })
             })

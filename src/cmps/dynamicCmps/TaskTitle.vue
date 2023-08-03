@@ -48,6 +48,11 @@ export default {
       editor.focus()
       this.caretMoved = true
     }
+  },
+  watch:{
+    info(){
+      this.taskTitle = this.info 
+    }
   }
 }
 </script>
