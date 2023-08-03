@@ -67,7 +67,6 @@ export default {
 
     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
       this.openConversations(taskId)
     })
@@ -110,6 +109,7 @@ export default {
       this.showActivitiesContent = true
     },
     openConversations(taskId) {
+      console.log("🚀 ~ file: BoardIndex.vue:112 ~ openConversations ~ taskId:", taskId)
       this.conversationsTaskId = taskId
       this.showDrawerModal = true
       this.showActivitiesContent = false
@@ -156,8 +156,10 @@ export default {
             Mayday
             Teams</h4>
           <nav class="drawer-nav">
-            <button class="drawer-nav-link" @click="openActivities">Activity</button>
-            <button class="drawer-nav-link" @click="openConversations">Updates</button>
+            <button class="drawer-nav-link"
+              @click="showConversationsContent = false; showActivitiesContent = true">Activity</button>
+            <button class="drawer-nav-link"
+              @click="showConversationsContent = true; showActivitiesContent = false">Updates</button>
           </nav>
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
