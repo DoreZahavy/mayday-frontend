@@ -1,10 +1,18 @@
+<template>
+ 
+</template>
+  
 <script>
-export default {
-
+export default{
+    
 }
 </script>
-<template>
-    <section class="kanban">
-        <h1>Kanban view is under production!</h1>
-    </section>
-</template>
+<style>
+/** NB: dont remove, 
+  * When using orientation="horizontal" it auto sets "display: table"
+  * In this case we need flex and not display table  
+  */
+.smooth-dnd-container.horizontal {
+    display: flex !important;
+}
+</style>
