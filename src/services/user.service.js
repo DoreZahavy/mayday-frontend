@@ -1,5 +1,6 @@
 
 import { httpService } from './http.service.js'
+import { socketService } from './socket.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 
@@ -22,6 +23,7 @@ function getLoggedinUser() {
 async function login({ email, password }) {
     console.log('email:', email)
     const user = await httpService.post(`auth/login`, { email, password })
+    socketService.login(user._id)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 
@@ -33,11 +35,15 @@ async function login({ email, password }) {
     //     })
 }
 
-async function signup({ email, password, fullname }) {
+async function signup(signupInfo) {
+    if (!signupInfo.imgUrl) signupInfo.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
 
-console.log('email,password,fullname:', email,password,fullname)
-    const user = await httpService.post(`auth/signup`, { email, password, fullname })
+    // imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+// console.log('email,password,fullname:', email,password,fullname)
+    const user = await httpService.post(`auth/signup`, signupInfo)
+    socketService.login(user._id)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    
     return user
     // return axios.post('/api/auth/signup', { email, password, fullname })
     //     .then(res => res.data)

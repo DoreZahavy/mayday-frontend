@@ -10,6 +10,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 63px 1fr 63px;
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.3);
 
     .task-count {
         display: flex;
@@ -19,18 +20,26 @@
         color: white;
         background-color: $primary-btn-color;
     }
-    .task-info-container{
+
+    .task-info-container {
         display: grid;
         grid-template-rows: 1fr 1fr;
     }
-    .close-modal{
+
+    .close-modal {
         border-inline-start: 2px solid $border-clr;
-        svg{
-            width:26px;
+
+        svg {
+            width: 26px;
             height: 26px;
         }
     }
-    .task-pebble{
+
+    .task-pebble-container {
+        display: flex;
+    }
+
+    .task-pebble {
         width: 7px;
         height: 7px;
         border-radius: 100%;

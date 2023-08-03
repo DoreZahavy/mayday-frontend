@@ -8,7 +8,7 @@
                 <!-- <button @click="onCollapse" v-html="getSvg('arrowDown')" class="button-as-link" :style="textColor"></button> -->
                 <div class="group-actions-container">
                     <!-- <button @click="onRemoveGroup" v-icon="'trash'" class="button-as-link d-cmp group-actions"></button> -->
-                    <el-popover placement="left-start" :width="265" trigger="click">
+                    <el-popover placement="left-start" :width="265" trigger="click" :show-arrow="false">
                         <button @click="onRemoveGroup" class="remove-update-button button-as-link flex align-center fs14">
                             <i v-html="getSvg('trash')"></i>
                             <span>
@@ -39,7 +39,7 @@
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <Checkbox :checkBoxId="this.group._id" />
+                <Checkbox :groupId="this.group._id" />
                 <div class="task-title d-cmp">Task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -60,7 +60,7 @@
                             <div class="task-actions">
                                 <!-- <button @click="onRemoveTask(task._id)" v-html="getSvg('threeDots')"
                                     class="button-as-link task-trash"></button> -->
-                                <el-popover placement="left-start" :width="265" trigger="click">
+                                <el-popover placement="left-start" :width="265" trigger="click" :show-arrow="false">
                                     <button @click="onRemoveTask(task._id)"
                                         class="remove-update-button button-as-link flex align-center fs14">
                                         <i v-html="getSvg('trash')"></i>
@@ -75,8 +75,7 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox :checkBoxId="task._id" :groupColor="group.color" @checked="onChecked"
-                            @unchecked="onUnchecked" />
+                        <Checkbox :taskId="task._id" @checked="onChecked" @unchecked="onUnchecked" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                         <div class="conversation-cell">
                             <ConversationBtn :taskId="task._id" :taskConversationsAmount="task.updates.length"
@@ -151,7 +150,11 @@ export default {
             showPicker: false,
             editGroup: false,
             addTaskTxt: '',
-            checkedTasks: []
+            checkedTasks: {
+                groupId: this.group._id,
+                groupColor: this.group.color,
+                taskIds: []
+            }
         }
     },
     computed: {
@@ -172,6 +175,15 @@ export default {
         }
     },
     methods: {
+        onChecked(taskId) {
+            console.log('checked ',taskId)
+            this.checkedTasks.taskIds.push(taskId)
+        },
+        onUnchecked(taskId) {
+            console.log('unchecked ',taskId)
+            const idx = this.checkedTasks.taskIds.findIndex(tId => tId === taskId)
+            this.checkedTasks.taskIds.splice(idx, 1)
+        },
         setAddTaskTxt(text) {
             console.log(text)
             this.addTaskTxt = text
@@ -224,14 +236,6 @@ export default {
         },
         onCollapse() {
             this.$emit('update', { prop: 'minimized', toUpdate: true })
-        },
-        onChecked(task) {
-            this.checkedTasks.push(task)
-        },
-        onUnchecked(task) {
-            const idx = this.checkedTasks.findIndex((t) => t._id === task._id)
-            this.checkedTasks.splice(idx, 1)
-            console.log(this.checkedTasks)
         }
     },
     components: {
@@ -266,7 +270,7 @@ export default {
         collapseAll() {
         },
         checkedTasks: {
-            handler(checkedTasks) {
+            handler() {
                 this.$emit('checkedTasksChanged', this.checkedTasks)
             },
             deep: true
