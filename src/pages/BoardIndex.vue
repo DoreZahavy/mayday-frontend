@@ -118,6 +118,7 @@ export default {
     },
     closeDrawerModal() {
       this.showDrawerModal = false
+      this.conversationsTaskId = undefined
     },
     addMember(user) {
       // console.log('userId:', userId)
@@ -156,13 +157,14 @@ export default {
             Mayday
             Teams</h4>
           <nav class="drawer-nav">
-            <button class="drawer-nav-link">Activity</button>
-            <button class="drawer-nav-link">Updates</button>
+            <button class="drawer-nav-link" @click="openActivities">Activity</button>
+            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
           </nav>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
-          <Activities v-else-if="showActivitiesContent" :boardId="boardId"></Activities>
+          <Activities v-else-if="showActivitiesContent" :boardId="boardId" :taskId="conversationsTaskId">
+          </Activities>
         </div>
       </transition>
     </div>
@@ -182,7 +184,10 @@ export default {
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
 
-      <BoardFilter @addTask="addTask" @filter="console.log('filter')" />
+      <BoardFilter style="
+    position: sticky;
+    left: 2.72rem;
+    top: 0px;" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />

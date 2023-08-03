@@ -102,7 +102,8 @@
 import { svgService } from '../services/svg.service'
 export default {
     props: {
-        boardId: String
+        boardId: String,
+        taskId: String
     },
     data() {
         return {
@@ -112,7 +113,12 @@ export default {
         activities() {
             const board = this.$store.getters.boards.find(board => board._id === this.boardId)
             if (board && board.activities) {
-                return board.activities
+                if (this.taskId) {
+                    const filteredActivities = JSON.parse(JSON.stringify({ ...board }.activities)).filter(activity => activity.task === this.taskId)
+                    return filteredActivities
+                } else {
+                    return board.activities
+                }
             } else {
                 return []
             }
