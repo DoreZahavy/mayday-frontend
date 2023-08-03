@@ -8,10 +8,9 @@ export const boardStore = {
       board: {},
       boards: [],
       attachmentModal: '',
-      updates: [],
+      updates: []
     }
   },
-
   getters: {
     board({ board }) {
       return board
@@ -43,7 +42,6 @@ export const boardStore = {
       return board.groups
     },
     boardList({ boards }) {
-
       return boards.map(board => {
         return { title: board.title, _id: board._id }
       })
@@ -139,7 +137,6 @@ export const boardStore = {
       const memberIdx = state.board.members.findIndex(m => m._id === userId)
       state.board.members.splice(memberIdx, 1)
     },
-
   },
 
   actions: {

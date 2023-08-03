@@ -1,5 +1,6 @@
 <template>
-  <el-popover ref="popover" placement="bottom" trigger="click" @show="handleTooltipOpen" @hide="handleTooltipClose">
+  <el-popover ref="popover" placement="bottom" trigger="click" @show="handleTooltipOpen" @hide="handleTooltipClose"
+    class="status-popover-container">
     <div v-for="label in statusLabelConfig" :key="label.title" :class="label.color" class="status-option"
       @click="onUpdateStatus(label)">
       {{ label.title }}

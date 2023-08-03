@@ -3,7 +3,7 @@
         <!-- <label for="quill" v-if="!editing">
             <input type="text" @focus="this.editing = true" placeholder="Write an update...">
         </label> -->
-        <div class="quill-container" >
+        <div class="quill-container">
             <QuillEditor theme="snow" toolbar="minimal" v-model="content" @update:content="content" ref="quillEditor"
                 class="quill-editor" id="quill" @blur="this.editing = false">
             </QuillEditor>
@@ -59,7 +59,7 @@ export default {
             const updates = JSON.parse(JSON.stringify(this.updates))
             console.log("🚀 ~ file: Conversations.vue:61 ~ onRemoveUpdate ~ updates:", updates)
             const idx = updates.findIndex(update => update._id === updateId)
-            updates.splice(idx,1)
+            updates.splice(idx, 1)
             this.updates = updates
             this.$store.dispatch('updateBoard', { groupId: this.groupId, taskId: this.taskId, prop: 'updates', toUpdate: updates })
         }
