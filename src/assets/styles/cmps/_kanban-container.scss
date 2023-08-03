@@ -1,0 +1,53 @@
+.kanban-container {
+   
+    border-top: 1px solid #d0d4e4;
+    margin-inline-start: 36px;
+    padding-top: 8px;
+    // width: 100%;
+    overflow-x: scroll;
+    .kanban-column {
+        
+        border-radius: 8px;
+        width: 260px;
+        min-width: 260px;
+        margin-inline-end: 20px;
+        .column-header {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+          
+            .column-title{
+                color: #fff;
+                font-weight: 500;
+                font-size: em(16px,14px);
+            }
+           
+        }
+        .column-body {
+            align-items: center;
+            min-height: 110px;
+            max-height: 100%;
+            overflow-x: hidden;
+            position: relative;
+            height: 100%;
+            overflow-y: scroll;
+            background-color: #f6f7fb;
+            transition:
+                background-color 0.2s ease-in-out,
+                box-shadow 0.2s ease;
+            color: $primary-text-color;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            padding-block-start: 4px;
+            &:hover {
+                background: #dcdfec;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}

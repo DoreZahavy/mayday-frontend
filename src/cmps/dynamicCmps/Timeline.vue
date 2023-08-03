@@ -166,7 +166,12 @@ export default {
         getSvg(name) {
             return svgService.getSvg(name)
         },
+    },
+    watch: {
+    info() {
+      this.currDateSettings = {...this.info}
     }
+  }
 }
 </script>
 

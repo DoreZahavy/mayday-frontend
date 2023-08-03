@@ -1,5 +1,5 @@
-import { boardService } from '@/services/board.service.js'
-// import { boardService } from "@/services/board.service.local.js"
+// import { boardService } from '@/services/board.service.js'
+import { boardService } from "@/services/board.service.local.js"
 
 export const boardStore = {
   strict: true,

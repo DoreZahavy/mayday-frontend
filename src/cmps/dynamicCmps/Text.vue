@@ -84,6 +84,11 @@ export default {
                 }
             })
         },
+    },
+    watch: {
+        info() {
+            this.text = this.info
+        }
     }
 }
 </script>

@@ -45,5 +45,11 @@ export default {
       })
     },
   },
+  watch:{
+    info(){
+      this.status = { ...this.info }
+      // console.log('this.info:', this.info)
+    }
+  }
 }
 </script>
