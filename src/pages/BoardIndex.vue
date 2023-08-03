@@ -59,9 +59,9 @@ export default {
     BoardFilter
   },
   created() {
-     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-     // socketService.on(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    // socketService.on(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
       this.openConversations(taskId)
     })
@@ -70,7 +70,7 @@ export default {
     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
   },
   mounted() {
-   
+
     document.title = 'Mayday'
     setTimeout(() => {
       document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
@@ -131,7 +131,7 @@ export default {
   watch: {
     boardId() {
       // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
     },
   }

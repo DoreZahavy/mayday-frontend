@@ -8,7 +8,8 @@ export const boardStore = {
       board: {},
       boards: [],
       attachmentModal: '',
-      updates: []
+      updates: [],
+      filteredBoard: {}
     }
   },
   getters: {
@@ -24,7 +25,9 @@ export const boardStore = {
     miniBoard({ board }) {
       return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
-
+    filteredBoard({ filteredBoard }) {
+      return filteredBoard
+    },
     boards({ boards }) {
       return boards
     },
@@ -71,6 +74,11 @@ export const boardStore = {
     setBoard(state, { board }) {
 
       state.board = board
+    },
+
+    setFilteredBoard(state, { filteredBoard }) {
+      console.log(filteredBoard)
+      state.filteredBoard = filteredBoard
     },
 
     setBoards(state, { boards }) {
