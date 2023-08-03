@@ -70,6 +70,7 @@ export default {
     // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
   },
   mounted() {
+   
     document.title = 'Mayday'
     setTimeout(() => {
       document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
@@ -129,7 +130,8 @@ export default {
   },
   watch: {
     boardId() {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+      // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
     },
   }
@@ -151,8 +153,9 @@ export default {
             Teams</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link" @click="openActivities">Activity</button>
-            <button class="drawer-nav-link" @click="openConversations">Updates</button>
+            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
           </nav>
+          <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
           <Activities v-else-if="showActivitiesContent" :boardId="boardId" :taskId="conversationsTaskId">

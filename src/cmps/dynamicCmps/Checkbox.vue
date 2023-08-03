@@ -1,6 +1,7 @@
 <template>
   <div class="d-cmp checkbox fs16">
-    <input type="checkbox" :id="stringId" v-model="checked">
+    <input type="checkbox" v-model="checked" :id="'checkbox' + taskId" @change="onCheckedChange"
+      :ref="'checkbox' + taskId">
     <label :for="stringId" class="checkbox-label" v-html="getSvg('checkmark')"></label>
   </div>
 </template>
@@ -10,8 +11,7 @@ import { svgService } from '@/services/svg.service'
 export default {
   name: "checkbox",
   props: {
-    checkBoxId: String,
-    groupColor: String
+    taskId: String,
   },
   data() {
     return {
@@ -19,21 +19,29 @@ export default {
     }
   },
   created() {
+    // const ref = 'checkbox' + this.taskId
+    // this.$refs[ref].addEventListener('change', onElementCheckedChange);
   },
   computed: {
     stringId() {
-      return `checkbox${this.checkBoxId}`
+      return `checkbox${this.taskId}`
     }
   },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+    onCheckedChange() {
+      if (this.checked) this.$emit('checked', this.taskId)
+      else this.$emit('unchecked', this.taskId)
+    },
+    onElementCheckedChange() {
+      console.log('I changed my value :DDDDD')
+    }
   },
   watch: {
     checked() {
-      if (this.checked) this.$emit('checked', { _id: this.checkBoxId, color: this.groupColor })
-      else this.$emit('unchecked', { _id: this.checkBoxId, color: this.groupColor })
+      console.log(this.checked)
     }
   }
 }

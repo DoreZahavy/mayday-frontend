@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       // collapse: true
-      checkedTasks: []
+      checkedTasksGroups: []
     }
   },
   computed: {
@@ -109,7 +109,23 @@ export default {
       return svgService.getSvg(iconName)
     },
     onCheckedTasksChanged(tasks) {
-      this.checkedTasks = tasks
+      const idx = this.checkedTasksGroups.findIndex(g => g.groupId === tasks.groupId)
+      if (idx === -1) this.checkedTasksGroups.push(tasks)
+      else {
+        this.checkedTasksGroups[idx].tasks = tasks
+      }
+      const removeIdx = this.checkedTasksGroups.findIndex(g => g.taskIds.length === 0)
+      if (removeIdx !== -1) this.checkedTasksGroups.splice(removeIdx, 1)
+      console.log("🚀 ~ file: BoardDetails.vue:113 ~ onCheckedTasksChanged ~ this.checkedTasksGroups:", this.checkedTasksGroups)
+    },
+    uncheckAll() {
+      this.checkedTasksGroups.forEach(group => {
+        group.taskIds.forEach(tId => {
+          const elId = `checkbox${tId}`
+          document.getElementById(elId).checked = false
+        })
+      })
+      this.checkedTasksGroups = []
     }
 
   }
@@ -141,7 +157,8 @@ export default {
     </button>
 
 
-    <CheckboxModal v-if="checkedTasks.length >= 1"  :checkedTasks="this.checkedTasks"/>
+    <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
+      @uncheckAll="uncheckAll" />
   </Container>
 </template>
 
