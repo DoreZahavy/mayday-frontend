@@ -8,11 +8,13 @@ import Activities from '../cmps/Activities.vue'
 import Conversations from '../cmps/Conversations.vue'
 import AttachmentModal from '../cmps/AttachmentModal.vue'
 import InviteModal from '../cmps/InviteModal.vue'
-import BoardFilter from '../cmps/BoardFilter.vue'
+import BoardFilter from '@/cmps/BoardFilter.vue'
 
 import { svgService } from '../services/svg.service'
 import { showSuccessMsg, showErrorMsg, eventBusService } from '../services/event-bus.service.js'
 import { SOCKET_EMIT_SET_TOPIC, socketService } from '../services/socket.service'
+// import { socketService } from "./socket.service"
+import { store } from '../store'
 
 export default {
 
@@ -63,18 +65,20 @@ export default {
     BoardFilter
   },
   created() {
-    socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
-    socketService.on(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+  
+    // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
     this.unsub = eventBusService.on('task-clicked', (taskId) => {
       this.openConversations(taskId)
     })
   },
   unmounted() {
-    socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
   },
   mounted() {
+   
     document.title = 'Mayday'
     setTimeout(() => {
       document.title = this.$store.getters.boardTitle//TODO: make this less janky, event driven
@@ -114,6 +118,7 @@ export default {
     },
     closeDrawerModal() {
       this.showDrawerModal = false
+      this.conversationsTaskId = undefined
     },
     addMember(user) {
       // console.log('userId:', userId)
@@ -123,22 +128,15 @@ export default {
 
       this.$store.dispatch({ type: 'removeMember', userId })
     },
-    async addTask() {
-      try {
-        const groupId = JSON.parse(JSON.stringify({ ...this.board }.groups[0]._id))
-        await this.$store.dispatch({ type: 'addTask', groupId, title: 'New Task' })
-        showSuccessMsg('Task added')
-
-      } catch (err) {
-        showErrorMsg('Failed to add task')
-      }
-    },
+   
   },
   watch: {
-    // boardTitle() {
-    //   this.$emit('', this.boardTitle)
+    boardId() {
+      // socketService.off(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.$route.params.boardId)
 
-    // },
+
+    },
   }
 }
 </script>
@@ -159,13 +157,14 @@ export default {
             Mayday
             Teams</h4>
           <nav class="drawer-nav">
-            <button class="drawer-nav-link">Activity</button>
-            <button class="drawer-nav-link">Updates</button>
+            <button class="drawer-nav-link" @click="openActivities">Activity</button>
+            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
           </nav>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
           </Conversations>
-          <Activities v-else-if="showActivitiesContent" :boardId="boardId"></Activities>
+          <Activities v-else-if="showActivitiesContent" :boardId="boardId" :taskId="conversationsTaskId">
+          </Activities>
         </div>
       </transition>
     </div>
@@ -185,7 +184,10 @@ export default {
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
 
-      <BoardFilter @addTask="addTask" @filter="console.log('filter')" />
+      <BoardFilter style="
+    position: sticky;
+    left: 2.72rem;
+    top: 0px;" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />

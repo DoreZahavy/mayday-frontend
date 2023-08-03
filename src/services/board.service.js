@@ -3,17 +3,17 @@ import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
 import { store } from '../store'
 
-import { socketService } from "./socket.service"
-    ; (() => {
-        setTimeout(() => {
-            socketService.on('update-board', (board) => {
-                console.log('recieved socket')
-                console.log('board', board)
-                store.commit({ type: 'saveBoard', board })
-            })
+; (() => {
+    setTimeout(() => {
+        socketService.on('update-board', (board) => {
 
+            console.log('recieved socket')
+            // console.log('board', board)
+            store.commit({ type: 'saveBoard', board })
         })
-    })()
+
+    })
+})()
 
 export const boardService = {
     query,

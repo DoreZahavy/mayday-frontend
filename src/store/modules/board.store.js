@@ -85,10 +85,13 @@ export const boardStore = {
     },
 
     saveBoard(state, { board }) {
+      console.log('saving board in store')
+      // console.log('board:', board)
       if (!board) return
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
+      console.log('state.board:', state.board)
 
     },
 
