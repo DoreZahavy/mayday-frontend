@@ -94,8 +94,15 @@
                 </span>
             </template>
         </el-popover>
-        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false">
-            <div class="hide-filter">Hide</div>
+        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false"
+            popper-class="hide-popover-container">
+            <div class="hide-filter">
+                <p>Hide board columns</p>
+                <div v-for="cmp in currBoard.cmpConfig">
+                    <input type="checkbox" v-model="hiddenComponents[cmp.type]" :id="cmp.type" @change="applyHideFilters" />
+                    <label :for="cmp.type">{{ cmp.title }}</label>
+                </div>
+            </div>
             <template #reference>
                 <span class="span-common" style="margin-top: 0; gap: 0.4em;" @click="openPopover('hide')">
                     <span v-html="getSvg('hide')" class="span-hide"></span>Hide
@@ -126,6 +133,16 @@ export default {
                 tasks: [],
                 status: [],
                 priority: []
+            },
+            hiddenComponents: {
+                Status: false,
+                Priority: false,
+                Members: false,
+                Date: false,
+                Timeline: false,
+                Number: false,
+                Text: false,
+                Attachments: false
             },
             itemsTotal: 0,
         }
@@ -277,6 +294,15 @@ export default {
 
             console.log(this.modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: this.modifiedBoard })
+        },
+        applyHideFilters() {
+            this.filterCmps()
+        },
+
+        filterCmps() {
+            const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
+            modifiedBoard.cmpConfig = modifiedBoard.cmpConfig.filter(cmp => !this.hiddenComponents[cmp.type])
+            this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         getDebouncedFilterText() {
             return utilService.debounce(() => {
