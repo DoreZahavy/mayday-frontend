@@ -102,6 +102,7 @@ export default {
       this.showActivitiesContent = true
     },
     openConversations(taskId) {
+      console.log("🚀 ~ file: BoardIndex.vue:112 ~ openConversations ~ taskId:", taskId)
       this.conversationsTaskId = taskId
       this.showDrawerModal = true
       this.showActivitiesContent = false
@@ -152,8 +153,10 @@ export default {
             Mayday
             Teams</h4>
           <nav class="drawer-nav">
-            <button class="drawer-nav-link" @click="openActivities">Activity</button>
-            <button v-if="conversationsTaskId" class="drawer-nav-link" @click="openConversations">Updates</button>
+            <button class="drawer-nav-link"
+              @click="showConversationsContent = false; showActivitiesContent = true">Activity</button>
+            <button class="drawer-nav-link"
+              @click="showConversationsContent = true; showActivitiesContent = false">Updates</button>
           </nav>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">
@@ -175,15 +178,15 @@ export default {
         </RouterLink>
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
+        <!-- <RouterLink :class="{ active: active === 'dashboard' }" @click="active = 'dashboard'"
+          :to="'/board/' + boardId + '/dashboard'" class="nav-item">Dashboard</RouterLink> -->
       </nav>
       <BoardFilter :board="board" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
-        <!-- <div class="left-gap"></div> -->
         <RouterView />
       </section>
     </section>
     <AttachmentModal :file="attachmentModal" v-if="attachmentModal" />
-    <!-- <CheckboxModal :checkedTasks=""/> -->
   </main>
 </template>
 

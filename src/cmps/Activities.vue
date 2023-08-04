@@ -111,7 +111,7 @@ export default {
     },
     computed: {
         activities() {
-            console.log(this.taskId)
+            console.log('in activities', this.taskId)
             const board = this.$store.getters.boards.find(board => board._id === this.boardId)
             if (board && board.activities) {
                 if (this.taskId) {
