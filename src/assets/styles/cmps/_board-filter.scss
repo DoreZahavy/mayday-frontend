@@ -116,7 +116,112 @@
     }
 }
 
+.multi-filter-popover-container.el-popover.el-popper {
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    min-width: 500px !important;
+    z-index: 9999;
+    text-align: center;
+    border-radius: 6px;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    ::-webkit-scrollbar {
+        height: 4px !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #d6d9e3 !important;
+        border-radius: 3px !important;
+    }
+
+    > p {
+        color: #323338;
+        font-size: 16px;
+        text-align: left;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+}
+
 .multi-filter {
+    ::-webkit-scrollbar {
+        height: 8px !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #e0e3ec !important;
+        border-radius: 3px !important;
+    }
+
+    .filter-column {
+        p {
+            text-align: left;
+            padding-bottom: 13px;
+        }
+
+        > div:first-of-type {
+            max-height: 150px;
+            overflow-y: scroll !important;
+
+            div {
+                background-color: #f5f6f8;
+                border-radius: 4px;
+                padding: 5px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-bottom: 4px;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken(#f5f6f8, 8%);
+                }
+
+                &.active {
+                    background-color: #cce5ff;
+                }
+            }
+        }
+
+        gap: 5px;
+        min-width: 150px;
+        height: 200px;
+        padding: 10px;
+        margin-bottom: 20px;
+
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0.5em;
+            margin-right: 0.2em;
+
+            &.active {
+                outline: 5px solid #d9f0ff;
+            }
+
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d6d9e3 !important;
+            border-radius: 3px !important;
+        }
+    }
+
+    display: flex;
+    max-width: 700px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .hide-filter {

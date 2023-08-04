@@ -44,5 +44,11 @@ export default {
       })
     },
   },
+  watch:{
+    info(){
+      this.priority = { ...this.info }
+      // console.log('this.info:', this.info)
+    }
+  }
 }
 </script>

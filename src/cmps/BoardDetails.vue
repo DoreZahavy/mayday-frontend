@@ -21,6 +21,9 @@ export default {
     board() {
       return this.$store.getters.board
     },
+    filteredBoard() {
+      return this.$store.getters.filteredBoard
+    },
     groups() {
       return this.$store.getters.groups
     },
@@ -132,9 +135,37 @@ export default {
 </script>
 
 <template class="flex">
-  <Container @drop="onDropGrp" class="board-details" v-if="board">
+  <Container v-if="board && Object.keys(filteredBoard).length === 0" @drop="onDropGrp" class="board-details">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
+      <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)"
+        @removeGroup="removeGroup(group._id)" v-if="group.minimized === true">
+
+      </MinimizedGroup>
+      <div class="flex" v-else>
+
+        <div class="group-gap"></div>
+        <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
+          @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
+          @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
+          @checkedTasksChanged="onCheckedTasksChanged">
+        </Group>
+      </div>
+
+    </Draggable>
+    <button @click="addGroup" class="add-group-btn">
+      <div v-html="getSvg('addGroup')"></div>
+      <span>Add new group</span>
+    </button>
+
+
+    <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
+      @uncheckAll="uncheckAll" />
+  </Container>
+
+  <Container v-else-if="board" @drop="onDropGrp" class="board-details">
+
+    <Draggable class="grp-scroll" v-for="(group, idx) in filteredBoard.groups" :key="group._id">
       <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)"
         @removeGroup="removeGroup(group._id)" v-if="group.minimized === true">
 

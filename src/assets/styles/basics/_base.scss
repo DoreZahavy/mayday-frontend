@@ -6,12 +6,20 @@
     -webkit-box-sizing: border-box;
 }
 
-
 html {
     font-size: 14px;
     font-family: figtree;
     font-weight: 400;
     height: 100%;
+
+    ::-webkit-scrollbar {
+        width: 11px;
+        background-color: lighten(#d6d9e3, 15%);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #b1b1b1;
+    }
 }
 
 body {
@@ -31,14 +39,17 @@ h3,
 h4,
 h5,
 h6 {
-    margin:0;
+    margin: 0;
 }
 
-h1 {}
+h1 {
+}
 
-h2 {}
+h2 {
+}
 
-h3 {}
+h3 {
+}
 
 img {
     width: 100%;

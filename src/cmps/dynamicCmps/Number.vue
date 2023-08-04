@@ -83,6 +83,11 @@ export default {
             editor.setSelectionRange(length, length)
         },
 
+    },
+    watch: {
+        info() {
+            this.number = this.info
+        }
     }
 }
 </script>
