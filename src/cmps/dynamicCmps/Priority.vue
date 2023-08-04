@@ -1,5 +1,6 @@
 <template>
-  <el-popover ref="popover" placement="bottom" trigger="click" @show="handleTooltipOpen" @hide="handleTooltipClose">
+  <el-popover ref="popover" placement="bottom" trigger="click" @show="handleTooltipOpen" @hide="handleTooltipClose"
+    class="status-popover-container">
     <div v-for="label in priorityLabelConfig" :key="label.title" :class="label.color" class="status-option"
       @click="onUpdatePriority(label)">
       {{ label.title }}
@@ -44,11 +45,5 @@ export default {
       })
     },
   },
-  watch:{
-    info(){
-      this.priority = { ...this.info }
-      // console.log('this.info:', this.info)
-    }
-  }
 }
 </script>
