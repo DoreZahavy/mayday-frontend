@@ -12,6 +12,7 @@ export default {
   name: "checkbox",
   props: {
     taskId: String,
+    isChecked: String
   },
   data() {
     return {
@@ -19,29 +20,24 @@ export default {
     }
   },
   created() {
-    // const ref = 'checkbox' + this.taskId
-    // this.$refs[ref].addEventListener('change', onElementCheckedChange);
   },
   computed: {
-    stringId() {
-      return `checkbox${this.taskId}`
-    }
   },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
     onCheckedChange() {
+      if(!this.taskId) return
       if (this.checked) this.$emit('checked', this.taskId)
       else this.$emit('unchecked', this.taskId)
-    },
-    onElementCheckedChange() {
-      console.log('I changed my value :DDDDD')
-    }
+    }, 
   },
   watch: {
     checked() {
-      console.log(this.checked)
+    },
+    isChecked() {
+      this.checked = this.isChecked ? true : false
     }
   }
 }

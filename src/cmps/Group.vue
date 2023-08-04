@@ -39,7 +39,10 @@
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <Checkbox :groupId="this.group._id" />
+                <div @click="isSelectAll = !isSelectAll">
+                    <Checkbox :groupId="this.group._id" :isChecked="isSelectAll" style="pointer-events: none;" />
+                </div>
+                <!-- <input type="checkbox" v-model="isSelectAll"> -->
                 <div class="task-title d-cmp">Task</div>
             </div>
             <Container @drop="onDropLabel($event)" class="labels-grid" orientation="horizontal" behaviour="contain">
@@ -75,7 +78,8 @@
                             </div>
                         </div>
                         <section class="group-accent-color" :style="color"></section>
-                        <Checkbox :taskId="task._id" @checked="onChecked" @unchecked="onUnchecked" />
+                        <Checkbox :isChecked="checkedTasks.taskIds.find(t => t === task._id)" :taskId="task._id"
+                            @checked="onChecked" @unchecked="onUnchecked" />
                         <TaskTitle class="" @update="onUpdateTask('title', task._id, $event)" :info="task.title" />
                         <div class="conversation-cell">
                             <ConversationBtn :taskId="task._id" :taskConversationsAmount="task.updates.length"
@@ -137,7 +141,7 @@ import ConversationBtn from '@/cmps/ConversationBtn.vue'
 import ProgressBar from '@/cmps/ProgressBar.vue'
 export default {
     // emits: ['update'],
-    props: ['group', 'idx', 'collapseAll'],
+    props: ['group', 'idx', 'collapseAll', 'checkedTasksGroups'],
     created() {
     },
 
@@ -154,7 +158,8 @@ export default {
                 groupId: this.group._id,
                 groupColor: this.group.color,
                 taskIds: []
-            }
+            },
+            isSelectAll: false,
         }
     },
     computed: {
@@ -176,11 +181,11 @@ export default {
     },
     methods: {
         onChecked(taskId) {
-            console.log('checked ',taskId)
+            console.log('checked ', taskId)
             this.checkedTasks.taskIds.push(taskId)
         },
         onUnchecked(taskId) {
-            console.log('unchecked ',taskId)
+            console.log('unchecked ', taskId)
             const idx = this.checkedTasks.taskIds.findIndex(tId => tId === taskId)
             this.checkedTasks.taskIds.splice(idx, 1)
         },
@@ -274,6 +279,28 @@ export default {
                 this.$emit('checkedTasksChanged', this.checkedTasks)
             },
             deep: true
+        },
+        checkedTasksGroups: {
+            handler() {
+                const idx = this.checkedTasksGroups.findIndex(g => g.groupId === this.group._id)
+                if (idx !== -1) {
+                    this.checkedTasks = this.checkedTasksGroups[idx]
+                }
+                if (this.checkedTasks.taskIds.length === 0) {
+                    this.isSelectAll = false
+                }
+            },
+            deep: true
+        },
+        isSelectAll() {
+            console.log("🚀 ~ file: Group.vue:295 ~ isSelectAll ~ isSelectAll:", this.isSelectAll)
+            if (this.isSelectAll !== true) {
+                this.checkedTasks.taskIds = []
+            } else {
+                let taskIds = []
+                this.group.tasks.forEach(task => taskIds.push(task._id))
+                this.checkedTasks.taskIds = taskIds
+            }
         }
     }
 }

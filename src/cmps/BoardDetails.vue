@@ -14,7 +14,8 @@ export default {
   data() {
     return {
       // collapse: true
-      checkedTasksGroups: []
+      checkedTasksGroups: [],
+      // toggleSelectAll: false
     }
   },
   computed: {
@@ -93,8 +94,6 @@ export default {
       } catch (err) {
         showErrorMsg('Failed to add group')
       }
-
-
     },
     async removeTask(groupId, taskId) {
       try {
@@ -114,19 +113,13 @@ export default {
     onCheckedTasksChanged(tasks) {
       const idx = this.checkedTasksGroups.findIndex(g => g.groupId === tasks.groupId)
       if (idx === -1) this.checkedTasksGroups.push(tasks)
-      else {
-        this.checkedTasksGroups[idx].tasks = tasks
-      }
+      else this.checkedTasksGroups[idx].tasks = tasks
       const removeIdx = this.checkedTasksGroups.findIndex(g => g.taskIds.length === 0)
       if (removeIdx !== -1) this.checkedTasksGroups.splice(removeIdx, 1)
-      console.log("🚀 ~ file: BoardDetails.vue:113 ~ onCheckedTasksChanged ~ this.checkedTasksGroups:", this.checkedTasksGroups)
     },
     uncheckAll() {
       this.checkedTasksGroups.forEach(group => {
-        group.taskIds.forEach(tId => {
-          const elId = `checkbox${tId}`
-          document.getElementById(elId).checked = false
-        })
+        group.taskIds = []
       })
       this.checkedTasksGroups = []
     }
@@ -145,10 +138,10 @@ export default {
       <div class="flex" v-else>
 
         <div class="group-gap"></div>
-        <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
-          @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
-          @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
-          @checkedTasksChanged="onCheckedTasksChanged">
+        <Group :group="group" :idx="idx" :checkedTasksGroups="checkedTasksGroups" class="group"
+          @addTask="addTask(group._id, $event)" @removeTask="removeTask(group._id, $event)"
+          @openConversations="$emit('openConversations', $event)" @update="updateBoard(group._id, $event)"
+          @removeGroup="removeGroup(group._id)" @checkedTasksChanged="onCheckedTasksChanged">
         </Group>
       </div>
 
@@ -160,7 +153,7 @@ export default {
 
 
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
-      @uncheckAll="uncheckAll" />
+      @uncheckAll="uncheckAll"/>
   </Container>
 
   <Container v-else-if="board" @drop="onDropGrp" class="board-details">
@@ -176,7 +169,7 @@ export default {
         <Group :group="group" :idx="idx" class="group" @addTask="addTask(group._id, $event)"
           @removeTask="removeTask(group._id, $event)" @openConversations="$emit('openConversations', $event)"
           @update="updateBoard(group._id, $event)" @removeGroup="removeGroup(group._id)"
-          @checkedTasksChanged="onCheckedTasksChanged">
+          @checkedTasksChanged="onCheckedTasksChanged" :toggleSelectAll="toggleSelectAll">
         </Group>
       </div>
 
@@ -188,7 +181,7 @@ export default {
 
 
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
-      @uncheckAll="uncheckAll" />
+      @uncheckAll="uncheckAll"/>
   </Container>
 </template>
 
