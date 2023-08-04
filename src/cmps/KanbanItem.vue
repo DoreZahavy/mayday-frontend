@@ -1,13 +1,49 @@
 <template>
   <Draggable v-if="task">
     <div class="kanban-task">
+      <div v-if="task.Attachments.length>0" class="kanban-task-img">
 
+        <img   :src="task.Attachments[0]"/>
+      </div>
       <p class="task-title">{{ task.title }}</p>
       <section class="flex align-center space-between cmp-area">
-        <div class="cmp-title">Person</div>
+        <div class="cmp-title">
+          <span class="cmp-svg" v-icon="'personSmall'"></span>
+          <p>Person</p>
+        </div>
         <div class="kanban-cmp">
 
           <Members class="kanban-cmp" :info="task['Members']" />
+        </div>
+      </section>
+      <section class="flex align-center space-between cmp-area">
+        <div class="cmp-title">
+          <span class="date-svg" v-icon="'datePicker'"></span>
+          <p>Date</p>
+        </div>
+        <div class="kanban-cmp">
+
+          <Date class="kanban-cmp" :info="task['Date']" />
+        </div>
+      </section>
+      <section class="flex align-center space-between cmp-area">
+        <div class="cmp-title">
+          <span class="nums-svg" v-icon="'nums'"></span>
+          <p>Numbers</p>
+        </div>
+        <div class="kanban-cmp">
+
+          <Number class="kanban-cmp" :info="task['Number']" />
+        </div>
+      </section>
+      <section class="flex align-center space-between cmp-area">
+        <div class="cmp-title">
+          <span class="timeline-svg" v-icon="'timelineActivity'"></span>
+          <p>Timeline</p>
+        </div>
+        <div class="kanban-cmp">
+
+          <Timeline class="kanban-cmp" :groupColor="color.backgroundColor" :info="task['Timeline']" />
         </div>
       </section>
 
@@ -54,6 +90,7 @@ export default {
   },
   props: {
     task: Object,
+    color:Object
   },
   computed: {
     // cmpOrder() {
@@ -70,15 +107,36 @@ export default {
 .cmp-area {
   margin-block-end: 8px;
   .cmp-title {
+    display: flex;
+    align-items: center;
     width: 76px;
     height: 34px;
-    background-color: aqua;
+    // background-color: aqua;
+    .date-svg{
+      scale: 0.75;
+      transform: translate(-4px);
+    }
+    .nums-svg{
+      scale: 0.8;
+      transform: translate(-4px);
+    }
+    .timeline-svg{
+      scale: 0.75;
+      transform: translate(-4px);
+    }
+    .cmp-svg{
+     margin-inline-end: 4px;
+     color: #676879;
+    //  font-size: 14px;
+    //  scale: 0.75;
+  
+    }
   }
 
   .kanban-cmp {
     width: 140px;
     height: 36px;
-    background-color: blueviolet;
+    background-color: #f5f6f8;
    
   }
 }

@@ -1,11 +1,16 @@
 .board-filter-container {
+    position: sticky;
+left: 38px;
+top: 139px;
+z-index: 50;
+background-color: white;
     display: flex;
     gap: 4px;
     align-items: center;
     height: 65px;
     border-radius: 3px;
     margin-left: 2.72rem;
-    margin-bottom: 1.5em;
+    margin-bottom: 20px;
     .new-task-button {
         min-width: 83px;
         display: flex;
@@ -160,14 +165,19 @@
         p {
             text-align: left;
             padding-bottom: 13px;
+            padding-top: 20px;
         }
 
         > div:first-of-type {
             max-height: 150px;
             overflow-y: scroll !important;
+            width: 142px;
+
+            div:not(.status-color) {
+                background-color: #f5f6f8;
+            }
 
             div {
-                background-color: #f5f6f8;
                 border-radius: 4px;
                 padding: 5px;
                 margin-left: 2px;
@@ -178,11 +188,11 @@
                 white-space: nowrap;
                 cursor: pointer;
 
-                &:hover {
+                &:hover:not(.status-color) {
                     background-color: darken(#f5f6f8, 8%);
                 }
 
-                &.active {
+                &.active:not(.status-color) {
                     background-color: #cce5ff;
                 }
             }
@@ -195,11 +205,10 @@
         margin-bottom: 20px;
 
         img {
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             margin: 0.5em;
-            margin-right: 0.2em;
 
             &.active {
                 outline: 5px solid #d9f0ff;

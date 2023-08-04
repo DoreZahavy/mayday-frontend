@@ -22,15 +22,16 @@
     }
 
     .group-title-container {
+   
         box-sizing: content-box;
         // padding-top: 36px;
         height: 40px;
         transform: translate(-6px);
-        z-index: 38;
+        z-index: 40;
         position: sticky;
         // bottom: -192px;
         // left: 50px;
-        top: 139px;
+        top: 190px;
         // top: 136px;
         background-color: #fff;
         .arrow-down{
@@ -145,8 +146,9 @@
 
 .label-line {
     position: sticky;
+    background-color: #fff;
     // top: 185px;
-    top: 179px;
+    top: 230px;
     // top: 132px;
     z-index: 39;
     // position: relative;

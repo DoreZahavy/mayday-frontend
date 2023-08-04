@@ -181,10 +181,7 @@ export default {
         <!-- <RouterLink :class="{ active: active === 'dashboard' }" @click="active = 'dashboard'"
           :to="'/board/' + boardId + '/dashboard'" class="nav-item">Dashboard</RouterLink> -->
       </nav>
-      <BoardFilter style="
-    position: sticky;
-    left: 2.72rem;
-    top: 0px;" :board="board" @addTask="addTask" @filter="console.log('filter')" />
+      <BoardFilter :board="board" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <RouterView />
       </section>
