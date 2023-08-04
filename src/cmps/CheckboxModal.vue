@@ -14,8 +14,9 @@
                 </div>
             </div>
         </div>
+        <div v-html="getSvg('trash')" class="close-modal flex align-center justify-center" @click="removeAll">
+        </div>
         <div v-html="getSvg('xButton')" class="close-modal flex align-center justify-center" @click="uncheckAll">
-
         </div>
     </div>
 </template>
@@ -26,7 +27,6 @@ export default {
         checkedTasksGroups: Array,
     },
     created() {
-
     },
     methods: {
         getSvg(iconName) {
@@ -34,6 +34,9 @@ export default {
         },
         uncheckAll(){
             this.$emit('uncheckAll')
+        },
+        removeAll(){
+            this.$emit('removeTasks', this.checkedTasksGroups)
         }
     },
     computed: {
@@ -48,7 +51,8 @@ export default {
             })
             this.$emit('toggleSelectAll')
             return taskCount
-        }
+        },
+
     }
 }
 </script>

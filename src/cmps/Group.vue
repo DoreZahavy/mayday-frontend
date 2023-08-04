@@ -211,7 +211,6 @@ export default {
         },
         onRemoveTask(taskId) {
             this.$emit('removeTask', taskId)
-
         },
         onRemoveGroup() {
             this.$emit('removeGroup')
@@ -293,7 +292,6 @@ export default {
             deep: true
         },
         isSelectAll() {
-            console.log("🚀 ~ file: Group.vue:295 ~ isSelectAll ~ isSelectAll:", this.isSelectAll)
             if (this.isSelectAll !== true) {
                 this.checkedTasks.taskIds = []
             } else {
