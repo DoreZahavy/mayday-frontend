@@ -127,7 +127,6 @@ export default {
       })
       this.checkedTasksGroups = []
     }
-
   }
 }
 </script>

@@ -64,7 +64,7 @@ export default {
     },
     computed: {
         members() {
-            return this.board.members
+            return this.board ? this.board.members : null
         }
     },
     methods: {
