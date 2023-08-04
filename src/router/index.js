@@ -6,6 +6,7 @@ import BoardDetails from '@/cmps/BoardDetails.vue'
 import Kanban from '@/cmps/Kanban.vue'
 import Activities from '@/cmps/Activities.vue'
 import Conversations from '@/cmps/Conversations.vue'
+import Dashboard from '@/cmps/Dashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +35,11 @@ const router = createRouter({
           name: 'Kanban',
           component: Kanban,
         },
-      
+        {
+          path:'dashboard',
+          name:'Dashboard',
+          component: Dashboard
+        }
       ]
     },
   ]

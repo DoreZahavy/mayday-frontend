@@ -46,6 +46,7 @@ export default {
             this.checkedTasksGroups.forEach(group => {
                 group.taskIds.forEach(taskId => { taskCount++ })
             })
+            this.$emit('toggleSelectAll')
             return taskCount
         }
     }

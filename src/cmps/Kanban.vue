@@ -11,7 +11,7 @@
                 <!-- column -->
                 <Container class="flex flex-column column-body " group-name="col-items"
                     :shouldAcceptDrop="(e, payload) => (e.groupName === 'col-items' && !payload.loading)"
-                    :get-child-payload="getCardPayload(column.id)" :drop-placeholder="{
+                    :get-child-payload="getCardPayload(column.title)" :drop-placeholder="{
                         className:
                             `bg-primary bg-opacity-20  
               border-dotted border-2 
@@ -26,7 +26,7 @@
               -rotate-2 scale-90" @drop="(e) => onCardDrop(column.id, e)">
 
                     <!-- Items -->
-                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task"></KanbanItem>
+                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task" :color="headerColor(column.title)"></KanbanItem>
                 </Container>
             </div>
         </Draggable>
@@ -67,7 +67,8 @@ export default {
             // this.scene = scene
         },
         onCardDrop(columnId, dropResult) {
-
+            console.log('columnId:', columnId)
+            console.log('dropResult:', dropResult)
             // check if element where ADDED or REMOVED in current collumn
             if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
 
@@ -89,9 +90,9 @@ export default {
                 this.scene = scene
             }
         },
-        getCardPayload(columnId) {
+        getCardPayload(columnTitle) {
             return index => {
-                return this.scene.children.filter(p => p.id === columnId)[0].children[index]
+                return this.scene.filter(p => p.title === columnTitle)[0][index]
             }
         },
         applyDrag(arr, dragResult) {

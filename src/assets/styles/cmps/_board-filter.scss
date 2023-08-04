@@ -1,11 +1,16 @@
 .board-filter-container {
+    position: sticky;
+left: 38px;
+top: 139px;
+z-index: 50;
+background-color: white;
     display: flex;
     gap: 4px;
     align-items: center;
     height: 65px;
     border-radius: 3px;
     margin-left: 2.72rem;
-    margin-bottom: 1.5em;
+    margin-bottom: 20px;
     .new-task-button {
         min-width: 83px;
         display: flex;
