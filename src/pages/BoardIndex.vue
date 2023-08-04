@@ -176,10 +176,7 @@ export default {
         <RouterLink :class="{ active: active === 'kanban' }" @click="active = 'kanban'"
           :to="'/board/' + boardId + '/kanban'" class="nav-item">Kanban</RouterLink>
       </nav>
-      <BoardFilter style="
-    position: sticky;
-    left: 2.72rem;
-    top: 0px;" :board="board" @addTask="addTask" @filter="console.log('filter')" />
+      <BoardFilter :board="board" @addTask="addTask" @filter="console.log('filter')" />
       <section class="flex">
         <!-- <div class="left-gap"></div> -->
         <RouterView />

@@ -8,4 +8,14 @@
     width: 240px;
     padding: 8px;
     margin: 8px 0;
+    .kanban-task-img{
+        margin-block-end: 12px;
+        width: 224px;
+        height: 132px;
+        img{
+            object-fit: cover;
+            width: 224px;
+        height: 132px;
+        }
+    }
 }
