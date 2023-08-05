@@ -9,7 +9,7 @@ export const boardStore = {
       boards: [],
       attachmentModal: '',
       updates: [],
-      filteredBoard: {}
+      filteredBoard: null
     }
   },
   getters: {
@@ -26,7 +26,6 @@ export const boardStore = {
       return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
     filteredBoard({ filteredBoard }) {
-      console.log(filteredBoard.cmpConfig)
       return filteredBoard
     },
     boards({ boards }) {
@@ -56,13 +55,19 @@ export const boardStore = {
     priorityLabelConfig({ board }) {
       return JSON.parse(JSON.stringify(board.priorityLabelConfig))
     },
-    cmpOrder({ board, filteredBoard }) {
-      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
+    cmpOrder({ board }) {
       return board.cmpConfig.map(a => a.type)
     },
-    labels({ board, filteredBoard }) {
-      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
+    labels({ board }) {
       return board.cmpConfig.map(a => a.title)
+    },
+    filteredCmpOrder({ filteredBoard }) {
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
+      return null
+    },
+    filteredLabels({ filteredBoard }) {
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
+      return null
     },
   },
 
@@ -86,11 +91,13 @@ export const boardStore = {
 
     setBoards(state, { boards }) {
       state.boards = boards
+      // state.board = { ...state.board }
     },
 
     removeBoard(state, { boardId }) {
       const boardIdx = state.boards.findIndex(b => b._id === boardId)
       state.boards.splice(boardIdx, 1)
+      // state.board = { ...state.board }
     },
 
     saveBoard(state, { board }) {
@@ -100,24 +107,29 @@ export const boardStore = {
       const boardIdx = state.boards.findIndex(b => b._id === board._id)
       state.boards.splice(boardIdx, 1, board)
       state.board = board
+      state.filteredBoard = board
       console.log('state.board:', state.board)
 
     },
 
     addBoard(state, { board }) {
       state.boards.push(board)
+      // state.board = { ...state.board }
     },
 
     setGroupsOrder(state, { result }) {
       state.board.groups = result
+      // state.board = { ...state.board }
     },
 
     setTaskOrder(state, { result, idx }) {
       state.board.groups[idx].tasks = result
+      // state.board = { ...state.board }
     },
 
     setCmpConfig(state, { result }) {
       state.board.cmpConfig = result
+      // state.board = { ...state.board }
     },
     fileModal(state, { file }) {
       state.attachmentModal = file
@@ -143,10 +155,12 @@ export const boardStore = {
     addMember(state, { user }) {
 
       state.board.members.unshift(user)
+      // state.board = { ...state.board }
     },
     removeMember(state, { userId }) {
       const memberIdx = state.board.members.findIndex(m => m._id === userId)
       state.board.members.splice(memberIdx, 1)
+      // state.board = { ...state.board }
     },
   },
 

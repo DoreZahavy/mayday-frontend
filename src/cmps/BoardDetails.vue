@@ -30,7 +30,11 @@ export default {
     },
     collapseAll() {
       return this.collapse
-    }
+    },
+    // board() {
+    //   // if (this.filteredBoard) return this.filteredBoard
+    //   return this.currBoard
+    // }
   },
   components: {
     Group,
@@ -108,10 +112,10 @@ export default {
       try {
         checkedTasksGroups.forEach(group => {
           group.taskIds.forEach(tId => {
-            try{
+            try {
               this.removeTask(group.groupId, tId)
             }
-            catch(err){
+            catch (err) {
               console.log('canny do it')
             }
           })
@@ -145,7 +149,7 @@ export default {
 </script>
 
 <template class="flex">
-  <Container v-if="board && Object.keys(filteredBoard).length === 0" @drop="onDropGrp" class="board-details">
+  <Container v-if="board" @drop="onDropGrp" class="board-details">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in board.groups" :key="group._id">
       <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)"
@@ -172,7 +176,7 @@ export default {
       @uncheckAll="uncheckAll" @removeTasks="batchRemoveTasks" />
   </Container>
 
-  <Container v-else-if="board" @drop="onDropGrp" class="board-details">
+  <!-- <Container v-else-if="filteredBoard" @drop="onDropGrp" class="board-details">
 
     <Draggable class="grp-scroll" v-for="(group, idx) in filteredBoard.groups" :key="group._id">
       <MinimizedGroup :group="group" :groupIdx="idx" @update="updateBoard(group._id, $event)"
@@ -198,7 +202,7 @@ export default {
 
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
       @uncheckAll="uncheckAll" @removeTasks="batchRemoveTasks" />
-  </Container>
+  </Container> -->
 </template>
 
 

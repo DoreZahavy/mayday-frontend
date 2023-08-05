@@ -164,10 +164,18 @@ export default {
     },
     computed: {
         labels() {
+            // if (this.$store.getters.filteredLabels) return this.$store.getters.filteredLabels
             return this.$store.getters.labels
         },
         cmpOrder() {
+            // if (this.$store.getters.filteredCmpOrder) return this.$store.getters.filteredCmpOrder
             return this.$store.getters.cmpOrder
+        },
+        filteredLabels() {
+            return this.$store.getters.filteredLabels
+        },
+        filteredCmpOrder() {
+            return this.$store.getters.filteredCmpOrder
         },
         color() {
             return { background: this.group.color }
@@ -198,7 +206,6 @@ export default {
         },
         onDropCmp(dropResult) {
             this.$store.dispatch({ type: 'applyDragCmp', dragResult: dropResult })
-
         },
         onDropLabel(dropResult) {
             this.$store.dispatch({ type: 'applyDragHeader', dragResult: dropResult })
