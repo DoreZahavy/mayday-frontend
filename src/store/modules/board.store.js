@@ -23,7 +23,7 @@ export const boardStore = {
       return board?.title
     },
     miniBoard({ board }) {
-      return { title: board?.title, desc: board?.desc, _id: board?._id  }
+      return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
     filteredBoard({ filteredBoard }) {
       return filteredBoard
@@ -56,11 +56,11 @@ export const boardStore = {
       return JSON.parse(JSON.stringify(board.priorityLabelConfig))
     },
     cmpOrder({ board, filteredBoard }) {
-      // if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
       return board.cmpConfig.map(a => a.type)
     },
     labels({ board, filteredBoard }) {
-      // if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
       return board.cmpConfig.map(a => a.title)
     },
     filteredCmpOrder({ filteredBoard }) {
@@ -93,13 +93,13 @@ export const boardStore = {
 
     setBoards(state, { boards }) {
       state.boards = boards
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
 
     removeBoard(state, { boardId }) {
       const boardIdx = state.boards.findIndex(b => b._id === boardId)
       state.boards.splice(boardIdx, 1)
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
 
     saveBoard(state, { board }) {
@@ -116,22 +116,22 @@ export const boardStore = {
 
     addBoard(state, { board }) {
       state.boards.push(board)
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
 
     setGroupsOrder(state, { result }) {
       state.board.groups = result
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
 
     setTaskOrder(state, { result, idx }) {
       state.board.groups[idx].tasks = result
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
 
     setCmpConfig(state, { result }) {
       state.board.cmpConfig = result
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
     fileModal(state, { file }) {
       state.attachmentModal = file
@@ -157,12 +157,12 @@ export const boardStore = {
     addMember(state, { user }) {
 
       state.board.members.unshift(user)
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
     removeMember(state, { userId }) {
       const memberIdx = state.board.members.findIndex(m => m._id === userId)
       state.board.members.splice(memberIdx, 1)
-      // state.board = { ...state.board }
+      state.board = { ...state.board }
     },
   },
 
@@ -256,7 +256,7 @@ export const boardStore = {
       try {
         // if (idx === context.state.board.groups.length - 1) {
 
-          await boardService.saveBoard(context.state.board)
+        await boardService.saveBoard(context.state.board)
         console.log('save')
         // }
         // else return

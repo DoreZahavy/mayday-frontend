@@ -164,11 +164,11 @@ export default {
     },
     computed: {
         labels() {
-            // if (this.$store.getters.filteredLabels) return this.$store.getters.filteredLabels
+            if (this.$store.getters.filteredLabels) return this.$store.getters.filteredLabels
             return this.$store.getters.labels
         },
         cmpOrder() {
-            // if (this.$store.getters.filteredCmpOrder) return this.$store.getters.filteredCmpOrder
+            if (this.$store.getters.filteredCmpOrder) return this.$store.getters.filteredCmpOrder
             return this.$store.getters.cmpOrder
         },
         filteredLabels() {
