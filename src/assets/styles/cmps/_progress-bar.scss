@@ -4,7 +4,7 @@
 
     .progress-margin {
         background-color: #fff;
-
+        z-index: 1;
         position: sticky;
         left: 40px;
         height: $row-height;
@@ -24,6 +24,7 @@
         border-left: 1px $border-clr solid;
         border-bottom: 1px $border-clr solid;
         border-radius: 0 0 0 6px;
+
         &:before {
             content: "";
             display: block;
@@ -53,6 +54,7 @@
             border-inline-end: 1px $border-clr solid;
         }
     }
+
     .progress-container {
         border-bottom-left-radius: 6px;
     }

@@ -110,9 +110,15 @@
         }
     }
 
+    //kanban
+    .kanban-container {
+        flex-direction: column;
+        padding-inline-start: 6px;
+    }
+
     //tasks
     .task {
-        grid-template-columns: 265px repeat(8, 150px);
+        grid-template-columns: 184px repeat(8, 150px);
 
         .title {
             font-size: 13px;
@@ -120,9 +126,9 @@
     }
 
     .task-column {
-        left: -125px;
-        grid-template-columns: 0px 200px $task-conversation-btn-width;
-        max-width: 265px;
+        left: 6px;
+        grid-template-columns: 0px 144px 40px;
+        max-width: 184px;
 
         .checkbox {
             display: none;
@@ -130,6 +136,7 @@
 
         .title {
             padding-inline-start: 6px;
+            white-space: normal;
         }
 
         &.first {
@@ -142,21 +149,26 @@
     }
 
     .label-line {
-        grid-template-columns: 265px repeat(8, 150px);
+        grid-template-columns: 183px repeat(8, 150px);
         top: 208px;
         border-inline-end: 1px solid $border-clr;
 
         .task-title {
             justify-content: start;
             margin-inline-start: 6px;
-            max-width: 259px;
+            max-width: 178px;
         }
     }
 
     //progress bar
     .progress {
         .progress-margin {
-            left: 6px;
+            left: 0px;
+            width: 183px;
+        }
+
+        .progress-border {
+            left: 189px;
         }
     }
 
@@ -287,9 +299,16 @@
         }
     }
 
+    //kanban
+    .kanban-container {
+        flex-direction: row;
+        padding-inline-start: 38px;
+    }
+
     //tasks
     .task {
         grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
+
         .title {
             font-size: 14px;
         }
@@ -306,6 +325,7 @@
 
         .title {
             padding-inline-start: 34px;
+            white-space: nowrap;
         }
 
         &.first {
@@ -326,6 +346,7 @@
 
     .task-title {
         max-width: none;
+        justify-content: center;
     }
 }
 
@@ -333,6 +354,11 @@
 .progress {
     .progress-margin {
         left: 40px;
+        width: 400px;
+    }
+
+    .progress-border {
+        left: 446px;
     }
 }
 
