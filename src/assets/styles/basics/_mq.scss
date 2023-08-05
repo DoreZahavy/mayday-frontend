@@ -96,6 +96,7 @@
 
     .group-gap {
         width: 6px;
+        left: -7px;
     }
 
     .group-list {
@@ -111,14 +112,17 @@
 
     //tasks
     .task {
+        grid-template-columns: 265px repeat(8, 150px);
+
         .title {
             font-size: 13px;
         }
     }
 
     .task-column {
-        left: 13px;
-        grid-template-columns: 0px $task-title-width $task-conversation-btn-width;
+        left: -125px;
+        grid-template-columns: 0px 200px $task-conversation-btn-width;
+        max-width: 265px;
 
         .checkbox {
             display: none;
@@ -138,8 +142,22 @@
     }
 
     .label-line {
-        grid-template-columns: calc($task-title-width + $task-conversation-btn-width) repeat(8, 150px);
+        grid-template-columns: 265px repeat(8, 150px);
         top: 208px;
+        border-inline-end: 1px solid $border-clr;
+
+        .task-title {
+            justify-content: start;
+            margin-inline-start: 6px;
+            max-width: 259px;
+        }
+    }
+
+    //progress bar
+    .progress {
+        .progress-margin {
+            left: 6px;
+        }
     }
 
     //components
@@ -255,6 +273,7 @@
 
     .group-gap {
         width: 40px;
+        left: 0px;
     }
 
     .group-list {
@@ -270,6 +289,7 @@
 
     //tasks
     .task {
+        grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
         .title {
             font-size: 14px;
         }
@@ -278,6 +298,7 @@
     .task-column {
         left: 46px;
         grid-template-columns: 0px $row-height $task-title-width $task-conversation-btn-width;
+        max-width: none;
 
         .checkbox {
             display: flex;
@@ -301,6 +322,18 @@
 .label-line {
     grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
     top: 230px;
+    border-inline-end: none;
+
+    .task-title {
+        max-width: none;
+    }
+}
+
+//progress bar
+.progress {
+    .progress-margin {
+        left: 40px;
+    }
 }
 
 //components
