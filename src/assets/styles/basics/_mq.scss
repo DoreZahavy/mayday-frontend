@@ -194,9 +194,23 @@
         }
     }
 
+    //modals
+
+    .drawer-modal {
+        width: 100%;
+        height: calc(100vh - 49px);
+    }
+
+    .board-info {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
 }
 
-@media(min-width:800px) {
+@media(min-width:850px) {
 
     //homepage
     .home-layout {
@@ -382,5 +396,19 @@
     .new-task-button {
         display: flex;
     }
+}
+
+//modals
+
+.drawer-modal {
+    width: 650px;
+    height: calc(100vh - 49px);
+}
+
+.board-info {
+    top: calc(50vh - ($board-info-modal-height / 2));
+    left: calc(50vw - ($board-info-modal-width /2));
+    width: $board-info-modal-width;
+    height: $board-info-modal-height;
 }
 }
