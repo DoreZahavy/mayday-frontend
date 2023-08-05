@@ -26,6 +26,7 @@ export const boardStore = {
       return { title: board?.title, desc: board?.desc, _id: board?._id }
     },
     filteredBoard({ filteredBoard }) {
+      console.log(filteredBoard.cmpConfig)
       return filteredBoard
     },
     boards({ boards }) {
@@ -55,10 +56,12 @@ export const boardStore = {
     priorityLabelConfig({ board }) {
       return JSON.parse(JSON.stringify(board.priorityLabelConfig))
     },
-    cmpOrder({ board }) {
+    cmpOrder({ board, filteredBoard }) {
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
       return board.cmpConfig.map(a => a.type)
     },
-    labels({ board }) {
+    labels({ board, filteredBoard }) {
+      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
       return board.cmpConfig.map(a => a.title)
     },
   },

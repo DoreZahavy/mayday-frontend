@@ -1,6 +1,9 @@
 <template>
     <Container class="kanban-container flex" group-name="cols" tag="div" orientation="horizontal"
         @drop="onColumnDrop($event)">
+        <section class="kanban-options">
+            <div v-icon="'settings'"></div>
+        </section>
         <Draggable class="kanban-column " v-for="(column, idx) in scene" :key="column.idx">
             <div class=" flex flex-column ">
 
@@ -50,7 +53,8 @@ export default {
     },
     data() {
         return {
-            colOrder: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck']
+            sortBy:'Priority',
+            colOrder: {Status:['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'],Priority:['Low', 'Blank', 'Medium', 'High', 'Critical ⚠']}
             //    scene : [{title:'blank',Tasks:[]}, {title:'Done',Tasks:[]},{ title:'Working on it',Tasks:[]},{ title:'Stuck',Tasks:[]},{ title:'Almost there',Tasks:[]}]
 
         }
@@ -114,6 +118,10 @@ export default {
             if (title === 'Blank') return { backgroundColor: '#c4c4c4' }
             if (title === 'Almost there') return { backgroundColor: '#0086c0' }
             if (title === 'Stuck') return { backgroundColor: '#e2445c' }
+            if (title === 'Low') return { backgroundColor: '#579bfc' }
+            if (title === 'Medium') return { backgroundColor: '#5559df' }
+            if (title === 'High') return { backgroundColor: '#401694' }
+            if (title === 'Critical ⚠') return { backgroundColor: '#333333' }
         },
     },
     computed: {
@@ -127,14 +135,14 @@ export default {
             const board = JSON.parse(JSON.stringify(this.$store.getters.board))
             var scene = [{ title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }, { title: '', tasks: [] }]
             // var scene = []
-            for (var i = 0; i < this.colOrder.length; i++) {
-                scene[i].title = this.colOrder[i]
+            for (var i = 0; i < this.colOrder[this.sortBy].length; i++) {
+                scene[i].title = this.colOrder[this.sortBy][i]
             }
             board.groups.forEach(group => {
                 group.tasks.forEach(task => {
                     task.groupId = group._id
-                    var idx = this.colOrder.indexOf(task.Status.title)
-                    if (idx === -1) idx = this.colOrder.indexOf('Blank')
+                    var idx = this.colOrder[this.sortBy].indexOf(task[this.sortBy].title)
+                    if (idx === -1) idx = this.colOrder[this.sortBy].indexOf('Blank')
                     scene[idx].tasks.push(task)
                 })
             })

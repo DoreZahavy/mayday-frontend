@@ -94,8 +94,18 @@
                 </span>
             </template>
         </el-popover>
-        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false">
-            <div class="hide-filter">Hide</div>
+        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false"
+            popper-style="width: 264px; padding: 15px; padding-left: 0px; padding-right: 0px;">
+            <div class="hide-filter">
+                <p style="color: rgb(21, 21, 21); text-align: left; padding-bottom: 20px; padding-left: 30px;">Choose
+                    columns to display</p>
+                <div v-for="cmp in currBoard.cmpConfig"
+                    style="display: flex; padding-bottom: 10px;justify-content: space-between;">
+                    <label style="margin-left: 30px;" :for="cmp.type">{{ cmp.title }}</label>
+                    <input style="margin-right: 30px; width: 1.25em; height: 1.25em; font-weight: 100;" type="checkbox"
+                        v-model="hiddenComponents[cmp.type]" :id="cmp.type" @change="applyHideFilters" />
+                </div>
+            </div>
             <template #reference>
                 <span class="span-common" style="margin-top: 0; gap: 0.4em;" @click="openPopover('hide')">
                     <span v-html="getSvg('hide')" class="span-hide"></span>Hide
@@ -126,6 +136,16 @@ export default {
                 tasks: [],
                 status: [],
                 priority: []
+            },
+            hiddenComponents: {
+                Status: true,
+                Priority: true,
+                Members: true,
+                Date: true,
+                Timeline: true,
+                Number: true,
+                Text: true,
+                Attachments: true
             },
             itemsTotal: 0,
         }
@@ -277,6 +297,14 @@ export default {
 
             console.log(this.modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: this.modifiedBoard })
+        },
+        applyHideFilters() {
+            this.filterCmps()
+        },
+        filterCmps() {
+            const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
+            modifiedBoard.cmpConfig = modifiedBoard.cmpConfig.filter(cmp => this.hiddenComponents[cmp.type])
+            this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         getDebouncedFilterText() {
             return utilService.debounce(() => {

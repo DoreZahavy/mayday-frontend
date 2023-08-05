@@ -1,8 +1,12 @@
 <template>
   <div v-if="group" class="priority-progress-bar">
-    <div v-for="priority in priorityCounts" :key="priority.title" class="progress-segment" :class="priority.color"
-      :style="{ width: priority.percentage + '%' }">{{ priority.title }}
-    </div>
+    <el-tooltip v-for="priority in priorityCounts" :key="priority.title" placement="top" popper-class="custom-tooltip">
+      <template #content>
+        <span v-html="tooltipContent(priority)"></span>
+      </template>
+      <div class="progress-segment" :class="priority.color" :style="{ width: priority.percentage + '%' }">
+      </div>
+    </el-tooltip>
   </div>
 </template>
 
@@ -17,7 +21,7 @@ export default {
         // console.log(task.Priority)
         let priority = task.Priority.title
         if (!(priority in priorities)) {
-          priorities[priority] = { count: 0, color: task.Priority.color }
+          priorities[priority] = { count: 0, color: task.Priority.color, title: task.Priority.title }
         }
         priorities[priority].count++
       }
@@ -28,6 +32,11 @@ export default {
       }
 
       return Object.values(priorities)
+    }
+  },
+  methods: {
+    tooltipContent(priority) {
+      return `${priority.title ? priority.title : ''} ${priority.count}/${this.group.tasks.length}&nbsp;&nbsp;&nbsp;${priority.percentage.toFixed(2)}%`
     }
   }
 }
