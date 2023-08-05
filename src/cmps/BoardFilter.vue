@@ -211,6 +211,7 @@ export default {
             })
 
             console.log(modifiedBoard)
+            this.modifiedBoard = modifiedBoard
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         filterByText(searchText) {
@@ -233,10 +234,10 @@ export default {
 
                     return false
                 })
-
                 return group.tasks.length > 0
             })
 
+            this.modifiedBoard = modifiedBoard
             console.log(modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
@@ -306,6 +307,7 @@ export default {
         filterCmps() {
             const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
             modifiedBoard.cmpConfig = modifiedBoard.cmpConfig.filter(cmp => this.hiddenComponents[cmp.type])
+            this.modifiedBoard = modifiedBoard
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         getDebouncedFilterText() {
