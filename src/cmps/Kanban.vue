@@ -2,7 +2,43 @@
     <Container class="kanban-container flex" group-name="cols" tag="div" orientation="horizontal"
         @drop="onColumnDrop($event)">
         <section class="kanban-options">
-            <div v-icon="'settings'"></div>
+            <div class="settings-btn" v-icon="'settings'" @click="showKanbanModal = true"></div>
+            <div v-if="showKanbanModal === true" v-out="closeModal" class="kanban-modal">
+                <h3 class="settings-title">Settings</h3>
+                <!-- <div class="settings-title flex align-center"> -->
+                    <!-- <span v-icon="'settings'"></span> -->
+                <!-- </div> -->
+                <section class="modal-inner-container">
+                    <p class="modal-title">Kanban Column</p>
+                    <div class="flex align-center sort-option">
+                        <span v-icon="'kanbanSort'"></span>
+                        <p @click="sortBy = 'Status'">Status</p>
+                    </div>
+                    <div class="flex align-center sort-option">
+                        <span v-icon="'kanbanSort'"></span>
+                        <p @click="sortBy = 'Priority'">Priority</p>
+                    </div>
+                    <!-- <hr /> -->
+                    <p class="modal-title">Card Column</p>
+                    <div class="flex align-center space-between modal-cmp">
+                        <label class="flex align-center" for="members"><span v-icon="'personSmall'"></span>Members</label>
+                        <input id="members" type="checkbox" v-model="kanbanCmps" value="Members">
+                    </div>
+                    <div class="flex align-center space-between modal-cmp">
+                        <label class="flex align-center" for="date"><span class="date-svg" v-icon="'datePicker'"></span>Date</label>
+                        <input id="date" type="checkbox" v-model="kanbanCmps" value="Date">
+                    </div>
+                    <div class="flex align-center space-between modal-cmp">
+                        <label class="flex align-center" for="numbers"><span class="nums-svg" v-icon="'nums'"></span>Numbers</label>
+                        <input id="numbers" type="checkbox" v-model="kanbanCmps" value="Number">
+                    </div>
+                    <div class="flex align-center space-between modal-cmp">
+                        <label class="flex align-center" for="timeline"><span class="timeline-svg" v-icon="'timelineActivity'"></span>Timeline</label>
+                        <input id="timeline" type="checkbox" v-model="kanbanCmps" value="Timeline">
+                    </div>
+                    <!-- <pre>{{ kanbanCmps }}</pre> -->
+                </section>
+            </div>
         </section>
         <Draggable class="kanban-column " v-for="(column, idx) in scene" :key="column.idx">
             <div class=" flex flex-column ">
@@ -29,7 +65,8 @@
               -rotate-2 scale-90" @drop="(e) => onCardDrop(column.id, e)">
 
                     <!-- Items -->
-                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task" :color="headerColor(column.title)"></KanbanItem>
+                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task" :cmps="kanbanCmps"
+                        :color="headerColor(column.title)"></KanbanItem>
                 </Container>
             </div>
         </Draggable>
@@ -53,8 +90,10 @@ export default {
     },
     data() {
         return {
-            sortBy:'Priority',
-            colOrder: {Status:['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'],Priority:['Low', 'Blank', 'Medium', 'High', 'Critical ⚠']}
+            kanbanCmps: ['Members','Date','Number','Timeline'],
+            sortBy: 'Priority',
+            colOrder: { Status: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'], Priority: ['Low', 'Blank', 'Medium', 'High', 'Critical ⚠'] },
+            showKanbanModal: false
             //    scene : [{title:'blank',Tasks:[]}, {title:'Done',Tasks:[]},{ title:'Working on it',Tasks:[]},{ title:'Stuck',Tasks:[]},{ title:'Almost there',Tasks:[]}]
 
         }
@@ -123,6 +162,9 @@ export default {
             if (title === 'High') return { backgroundColor: '#401694' }
             if (title === 'Critical ⚠') return { backgroundColor: '#333333' }
         },
+        closeModal() {
+            this.showKanbanModal = false
+        }
     },
     computed: {
         board() {
