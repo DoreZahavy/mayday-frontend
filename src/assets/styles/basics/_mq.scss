@@ -20,6 +20,7 @@
 
             h1 {
                 font-size: 32px;
+                margin-inline: 5%;
             }
         }
 
@@ -115,10 +116,12 @@
         .group-header {
             left: 6px;
         }
-        .group-color-accent{
+
+        .group-color-accent {
             left: 0px;
         }
-        .preview{
+
+        .preview {
             left: 6px;
         }
     }
@@ -275,6 +278,7 @@
 
             h1 {
                 font-size: 64px;
+                margin-inline: 20%;
             }
         }
 
@@ -360,14 +364,16 @@
         .group-header {
             left: 55px;
         }
-        .group-color-accent{
+
+        .group-color-accent {
             left: 39px;
         }
-        .preview{
+
+        .preview {
             left: 45px;
         }
     }
-    
+
     .minimized-group-side-div {
         width: 39px;
         left: 0px;
