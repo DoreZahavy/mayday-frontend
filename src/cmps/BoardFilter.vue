@@ -1,17 +1,14 @@
 <template>
     <div v-if="currBoard" class="board-filter-container">
         <span class="blue-button new-task-button" @click="onAddTask">New Item</span>
-        <transition>
-            <span v-if="!editing" class="span-common span-search" @click="enableEditing">
-                <span v-html="getSvg('search')" class="span-common"></span>Search
-            </span>
-            <span v-else style="position: relative; margin-top: -0.1em; margin-right: 1em"><input class="search-input"
-                    @change="filterByText" v-model="searchText" ref="searchInput" placeholder="Search"
-                    @blur="editing = false"
-                    style="height: 2.25em; width: 20em; border: 0.5px solid royalblue; background-color: transparent; border-radius: 4px; padding-left: 2.27em; font-size: 1em; padding-bottom: 1px;"><span
-                    v-html="getSvg('search')" class="span-common"
-                    style="position: absolute; left: 0.6em; top: 4.2px; z-index: -9"></span></span>
-        </transition>
+        <span v-if="!editing" class="span-common span-search" @click="enableEditing">
+            <span v-html="getSvg('search')" class="span-common"></span>Search
+        </span>
+        <span v-else style="position: relative; margin-top: -0.1em; margin-right: 1em"><input class="search-input"
+                v-model="searchText" ref="searchInput" placeholder="Search" @blur="editing = false"
+                style="height: 2.25em; width: 20em; border: 0.5px solid royalblue; background-color: transparent; border-radius: 4px; padding-left: 2.27em; font-size: 1em; padding-bottom: 1px;"><span
+                v-html="getSvg('search')" class="span-common"
+                style="position: absolute; left: 0.6em; top: 4.2px; z-index: -9"></span></span>
         <el-popover style="width: 800px !important" ref="personPopover" placement="bottom" trigger="click"
             :show-arrow="false" popper-class="person-popover-container">
             <div class="person-filter">
@@ -28,14 +25,20 @@
         </el-popover>
         <el-popover ref="filterPopover" placement="bottom" trigger="click" :show-arrow="false"
             popper-class="multi-filter-popover-container">
-            <p>Quick filters</p>
+            <p>Quick filters<span style="font-size: 0.85em; font-weight: 300; margin-left: 1em;">Showing {{ itemsShown }}
+                    of {{ itemsTotal }}
+                    items</span></p>
+            <p style="position: absolute; top: 11.5px; right: 20px; font-size: 1em; font-weight: 400; cursor: pointer;"
+                @click="onClearFilter">Clear all</p>
             <div class="multi-filter">
                 <div class="filter-column">
                     <p>Members</p>
                     <div class="member-filter">
-                        <img v-for="member in members" :src="member.imgUrl"
-                            :class="{ active: multiFilter.members.includes(member._id) }"
-                            @click="toggleFilter('members', member._id)">
+                        <div v-for="member in members" :class="{ active: multiFilter.members.includes(member._id) }"
+                            style="position: relative; text-align: left;" @click="toggleFilter('members', member._id)">
+                            <img style="position: absolute; top: 50%; left: 0em; transform: translate( 0%, -87%);"
+                                :src="member.imgUrl"><span style="padding-left: 2em;">{{ member.fullname }}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="filter-column">
@@ -57,7 +60,11 @@
                     <div>
                         <div v-for="status in allStatus"
                             :class="{ active: JSON.stringify(multiFilter.status).includes(JSON.stringify(status.title)) }"
-                            @click="toggleFilter('status', status)">{{ status.title }}</div>
+                            style="position: relative; text-align: left;" @click="toggleFilter('status', status)">
+                            <div :class="status.color" class="status-color"
+                                style="display: inline-block; position: absolute; top: 50%; transform: translate(0, -50%); left: 0.85em; width: 0.1em; height: 0.1em; border-radius: 50%;">
+                            </div><span style="padding-left: 1.9em;">{{ status.title ? status.title : 'Blank' }}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="filter-column">
@@ -65,7 +72,11 @@
                     <div>
                         <div v-for="priority in allPriority"
                             :class="{ active: JSON.stringify(multiFilter.priority).includes(JSON.stringify(priority.title)) }"
-                            @click="toggleFilter('priority', priority)">{{ priority.title }}</div>
+                            style="position: relative; text-align: left;" @click="toggleFilter('priority', priority)">
+                            <div :class="priority.color" class="status-color"
+                                style="display: inline-block; position: absolute; top: 50%; transform: translate(0, -50%); left: 0.85em; width: 0.1em; height: 0.1em; border-radius: 50%;">
+                            </div><span style="padding-left: 1.9em;">{{ priority.title ? priority.title : 'Blank' }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,8 +94,18 @@
                 </span>
             </template>
         </el-popover>
-        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false">
-            <div class="hide-filter">Hide</div>
+        <el-popover ref="hidePopover" placement="bottom" trigger="click" :show-arrow="false"
+            popper-style="width: 264px; padding: 15px; padding-left: 0px; padding-right: 0px;">
+            <div class="hide-filter">
+                <p style="color: rgb(21, 21, 21); text-align: left; padding-bottom: 20px; padding-left: 30px;">Choose
+                    columns to display</p>
+                <div v-for="cmp in currBoard.cmpConfig"
+                    style="display: flex; padding-bottom: 10px;justify-content: space-between;">
+                    <label style="margin-left: 30px;" :for="cmp.type">{{ cmp.title }}</label>
+                    <input style="margin-right: 30px; width: 1.25em; height: 1.25em; font-weight: 100;" type="checkbox"
+                        v-model="hiddenComponents[cmp.type]" :id="cmp.type" @change="applyHideFilters" />
+                </div>
+            </div>
             <template #reference>
                 <span class="span-common" style="margin-top: 0; gap: 0.4em;" @click="openPopover('hide')">
                     <span v-html="getSvg('hide')" class="span-hide"></span>Hide
@@ -95,6 +116,7 @@
 </template>
 
 <script>
+import { utilService } from '../services/util.service'
 import { svgService } from '../services/svg.service'
 export default {
     props: {
@@ -114,7 +136,18 @@ export default {
                 tasks: [],
                 status: [],
                 priority: []
-            }
+            },
+            hiddenComponents: {
+                Status: true,
+                Priority: true,
+                Members: true,
+                Date: true,
+                Timeline: true,
+                Number: true,
+                Text: true,
+                Attachments: true
+            },
+            itemsTotal: 0,
         }
     },
     computed: {
@@ -131,16 +164,18 @@ export default {
             const board = this.modifiedBoard.groups ? this.modifiedBoard : this.currBoard
             if (!board || !board.statusLabelConfig) return []
             const allStatuses = JSON.parse(JSON.stringify(board.statusLabelConfig))
-            allStatuses.pop()
             return allStatuses
         },
         allPriority() {
             const board = this.modifiedBoard.groups ? this.modifiedBoard : this.currBoard
             if (!board || !board.priorityLabelConfig) return []
             const allPriorities = JSON.parse(JSON.stringify(board.priorityLabelConfig))
-            allPriorities.pop()
             return allPriorities
         },
+        itemsShown() {
+            if (!Object.keys(this.modifiedBoard).length) return 'all'
+            return this.modifiedBoard.groups.flatMap(group => group.tasks).length
+        }
     },
     methods: {
         onAddTask() {
@@ -176,23 +211,23 @@ export default {
             console.log(modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
-        filterByText() {
+        filterByText(searchText) {
             const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
 
             modifiedBoard.groups = modifiedBoard.groups.filter(group => {
-                if (this.containsSearchText(group.title, this.searchText)) return true
+                if (this.containsSearchText(group.title, searchText)) return true
 
                 group.tasks = group.tasks.filter(task => {
-                    if (this.containsSearchText(task.title, this.searchText) ||
-                        this.containsSearchText(task.Number, this.searchText) ||
-                        this.containsSearchText(task.Text, this.searchText) ||
-                        this.containsSearchText(task.Status.title, this.searchText) ||
-                        this.containsSearchText(task.Priority.title, this.searchText) ||
-                        this.containsSearchText(this.formatDate(task.Date), this.searchText) ||
-                        this.containsSearchText(this.formatDate(task.Timeline.startDate), this.searchText) ||
-                        this.containsSearchText(this.formatDate(task.Timeline.dueDate), this.searchText)) return true
+                    if (this.containsSearchText(task.title, searchText) ||
+                        this.containsSearchText(task.Number, searchText) ||
+                        this.containsSearchText(task.Text, searchText) ||
+                        this.containsSearchText(task.Status.title, searchText) ||
+                        this.containsSearchText(task.Priority.title, searchText) ||
+                        this.containsSearchText(this.formatDate(task.Date), searchText) ||
+                        this.containsSearchText(this.formatDate(task.Timeline.startDate), searchText) ||
+                        this.containsSearchText(this.formatDate(task.Timeline.dueDate), searchText)) return true
 
-                    if (task.Members.some(member => this.containsSearchText(member.fullname, this.searchText))) return true
+                    if (task.Members.some(member => this.containsSearchText(member.fullname, searchText))) return true
 
                     return false
                 })
@@ -263,6 +298,30 @@ export default {
             console.log(this.modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: this.modifiedBoard })
         },
+        applyHideFilters() {
+            this.filterCmps()
+        },
+        filterCmps() {
+            const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
+            modifiedBoard.cmpConfig = modifiedBoard.cmpConfig.filter(cmp => this.hiddenComponents[cmp.type])
+            this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
+        },
+        getDebouncedFilterText() {
+            return utilService.debounce(() => {
+                this.filterByText(this.searchText)
+            }, 500)
+        },
+        onClearFilter() {
+            this.$store.commit('setFilteredBoard', { filteredBoard: this.currBoard })
+            this.multiFilter = {
+                members: [],
+                groups: [],
+                tasks: [],
+                status: [],
+                priority: []
+            }
+            this.modifiedBoard = this.currBoard
+        },
         formatDate(timestamp) {
             const date = new Date(timestamp)
             const day = String(date.getDate()).padStart(2, '0')
@@ -276,6 +335,7 @@ export default {
             immediate: true,
             handler(newValue) {
                 this.currBoard = { ...newValue }
+                if ({ ...newValue } && this.board && this.board.groups) this.itemsTotal = { ...newValue }.groups.flatMap(group => group.tasks).length
             }
         },
         multiFilter: {
@@ -283,6 +343,13 @@ export default {
                 this.applyMultiFilter()
             },
             deep: true,
+        },
+        searchText: {
+            immediate: true,
+            handler() {
+                const debouncedFilterText = this.getDebouncedFilterText()
+                debouncedFilterText()
+            },
         },
     },
 }

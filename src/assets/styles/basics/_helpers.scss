@@ -63,10 +63,10 @@
     align-self: center;
 }
 //grid
-.grid{
+.grid {
     display: grid;
 }
-.justify-self-end{
+.justify-self-end {
     justify-self: end;
 }
 // List
@@ -90,9 +90,9 @@
     z-index: 41;
 }
 
-.blue-button{
+.blue-button {
     padding: 0;
-    margin-block:5px;
+    margin-block: 5px;
     width: 62px;
     height: 32px;
     color: white;
@@ -100,7 +100,7 @@
     border: 0;
     border-radius: 3px;
     font-size: 12px;
-    &:hover{
+    &:hover {
         background: $primary-btn-hover-color;
     }
 }
@@ -121,7 +121,7 @@
 }
 
 .task:hover .done-green,
-.done-green:hover:not(.progress-segment, .activity-status) {
+.done-green:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #4ad69c;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .task:hover .working-orange,
-.working-orange:hover:not(.progress-segment, .activity-status) {
+.working-orange:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fbc175;
 }
 
@@ -149,7 +149,7 @@
 }
 
 .task:hover .stuck-red,
-.stuck-red:hover:not(.progress-segment, .activity-status) {
+.stuck-red:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #e8798b;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .task:hover .default-gray,
-.default-gray:hover:not(.progress-segment, .activity-status) {
+.default-gray:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #d2d2d3;
 }
 
@@ -177,7 +177,7 @@
 }
 
 .task:hover .low-blue,
-.low-blue:hover:not(.progress-segment, .activity-status) {
+.low-blue:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #86b6fb;
 }
 
@@ -191,7 +191,7 @@
 }
 
 .task:hover .medium-purple,
-.medium-purple:hover:not(.progress-segment, .activity-status) {
+.medium-purple:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #8588e6;
 }
 
@@ -205,7 +205,7 @@
 }
 
 .task:hover .high-dark-purple,
-.high-dark-purple:hover:not(.progress-segment, .activity-status) {
+.high-dark-purple:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #7659b2;
 }
 
@@ -219,7 +219,7 @@
 }
 
 .task:hover .critical-dark-gray,
-.critical-dark-gray:hover:not(.progress-segment, .activity-status) {
+.critical-dark-gray:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #6d6d6e;
 }
 
@@ -235,7 +235,7 @@
 }
 
 .task:hover .green-grass,
-.green-grass:hover:not(.progress-segment, .activity-status) {
+.green-grass:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #4ba27f;
 }
 
@@ -249,7 +249,7 @@
 }
 
 .task:hover .bright-green,
-.bright-green:hover:not(.progress-segment, .activity-status) {
+.bright-green:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #b7dd65;
 }
 
@@ -263,7 +263,7 @@
 }
 
 .task:hover .saladish,
-.saladish:hover:not(.progress-segment, .activity-status) {
+.saladish:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #d7c978;
 }
 
@@ -277,7 +277,7 @@
 }
 
 .task:hover .egg-yolk,
-.egg-yolk:hover:not(.progress-segment, .activity-status) {
+.egg-yolk:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fcd84a;
 }
 
@@ -291,7 +291,7 @@
 }
 
 .task:hover .dark-orange,
-.dark-orange:hover:not(.progress-segment, .activity-status) {
+.dark-orange:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fc906a;
 }
 
@@ -305,7 +305,7 @@
 }
 
 .task:hover .peach,
-.peach:hover:not(.progress-segment, .activity-status) {
+.peach:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fcc3c4;
 }
 
@@ -319,7 +319,7 @@
 }
 
 .task:hover .sunset,
-.sunset:hover:not(.progress-segment, .activity-status) {
+.sunset:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fc9b9c;
 }
 
@@ -333,7 +333,7 @@
 }
 
 .task:hover .dark-red,
-.dark-red:hover:not(.progress-segment, .activity-status) {
+.dark-red:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #cc6d85;
 }
 
@@ -347,7 +347,7 @@
 }
 
 .task:hover .sofia-pink,
-.sofia-pink:hover:not(.progress-segment, .activity-status) {
+.sofia-pink:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fc58ab;
 }
 
@@ -361,7 +361,7 @@
 }
 
 .task:hover .lipstick,
-.lipstick:hover:not(.progress-segment, .activity-status) {
+.lipstick:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #fc89d3;
 }
 
@@ -375,7 +375,7 @@
 }
 
 .task:hover .bubble,
-.bubble:hover:not(.progress-segment, .activity-status) {
+.bubble:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #f9bbf4;
 }
 
@@ -389,7 +389,7 @@
 }
 
 .task:hover .dark-purple,
-.dark-purple:hover:not(.progress-segment, .activity-status) {
+.dark-purple:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #9d7edd;
 }
 
@@ -403,7 +403,7 @@
 }
 
 .task:hover .berry,
-.berry:hover:not(.progress-segment, .activity-status) {
+.berry:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #a273ac;
 }
 
@@ -417,7 +417,7 @@
 }
 
 .task:hover .indigo,
-.indigo:hover:not(.progress-segment, .activity-status) {
+.indigo:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #8588e7;
 }
 
@@ -431,7 +431,7 @@
 }
 
 .task:hover .navy,
-.navy:hover:not(.progress-segment, .activity-status) {
+.navy:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #6282b0;
 }
 
@@ -445,7 +445,7 @@
 }
 
 .task:hover .bright-blue,
-.bright-blue:hover:not(.progress-segment, .activity-status) {
+.bright-blue:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #86b6fb;
 }
 
@@ -459,7 +459,7 @@
 }
 
 .task:hover .dark-blue,
-.dark-blue:hover:not(.progress-segment, .activity-status) {
+.dark-blue:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #49a7d1;
 }
 
@@ -473,7 +473,7 @@
 }
 
 .task:hover .aquamarine,
-.aquamarine:hover:not(.progress-segment, .activity-status) {
+.aquamarine:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #81d9d6;
 }
 
@@ -487,7 +487,7 @@
 }
 
 .task:hover .chili-blue,
-.chili-blue:hover:not(.progress-segment, .activity-status) {
+.chili-blue:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #91d9fd;
 }
 
@@ -501,7 +501,7 @@
 }
 
 .task:hover .river,
-.river:hover:not(.progress-segment, .activity-status) {
+.river:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #93bbcf;
 }
 
@@ -515,7 +515,7 @@
 }
 
 .task:hover .winter,
-.winter:hover:not(.progress-segment, .activity-status) {
+.winter:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #b6c3cf;
 }
 
@@ -529,7 +529,7 @@
 }
 
 .task:hover .american-gray,
-.american-gray:hover:not(.progress-segment, .activity-status) {
+.american-gray:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #a3a3a4;
 }
 
@@ -543,7 +543,7 @@
 }
 
 .task:hover .blackish,
-.blackish:hover:not(.progress-segment, .activity-status) {
+.blackish:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #6d6d6e;
 }
 
@@ -557,7 +557,7 @@
 }
 
 .task:hover .brown,
-.brown:hover:not(.progress-segment, .activity-status) {
+.brown:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #a3847c;
 }
 
@@ -571,7 +571,7 @@
 }
 
 .task:hover .orchid,
-.orchid:hover:not(.progress-segment, .activity-status) {
+.orchid:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #e29bc6;
 }
 
@@ -585,7 +585,7 @@
 }
 
 .task:hover .tan,
-.tan:hover:not(.progress-segment, .activity-status) {
+.tan:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #c3b3a0;
 }
 
@@ -599,7 +599,7 @@
 }
 
 .task:hover .sky,
-.sky:hover:not(.progress-segment, .activity-status) {
+.sky:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #bbe9f7;
 }
 
@@ -613,7 +613,7 @@
 }
 
 .task:hover .coffee,
-.coffee:hover:not(.progress-segment, .activity-status) {
+.coffee:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #cea498;
 }
 
@@ -627,7 +627,7 @@
 }
 
 .task:hover .royal,
-.royal:hover:not(.progress-segment, .activity-status) {
+.royal:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #689deb;
 }
 
@@ -641,7 +641,7 @@
 }
 
 .task:hover .teal,
-.teal:hover:not(.progress-segment, .activity-status) {
+.teal:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #5a8990;
 }
 
@@ -655,7 +655,7 @@
 }
 
 .task:hover .lavender,
-.lavender:hover:not(.progress-segment, .activity-status) {
+.lavender:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #cec0f9;
 }
 
@@ -669,7 +669,7 @@
 }
 
 .task:hover .steel,
-.steel:hover:not(.progress-segment, .activity-status) {
+.steel:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #c0cfed;
 }
 
@@ -683,7 +683,7 @@
 }
 
 .task:hover .liliac,
-.liliac:hover:not(.progress-segment, .activity-status) {
+.liliac:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #b8b5cc;
 }
 
@@ -697,7 +697,7 @@
 }
 
 .task:hover .pecan,
-.pecan:hover:not(.progress-segment, .activity-status) {
+.pecan:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #867576;
 }
 
@@ -711,7 +711,7 @@
 }
 
 .task:hover .purple,
-.purple:hover:not(.progress-segment, .activity-status) {
+.purple:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #bb8be5;
 }
 
@@ -725,7 +725,7 @@
 }
 
 .task:hover .dark-indigo,
-.dark-indigo:hover:not(.progress-segment, .activity-status) {
+.dark-indigo:hover:not(.progress-segment, .activity-status, .status-color) {
     background-color: #7759b3;
 }
 

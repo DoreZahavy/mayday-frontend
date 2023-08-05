@@ -103,6 +103,23 @@ export default {
         showErrorMsg('Failed to add task')
       }
     },
+    async batchRemoveTasks(checkedTasksGroups) {
+      console.log("🚀 ~ file: BoardDetails.vue:107 ~ batchRemoveTasks ~ checkedTasksGroups:", checkedTasksGroups)
+      try {
+        checkedTasksGroups.forEach(group => {
+          group.taskIds.forEach(tId => {
+            try{
+              this.removeTask(group.groupId, tId)
+            }
+            catch(err){
+              console.log('canny do it')
+            }
+          })
+        })
+      } catch (err) {
+
+      }
+    },
     openConversations(taskId) {
       console.log(taskId)
       this.$emit('openConversations', taskId)
@@ -144,7 +161,6 @@ export default {
           @removeGroup="removeGroup(group._id)" @checkedTasksChanged="onCheckedTasksChanged">
         </Group>
       </div>
-
     </Draggable>
     <button @click="addGroup" class="add-group-btn">
       <div v-html="getSvg('addGroup')"></div>
@@ -153,7 +169,7 @@ export default {
 
 
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
-      @uncheckAll="uncheckAll"/>
+      @uncheckAll="uncheckAll" @removeTasks="batchRemoveTasks" />
   </Container>
 
   <Container v-else-if="board" @drop="onDropGrp" class="board-details">
@@ -181,7 +197,7 @@ export default {
 
 
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
-      @uncheckAll="uncheckAll"/>
+      @uncheckAll="uncheckAll" @removeTasks="batchRemoveTasks" />
   </Container>
 </template>
 

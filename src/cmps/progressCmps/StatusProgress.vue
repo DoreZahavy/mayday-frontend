@@ -1,8 +1,12 @@
 <template>
   <div v-if="group" class="status-progress-bar">
-    <div v-for="status in statusCounts" :key="status.title" class="progress-segment" :class="status.color"
-      :style="{ width: status.percentage + '%' }">{{ status.title }}
-    </div>
+    <el-tooltip v-for="status in  statusCounts " :key="status.title" placement="top" popper-class="custom-tooltip">
+      <template #content>
+        <span v-html="tooltipContent(status)"></span>
+      </template>
+      <div class="progress-segment" :class="status.color" :style="{ width: status.percentage + '%' }">
+      </div>
+    </el-tooltip>
   </div>
 </template>
 
@@ -17,7 +21,7 @@ export default {
         // console.log(task.Status)
         let status = task.Status.title
         if (!(status in statuses)) {
-          statuses[status] = { count: 0, color: task.Status.color }
+          statuses[status] = { count: 0, color: task.Status.color, title: task.Status.title }
         }
         statuses[status].count++
       }
@@ -28,6 +32,11 @@ export default {
       }
 
       return Object.values(statuses)
+    }
+  },
+  methods: {
+    tooltipContent(status) {
+      return `${status.title ? status.title : ''} ${status.count}/${this.group.tasks.length}&nbsp;&nbsp;&nbsp;${status.percentage.toFixed(2)}%`
     }
   }
 }

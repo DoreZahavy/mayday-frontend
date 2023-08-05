@@ -84,13 +84,13 @@ function debounce(fn, wait) {
 
 // throttle() calls a function at intervals of a specified time
 // while the user is carrying out an event
-function throttle(fn, wait){
+function throttle(fn, wait) {
     let throttled = false
-    return function(...args){
-        if(!throttled){
-            fn.apply(this,args)
+    return function (...args) {
+        if (!throttled) {
+            fn.apply(this, args)
             throttled = true
-            setTimeout(()=>{
+            setTimeout(() => {
                 throttled = false
             }, wait)
         }
