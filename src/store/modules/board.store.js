@@ -1,5 +1,5 @@
-// import { boardService } from '@/services/board.service.js'
-import { boardService } from "@/services/board.service.local.js"
+import { boardService } from '@/services/board.service.js'
+// import { boardService } from "@/services/board.service.local.js"
 
 export const boardStore = {
   strict: true,
@@ -23,7 +23,7 @@ export const boardStore = {
       return board?.title
     },
     miniBoard({ board }) {
-      return { title: board?.title, desc: board?.desc, _id: board?._id }
+      return { title: board?.title, desc: board?.desc, _id: board?._id  }
     },
     filteredBoard({ filteredBoard }) {
       console.log(filteredBoard.cmpConfig)
@@ -36,7 +36,7 @@ export const boardStore = {
       return updates
     },
     boardMembers({ board }) {
-      return board.members
+      return board?.members
     },
     attachmentModal({ attachmentModal }) {
       return attachmentModal
@@ -57,11 +57,11 @@ export const boardStore = {
       return JSON.parse(JSON.stringify(board.priorityLabelConfig))
     },
     cmpOrder({ board, filteredBoard }) {
-      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
+      // if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.type)
       return board.cmpConfig.map(a => a.type)
     },
     labels({ board, filteredBoard }) {
-      if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
+      // if (Object.keys(filteredBoard).length) return filteredBoard.cmpConfig.map(a => a.title)
       return board.cmpConfig.map(a => a.title)
     },
   },
@@ -221,6 +221,7 @@ export const boardStore = {
     },
 
     async applyDragTask(context, { idx, dragResult }) {
+
       const arr = context.state.board.groups[idx].tasks
       const { removedIndex, addedIndex, payload } = dragResult
 
@@ -237,8 +238,12 @@ export const boardStore = {
       context.commit({ type: 'setTaskOrder', result, idx })
 
       try {
-        if (idx === context.state.board.groups.length - 1) await boardService.saveBoard(context.state.board)
-        else return
+        // if (idx === context.state.board.groups.length - 1) {
+
+          await boardService.saveBoard(context.state.board)
+        console.log('save')
+        // }
+        // else return
       } catch (err) {
         console.log(err)
         throw err

@@ -20,13 +20,13 @@
     </template>
     <section class="members-list">
 
-      <template v-if="hasMembers && members.length > 2">
-        <MemberPreview :member="members[0]" />
-        <div v-if="members.length > 2" class="member-preview extra-persons">+{{ members.length - 1 }}</div>
+      <template v-if="hasMembers && info.length > 2">
+        <MemberPreview :member="info[0]" />
+        <div v-if="info.length > 2" class="member-preview extra-persons">+{{ info.length - 1 }}</div>
       </template>
 
-      <template else v-else-if="hasMembers && members.length > 0">
-        <MemberPreview v-for="(member, idx) in members" :key="idx" :member="member" />
+      <template else v-else-if="hasMembers && info.length > 0">
+        <MemberPreview v-for="(member, idx) in info" :key="idx" :member="member" />
       </template>
 
       <span class="person-icon" v-else v-icon="'person'"></span>
@@ -68,18 +68,28 @@ export default {
       return svgService.getSvg(iconName)
     },
     removeMember(memberId) {
-      // const members= JSON.parse(JSON.stringify(this.info))
-      // console.log('this.members:', this.members)
-      // console.log(this.members)
-      const memberIdx = this.members.findIndex(m => m._id === memberId)
-      this.members.splice(memberIdx, 1)
-      this.$emit('update', this.members)
+      const members= JSON.parse(JSON.stringify(this.info))
+      const memberIdx = members.findIndex(m => m._id === memberId)
+      members.splice(memberIdx, 1)
+      console.log('members:', members)
+      this.$emit('update', JSON.parse(JSON.stringify(members)))
+
+      // const memberIdx = this.members.findIndex(m => m._id === memberId)
+      // this.members.splice(memberIdx, 1)
+      // this.$emit('update', JSON.parse(JSON.stringify(this.members)))
 
     },
     addMember(member) {
-      this.members.push(member)
-      this.$emit('update', JSON.parse(JSON.stringify(this.members)))
 
+      const members= JSON.parse(JSON.stringify(this.info))
+      members.push(member)
+      console.log('members:', members)
+      this.$emit('update',JSON.parse(JSON.stringify(members)))
+
+      // this.members.push(member)
+      // this.$emit('update', JSON.parse(JSON.stringify(this.members)))
+
+      // this.$emit('add',member)
     }
   }
 }
@@ -94,13 +104,11 @@ p {
   display: inline-flex;
   justify-items: center;
   flex-direction: row;
-  /* background-color: lightseagreen; */
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .members {
-  /* background-color: lightseagreen; */
 }
 </style>
