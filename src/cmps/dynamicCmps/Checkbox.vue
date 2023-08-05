@@ -2,7 +2,7 @@
   <div class="d-cmp checkbox fs16">
     <input type="checkbox" v-model="checked" :id="'checkbox' + taskId" @change="onCheckedChange"
       :ref="'checkbox' + taskId">
-    <label :for="stringId" class="checkbox-label" v-html="getSvg('checkmark')"></label>
+    <label :for="taskId" class="checkbox-label" v-html="getSvg('checkmark')"></label>
   </div>
 </template>
   
