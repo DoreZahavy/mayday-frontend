@@ -52,6 +52,12 @@
     // padding: 10px;
     border-top-right-radius: rem(6px);
     background-color: $lightmode-white;
+    .group-actions{
+        opacity: 0;
+        &:hover,:focus{
+            opacity: 1;
+        }
+    }
     .board-control {
         display: flex;
         justify-content: space-between;

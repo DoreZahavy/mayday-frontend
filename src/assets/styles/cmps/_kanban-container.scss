@@ -1,8 +1,8 @@
 .kanban-container {
-    border-top: 1px solid #d0d4e4;
+    // border-top: 1px solid #d0d4e4;
     padding-inline-start: 38px;
     padding-top: 8px;
-    width: 100vw;
+    // width: 100vw;
     overflow-x: scroll;
     .kanban-column {
         border-radius: 8px;
@@ -30,7 +30,7 @@
             // height: max-content;
             // max-height: 100%;
             // max-height: calc(100vh - 360.85px);
-            max-height: calc(100vh - 312px);
+            max-height: calc(100vh - 270px);
             overflow-x: hidden;
             position: relative;
             height: 100%;
@@ -69,7 +69,7 @@
         }
         .kanban-modal {
             position: absolute;
-            width: 300px;
+            width: 230px;
             top: 0;
             left: 38px;
             background-color: #fff;
