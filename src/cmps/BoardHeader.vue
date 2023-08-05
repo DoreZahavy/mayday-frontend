@@ -46,14 +46,14 @@ export default {
 </script>
 <template>
     <header v-if="miniBoard" class="board-header">
-        <div class="flex align-center space-between">
+        <div class="flex align-center space-between board-header-actions">
             <!-- v-model="boardTitle" -->
-            <div class="flex align-center">
+            <div class="flex">
 
                 <InPlaceEdit class="board-title " :modelValue="boardTitle" @update:modelValue="updateBoard" />
                 <span class="info-icon" @click="this.$emit('toggleModal')" v-icon="'infoBig'"></span>
             </div>
-            <div class="btns flex align-center">
+            <div class="btns flex">
                 <button class="activity-btn flex align-center" @click="openActivities"><span>Activity</span>
                     <span v-icon="'person'"></span>
                 </button>

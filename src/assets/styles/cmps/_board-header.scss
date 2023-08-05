@@ -8,6 +8,12 @@
     padding-right: 30px;
     padding-top: 16px;
     width: 100%;
+    .board-header-actions{
+        flex-direction: row;
+        div{
+            align-items: center;
+        }
+    }
     .board-title {
         // @include boardTitle;
         font-size: em(24px, 14px);
