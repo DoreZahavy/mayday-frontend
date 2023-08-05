@@ -223,7 +223,7 @@ export default {
 
 .activity-item {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 6fr 0.6fr 3.5fr 3fr 0.1fr 3fr;
+    grid-template-columns: 1.8fr 1fr 6fr 0.8fr 3.5fr 3fr 0.1fr 3fr;
     align-items: center;
     gap: 2px;
     padding: 12px;

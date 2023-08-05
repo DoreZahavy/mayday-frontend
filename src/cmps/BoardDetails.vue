@@ -19,7 +19,7 @@ export default {
     }
   },
   computed: {
-    board() {
+    currBoard() {
       return this.$store.getters.board
     },
     filteredBoard() {
@@ -31,10 +31,10 @@ export default {
     collapseAll() {
       return this.collapse
     },
-    // board() {
-    //   // if (this.filteredBoard) return this.filteredBoard
-    //   return this.currBoard
-    // }
+    board() {
+      if (this.filteredBoard) return this.filteredBoard
+      return this.currBoard
+    }
   },
   components: {
     Group,
