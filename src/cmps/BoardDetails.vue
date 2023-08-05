@@ -203,7 +203,6 @@ export default {
     <CheckboxModal v-if="this.checkedTasksGroups.length !== 0" :checkedTasksGroups="this.checkedTasksGroups"
       @uncheckAll="uncheckAll" @removeTasks="batchRemoveTasks" />
   </Container> -->
-  </Container> -->
 </template>
 
 
