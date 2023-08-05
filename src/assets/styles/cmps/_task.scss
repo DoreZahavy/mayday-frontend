@@ -65,6 +65,7 @@
 .task-title {
     border-inline-end: 1px solid $border-clr;
     color: $primary-text-color;
+    background: white;
 }
 
 .task-actions-container {
@@ -127,9 +128,8 @@
         div {
             width: 150px;
         }
-
         color: $primary-text-color;
-        vertical-align: middle !important;
+        vertical-align: middle;
         text-align: center;
     }
 

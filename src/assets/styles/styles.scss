@@ -24,7 +24,6 @@
 @import "cmps/minimized-group";
 @import "cmps/task";
 @import "cmps/element-modifications";
-@import "cmps/dnd-modifications";
 @import "cmps/login-header";
 @import "cmps/home-header";
 @import "cmps/main-header";
@@ -44,6 +43,7 @@
 @import "cmps/checkbox-modal";
 @import "cmps/kanban-container";
 @import "cmps/kanban-task";
+@import "cmps/dnd-modifications";
 
 //DYNAMIC COMPONENTS
 @import "cmps/dynamicCmps/status";
