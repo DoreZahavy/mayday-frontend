@@ -113,7 +113,7 @@
                     <ProgressBar :cmpOrder="cmpOrder" :group="group" />
                 </div>
             </section>
-            <div class="bottom-gap"></div>
+            <!-- <div class="bottom-gap"></div> -->
         </Container>
         <!-- render progress by progress array -->
     </section>
