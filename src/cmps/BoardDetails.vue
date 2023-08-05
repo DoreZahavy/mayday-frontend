@@ -113,13 +113,12 @@ export default {
         checkedTasksGroups.forEach(group => {
           group.taskIds.forEach(tId => {
             try {
-              try {
-                this.removeTask(group.groupId, tId)
-              }
-              catch (err) {
-                console.log('canny do it')
-              }
-            })
+              this.removeTask(group.groupId, tId)
+            }
+            catch (err) {
+              console.log('canny do it')
+            }
+          })
         })
       } catch (err) {
 
