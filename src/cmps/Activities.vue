@@ -1,6 +1,6 @@
 <template>
     <section class="modal-content activity-modal">
-        <h2>Activities</h2>
+        <!-- <h2>Activities</h2> -->
         <ul class="activity-list">
             <li class="activity-item" v-for="activity in activities" :key="activity.id">
                 <span><span v-html="getSvg('activityTime')"></span><span class="time-passed"> {{
@@ -290,6 +290,10 @@ export default {
         align-items: center;
         justify-content: center;
         font-size: 12px;
+    }
+    .user-image{
+        width: 30px;
+        height: 30px;
     }
 
     .timeline-container {

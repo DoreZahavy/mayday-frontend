@@ -1,5 +1,5 @@
 <template>
-    <div v-if="currBoard" class="board-filter-container">
+    <div v-if="currBoard && isOnBoard" class="board-filter-container">
         <span class="blue-button new-task-button" @click="onAddTask">New Item</span>
         <span v-if="!editing" class="span-common span-search" @click="enableEditing">
             <span v-html="getSvg('search')" class="span-common"></span>Search
@@ -177,6 +177,10 @@ export default {
         itemsShown() {
             if (!Object.keys(this.modifiedBoard).length) return 'all'
             return this.modifiedBoard.groups.flatMap(group => group.tasks).length
+        },
+        isOnBoard() {
+            const route = this.$route.path.split('/')
+            return route[route.length - 1] === "kanban" ? false : true
         }
     },
     methods: {

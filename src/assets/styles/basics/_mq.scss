@@ -149,7 +149,7 @@
     }
 
     .label-line {
-        grid-template-columns: 183px repeat(8, 150px);
+        grid-template-columns: 184px repeat(8, 150px);
         top: 208px;
         border-inline-end: 1px solid $border-clr;
 
@@ -195,7 +195,6 @@
     }
 
     //modals
-
     .drawer-modal {
         width: 100%;
         height: calc(100vh - 49px);
@@ -208,6 +207,15 @@
         height: 100%;
     }
 
+    .invite-area {
+        .invite-modal {
+            // margin-inline: 6px;
+            width: 95vw;
+            height: 50%;
+            // left: 6px;
+            top: 75vh;
+        }
+    }
 }
 
 @media(min-width:850px) {
@@ -401,7 +409,7 @@
 //modals
 
 .drawer-modal {
-    width: 650px;
+    width: 750px;
     height: calc(100vh - 49px);
 }
 
@@ -410,5 +418,13 @@
     left: calc(50vw - ($board-info-modal-width /2));
     width: $board-info-modal-width;
     height: $board-info-modal-height;
+}
+.invite-area {
+    .invite-modal {
+        margin-inline: 0;
+        width: 530px;
+        height: 500px;
+        top: 50vh;
+    }
 }
 }

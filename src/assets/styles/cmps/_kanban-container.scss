@@ -2,7 +2,7 @@
     border-top: 1px solid #d0d4e4;
     padding-inline-start: 38px;
     padding-top: 8px;
-    // width: 100%;
+    width: 100vw;
     overflow-x: scroll;
     .kanban-column {
         border-radius: 8px;
@@ -27,9 +27,10 @@
         }
         .column-body {
             align-items: center;
-            min-height: 110px;
+            // height: max-content;
             // max-height: 100%;
-            max-height: calc(100vh - 360.85px);
+            // max-height: calc(100vh - 360.85px);
+            max-height: calc(100vh - 312px);
             overflow-x: hidden;
             position: relative;
             height: 100%;

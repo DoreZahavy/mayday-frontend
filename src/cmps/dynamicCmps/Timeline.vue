@@ -20,10 +20,8 @@
         </div>
     </article>
 </template>
-
 <script>
 import { svgService } from '../../services/svg.service'
-
 export default {
     name: "Timeline",
     emits: ['update'],
@@ -80,18 +78,14 @@ export default {
             if (!this.pickedDateTimeRange || this.pickedDateTimeRange.length === 0 || this.isDateNull) {
                 return 100
             }
-
             const now = new Date()
             const start = new Date(this.pickedDateTimeRange[0])
             const end = new Date(this.pickedDateTimeRange[1])
-
             const nowTime = now.getTime()
             const startTime = start.getTime()
             const endTime = end.getTime()
-
             const duration = endTime - startTime
             const elapsed = nowTime - startTime
-
             if (nowTime < startTime) {
                 return 0
             } else if (nowTime > endTime) {
@@ -104,7 +98,7 @@ export default {
             if (this.isDateNull) {
                 return {
                     width: this.progress + '%',
-                    backgroundColor: '#c4c4c4'
+                    backgroundColor: '#C4C4C4'
                 }
             } else {
                 return {
@@ -172,7 +166,6 @@ export default {
     },
 }
 </script>
-
 <style scoped>
 .progress-bar {
     position: absolute;
@@ -185,15 +178,12 @@ export default {
     overflow: hidden;
     border-radius: 20px;
 }
-
 .date-container.hovered .progress-fill {
     filter: brightness(70%);
 }
-
 .progress-fill {
     height: 100%;
 }
-
 .align-left {
     text-align: left;
     max-width: 6.5em;

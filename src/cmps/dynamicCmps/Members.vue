@@ -60,7 +60,8 @@ export default {
     },
     optionalMembers() {
       let optionalMembers = this.$store.getters.boardMembers
-      return optionalMembers
+      const memberIds = this.info.map(m=>m._id)
+      return optionalMembers.filter(m=>!memberIds.includes(m._id))
     }
   },
   methods: {
