@@ -133,11 +133,17 @@ export default {
             const minutes = seconds / 60
             const hours = minutes / 60
             const days = hours / 24
+            const weeks = days / 7
+            const months = days / 30
+            const years = days / 365
 
             if (seconds < 60) return 'now'
             if (minutes < 60) return `${Math.floor(minutes)}m`
             if (hours < 24) return `${Math.floor(hours)}h`
-            return `${Math.floor(days)}d`
+            if (days < 7) return `${Math.floor(days)}d`
+            if (days < 30) return `${Math.floor(weeks)}w`
+            if (days < 365) return `${Math.floor(months)}mo`
+            return `${Math.floor(years)}y`
         },
         formatDate(timestamp) {
             const date = new Date(timestamp)
@@ -223,20 +229,22 @@ export default {
 
 .activity-item {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 6fr 0.8fr 3.5fr 3fr 0.1fr 3fr;
+    grid-template-columns: 2.2fr 1.5fr 6fr 0.8fr 3.5fr 3fr 0.5fr 3fr;
     align-items: center;
-    gap: 2px;
+    gap: 5px;
     padding: 12px;
     max-height: 60px;
     border-bottom: 1px solid #c3c6d4;
     font-family: figtree;
     font-size: 1em;
     font-weight: 500;
+    overflow: visible;
 
     &:last-of-type {
         margin-right: 0;
     }
 
+    span,
     .time-passed,
     .task-name,
     .activity-type-icon,
@@ -249,8 +257,8 @@ export default {
 
 
 
-    .changed-from,
-    .changed-into {
+    .changed-from:not(.activity-status),
+    .changed-into:not(.activity-status) {
         text-align: center;
         overflow-x: hidden;
         text-overflow: ellipsis;
@@ -273,8 +281,8 @@ export default {
 
     .user-image,
     .guest {
-        width: 10px;
-        height: 10px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         margin-right: 10px;
         background-color: #ccc;
@@ -329,10 +337,11 @@ export default {
         margin-top: -1.4%;
         transform: translate(-50%, 0%);
         height: 2.95em;
-        border-radius: 3px;
+        border-radius: 5px;
         font-size: 0.95em;
         font-weight: 400;
         color: #fff;
+        overflow: visible;
 
         .activity-status-text {
             width: 80%;

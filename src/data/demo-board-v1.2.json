@@ -3,7 +3,350 @@
     "_id": "JMJ1NMJAVl",
     "title": "Mayday Teams",
     "desc": "best board ever that's true",
-    "activities": [],
+    "activities": [
+      {
+        "id": "jtPARu",
+        "createdAt": 1691255175744,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Cloud Migration",
+        "propType": "Text",
+        "task": "16DakE",
+        "updateFrom": "Plan and execute the migration of servers and databases to a cloud-based infrastructure for scalability",
+        "updateTo": "Try a different approach"
+      },
+      {
+        "id": "VYA58B",
+        "createdAt": 1691255159612,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Team Building Activity 🍻",
+        "propType": "Number",
+        "task": "9q2jbP",
+        "updateFrom": null,
+        "updateTo": 10000
+      },
+      {
+        "id": "0AMGlZ",
+        "createdAt": 1691255152831,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Employee Performance Reviews",
+        "propType": "Timeline",
+        "task": "oJdKkQ",
+        "updateFrom": {
+          "startDate": null,
+          "dueDate": null
+        },
+        "updateTo": {
+          "startDate": 1694120400000,
+          "dueDate": 1695934800000
+        }
+      },
+      {
+        "id": "NP5RJX",
+        "createdAt": 1690911168000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "IT Support - Onboarding Setup 📀",
+        "propType": "Status",
+        "task": "X1Nj45",
+        "updateFrom": {
+          "title": "Almost there",
+          "color": "dark-blue"
+        },
+        "updateTo": {
+          "title": "Done",
+          "color": "done-green"
+        }
+      },
+      {
+        "id": "Isrt7d",
+        "createdAt": 1690651968000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Budget Planning - Q3",
+        "propType": "Priority",
+        "task": "qWvUSx",
+        "updateFrom": {
+          "title": "High",
+          "color": "high-dark-purple"
+        },
+        "updateTo": {
+          "title": "Medium",
+          "color": "medium-purple"
+        }
+      },
+      {
+        "id": "tUohAM",
+        "createdAt": 1690219968000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Feature Enhancement - Notifications ",
+        "propType": "Date",
+        "task": "pZHEuw3xee",
+        "updateFrom": 1690915200000,
+        "updateTo": 1693256400000
+      },
+      {
+        "id": "0Srmdq",
+        "createdAt": 1689183168000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Create a New Version Timeline",
+        "propType": "Timeline",
+        "task": "nN4Ifw",
+        "updateFrom": {
+          "startDate": null,
+          "dueDate": null
+        },
+        "updateTo": {
+          "startDate": 1694379600000,
+          "dueDate": 1694984400000
+        }
+      },
+      {
+        "id": "SsFFch",
+        "createdAt": 1688059968000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Data Analytics Integration",
+        "propType": "Timeline",
+        "task": "lnsytM",
+        "updateFrom": {
+          "startDate": null,
+          "dueDate": null
+        },
+        "updateTo": {
+          "startDate": 1694034000000,
+          "dueDate": 1694725200000
+        }
+      },
+      {
+        "id": "1WHLhx",
+        "createdAt": 1687023168000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "International Markets Localization 🌎",
+        "propType": "Status",
+        "task": "lyWS0H",
+        "updateFrom": {
+          "title": "",
+          "color": "default-gray"
+        },
+        "updateTo": {
+          "title": "Stuck",
+          "color": "stuck-red"
+        }
+      },
+      {
+        "id": "PDFtfx",
+        "createdAt": 1685640768000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Beta Testing Preparation ⏱",
+        "propType": "Status",
+        "task": "FWczq6",
+        "updateFrom": {
+          "title": "Working on it",
+          "color": "working-orange"
+        },
+        "updateTo": {
+          "title": "Done",
+          "color": "done-green"
+        }
+      },
+      {
+        "id": "BV1KpN",
+        "createdAt": 1685467968000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Feature Enhancement - Notifications ",
+        "propType": "Text",
+        "task": "pZHEuw3xee",
+        "updateFrom": "",
+        "updateTo": "!"
+      },
+      {
+        "id": "AFs5tp",
+        "createdAt": 1682875968000,
+        "byMember": null,
+        "group": "gMaUZyQxoV",
+        "taskId": "",
+        "taskName": "SEO Audit and Optimization",
+        "propType": "Number",
+        "task": "Vg5kDh",
+        "updateFrom": 55000,
+        "updateTo": 550000
+      },
+      {
+        "id": "8LZvCE",
+        "createdAt": 1680456768000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Employee Performance Reviews",
+        "propType": "Number",
+        "task": "oJdKkQ",
+        "updateFrom": 5000,
+        "updateTo": 50000
+      },
+      {
+        "id": "6jrh4m",
+        "createdAt": 1678901568000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "IT Support - Onboarding Setup 📀",
+        "propType": "Date",
+        "task": "X1Nj45",
+        "updateFrom": 1644789600000,
+        "updateTo": 1644357600000
+      },
+      {
+        "id": "EKiPqf",
+        "createdAt": 1677778368000,
+        "byMember": null,
+        "group": "gMaUZyQxoV",
+        "taskId": "",
+        "taskName": "Referral Program Launch 👨‍👨‍👧‍👦",
+        "propType": "Status",
+        "task": "LLUBrN",
+        "updateFrom": {
+          "title": "Almost there",
+          "color": "dark-blue"
+        },
+        "updateTo": {
+          "title": "Done",
+          "color": "done-green"
+        }
+      },
+      {
+        "id": "YC1sQb",
+        "createdAt": 1675359168000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Beta Testing Preparation ⏱",
+        "propType": "Status",
+        "task": "FWczq6",
+        "updateFrom": {
+          "title": "Stuck",
+          "color": "stuck-red"
+        },
+        "updateTo": {
+          "title": "Working on it",
+          "color": "working-orange"
+        }
+      },
+      {
+        "id": "EgmgbJ",
+        "createdAt": 1672335168000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Budget Planning - Q4",
+        "propType": "title",
+        "task": "qWvUSx",
+        "updateFrom": "Budget Planning - Q4",
+        "updateTo": "Budget Planning - Q3"
+      },
+      {
+        "id": "vftu43",
+        "createdAt": 1671989568000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Security Audit",
+        "propType": "title",
+        "task": "8C53SB",
+        "updateFrom": "Security Audit",
+        "updateTo": "Security Audit 🕶"
+      },
+      {
+        "id": "ABJJCY",
+        "createdAt": 1671730368000,
+        "byMember": null,
+        "group": "oOUugB",
+        "taskId": "",
+        "taskName": "Budget Planning - Q4",
+        "propType": "Priority",
+        "task": "qWvUSx",
+        "updateFrom": {
+          "title": "",
+          "color": "default-gray"
+        },
+        "updateTo": {
+          "title": "High",
+          "color": "high-dark-purple"
+        }
+      },
+      {
+        "id": "3arvHQ",
+        "createdAt": 1659202368000,
+        "byMember": null,
+        "group": "gMaUZyQxoV",
+        "taskId": "",
+        "taskName": "Email Newsletter - Monthly Update 🗓",
+        "propType": "Text",
+        "task": "ER1atZ",
+        "updateFrom": "Monthly only 🗓",
+        "updateTo": "Monthly only! 🗓"
+      },
+      {
+        "id": "cA6IYX",
+        "createdAt": 1655919168000,
+        "byMember": null,
+        "group": "gMaUZyQxoV",
+        "taskId": "",
+        "taskName": "Social Media Campaign - #NewRelease",
+        "propType": "Number",
+        "task": "dLD1YaukLD",
+        "updateFrom": 3000000,
+        "updateTo": 300000
+      },
+      {
+        "id": "YDgGod",
+        "createdAt": 1645551168000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Beta Testing Preparation ⏱",
+        "propType": "Date",
+        "task": "FWczq6",
+        "updateFrom": 1731535200000,
+        "updateTo": 1732053600000
+      },
+      {
+        "id": "qctOFm",
+        "createdAt": 1616803200000,
+        "byMember": null,
+        "group": "zIBuXJXfMu",
+        "taskId": "",
+        "taskName": "Feature Enhancement - Notifications ",
+        "propType": "Status",
+        "task": "pZHEuw3xee",
+        "updateFrom": {
+          "title": "Done",
+          "color": "done-green"
+        },
+        "updateTo": {
+          "title": "Almost there",
+          "color": "dark-blue"
+        }
+      }
+    ],
     "members": [
       {
         "_id": "D91QMRJ3y5",

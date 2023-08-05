@@ -143,6 +143,9 @@ export default {
                 this.$emit('update', this.currDateSettings)
             }
         },
+        info() {
+            this.currDateSettings = { ...this.info }
+        }
     },
     methods: {
         onMouseOver() {
@@ -167,11 +170,6 @@ export default {
             return svgService.getSvg(name)
         },
     },
-    watch: {
-    info() {
-      this.currDateSettings = {...this.info}
-    }
-  }
 }
 </script>
 
