@@ -15,7 +15,7 @@
                 <p>Quick person filter</p>
                 <p>Filter items and subitems by person</p>
                 <div><img v-for="member in members" :src="member.imgUrl" :class="{ active: member._id === activeMemberId }"
-                        @click="filterByPerson(member._id)"></div>
+                        @click="setPersonFilter(member._id)"></div>
             </div>
             <template #reference>
                 <span class="span-common" style="margin-top: -1px; gap: 4px;" @click="openPopover('person')">
@@ -195,22 +195,25 @@ export default {
                 this.$refs.searchInput.focus()
             })
         },
-        filterByPerson(memberId) {
+        setPersonFilter(memberId) {
             if (this.activeMemberId === memberId) {
                 this.activeMemberId = ''
                 this.$store.commit('setFilteredBoard', { filteredBoard: this.currBoard })
                 return
             } else { this.activeMemberId = memberId }
-
+            this.filterByPerson()
+        },
+        filterByPerson() {
             const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
 
             modifiedBoard.groups.forEach(group => {
                 group.tasks = group.tasks.filter(task =>
-                    task.Members && task.Members.some(member => member._id === memberId)
+                    task.Members && task.Members.some(member => member._id === this.activeMemberId)
                 )
             })
 
             console.log(modifiedBoard)
+            this.modifiedBoard = modifiedBoard
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         filterByText(searchText) {
@@ -233,10 +236,10 @@ export default {
 
                     return false
                 })
-
                 return group.tasks.length > 0
             })
 
+            this.modifiedBoard = modifiedBoard
             console.log(modifiedBoard)
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
@@ -306,6 +309,7 @@ export default {
         filterCmps() {
             const modifiedBoard = JSON.parse(JSON.stringify(this.currBoard))
             modifiedBoard.cmpConfig = modifiedBoard.cmpConfig.filter(cmp => this.hiddenComponents[cmp.type])
+            this.modifiedBoard = modifiedBoard
             this.$store.commit('setFilteredBoard', { filteredBoard: modifiedBoard })
         },
         getDebouncedFilterText() {
@@ -338,6 +342,11 @@ export default {
             handler(newValue) {
                 this.currBoard = { ...newValue }
                 if ({ ...newValue } && this.board && this.board.groups) this.itemsTotal = { ...newValue }.groups.flatMap(group => group.tasks).length
+                utilService.debounce(() => {
+                    this.filterByText(this.searchText)
+                }, 500)
+                this.applyMultiFilter()
+                if (this.activeMemberId) this.filterByPerson()
             }
         },
         multiFilter: {
