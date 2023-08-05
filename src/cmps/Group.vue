@@ -16,7 +16,7 @@
                             </span>
                         </button>
                         <template #reference>
-                            <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')">
+                            <div class="button-as-link d-cmp group-actions actions-button" v-html="getSvg('threeDots')">
                             </div>
                         </template>
                     </el-popover>

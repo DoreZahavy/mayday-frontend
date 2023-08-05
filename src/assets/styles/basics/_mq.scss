@@ -124,11 +124,11 @@
     }
 
     .minimized-group-side-div {
-        width: 0px;
+        width: 6px;
         left: 0px;
     }
 
-    //kanban
+    // kanban
     .kanban-container {
         flex-direction: column;
         padding-inline-start: 6px;
@@ -139,9 +139,9 @@
             min-width: 90vw;
             flex: 1;
 
-            .column {
-                width: 100%;
-            }
+            // .column {
+            //     width: 100%;
+            // }
         }
 
         .kanban-task {
@@ -373,7 +373,7 @@
         left: 0px;
     }
 
-    //kanban
+    // kanban
     .kanban-container {
         flex-direction: row;
         padding-inline-start: 38px;
@@ -381,10 +381,13 @@
         padding-top: 8px;
 
         .kanban-column {
-            flex: auto;
+            flex: 0;
             border-radius: 8px;
             width: 260px;
             min-width: 260px;
+            // .column {
+            //     width: inherit;
+            // }
         }
 
         .kanban-task {

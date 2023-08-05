@@ -8,8 +8,18 @@
             <div class="preview">
                 <div class="group-header" @click="openEditGroup" v-out="closeEditGroup">
                     <div class="group-actions-container">
-                        <button @click="onRemoveGroup" v-html="getSvg('trash')"
-                            class="button-as-link group-actions"></button>
+                        <el-popover placement="left-start" :width="265" trigger="click" :show-arrow="false">
+                        <button @click="onRemoveGroup" class="remove-update-button button-as-link flex align-center fs14">
+                            <i v-html="getSvg('trash')"></i>
+                            <span>
+                                Delete
+                            </span>
+                        </button>
+                        <template #reference>
+                            <div class="button-as-link actions-button d-cmp group-actions" v-html="getSvg('threeDots')">
+                            </div>
+                        </template>
+                    </el-popover>
                     </div>
                     <div v-if="editGroup" @click="openPicker" :style="color" class="color-btn">
                         <ColorPicker v-out="closePicker" v-if="showPicker" @color="onSetColor" />
