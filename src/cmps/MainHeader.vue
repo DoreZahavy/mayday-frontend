@@ -1,7 +1,7 @@
 <template>
     <header class="main-header flex align-center">
         <!-- <img style="width:33px; height:33px" :src="getSvg('flower')" /> -->
-        <i  v-html="getSvg('flower')"></i>
+        <span class="flower-icon" v-icon="'flower'"></span>
         <RouterLink class="board-logo" to="/">
 
             <span>mayday</span>

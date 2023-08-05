@@ -1,12 +1,19 @@
 .main-header{
     position: fixed;
     top: 0;
-    margin-inline-start: 12px;
+    margin-inline-start: 18px;
     grid-area: header;
     height: 48px;
     color: $primary-text-color;
+    .flower-icon{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        transform: translate(0,4px);
+        
+    }
     .board-logo{
-        line-height: lh(52px,16px);
+        line-height: lh(48px,16px);
         letter-spacing: -0.2px;
         font-family: poppins;
         font-size: em(16px,14px);

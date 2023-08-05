@@ -42,8 +42,8 @@ export default {
       return this.$store.getters.attachmentModal
     },
     membersLength() {
-      // const members = this.$store.getters.boardMembers
-      // return members.length
+      const members = this.$store.getters.boardMembers
+      return members?.length
     }
   },
   components: {

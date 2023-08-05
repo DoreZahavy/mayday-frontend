@@ -1,6 +1,6 @@
 <template>
   <section v-if="member">
-    <section v-if="member.imgUrl" class="member-preview">
+    <section v-if="member.imgUrl" >
       <img class="member-preview" :src="member.imgUrl" alt="" />
     </section>
     <article :style="{ background: memberColor }" v-else class="member-priview">
