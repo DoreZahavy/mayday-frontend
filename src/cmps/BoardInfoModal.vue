@@ -11,17 +11,30 @@
                 <button class="button-as-link close-modal-btn" @click="this.$emit('closeModal')">&#10005;</button>
             </div>
             <h3>Board info</h3>
+            <!-- <article >
+                <span class="info-title">Workspace</span>
+                
+            </article> -->
             <article>
-                <span> Workspace</span>
+                <span>Created by</span>
+                <div class="flex align-center subtitle">
+                    <img class="info-user-img" :src="'http://res.cloudinary.com/dbdrnjhpm/image/upload/v1690985351/din_ak4ira.jpg'" /> 
+                    <p>Din Ben-Dor</p>
+                </div>
             </article>
             <article>
-                <span> Created by</span>
+                <span class="info-title">Owners</span>
+                <div class="flex align-center subtitle">
+                    <img class="info-user-img" :src="'http://res.cloudinary.com/dbdrnjhpm/image/upload/v1690985987/yona_-_Copy_pfqmrb.jpg'" /> 
+                    <p>Yona Stephenson</p>
+                </div>
             </article>
             <article>
-                <span> Owners</span>
-            </article>
-            <article>
-                <span> Board type</span>
+                <span class="info-title">Board type</span>
+                <div class="flex align-center board-type">
+                    <span v-icon="'boardType'"></span>
+                    <p>This board is public, visible to all team members.</p>
+                </div>
             </article>
         </article>
     </section>
@@ -58,3 +71,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+</style>

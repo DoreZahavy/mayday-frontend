@@ -59,10 +59,28 @@
             font-weight: 500;
         }
         h3,article{
-            margin-block-end: rem(32px);
+            margin-block-end: rem(24px);
         }
         span{
             color:$secondary-text-color;
+        }
+        .info-user-img{
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-inline-end: 8px;
+        }
+        .board-type{
+            display: flex;
+            &>*:first-child{
+                margin-inline-end: 8px;
+                align-self: flex-start;
+            }
+
+        }
+        .subtitle,.board-type{
+            
+            margin-block-start: 8px;
         }
     }
     div{
