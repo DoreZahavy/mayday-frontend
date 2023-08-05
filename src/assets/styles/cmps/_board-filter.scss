@@ -13,6 +13,7 @@
     // margin-bottom: 20px;
     height: 51px;
     .new-task-button {
+        margin-top: 3.5px;
         min-width: 83px;
         display: flex;
         justify-content: center;
@@ -55,7 +56,7 @@
             &.span-filter {
                 width: 23px;
                 height: 23px;
-                margin-top: 0px;
+                margin-top: 1px;
             }
 
             &.span-person {
@@ -146,7 +147,7 @@
         border-radius: 3px !important;
     }
 
-    >p {
+    > p {
         color: #323338;
         font-size: 16px;
         text-align: left;
@@ -173,7 +174,7 @@
             padding-top: 20px;
         }
 
-        >div:first-of-type {
+        > div:first-of-type {
             max-height: 150px;
             overflow-y: scroll !important;
             width: 142px;
@@ -238,4 +239,5 @@
     overflow-y: hidden;
 }
 
-.hide-filter {}
+.hide-filter {
+}
