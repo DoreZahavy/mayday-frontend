@@ -39,7 +39,7 @@
                     <section class="group-accent-color first" :style="color">
                     </section>
                 </div>
-                <div @click="isSelectAll = !isSelectAll">
+                <div @click="isSelectAll = !isSelectAll" class="first-checkbox">
                     <Checkbox :groupId="this.group._id" :isChecked="isSelectAll" style="pointer-events: none;" />
                 </div>
                 <!-- <input type="checkbox" v-model="isSelectAll"> -->

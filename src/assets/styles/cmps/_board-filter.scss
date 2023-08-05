@@ -1,16 +1,17 @@
 .board-filter-container {
     position: sticky;
-left: 38px;
-top: 139px;
-z-index: 50;
-background-color: white;
+    left: 38px;
+    top: 139px;
+    z-index: 42;
+    background-color: white;
     display: flex;
     gap: 4px;
     align-items: center;
     height: 65px;
     border-radius: 3px;
     margin-left: 2.72rem;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
+    height: 51px;
     .new-task-button {
         min-width: 83px;
         display: flex;
@@ -85,6 +86,7 @@ background-color: white;
     padding: 0;
     width: 300px;
     margin-left: em(8px);
+
     p {
         font-size: em(16px);
 
@@ -96,11 +98,13 @@ background-color: white;
             text-align: left;
             padding-bottom: 10px;
         }
+
         &:nth-of-type(2) {
             text-align: left;
             padding-bottom: 20px;
         }
     }
+
     div {
         padding-left: 0.5em;
         padding-bottom: 20px;
@@ -132,6 +136,7 @@ background-color: white;
     border-radius: 6px;
     overflow-x: hidden !important;
     overflow-y: hidden !important;
+
     ::-webkit-scrollbar {
         height: 4px !important;
     }
@@ -141,7 +146,7 @@ background-color: white;
         border-radius: 3px !important;
     }
 
-    > p {
+    >p {
         color: #323338;
         font-size: 16px;
         text-align: left;
@@ -168,7 +173,7 @@ background-color: white;
             padding-top: 20px;
         }
 
-        > div:first-of-type {
+        >div:first-of-type {
             max-height: 150px;
             overflow-y: scroll !important;
             width: 142px;
@@ -233,5 +238,4 @@ background-color: white;
     overflow-y: hidden;
 }
 
-.hide-filter {
-}
+.hide-filter {}

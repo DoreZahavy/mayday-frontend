@@ -1,0 +1,327 @@
+@media (min-width:300px) {
+
+    //homepage
+    .home-layout {
+        grid-template-columns: 5px minmax(auto, 1440px) 5px;
+        grid-template-rows: 72px auto;
+    }
+
+    .home-header {
+        padding: 0;
+    }
+
+    .home-page {
+        .welcome {
+            overflow: hidden;
+
+            img {
+                width: 130vh;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        .customers {
+            h2 {
+                font-size: 16px;
+            }
+
+            .customer-image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+                width: 75px;
+
+                // img {
+                //     transform: scale(.7);
+                // }
+            }
+        }
+
+    }
+
+    //boardIndex
+    .main-layout {
+        column-gap: 0;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "board";
+
+        .main-header {
+            display: none;
+        }
+    }
+
+    .board-header {
+        padding: 0;
+        padding-inline: 6px;
+
+        .board .board-title {
+            font-size: 20px;
+        }
+
+        .board-desc {
+            display: none;
+        }
+
+        .board-header-actions {
+            flex-direction: column;
+
+            div {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+    }
+
+    .board-container {
+        .board-nav {
+            margin: 0;
+            left: 6px;
+            padding: 6px 0 0 0;
+            top: 96px;
+        }
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    //group
+
+    .group-gap {
+        width: 6px;
+    }
+
+    .group-list {
+        .group-title-container {
+            top: 168px;
+            transform: translate(-74px);
+        }
+
+        .arrow-down {
+            display: none;
+        }
+    }
+
+    //tasks
+    .task {
+        .title {
+            font-size: 13px;
+        }
+    }
+
+    .task-column {
+        left: 13px;
+        grid-template-columns: 0px $task-title-width $task-conversation-btn-width;
+
+        .checkbox {
+            display: none;
+        }
+
+        .title {
+            padding-inline-start: 6px;
+        }
+
+        &.first {
+            grid-template-columns: 0px ($task-title-width + $task-conversation-btn-width);
+        }
+    }
+
+    .task-title {
+        margin-inline-start: 20px;
+    }
+
+    .label-line {
+        grid-template-columns: calc($task-title-width + $task-conversation-btn-width) repeat(8, 150px);
+        top: 208px;
+    }
+
+    //components
+    .first-checkbox {
+        display: none;
+    }
+
+    //board filter
+    .board-filter-container {
+        margin-inline-start: 6px;
+        margin-block-start: 6px;
+        left: 6px;
+        height: min-content;
+        top: 139px;
+
+        .new-task-button {
+            display: none;
+        }
+
+        .span-common {
+            font-size: 0px;
+        }
+    }
+
+}
+
+@media(min-width:800px) {
+
+    //homepage
+    .home-layout {
+        display: grid;
+        grid-template-columns: minmax(32px, 1fr) minmax(auto, 1440px) minmax(32px, 1fr);
+        grid-template-rows: 72px auto;
+    }
+
+    .home-header {
+        padding-inline: 32px;
+    }
+
+    .home-page {
+        .welcome {
+            overflow: visible;
+
+            img {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 64px;
+            }
+        }
+
+        .customers {
+            h2 {
+                font-size: 21px;
+            }
+        }
+    }
+
+    //board index
+    .main-layout {
+        column-gap: rem(10px);
+        grid-template-rows: 48px auto;
+        grid-template-areas:
+            "header header"
+            "sidebar board";
+
+        .main-header {
+            display: initial;
+        }
+    }
+
+    .board-header {
+        padding-left: 38px;
+        padding-right: 30px;
+        padding-top: 16px;
+
+        .board-title {
+            font-size: em(24px, 14px);
+        }
+
+        .board-desc {
+            display: inline;
+        }
+
+        .board-header-actions {
+            flex-direction: row;
+
+            // justify-content: space-between;
+            div {
+                width: fit-content;
+                justify-content: initial;
+                align-items: center;
+            }
+        }
+    }
+
+    .board-container {
+        .board-nav {
+            margin-inline-start: 38px;
+            padding-block-start: 34px;
+            padding-inline-end: 30px;
+            left: 38px;
+            top: 68px;
+        }
+    }
+
+    .sidebar {
+        display: block;
+    }
+
+    //group
+
+    .group-gap {
+        width: 40px;
+    }
+
+    .group-list {
+        .group-title-container {
+            top: 190px;
+            transform: translate(-6px);
+        }
+
+        .arrow-down {
+            display: initial;
+        }
+    }
+
+    //tasks
+    .task {
+        .title {
+            font-size: 14px;
+        }
+    }
+
+    .task-column {
+        left: 46px;
+        grid-template-columns: 0px $row-height $task-title-width $task-conversation-btn-width;
+
+        .checkbox {
+            display: flex;
+        }
+
+        .title {
+            padding-inline-start: 34px;
+        }
+
+        &.first {
+            grid-template-columns: 0px $row-height (
+                $task-title-width + $task-conversation-btn-width
+            );
+    }
+}
+
+.task-title {
+    margin-inline-start: 0;
+}
+
+.label-line {
+    grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
+    top: 230px;
+}
+
+//components
+.first-checkbox {
+    display: block;
+}
+
+//board filter
+.board-filter-container {
+    left: 38px;
+    margin-left: 2.72rem;
+    height: 51px;
+    margin-block-start: 0;
+
+    .span-common {
+        display: flex;
+        font-size: initial;
+    }
+
+    .new-task-button {
+        display: flex;
+    }
+}
+}
