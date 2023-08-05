@@ -41,7 +41,7 @@
             </div>
         </section>
         <Draggable class="kanban-column " v-for="(column, idx) in scene" :key="column.idx">
-            <div class=" flex flex-column ">
+            <div class=" flex flex-column column">
 
                 <!-- header-->
                 <div class="column-header flex" :style="headerColor(column.title)">

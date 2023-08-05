@@ -84,7 +84,7 @@
             margin: 0;
             left: 6px;
             padding: 6px 0 0 0;
-            top: 96px;
+            top: 86px;
         }
     }
 
@@ -101,7 +101,7 @@
 
     .group-list {
         .group-title-container {
-            top: 168px;
+            top: 161px;
             transform: translate(-74px);
         }
 
@@ -110,10 +110,43 @@
         }
     }
 
+    //minimized group
+    .minimized-group {
+        .group-header {
+            left: 6px;
+        }
+        .group-color-accent{
+            left: 0px;
+        }
+        .preview{
+            left: 6px;
+        }
+    }
+
+    .minimized-group-side-div {
+        width: 0px;
+        left: 0px;
+    }
+
     //kanban
     .kanban-container {
         flex-direction: column;
         padding-inline-start: 6px;
+        padding: 0;
+
+        .kanban-column {
+            width: 100vw;
+            min-width: 90vw;
+            flex: 1;
+
+            .column {
+                width: 100%;
+            }
+        }
+
+        .kanban-task {
+            width: 93vw;
+        }
     }
 
     //tasks
@@ -150,7 +183,7 @@
 
     .label-line {
         grid-template-columns: 184px repeat(8, 150px);
-        top: 208px;
+        top: 201px;
         border-inline-end: 1px solid $border-clr;
 
         .task-title {
@@ -183,7 +216,8 @@
         margin-block-start: 6px;
         left: 6px;
         height: min-content;
-        top: 139px;
+        top: 129px;
+        border-radius: 0;
 
         .new-task-button {
             display: none;
@@ -321,10 +355,41 @@
         }
     }
 
+    //minimized group
+    .minimized-group {
+        .group-header {
+            left: 55px;
+        }
+        .group-color-accent{
+            left: 39px;
+        }
+        .preview{
+            left: 45px;
+        }
+    }
+    
+    .minimized-group-side-div {
+        width: 39px;
+        left: 0px;
+    }
+
     //kanban
     .kanban-container {
         flex-direction: row;
         padding-inline-start: 38px;
+        padding-inline-start: 38px;
+        padding-top: 8px;
+
+        .kanban-column {
+            flex: auto;
+            border-radius: 8px;
+            width: 260px;
+            min-width: 260px;
+        }
+
+        .kanban-task {
+            width: 240px;
+        }
     }
 
     //tasks
@@ -394,6 +459,7 @@
     left: 38px;
     margin-left: 2.72rem;
     height: 51px;
+    top: 139px;
     margin-block-start: 0;
 
     .span-common {
@@ -419,6 +485,7 @@
     width: $board-info-modal-width;
     height: $board-info-modal-height;
 }
+
 .invite-area {
     .invite-modal {
         margin-inline: 0;
