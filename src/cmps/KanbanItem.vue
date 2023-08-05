@@ -6,7 +6,7 @@
         <img   :src="task.Attachments[0]"/>
       </div>
       <p class="task-title">{{ task.title }}</p>
-      <section class="flex align-center space-between cmp-area">
+      <section class="flex align-center space-between cmp-area" v-if="cmps.includes('Members')">
         <div class="cmp-title">
           <span class="cmp-svg" v-icon="'personSmall'"></span>
           <p>Person</p>
@@ -16,7 +16,7 @@
           <Members class="kanban-cmp" :info="task['Members']" />
         </div>
       </section>
-      <section class="flex align-center space-between cmp-area">
+      <section class="flex align-center space-between cmp-area" v-if="cmps.includes('Date')">
         <div class="cmp-title">
           <span class="date-svg" v-icon="'datePicker'"></span>
           <p>Date</p>
@@ -26,7 +26,7 @@
           <Date class="kanban-cmp" :info="task['Date']" />
         </div>
       </section>
-      <section class="flex align-center space-between cmp-area">
+      <section class="flex align-center space-between cmp-area" v-if="cmps.includes('Number')">
         <div class="cmp-title">
           <span class="nums-svg" v-icon="'nums'"></span>
           <p>Numbers</p>
@@ -36,7 +36,7 @@
           <Number class="kanban-cmp" :info="task['Number']" />
         </div>
       </section>
-      <section class="flex align-center space-between cmp-area">
+      <section class="flex align-center space-between cmp-area" v-if="cmps.includes('Timeline')">
         <div class="cmp-title">
           <span class="timeline-svg" v-icon="'timelineActivity'"></span>
           <p>Timeline</p>
@@ -90,7 +90,8 @@ export default {
   },
   props: {
     task: Object,
-    color:Object
+    color:Object,
+    cmps:Array
   },
   computed: {
     // cmpOrder() {
