@@ -19,6 +19,7 @@
         overflow: visible;
 
         h1 {
+            margin-inline: 2em;
             color: $primary-text-color;
             font-size: em(64px, 14px);
             font-weight: 600; //add poppins medium

@@ -79,10 +79,12 @@
 
 .person-popover-container.el-popover.el-popper {
     padding: 8px;
-    min-width: 300px !important;
+    min-width: 314px !important;
     z-index: 9999;
     text-align: center;
     border-radius: 6px;
+    margin-right: 40px;
+    
 }
 
 .person-filter {

@@ -1,5 +1,4 @@
-@media (min-width:300px) {
-
+@media (min-width: 300px) {
     //homepage
     .home-layout {
         grid-template-columns: 5px minmax(auto, 1440px) 5px;
@@ -41,7 +40,6 @@
                 // }
             }
         }
-
     }
 
     //boardIndex
@@ -77,7 +75,6 @@
                 justify-content: space-between;
             }
         }
-
     }
 
     .board-container {
@@ -255,8 +252,7 @@
     }
 }
 
-@media(min-width:850px) {
-
+@media (min-width: 850px) {
     //homepage
     .home-layout {
         display: grid;
@@ -425,82 +421,81 @@
         }
 
         &.first {
-            grid-template-columns: 0px $row-height (
-                $task-title-width + $task-conversation-btn-width
-            );
+            grid-template-columns: 0px $row-height ($task-title-width + $task-conversation-btn-width);
+        }
     }
-}
-
-.task-title {
-    margin-inline-start: 0;
-}
-
-.label-line {
-    grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
-    top: 230px;
-    border-inline-end: none;
 
     .task-title {
-        max-width: none;
-        justify-content: center;
-    }
-}
-
-//progress bar
-.progress {
-    .progress-margin {
-        left: 40px;
-        width: 400px;
+        margin-inline-start: 0;
     }
 
-    .progress-border {
-        left: 446px;
-    }
-}
+    .label-line {
+        grid-template-columns: calc($row-height + $task-title-width + $task-conversation-btn-width) repeat(8, 150px);
+        top: 230px;
+        border-inline-end: none;
 
-//components
-.first-checkbox {
-    display: block;
-}
-
-//board filter
-.board-filter-container {
-    left: 38px;
-    margin-left: 2.72rem;
-    height: 51px;
-    top: 139px;
-    margin-block-start: 0;
-
-    .span-common {
-        display: flex;
-        font-size: initial;
+        .task-title {
+            max-width: none;
+            justify-content: center;
+        }
     }
 
-    .new-task-button {
-        display: flex;
+    //progress bar
+    .progress {
+        .progress-margin {
+            left: 40px;
+            width: 400px;
+        }
+
+        .progress-border {
+            left: 446px;
+        }
     }
-}
 
-//modals
-
-.drawer-modal {
-    width: 750px;
-    height: calc(100vh - 49px);
-}
-
-.board-info {
-    top: calc(50vh - ($board-info-modal-height / 2));
-    left: calc(50vw - ($board-info-modal-width /2));
-    width: $board-info-modal-width;
-    height: $board-info-modal-height;
-}
-
-.invite-area {
-    .invite-modal {
-        margin-inline: 0;
-        width: 530px;
-        height: 500px;
-        top: 50vh;
+    //components
+    .first-checkbox {
+        display: block;
     }
-}
+
+    //board filter
+    .board-filter-container {
+        left: 38px;
+        margin-left: 2.72rem;
+        height: 51px;
+        top: 139px;
+        margin-block-start: 0;
+
+        .span-common {
+            display: flex;
+            font-size: initial;
+        }
+
+        .new-task-button {
+            display: flex;
+        }
+    }
+
+    //modals
+
+    .drawer-modal {
+        width: 750px;
+        height: calc(100vh - 49px);
+    }
+
+    .board-info {
+        top: calc(50vh - ($board-info-modal-height / 2));
+        left: calc(50vw - ($board-info-modal-width / 2));
+        width: $board-info-modal-width;
+        height: $board-info-modal-height;
+    }
+
+    .invite-area {
+        .invite-modal {
+            margin-inline: 0;
+            width: 530px;
+            height: 483px;
+            top: 50vh;
+            
+        }
+    }
 }
