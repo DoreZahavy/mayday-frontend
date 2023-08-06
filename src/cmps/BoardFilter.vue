@@ -1,6 +1,6 @@
 <template>
     <div v-if="currBoard && isOnBoard" class="board-filter-container">
-        <span class="blue-button new-task-button" @click="onAddTask">New Item</span>
+        <span class="blue-button new-task-button" @click="onAddTask">New Task</span>
         <span v-if="!editing" class="span-common span-search" @click="enableEditing">
             <span v-html="getSvg('search')" class="span-common"></span>Search
         </span>

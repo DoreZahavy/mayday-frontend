@@ -107,7 +107,9 @@ export default {
         <div class="board-control">
 
             <SidebarFilter @filter="setFilter" />
-            <div @click="onAddBoard" class="add-board-btn" v-html="getSvg('addBoard')"></div>
+            <div @click="onAddBoard" class="add-board-btn"
+                style="background: linear-gradient(90deg, rgb(12, 86, 247) 0%, rgb(19, 91, 225) 46%, rgb(55, 94, 210) 100%);"
+                v-html="getSvg('addBoard')"></div>
         </div>
 
         <ul class="clean-list sidebar-list">
