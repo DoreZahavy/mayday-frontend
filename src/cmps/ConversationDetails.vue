@@ -58,11 +58,17 @@ export default {
             const minutes = seconds / 60
             const hours = minutes / 60
             const days = hours / 24
+            const weeks = days / 7
+            const months = days / 30
+            const years = days / 365
 
             if (seconds < 60) return 'now'
             if (minutes < 60) return `${Math.floor(minutes)}m`
             if (hours < 24) return `${Math.floor(hours)}h`
-            return `${Math.floor(days)}d`
+            if (days < 7) return `${Math.floor(days)}d`
+            if (days < 30) return `${Math.floor(weeks)}w`
+            if (days < 365) return `${Math.floor(months)}mo`
+            return `${Math.floor(years)}y`
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)

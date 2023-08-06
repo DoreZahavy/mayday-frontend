@@ -11,18 +11,21 @@
     height: 65px;
     // height: 97px;
     border-radius: 3px;
+    margin-top: 150px;
     margin-left: 2.72rem;
     // margin-bottom: 20px;
     height: 51px;
     .new-task-button {
-        margin-top: 3.5px;
-        min-width: 83px;
+        background: linear-gradient(90deg, rgb(12, 86, 247) 0%, rgb(19, 91, 225) 36%, rgb(65, 106, 227) 100%);
+        margin-top: 2.5px;
+        min-width: 80px;
+        min-height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1em;
         margin-right: 1.3em;
-        border-radius: 5px;
+        border-radius: 4px;
         cursor: pointer;
     }
 
