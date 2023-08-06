@@ -90,8 +90,8 @@ export default {
     },
     data() {
         return {
-            kanbanCmps: ['Members','Date','Number','Timeline'],
-            sortBy: 'Priority',
+            kanbanCmps: ['Members','Date','Number'],
+            sortBy: 'Status',
             colOrder: { Status: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'], Priority: ['Low', 'Blank', 'Medium', 'High', 'Critical ⚠'] },
             showKanbanModal: false
             //    scene : [{title:'blank',Tasks:[]}, {title:'Done',Tasks:[]},{ title:'Working on it',Tasks:[]},{ title:'Stuck',Tasks:[]},{ title:'Almost there',Tasks:[]}]

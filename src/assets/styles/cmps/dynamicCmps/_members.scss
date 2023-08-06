@@ -119,7 +119,8 @@ cursor: pointer;
 
 }
 .user-list{
-
+max-height: 280px;
+overflow-y: scroll;
     .suggested-member{
         display: flex;
         align-items: center;

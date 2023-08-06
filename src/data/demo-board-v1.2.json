@@ -454,23 +454,51 @@
             "title": "Feature Enhancement - Notifications ",
             "updates": [
               {
-                "content": "It's a Mr. Death, dear. He's here about the reaping. Come and see the violence inherent in the system. Help! Help! I'm being repressed! I object to all this sex on the television. I mean, I keep falling off! Ah, I see you have the machine that goes ping. This is my favorite. You see we lease it back from the company we sold it to and that way it comes under the monthly current budget and not the capital account.",
-                "date": 1690915200000,
-                "_id": "u1",
+                "content": "Our social media campaign is gaining traction! We've seen a 20% increase in engagement over the past week. Keep up the great work, team! #MarketingWins",
+                "date": {
+                  "$numberLong": "1739035200000"
+                },
+                "_id": "m1",
                 "user": {
-                  "_id": "Nn3N3mTxUn",
-                  "fullname": "Yona Stephenson",
-                  "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  "_id": {
+                    "$oid": "64ca5fd7e3c1ab990bd3e551"
+                  },
+                  "email": "yuvaldavid@gmail.com",
+                  "password": "$2b$10$baAArLCM6/i9AgJEmxMLnO6XPrcnAGtL9cj7xqsVoqWaj6c8dA192",
+                  "fullname": "Yuval David",
+                  "imgUrl": "http://res.cloudinary.com/dbdrnjhpm/image/upload/v1690985845/yuval_jt35ql.jpg"
                 }
               },
               {
-                "content": "All right, but apart from the sanitation, medicine, education, wine, public order, irrigation, roads, the fresh water system and public health, what have the Romans ever done for us? Oh, waiter! This conversation isn't very good. Stwike him, Centuwion! Stwike him vewy wuffly! I will not have my fwends widiculed by the common soldiewy. Anybody else feel like a little... giggle... when I mention my fwiend... Biggus... Dickus? Hegel is arguing that the reality is merely an a priori adjunct of non-naturalistic ethics, Kant via the categorical imperative is holding that ontologically it exists only in the imagination, and Marx claims it was offside.",
-                "date": 1690915200000,
-                "_id": "u2",
+                "content": "Exciting news! We've secured a partnership with a popular influencer in our niche. They'll promote our product to their 1 million followers. Prepare for a surge in traffic! #InfluencerMarketing",
+                "date": {
+                  "$numberLong": "1743835200000"
+                },
+                "_id": "m2",
                 "user": {
-                  "_id": "Nn3N3mTxUn",
-                  "fullname": "Yona Stephenson",
-                  "imgUrl": "https://images.unsplash.com/photo-1535123268188-3276dc455e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdCUyMHBpbmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  "_id": {
+                    "$oid": "64ca6295e3c1ab990bd3e552"
+                  },
+                  "email": "adambercovich@gmail.com",
+                  "password": "$2b$10$q2oCeKuyObfe/KXhoisAE.GvqUr.V0.kLngNegoSRVAQ/bcF9b44e",
+                  "fullname": "Adam Bercovich",
+                  "imgUrl": "http://res.cloudinary.com/dbdrnjhpm/image/upload/v1690985027/adam_hrkqxd.jpg"
+                }
+              },
+              {
+                "content": "Our latest email campaign achieved a 25% open rate and a 10% click-through rate. Great job, team! Let's optimize the next one even further. #EmailMarketing",
+                "date": {
+                  "$numberLong": "1748457600000"
+                },
+                "_id": "m3",
+                "user": {
+                  "_id": {
+                    "$oid": "64ca5f58e3c1ab990bd3e54d"
+                  },
+                  "email": "stavyaarbar@gmail.com",
+                  "password": "$2b$10$QATJk0FFXR8b47qt8XLS8OGC1ncrXHQUm.8f.XnMQRZlDF1T8THEO",
+                  "fullname": "Stav Yaar-Bar",
+                  "imgUrl": "http://res.cloudinary.com/dbdrnjhpm/image/upload/v1690985672/stav_yue84m.jpg"
                 }
               }
             ],
