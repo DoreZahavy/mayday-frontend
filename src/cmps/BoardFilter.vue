@@ -11,10 +11,10 @@
                 style="position: absolute; left: 0.6em; top: 6px; z-index: -9"></span></span>
         <el-popover style="width: 800px !important" ref="personPopover" placement="bottom" trigger="click"
             :show-arrow="false" popper-class="person-popover-container">
-            <div class="person-filter">
+            <div  style="margin-inline-end: 20px;" class="person-filter">
                 <p>Quick person filter</p>
                 <p>Filter items and subitems by person</p>
-                <div><img v-for="member in members" :src="member.imgUrl" :class="{ active: member._id === activeMemberId }"
+                <div style="flex-wrap:wrap;"><img v-for="member in members" :src="member.imgUrl" :class="{ active: member._id === activeMemberId }"
                         @click="setPersonFilter(member._id)"></div>
             </div>
             <template #reference>
