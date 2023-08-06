@@ -15,7 +15,7 @@
         top: 50vh;
         left: 50vw;
         transform: translate(-50%, -50%);
-        overflow: scroll;
+        overflow-y: scroll;
     //    overflow-y: hidden;
         z-index: 60;
         border-radius: 0.5em;
@@ -105,6 +105,7 @@
         //     }
         // }
         .board-members {
+            // height: 367px;
             // overflow-y: scroll;
             .member {
                 height: $row-height;
@@ -121,6 +122,7 @@
                     font-size: em(15px, 14px);
                 }
                 span {
+                    opacity: 0;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -138,6 +140,9 @@
                 svg {
                     width: 20px;
                     height: 20px;
+                }
+                &:hover span{
+                    opacity: 1;
                 }
             }
         }

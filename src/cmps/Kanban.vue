@@ -1,20 +1,28 @@
 <template>
-    <Container class="kanban-container flex" group-name="cols" tag="div" orientation="horizontal"
-        @drop="onColumnDrop($event)">
+    <main class="kanban-details">
         <section class="kanban-options">
-            <div class="settings-btn" v-icon="'settings'" @click="showKanbanModal = true"></div>
+            <StatusProgress v-if="sortBy === 'Status'" :group="concatTasks" />
+            <PriorityProgress v-if="sortBy === 'Priority'" :group="concatTasks" />
+            <div class="settings-btn" v-icon="'settings'" @click="showKanbanModal = true"
+                :class="{ active: showKanbanModal === true }">
+            </div>
+
+        </section>
+
+        <Container class="kanban-container flex" group-name="cols" tag="div" orientation="horizontal"
+            @drop="onColumnDrop($event)">
             <div v-if="showKanbanModal === true" v-out="closeModal" class="kanban-modal">
                 <h3 class="settings-title">Settings</h3>
                 <!-- <div class="settings-title flex align-center"> -->
-                    <!-- <span v-icon="'settings'"></span> -->
+                <!-- <span v-icon="'settings'"></span> -->
                 <!-- </div> -->
                 <section class="modal-inner-container">
                     <p class="modal-title">Kanban Column</p>
-                    <div class="flex align-center sort-option">
+                    <div class="flex align-center sort-option" :class="{ active: sortBy === 'Status' }">
                         <span v-icon="'kanbanSort'"></span>
                         <p @click="sortBy = 'Status'">Status</p>
                     </div>
-                    <div class="flex align-center sort-option">
+                    <div class="flex align-center sort-option" :class="{ active: sortBy === 'Priority' }">
                         <span v-icon="'kanbanSort'"></span>
                         <p @click="sortBy = 'Priority'">Priority</p>
                     </div>
@@ -25,72 +33,78 @@
                         <input id="members" type="checkbox" v-model="kanbanCmps" value="Members">
                     </div>
                     <div class="flex align-center space-between modal-cmp">
-                        <label class="flex align-center" for="date"><span class="date-svg" v-icon="'datePicker'"></span>Date</label>
+                        <label class="flex align-center" for="date"><span class="date-svg"
+                                v-icon="'datePicker'"></span>Date</label>
                         <input id="date" type="checkbox" v-model="kanbanCmps" value="Date">
                     </div>
                     <div class="flex align-center space-between modal-cmp">
-                        <label class="flex align-center" for="numbers"><span class="nums-svg" v-icon="'nums'"></span>Numbers</label>
+                        <label class="flex align-center" for="numbers"><span class="nums-svg"
+                                v-icon="'nums'"></span>Numbers</label>
                         <input id="numbers" type="checkbox" v-model="kanbanCmps" value="Number">
                     </div>
                     <div class="flex align-center space-between modal-cmp">
-                        <label class="flex align-center" for="timeline"><span class="timeline-svg" v-icon="'timelineActivity'"></span>Timeline</label>
+                        <label class="flex align-center" for="timeline"><span class="timeline-svg"
+                                v-icon="'timelineActivity'"></span>Timeline</label>
                         <input id="timeline" type="checkbox" v-model="kanbanCmps" value="Timeline">
                     </div>
                     <!-- <pre>{{ kanbanCmps }}</pre> -->
                 </section>
             </div>
-        </section>
-        <Draggable class="kanban-column " v-for="(column, idx) in scene" :key="column.idx">
-            <div class=" flex flex-column column">
 
-                <!-- header-->
-                <div class="column-header flex" :style="headerColor(column.title)">
-                    <span class="column-title">{{ column.title + ' / ' + column.tasks.length }}</span>
-                </div>
-                <!-- column -->
-                <Container class="flex flex-column column-body " group-name="col-items"
-                    :shouldAcceptDrop="(e, payload) => (e.groupName === 'col-items' && !payload.loading)"
-                    :get-child-payload="getCardPayload(column.title)" :drop-placeholder="{
-                        className:
-                            `bg-primary bg-opacity-20  
+            <Draggable class="kanban-column " v-for="( column, idx ) in  scene " :key="column.idx">
+                <div class=" flex flex-column column">
+
+                    <!-- header-->
+                    <div class="column-header flex" :style="headerColor(column.title)">
+                        <span class="column-title">{{ column.title + ' / ' + column.tasks.length }}</span>
+                    </div>
+                    <!-- column -->
+                    <Container class="flex flex-column column-body " group-name="col-items"
+                        :shouldAcceptDrop="(e, payload) => (e.groupName === 'col-items' && !payload.loading)"
+                        :get-child-payload="getCardPayload(column.title)" :drop-placeholder="{
+                                className:
+                                    `bg-primary bg-opacity-20  
               border-dotted border-2 
               border-primary rounded-lg mx-4 my-2`,
-                        animationDuration: '200',
-                        showOnTop: true
-                    }" drag-class="bg-primary dark:bg-primary 
+                                animationDuration: '200',
+                                showOnTop: true
+                            }
+                            " drag-class="bg-primary dark:bg-primary 
               border-2 border-primary-hover text-white 
               transition duration-100 ease-in z-50
               transform rotate-6 scale-110" drop-class="transition duration-100 
               ease-in z-50 transform 
               -rotate-2 scale-90" @drop="(e) => onCardDrop(column.id, e)">
 
-                    <!-- Items -->
-                    <KanbanItem v-for="task in column.tasks" :key="task._id" :task="task" :cmps="kanbanCmps"
-                        :color="headerColor(column.title)"></KanbanItem>
-                </Container>
-            </div>
-        </Draggable>
-    </Container>
+                        <!-- Items -->
+                        <KanbanItem v-for=" task  in  column.tasks " :key="task._id" :task="task" :cmps="kanbanCmps"
+                            :color="headerColor(column.title)"></KanbanItem>
+                    </Container>
+                </div>
+            </Draggable>
+        </Container>
+    </main>
 </template>
   
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import KanbanItem from '@/cmps/KanbanItem.vue'
+import StatusProgress from '@/cmps/progressCmps/StatusProgress.vue'
+import PriorityProgress from '@/cmps/progressCmps/PriorityProgress.vue'
 
 
 
 export default {
     components: {
-
-
         Container,
         Draggable,
-
+        StatusProgress,
+        PriorityProgress,
         KanbanItem
     },
     data() {
         return {
-            kanbanCmps: ['Members','Date','Number'],
+            kanbanCmps: ['Members', 'Date', 'Number'],
             sortBy: 'Status',
             colOrder: { Status: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'], Priority: ['Low', 'Blank', 'Medium', 'High', 'Critical ⚠'] },
             showKanbanModal: false
@@ -190,6 +204,18 @@ export default {
             })
             return scene
 
+        },
+        concatTasks() {
+            const board = JSON.parse(JSON.stringify(this.$store.getters.board))
+            var concatTasks = { tasks: [] }
+            board.groups.forEach(group => {
+                group.tasks.forEach(task => {
+
+                    concatTasks.tasks.push(task)
+                })
+            })
+
+            return concatTasks
         }
     },
 }

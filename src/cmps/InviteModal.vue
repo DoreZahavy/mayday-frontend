@@ -37,6 +37,7 @@ export default {
         },
         addUser(user) {
             this.$emit('add', user)
+            this.showFilteredUsers = false
         },
         removeUser(memberId) {
             this.$emit('remove', memberId)
