@@ -44,6 +44,18 @@ export default {
     membersLength() {
       const members = this.$store.getters.boardMembers
       return members?.length
+    },
+    taskName() {
+      if (this.conversationsTaskId) {
+        for (let group of JSON.parse(JSON.stringify({ ...this.board }.groups))) {
+          for (let task of JSON.parse(JSON.stringify(group.tasks))) {
+            if (task._id === this.conversationsTaskId) {
+              return task.title
+            }
+          }
+        }
+      }
+      return ''
     }
   },
   components: {
@@ -148,10 +160,13 @@ export default {
       <transition name="slide">
         <div class="drawer-modal" v-if="showDrawerModal">
           <div class="close-button" @click="closeDrawerModal" v-icon="'xButton'"></div>
-          <h4 class="drawer-title"
+          <h4 v-if="showActivitiesContent" class="drawer-title"
             style="font-weight: 900; font-family: figtree; margin-left: 4px; margin-top: 9px;font-size: 1.5em;">
             Mayday
-            Teams</h4>
+            Teams <span style="font-size:0.9em; font-weight:400; margin-left: 5px;">Log</span></h4>
+          <h4 v-else-if="showConversationsContent" class="drawer-title"
+            style="font-weight: 900; font-family: figtree; margin-left: 4px; margin-top: 9px;font-size: 1.5em;">
+            {{ taskName }}</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link"
               @click="showConversationsContent = false; showActivitiesContent = true">Activity</button>

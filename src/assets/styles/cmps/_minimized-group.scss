@@ -169,11 +169,6 @@
         display: grid;
         grid-template-columns: repeat(8, 150px);
         article{
-            // display: flex;
-            // align-content: center;
-            // justify-content: center;
-            // border: 1px solid $border-clr;
-            // border-block: 1px solid $border-clr;
             border-inline-end: 1px solid $border-clr;
             article{
                 border:0
