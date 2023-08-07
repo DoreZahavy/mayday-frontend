@@ -2,8 +2,10 @@
     .kanban-options {
         display: flex;
         align-items: center;
+        justify-content: end;
         padding-block: 16px;
-        margin-inline-start: 36px;
+        // margin-inline-start: 36px;
+        margin-inline-end: 36px;
         // position: sticky;
         // top: 159px;
         .priority-progress-bar,
@@ -51,15 +53,18 @@
 .kanban-container {
     .kanban-modal {
         position: absolute;
-        width: 230px;
+        // width: 230px;
+        width: 350px;
         top: 8px;
-        left: 38px;
+        // left: 38px;
+        right: 0;
         background-color: #fff;
         border: 1px solid #c3c6d4;
         // border-top: none;
         z-index: 3;
         padding: 16px;
         color: $primary-text-color;
+        box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px ;
         .settings-title {
             font-weight: 700;
             margin-block-end: 16px;
