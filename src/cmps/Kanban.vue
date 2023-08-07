@@ -104,7 +104,7 @@ export default {
     },
     data() {
         return {
-            kanbanCmps: ['Members', 'Date', 'Number'],
+            kanbanCmps: ['Members', 'Date', 'Number','Timeline'],
             sortBy: 'Status',
             colOrder: { Status: ['Done', 'Blank', 'Almost there', 'Working on it', 'Stuck'], Priority: ['Low', 'Blank', 'Medium', 'High', 'Critical ⚠'] },
             showKanbanModal: false
@@ -120,7 +120,7 @@ export default {
         },
         onColumnDrop(dropResult) {
             // const scene = Object.assign({}, this.scene)
-            this.colOrder = this.applyDrag(this.colOrder, dropResult)
+            this.colOrder[this.sortBy] = this.applyDrag(this.colOrder[this.sortBy], dropResult)
             // this.scene = scene
         },
         onCardDrop(columnId, dropResult) {
