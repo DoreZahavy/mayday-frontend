@@ -5,6 +5,7 @@
         background-color: rgba(41, 47, 76, 0.7);
         z-index: 60;
     }
+
     .invite-modal {
         position: fixed;
         padding: 24px 32px 8px 32px;
@@ -16,10 +17,10 @@
         left: 50vw;
         transform: translate(-50%, -50%);
         overflow-y: scroll;
-    //    overflow-y: hidden;
+        //    overflow-y: hidden;
         z-index: 60;
         border-radius: 0.5em;
-        box-shadow: rgba(0,0,0,0.7) 0 25px 50px -15px;
+        box-shadow: rgba(0, 0, 0, 0.7) 0 25px 50px -15px;
         // box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px;
 
         .x-btn {
@@ -29,11 +30,13 @@
             width: 28px;
             height: 32px;
             cursor: pointer;
+
             svg {
                 // font-size: 24px;
                 scale: 1.7;
             }
         }
+
         h1 {
             // position: sticky;
             // top: 0;
@@ -47,6 +50,7 @@
             // position: sticky;
             // top: 30px;
             background-color: #fff;
+
             .filtered-users {
                 // background-color: red;
                 background-color: #fff;
@@ -62,7 +66,8 @@
                 // height: 60px;
                 max-height: 286px;
                 z-index: 90;
-                overflow: scroll;
+                overflow: hidden;
+
                 ul {
                     li {
                         cursor: pointer;
@@ -70,9 +75,11 @@
                         align-items: center;
                         height: 34px;
                         border-radius: 4px;
+
                         &:hover {
                             background-color: $secondary-btn-hover-color;
                         }
+
                         img {
                             border-radius: 50%;
                             width: 25px;
@@ -91,14 +98,17 @@
                 border-radius: 3px;
 
                 border: 1px solid #c3c6d4;
+
                 &:hover {
                     border-color: $primary-text-color;
                 }
+
                 &:focus {
                     border-color: #0073ea;
                 }
             }
         }
+
         // &:focus-within {
         //     .filtered-users {
         //         display: block;
@@ -107,9 +117,13 @@
         .board-members {
             // height: 367px;
             // overflow-y: scroll;
+            overflow-y: scroll;
+            height: 80%;
+
             .member {
                 height: $row-height;
                 margin-top: 16px;
+                margin-inline-end: 6px;
                 img {
                     height: 30px;
                     width: 30px;
@@ -117,10 +131,12 @@
                     border: 1px solid #c3c6d4;
                     border-radius: 50%;
                 }
+
                 p {
                     font-weight: 500;
                     font-size: em(15px, 14px);
                 }
+
                 span {
                     opacity: 0;
                     display: flex;
@@ -133,15 +149,18 @@
                     height: 32px;
                     width: 36px;
                     border-radius: 4px;
+
                     &:hover {
                         background-color: $secondary-btn-hover-color;
                     }
                 }
+
                 svg {
                     width: 20px;
                     height: 20px;
                 }
-                &:hover span{
+
+                &:hover span {
                     opacity: 1;
                 }
             }
