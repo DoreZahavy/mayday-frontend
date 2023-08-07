@@ -11,15 +11,15 @@
                 style="position: absolute; left: 0.6em; top: 6px; z-index: -9"></span></span>
         <el-popover style="width: 800px !important" ref="personPopover" placement="bottom" trigger="click"
             :show-arrow="false" popper-class="person-popover-container">
-            <div   class="person-filter">
+            <div class="person-filter">
                 <p>Quick person filter</p>
                 <p>Filter items and subitems by person</p>
-                <div style="flex-wrap:wrap;"><img v-for="member in members" :src="member.imgUrl" :class="{ active: member._id === activeMemberId }"
-                        @click="setPersonFilter(member._id)"></div>
+                <div style="flex-wrap:wrap;"><img v-for="member in members" :src="member.imgUrl"
+                        :class="{ active: member._id === activeMemberId }" @click="setPersonFilter(member._id)"></div>
             </div>
             <template #reference>
-                <span class="span-common" style="margin-top: -1px; gap: 4px;" @click="openPopover('person')">
-                    <span style="margin-top: 0.5px;" v-html="getSvg('personFilter')" class="span-person"></span>Person
+                <span class="span-common" style="margin-top: -0.5px; gap: 4px;" @click="openPopover('person')">
+                    <span style="margin-top: 1px;" v-html="getSvg('personFilter')" class="span-person"></span>Person
                 </span>
             </template>
         </el-popover>
