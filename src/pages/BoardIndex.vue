@@ -169,9 +169,9 @@ export default {
             {{ taskName }}</h4>
           <nav class="drawer-nav">
             <button class="drawer-nav-link"
-              @click="showConversationsContent = false; showActivitiesContent = true">Activity</button>
+              @click="showConversationsContent = false; showActivitiesContent = true" :class="{active:showActivitiesContent}">Activity</button>
             <button class="drawer-nav-link"
-              @click="showConversationsContent = true; showActivitiesContent = false">Updates</button>
+              @click="showConversationsContent = true; showActivitiesContent = false" :class="{active:showConversationsContent}">Updates</button>
           </nav>
           <!-- <h2>Social Media Campaign - #NewRelease</h2> -->
           <Conversations v-if="showConversationsContent" :taskId="conversationsTaskId">

@@ -1,7 +1,7 @@
 .drawer-modal {
     position: fixed;
     background-color: #fff;
-    padding: 16px;
+    // padding: 16px;
     top: 49px;
     right: 0;
     // width: 54.7%;
@@ -9,6 +9,7 @@
     height: calc(100vh - 49px);
     z-index: 90;
     box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
+
     .close-button {
         display: flex;
         align-items: center;
@@ -19,13 +20,17 @@
         font-size: 28px;
         border-radius: 4px;
         cursor: pointer;
+        margin: 16px 0 0 16px;
+
         &:hover {
             background-color: $secondary-btn-hover-color;
         }
+
         svg {
             scale: 1.8;
         }
     }
+
     .modal-content {
         padding: 20px;
         background-color: #fff;
@@ -37,36 +42,55 @@
         letter-spacing: 0.8px;
         padding-top: 15px;
     }
+
     .drawer-title {
-        margin-bottom: 13.5px;
+
         color: $primary-text-color;
         font-size: em(18px, 14px);
         font-family: poppins;
         font-weight: 500;
         letter-spacing: -0.2px;
         border-radius: 4px;
+        padding-inline-start: 16px;
+        margin-block-end: 51px;
+
         &:hover {
             outline: 1px solid #c3c6d4;
         }
     }
+
     .drawer-nav {
         display: flex;
         align-items: center;
         border-bottom: 1px solid #d0d4e4;
+        margin-inline: 25px;
+
         .drawer-nav-link {
             display: flex;
             align-items: center;
             height: $btnSml;
             font-size: 1rem;
-            border-radius: 4px;
+            // border-radius: 4px;
             cursor: pointer;
             padding: 8px;
             border-style: none;
             background-color: #fff;
             color: $primary-text-color;
-            &:hover {
-                background-color: $secondary-btn-hover-color;
+            // &::after {
+            //     content: "";
+            //     width: 1px;
+            //     height: 17px;
+            //     background-color: #d0d4e4;
+            //     transform: translate(0.57142857em);
+            // }
+
+            &.active {
+                // background-color: $secondary-btn-hover-color;
+                border-bottom: 2px solid $primary-btn-color;
             }
+            // &:hover {
+            //     background-color: $secondary-btn-hover-color;
+            // }
         }
     }
 }
