@@ -23,8 +23,10 @@
                     class="activity-type-icon" v-icon="'textActivity'"></span>
                 <span v-else-if="activity.propType.toLowerCase() === 'attachments'" class="activity-type-icon"
                     v-icon="'attachmentsActivity'"></span>
-                <span v-else-if="activity.propType.toLowerCase() === 'person'" class="activity-type-icon"
+                <span v-else-if="activity.propType.toLowerCase() === 'members'" class="activity-type-icon"
                     v-icon="'personActivity'"></span>
+                <span v-else-if="activity.propType.toLowerCase() === 'color'" class="activity-type-icon"
+                    v-icon="'pencil'"></span>
 
                 <span class="activity-type"
                     :title="activity.propType.charAt(0).toUpperCase() + activity.propType.slice(1)">{{
@@ -52,6 +54,16 @@
                     v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
                     <div class="activity-status" :class="activity.updateFrom.color">
                         <span class="activity-status-text">{{ activity.updateFrom.title }}</span>
+                    </div>
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'members'"
+                    style="justify-self: center; margin-right: 0.5em;">
+                    Added
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'color'"
+                    style="justify-self: center; display: flex; justify-content: center; margin-right: 0.5em">
+                    <div style="width: 0.75em; height: 0.75em; border-radius:50%;"
+                        :style="{ background: activity.updateFrom }">
                     </div>
                 </span>
                 <span v-else class="changed-from"
@@ -88,6 +100,16 @@
                     v-else-if="activity.propType.toLowerCase() === 'status' || activity.propType.toLowerCase() === 'priority'">
                     <div class="activity-status" :class="activity.updateTo.color">
                         <span class="activity-status-text">{{ activity.updateTo.title }}</span>
+                    </div>
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'members'" style="justify-self: center;">
+                    <img :src="activity.updateTo[activity.updateTo.length - 1].imgUrl" class="user-image" alt="User"
+                        style="width: 2em; height: 2em" />
+                </span>
+                <span v-else-if="activity.propType.toLowerCase() === 'color'"
+                    style="justify-self: center; display: flex; justify-content: center; margin-right: 0.5em">
+                    <div style="width: 0.75em; height: 0.75em; border-radius:50%;"
+                        :style="{ background: activity.updateTo }">
                     </div>
                 </span>
                 <span v-else class="changed-into"
@@ -291,7 +313,8 @@ export default {
         justify-content: center;
         font-size: 12px;
     }
-    .user-image{
+
+    .user-image {
         width: 30px;
         height: 30px;
     }

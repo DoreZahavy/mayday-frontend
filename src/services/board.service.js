@@ -31,62 +31,8 @@ export const boardService = {
     updateBoard
 }
 
-// async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
-//     const activity = {
-//         id: utilService.makeId(),
-//         createdAt: Date.now(),
-//         byMember: userService.getLoggedinUser(),
-//         group: '',
-//         taskId: '',
-//         taskName: '',
-//         propType: prop
-//     }
-//     const board = await getById(boardId)
-//     if (taskId) {
-//         activity.group = groupId
-//         activity.task = taskId
-//         const group = board.groups.find(g => g._id === groupId)
-//         const task = group.tasks.find(t => t._id === taskId)
-//         activity.taskName = task.title
-//         activity.updateFrom = task[prop]
-//         if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
-//         task[prop] = toUpdate
-//     } else if (groupId) {
-//         activity.group = groupId
-//         const group = board.groups.find(g => g._id === groupId)
-//         activity.updateFrom = group[prop]
-//         if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
-//         group[prop] = toUpdate
-//     } else {
-//         activity.updateFrom = board[prop]
-//         if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
-//         board[prop] = toUpdate
-//     }
-//     activity.updateTo = toUpdate
-//     if (prop !== 'minimized') board.activities.unshift(activity)
-//     return await saveBoard(board)
-// }
 async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
-    const activity = _buildActivity(prop)
-
-    const board = await getById(boardId)
-    if (taskId) {
-        _modifyTask(board, activity, prop, toUpdate, groupId, taskId)
-    
-    } else if (groupId) {
-        _modifyGroup(board, activity, prop, toUpdate, groupId)
-       
-    } else {
-        _modifyBoard(board, activity, prop, toUpdate)
-
-    }
-    activity.updateTo = toUpdate
-    if (prop !== 'minimized') board.activities.unshift(activity)
-    return await saveBoard(board)
-}
-
-function _buildActivity() {
-    return {
+    const activity = {
         id: utilService.makeId(),
         createdAt: Date.now(),
         byMember: userService.getLoggedinUser(),
@@ -95,32 +41,89 @@ function _buildActivity() {
         taskName: '',
         propType: prop
     }
+    const board = await getById(boardId)
+    if (taskId) {
+        activity.group = groupId
+        activity.task = taskId
+        const group = board.groups.find(g => g._id === groupId)
+        const task = group.tasks.find(t => t._id === taskId)
+        activity.taskName = task.title
+        activity.updateFrom = task[prop]
+        if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
+        task[prop] = toUpdate
+    } else if (groupId) {
+        activity.group = groupId
+        const group = board.groups.find(g => g._id === groupId)
+        activity.taskName = group.title
+        activity.updateFrom = group[prop]
+        if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
+        group[prop] = toUpdate
+    } else {
+        activity.updateFrom = board[prop]
+        if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
+        board[prop] = toUpdate
+    }
+    activity.updateTo = toUpdate
+    if (prop !== 'minimized' && prop !== 'updates') board.activities.unshift(activity)
+    return await saveBoard(board)
 }
 
-function _modifyTask(board, activity, prop, toUpdate, groupId, taskId) {
-    const group = board.groups.find(g => g._id === groupId)
-    const task = group.tasks.find(t => t._id === taskId)
-    activity.group = groupId
-    activity.task = taskId
-    activity.taskName = task.title
-    activity.updateFrom = task[prop]
-    if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
-    task[prop] = toUpdate
-}
+// async function updateBoard(boardId, groupId, taskId, prop, toUpdate) {
+//     const activity = _buildActivity(prop)
 
-function _modifyGroup(board, activity, prop, toUpdate, groupId) {
-    activity.group = groupId
-    const group = board.groups.find(g => g._id === groupId)
-    activity.updateFrom = group[prop]
-    if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
-    group[prop] = toUpdate
-}
+//     const board = await getById(boardId)
+//     if (taskId) {
+//         _modifyTask(board, activity, prop, toUpdate, groupId, taskId)
 
-function _modifyBoard(board, activity, prop, toUpdate) {
-    activity.updateFrom = board[prop]
-    if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
-    board[prop] = toUpdate
-}
+//     } else if (groupId) {
+//         _modifyGroup(board, activity, prop, toUpdate, groupId)
+
+//     } else {
+//         _modifyBoard(board, activity, prop, toUpdate)
+
+//     }
+//     activity.updateTo = toUpdate
+//     if (prop !== 'minimized' && prop !== 'updates') board.activities.unshift(activity)
+//     return await saveBoard(board)
+// }
+
+// function _buildActivity() {
+//     return {
+//         id: utilService.makeId(),
+//         createdAt: Date.now(),
+//         byMember: userService.getLoggedinUser(),
+//         group: '',
+//         taskId: '',
+//         taskName: '',
+//         propType: prop
+//     }
+// }
+
+// function _modifyTask(board, activity, prop, toUpdate, groupId, taskId) {
+//     const group = board.groups.find(g => g._id === groupId)
+//     const task = group.tasks.find(t => t._id === taskId)
+//     activity.group = groupId
+//     activity.task = taskId
+//     activity.taskName = task.title
+//     activity.updateFrom = task[prop]
+//     if (JSON.stringify({ item: task[prop] }) === JSON.stringify({ item: toUpdate })) return
+//     task[prop] = toUpdate
+// }
+
+// function _modifyGroup(board, activity, prop, toUpdate, groupId) {
+//     activity.group = groupId
+//     const group = board.groups.find(g => g._id === groupId)
+//     activity.taskName = group.title
+//     activity.updateFrom = group[prop]
+//     if (JSON.stringify({ item: group[prop] }) === JSON.stringify({ item: toUpdate })) return
+//     group[prop] = toUpdate
+// }
+
+// function _modifyBoard(board, activity, prop, toUpdate) {
+//     activity.updateFrom = board[prop]
+//     if (JSON.stringify({ item: board[prop] }) === JSON.stringify({ item: toUpdate })) return
+//     board[prop] = toUpdate
+// }
 
 async function query() {
     return await httpService.get('board')
