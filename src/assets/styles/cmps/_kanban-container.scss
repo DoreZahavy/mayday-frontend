@@ -4,22 +4,24 @@
         align-items: center;
         padding-block: 16px;
         margin-inline-start: 36px;
+        // position: sticky;
+        // top: 159px;
         .priority-progress-bar,
-        .status-progress-bar{
+        .status-progress-bar {
             width: 140px;
             height: 24px;
             border-radius: 4px;
             margin: 0;
         }
         .priority-progress-bar,
-        .status-progress-bar{
+        .status-progress-bar {
             .progress-segment:first-child,
-            .status-segment:first-child{
+            .status-segment:first-child {
                 border-top-left-radius: 4px;
                 border-bottom-left-radius: 4px;
             }
             .progress-segment:last-child,
-            .status-segment:last-child{
+            .status-segment:last-child {
                 border-top-right-radius: 4px;
                 border-bottom-right-radius: 4px;
             }
@@ -40,11 +42,10 @@
             &:hover {
                 background-color: $secondary-btn-hover-color;
             }
-            &.active{
+            &.active {
                 background-color: #cce5ff;
             }
         }
-        
     }
 }
 .kanban-container {
@@ -88,7 +89,7 @@
                     background-color: #11dd80;
                     border-radius: 4px;
                 }
-                &.active{
+                &.active {
                     background-color: #cce5ff;
                 }
             }
@@ -160,7 +161,7 @@
             // height: max-content;
             // max-height: 100%;
             // max-height: calc(100vh - 360.85px);
-            max-height: calc(100vh - 270px);
+            max-height: calc(100vh - 326px);
             overflow-x: hidden;
             position: relative;
             height: 100%;
