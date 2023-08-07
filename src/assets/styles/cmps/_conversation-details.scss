@@ -5,7 +5,7 @@
         // justify-content: center;
         align-items: center;
         display: grid;
-        grid-template-columns: 30px auto 30px 30px;
+        grid-template-columns: 30px auto 45px 30px;
         padding: 16px;
         padding-block-end: 8px;
         h2 {
@@ -13,6 +13,7 @@
             font-size: 16px;
             font-family: figtree;
             font-weight: 400;
+            width: fit-content;
         }
     }
     section p {

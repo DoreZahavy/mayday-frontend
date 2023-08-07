@@ -1,4 +1,134 @@
+.kanban-details {
+    .kanban-options {
+        display: flex;
+        align-items: center;
+        padding-block: 16px;
+        margin-inline-start: 36px;
+        .priority-progress-bar,
+        .status-progress-bar{
+            width: 140px;
+            height: 24px;
+            border-radius: 4px;
+            margin: 0;
+        }
+        .priority-progress-bar,
+        .status-progress-bar{
+            .progress-segment:first-child,
+            .status-segment:first-child{
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+            .progress-segment:last-child,
+            .status-segment:last-child{
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
+        .settings-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // position: absolute;
+            // left: 3px;
+            // opacity: 0;
+            color: $primary-text-color;
+            width: $btnSml;
+            height: $btnSml;
+            border-radius: 4px;
+            margin-inline-start: 8px;
+            cursor: pointer;
+            &:hover {
+                background-color: $secondary-btn-hover-color;
+            }
+            &.active{
+                background-color: #cce5ff;
+            }
+        }
+        
+    }
+}
 .kanban-container {
+    .kanban-modal {
+        position: absolute;
+        width: 230px;
+        top: 8px;
+        left: 38px;
+        background-color: #fff;
+        border: 1px solid #c3c6d4;
+        // border-top: none;
+        z-index: 3;
+        padding: 16px;
+        color: $primary-text-color;
+        .settings-title {
+            font-weight: 700;
+            margin-block-end: 16px;
+            margin-inline-start: 8px;
+        }
+        .modal-inner-container {
+            padding-inline: 16px;
+            border-radius: 8px;
+            padding-bottom: 8px;
+            border: 1px solid #c3c6d4;
+            .sort-option {
+                height: 36px;
+                border-radius: 4px;
+                cursor: pointer;
+                &:hover {
+                    background-color: $secondary-btn-hover-color;
+                }
+                & > * {
+                    margin-inline-start: 8px;
+                }
+                span {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #11dd80;
+                    border-radius: 4px;
+                }
+                &.active{
+                    background-color: #cce5ff;
+                }
+            }
+            .modal-cmp {
+                padding: 4px 6px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: $secondary-btn-hover-color;
+                }
+                label {
+                    cursor: pointer;
+
+                    span {
+                        display: inline-block;
+                        width: 14px;
+                        // height: 21px;
+                        margin-inline-end: 8px;
+                    }
+                    .date-svg > * {
+                        scale: 0.75;
+                        transform: translate(-4px);
+                    }
+                    .nums-svg > * {
+                        scale: 0.8;
+                        transform: translate(-4px);
+                    }
+                    .timeline-svg > * {
+                        scale: 0.75;
+                        transform: translate(-4px, 6px);
+                    }
+                }
+                input {
+                    cursor: pointer;
+                }
+            }
+            .modal-title {
+                margin-block: 16px;
+            }
+        }
+    }
     // border-top: 1px solid #d0d4e4;
     padding-inline-start: 38px;
     padding-top: 8px;
@@ -50,107 +180,9 @@
         }
     }
 
-    .kanban-options {
-        .settings-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            left: 3px;
-            opacity: 0;
-            color: $primary-text-color;
-            width: $btnSml;
-            height: $btnSml;
-            border-radius: 4px;
-            cursor: pointer;
-            &:hover {
-                background-color: $secondary-btn-hover-color;
-            }
-        }
-        .kanban-modal {
-            position: absolute;
-            width: 230px;
-            top: 0;
-            left: 38px;
-            background-color: #fff;
-            border: 1px solid #c3c6d4;
-            border-top: none;
-            z-index: 3;
-            padding: 16px;
-            color: $primary-text-color;
-            .settings-title {
-                font-weight: 700;
-                margin-block-end: 16px;
-                margin-inline-start: 8px;
-            }
-            .modal-inner-container {
-                padding-inline: 16px;
-                border-radius: 8px;
-                padding-bottom: 8px;
-                border: 1px solid #c3c6d4;
-                .sort-option {
-                    height: 36px;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: $secondary-btn-hover-color;
-                    }
-                    & > * {
-                        margin-inline-start: 8px;
-                    }
-                    span {
-                        width: 24px;
-                        height: 24px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #11dd80;
-                        border-radius: 4px;
-                    }
-                    h4 {
-                    }
-                }
-                .modal-cmp {
-                    padding: 4px 6px;
-                    border-radius: 4px;
-                    &:hover {
-                        background-color: $secondary-btn-hover-color;
-                    }
-                    label {
-                        cursor: pointer;
-
-                        span {
-                            display: inline-block;
-                            width: 14px;
-                            // height: 21px;
-                            margin-inline-end: 8px;
-                        }
-                        .date-svg > * {
-                            scale: 0.75;
-                            transform: translate(-4px);
-                        }
-                        .nums-svg > * {
-                            scale: 0.8;
-                            transform: translate(-4px);
-                        }
-                        .timeline-svg > * {
-                            scale: 0.75;
-                            transform: translate(-4px, 6px);
-                        }
-                    }
-                    input {
-                        cursor: pointer;
-                    }
-                }
-                .modal-title {
-                    margin-block: 16px;
-                }
-            }
-        }
-    }
-    &:hover {
-        .settings-btn {
-            opacity: 1;
-        }
-    }
+    // &:hover {
+    //     .settings-btn {
+    //         opacity: 1;
+    //     }
+    // }
 }
